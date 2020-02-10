@@ -40,9 +40,9 @@ export class ClassIndexPage extends Component {
                 <div id="grid-container">
                 {this.state.classes.map(charClass => (
                     <div key={charClass.slug}>
-                        <Card style={{minWidth: "220px", margin: "0.5em"}}>
+                        <Card>
                             <CardContent>
-                                <h5 style={{fontSize: "1em"}}>{charClass.name}</h5>
+                                <h5 className="class-name">{charClass.name}</h5>
                             </CardContent>
                             <CardActions>
                                 <Button size="small">
@@ -50,7 +50,6 @@ export class ClassIndexPage extends Component {
                                     to={`/library/classes/${charClass.slug}`} 
                                     className="link" 
                                     href=""
-                                    style={{textDecoration: "none", color: "black"}}    
                                 >
                                     Read More
                                 </Link>

@@ -45,13 +45,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
   };
 
   return (
-      <div id="NavBar" 
-        style={{
-          marginRight: "2em", 
-          minHeight: "100vh",
-          position: "sticky",
-          top: "0"
-          }}>
+      <div id="NavBar">
         <List
         component="nav"
         aria-labelledby="nested-list-subheader"
@@ -59,12 +53,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
             <ListSubheader component="div" id="nested-list-subheader">
                 <ListItemLink button 
                     href="/"
-                    style={{
-                        fontFamily: "'Bungee Inline', cursive", 
-                        color: "#ffffff",
-                        fontSize: "1.75em",
-                        marginLeft: "0.75em"
-                    }}
+                    className="logo"
                 >
                     TECHR
                     <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
@@ -76,31 +65,31 @@ export const NavBar = ({ currentUser, onSignOut }) => {
         >
             <ListItemLink button href="/sign_in">
                     <ListItemIcon>
-                        <AccountCircleIcon style={{color: "#ffffff"}} />
+                        <AccountCircleIcon />
                     </ListItemIcon>
                     <ListItemText primary="Sign In / Sign Up" />
                 </ListItemLink>
             <ListItemLink button href="/characters">
                     <ListItemIcon>
-                        <CreateIcon style={{color: "#ffffff"}} />
+                        <CreateIcon />
                     </ListItemIcon>
                     <ListItemText primary="Characters" />
                 </ListItemLink>
             <ListItemLink button href="/generator">
                 <ListItemIcon>
-                    <i className="fas fa-dice" style={{color: "#ffffff"}}></i>
+                    <i className="fas fa-dice MuiSvgIcon-root"></i>
                 </ListItemIcon>
                 <ListItemText primary="Generator" />
             </ListItemLink>
             <ListItemLink button href="/scheduler">
                 <ListItemIcon>
-                    <EventAvailableIcon style={{color: "#ffffff"}} />
+                    <EventAvailableIcon />
                 </ListItemIcon>
                 <ListItemText primary="Scheduler" />
             </ListItemLink>
             <ListItem button onClick={handleClick}>
                     <ListItemIcon>
-                        <SearchIcon style={{color: "#ffffff"}} />
+                        <SearchIcon />
                     </ListItemIcon>
                     <ListItemText primary="Library" />
                     {open ? <ExpandLess /> : <ExpandMore />}

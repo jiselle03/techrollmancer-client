@@ -13,4 +13,19 @@
 
 #NavBar {
     color: rgba(45,99,127,1);
+    margin-right: 2em; 
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+a.MuiButtonBase-root.logo {
+    font-family: 'Bungee Inline', cursive;
+    color: #ffffff;
+    font-size: 1.75em;
+    margin-left: 0.75em;
+}
+
+.MuiSvgIcon-root {
+    color: #ffffff;
 }

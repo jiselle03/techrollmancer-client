@@ -1,3 +1,17 @@
+.class-name {
+    font-size: 1em;
+}
+
+div.MuiPaper-root.MuiCard-root {
+    min-width: 220px;
+    margin: 0.5em;
+}
+
+a.link {
+    text-decoration: none;
+    color: black;  
+}
+
 @media (min-width: 768px) {
     #grid-container {
         display: grid;
