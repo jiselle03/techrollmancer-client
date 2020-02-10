@@ -1,0 +1,22 @@
+<h3>Sign In</h3>
+<%= form_with url: session_path, local: true do |f| %>
+
+    <div>
+        <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: "name@example.com" %>
+        </div>
+    </div>
+
+    <div>
+        <div>
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: "Password" %>
+        </div>
+    </div>
+
+    <br>
+
+    <%= f.submit "Sign In" %>
+
+<% end %>

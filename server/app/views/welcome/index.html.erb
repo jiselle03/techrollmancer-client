@@ -1,0 +1,12 @@
+<h3>Characters</h3>
+
+<% @characters.each do |character| %>
+
+  <div>
+    <h5><%= link_to(character.name, character_path(character.id)) %></h5>
+    <p><%= character.class_1 %></p>
+    <p><%= character.race %></p>
+    <small>Created <%= time_ago_in_words(character.created_at) %> ago</small>
+  </div>
+
+<% end %>

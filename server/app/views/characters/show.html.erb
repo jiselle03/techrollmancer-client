@@ -1,0 +1,192 @@
+<h3><%= @character.name %> </h3>
+
+<%= image_tag @character.photo_url %>
+
+<table>
+    <tr>
+        <td><%= @character.hp %></td>
+        <td>Hit Points</td>
+    </tr>
+    <tr>
+        <td><%= @character.level %></td>
+        <td>Level</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td><%= @character.str %><small>(<% mod = base_mod @character.str %><%= mod > 0 ? "+#{mod}" : "#{mod}"%>)</small></td>
+        <td>Strength</td>
+    </tr>
+    <tr>
+        <td><%= @character.dex %><small>(<% mod = base_mod @character.dex %><%= mod > 0 ? "+#{mod}" : "#{mod}"%>)</small></td>
+        <td>Dexterity</td>
+    </tr>
+    <tr>
+        <td><%= @character.con %><small>(<% mod = base_mod @character.con %><%= mod > 0 ? "+#{mod}" : "#{mod}"%>)</small></td>
+        <td>Constitution</td>
+    </tr>
+    <tr>
+        <td><%= @character.int %><small>(<% mod = base_mod @character.int %><%= mod > 0 ? "+#{mod}" : "#{mod}"%>)</small></td>
+        <td>Intelligence</td>
+    </tr>
+    <tr>
+        <td><%= @character.wis %><small>(<% mod = base_mod @character.wis %><%= mod > 0 ? "+#{mod}" : "#{mod}"%>)</small></td>
+        <td>Wisdom</td>
+    </tr>
+    <tr>
+        <td><%= @character.cha %><small>(<% mod = base_mod @character.cha %><%= mod > 0 ? "+#{mod}" : "#{mod}"%>)</small></td>
+        <td>Charisma</td>
+    </tr>
+    <tr>
+        <td><%= @character.armor_class %></td>
+        <td>Armor Class</td>
+    </tr>
+    <tr>
+        <td><%= @character.speed %></td>
+        <td>Speed</td>
+    </tr>
+</table>
+
+<br><br>
+
+<table>
+    <tr>
+        <th>Skills</th>
+    </tr>
+    <tr>
+        <td><% acrobatics_mod = ability_mod "acrobatics" %><%= acrobatics_mod > 0 ? "+#{acrobatics_mod}" : "#{acrobatics_mod}"%>
+        <small>(Dex)</small></td>
+        <td>Acrobatics</td>
+    </tr>
+    <tr>
+        <td><% animal_handling_mod = ability_mod "animal handling" %><%= animal_handling_mod > 0 ? "+#{animal_handling_mod}" : "#{animal_handling_mod}"%>
+        <small>(Wis)</small></td>
+        <td>Animal Handling</td>
+    </tr>
+    <tr>
+        <td><% arcana_mod = ability_mod "arcana" %><%= arcana_mod > 0 ? "+#{arcana_mod}" : "#{arcana_mod}"%>
+        <small>(Int)</small></td>
+        <td>Arcana</td>
+    </tr>
+    <tr>
+        <td><% athletics_mod = ability_mod "athletics" %><%= athletics_mod > 0 ? "+#{athletics_mod}" : "#{athletics_mod}"%>
+            <small>(Str)</small></td>
+        <td>Athletics</td>
+    </tr>
+    <tr>
+        <td><% deception_mod = ability_mod "deception" %><%= deception_mod > 0 ? "+#{deception_mod}" : "#{deception_mod}"%>
+        <small>(Cha)</small></td>
+        <td>Deception</td>
+    </tr>
+    <tr>
+        <td><% history_mod = ability_mod "history" %><%= history_mod > 0 ? "+#{history_mod}" : "#{history_mod}"%>
+        <small>(Int)</small></td>
+        <td>History</td>
+    </tr>
+    <tr>
+        <td><% insight_mod = ability_mod "insight" %><%= insight_mod > 0 ? "+#{insight_mod}" : "#{insight_mod}"%>
+        <small>(Wis)</small></td>
+        <td>Insight</td>
+    </tr>
+    <tr>
+        <td><% intimidation_mod = ability_mod "intimidation" %><%= intimidation_mod > 0 ? "+#{intimidation_mod}" : "#{intimidation_mod}"%>
+        <small>(Cha)</small></td>
+        <td>Intimidation</td>
+    </tr>
+    <tr>
+        <td><% investigation_mod = ability_mod "investigation" %><%= investigation_mod > 0 ? "+#{investigation_mod}" : "#{investigation_mod}"%>
+        <small>(Int)</small></td>
+        <td>Investigation</td>
+    </tr>
+    <tr>
+        <td><% medicine_mod = ability_mod "medicine" %><%= medicine_mod > 0 ? "+#{medicine_mod}" : "#{medicine_mod}"%>
+        <small>(Wis)</small></td>
+        <td>Medicine</td>
+    </tr>
+    <tr>
+        <td><% nature_mod = ability_mod "nature" %><%= nature_mod > 0 ? "+#{nature_mod}" : "#{nature_mod}"%>
+        <small>(Int)</small></td>
+        <td>Nature</td>
+    </tr>
+    <tr>
+        <td><% perception_mod = ability_mod "perception" %><%= perception_mod > 0 ? "+#{perception_mod}" : "#{perception_mod}"%>
+        <small>(Wis)</small></td>
+        <td>Perception</td>
+    </tr>
+    <tr>
+        <td><% performance_mod = ability_mod "performance" %><%= performance_mod > 0 ? "+#{performance_mod}" : "#{performance_mod}"%>
+        <small>(Cha)</small></td>
+        <td>Performance</td>
+    </tr>
+    <tr>
+        <td><% persuasion_mod = ability_mod "persuasion" %><%= persuasion_mod > 0 ? "+#{persuasion_mod}" : "#{persuasion_mod}"%>
+        <small>(Cha)</small></td>
+        <td>Persuasion</td>
+    </tr>
+    <tr>
+        <td><% religion_mod = ability_mod "religion" %><%= religion_mod > 0 ? "+#{religion_mod}" : "#{religion_mod}"%>
+        <small>(Int)</small></td>
+        <td>Religion</td>
+    </tr>
+    <tr>
+        <td><% sleight_of_hand_mod = ability_mod "sleight of hand" %><%= sleight_of_hand_mod > 0 ? "+#{sleight_of_hand_mod}" : "#{sleight_of_hand_mod}"%>
+        <small>(Dex)</small></td>
+        <td>Sleight of Hand</td>
+    </tr>
+    <tr>
+        <td><% stealth_mod = ability_mod "stealth" %><%= stealth_mod > 0 ? "+#{stealth_mod}" : "#{stealth_mod}"%>
+        <small>(Dex)</small></td>
+        <td>Stealth</td>
+    </tr>
+    <tr>
+        <td><% survival_mod = ability_mod "survival" %><%= survival_mod > 0 ? "+#{survival_mod}" : "#{survival_mod}"%>
+        <small>(Wis)</small></td>
+        <td>Survival</td>
+    </tr>
+    
+</table>
+
+<br><br>
+
+<table>
+    <td>
+        <% mod = base_mod @character.dex %>
+        <%= mod > 0 ? "+#{mod}" : "#{mod}"%>
+    </td>
+    <td>
+        Initiative
+    </td>
+</table>
+
+<br><br>
+
+<table>
+    <tr>
+    <th>Saving Throws</th>
+    </tr>
+    <tr>
+    <td><% str_save_mod = ability_mod "str save" %><%= str_save_mod > 0 ? "+#{str_save_mod}" : "#{str_save_mod}"%></td>
+    <td>Strength</td>
+    </tr>
+    <tr>
+    <td><% dex_save_mod = ability_mod "dex save" %><%= dex_save_mod > 0 ? "+#{dex_save_mod}" : "#{dex_save_mod}"%></td>
+    <td>Dexterity</td>
+    </tr>
+    <tr>
+    <td><% con_save_mod = ability_mod "con save" %><%= dex_save_mod > 0 ? "+#{con_save_mod}" : "#{con_save_mod}"%></td>
+    <td>Constitution</td>
+    </tr>
+    <tr>
+    <td><% int_save_mod = ability_mod "int save" %><%= int_save_mod > 0 ? "+#{int_save_mod}" : "#{int_save_mod}"%></td>
+    <td>Intelligence</td>
+    </tr>
+    <tr>
+    <td><% wis_save_mod = ability_mod "wis save" %><%= wis_save_mod > 0 ? "+#{wis_save_mod}" : "#{wis_save_mod}"%></td>
+    <td>Wisdom</td>
+    </tr>
+    <tr>
+    <td><% cha_save_mod = ability_mod "cha save" %><%= cha_save_mod > 0 ? "+#{cha_save_mod}" : "#{cha_save_mod}"%></td>
+    <td>Charisma</td>
+    </tr>
+</table>
