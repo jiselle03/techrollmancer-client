@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Advent+Pro&display=swap');
+
+.fa-spin-hover {
+    border-radius: 50%;
+    transition: transform 1s ease-in-out;
+    margin: 0.5em 0.1em;
+    color: #ffffff;
+}
+
+.fa-spin-hover:hover {
+    transform: rotate(360deg);
+}
+
+#NavBar {
+    color: rgba(45,99,127,1);
+}
