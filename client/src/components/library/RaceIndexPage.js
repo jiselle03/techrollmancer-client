@@ -1,65 +1,54 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import '../css/Index.css';
 import { CircularProgress } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 
-export class RaceIndexPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        races: [],
-        isLoading: true
-        };
+const getRaces = () => {
+    return axios.get("http://localhost:3000/api/v1/libraries/races");
+};
+
+export const RaceIndexPage = () => {
+    const [races, setRaces] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        getRaces().then(races => { 
+            setRaces(races.data);
+            setIsLoading(false);
+          });
+    }, []);
+
+    if (isLoading) {
+        return(
+        <CircularProgress variant="determinate" />
+        );
     };
 
-    getRaces = async () => {
-        const { data: {results: races}} = await axios.get("https://api.open5e.com/races/");
-        this.setState({ races, isLoading: false });
-    };
-
-    componentDidMount() {
-        this.getRaces();
-    };
-
-    render() {
-        if(this.state.isLoading) {
-            return(
-            <CircularProgress variant="determinate" />
-            );
-        };
-
-        return (
+    return (
+        <div className="race-index-background">
             <main className="Main">
                 <h2>Races</h2>
                 <div id="grid-container">
-                {this.state.races.map(race => (
+                {races.map(race => (
                     <div key={race.slug}>
-                        <Card style={{minWidth: "220px", margin: "0.5em"}}>
-                            <CardContent>
-                                <h5 style={{fontSize: "1em"}}>{race.name}</h5>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">
-                                <Link 
-                                    to={`/library/races/${race.slug}`} 
-                                    className="link" 
-                                    href=""
-                                    style={{textDecoration: "none", color: "black"}}    
-                                >
-                                    Read More
-                                </Link>
-                                </Button>
-                            </CardActions>
-                        </Card>
+                        <Link 
+                            to={`/libraries/races/${race.slug}`} 
+                            className="link" 
+                        >
+                            <Card className={race.name}>
+                                <CardContent className="content">
+                                    <h5 className="race-name">{race.name}</h5>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </div>
                 ))}
                 </div>
             </main>
-        );
-    };
+        </div>
+    );
 };

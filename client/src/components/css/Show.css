@@ -1,0 +1,37 @@
+.list-item {
+    margin-left: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+span.category {
+    font-size: 1.25em;
+}
+
+.Show-Container {
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+/* Classes */
+.barbarian-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/barbarian.png');
+    background-size: 40%;
+}
+
+.bard-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/bard.png');
+    background-size: 35%;
+}
+
+.wizard-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/wizard.png');;
+}
+

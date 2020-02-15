@@ -1,0 +1,13 @@
+.welcome-background {
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+        url('../../assets/d20.png');
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+.Home-Container {
+    width: 100vw;
+}
+

@@ -1,9 +1,12 @@
 import React from "react";
-import "./css/NavBar.css"
+
+import './css/Home.css';
 
 export const WelcomePage = (props) => (
-    <div className="Main">
-        <div className="ui header">Techrollmancer</div>
-        <div className="ui teal segment"> Welcome to Techrollmancer</div>
+    <div className="welcome-background Home-Container">
+        <main className="Main">
+            <div>Techrollmancer</div>
+            <div> Welcome to Techrollmancer</div>
+        </main>
     </div>
 );

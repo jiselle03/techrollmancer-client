@@ -1,65 +1,55 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import '../css/ClassIndex.css';
+import '../css/Index.css';
 import { CircularProgress } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 
-export class ClassIndexPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        classes: [],
-        isLoading: true
-        };
+const getClasses = () => {
+    return axios.get("http://localhost:3000/api/v1/libraries/classes");
+};
+
+export const ClassIndexPage = () => {
+    const [classes, setClasses] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        getClasses().then(classes => { 
+            setClasses(classes.data);
+            setIsLoading(false);
+          });
+    }, []);
+
+    if(isLoading) {
+        return(
+        <CircularProgress variant="determinate" />
+        );
     };
 
-    getClasses = async () => {
-        const { data: {results: classes}} = await axios.get("https://api.open5e.com/classes/");
-        this.setState({ classes, isLoading: false });
-    };
-
-    componentDidMount() {
-        this.getClasses();
-    };
-
-    render() {
-        if(this.state.isLoading) {
-            return(
-            <CircularProgress variant="determinate" />
-            );
-        };
-
-        return (
+    return (
+        <div className="class-index-background Index-Container">
             <main className="Main">
                 <h2>Classes</h2>
                 <div id="grid-container">
-                {this.state.classes.map(charClass => (
+                {classes.map(charClass => (
                     <div key={charClass.slug}>
-                        <Card>
-                            <CardContent>
-                                <h5 className="class-name">{charClass.name}</h5>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small">
-                                <Link 
-                                    to={`/library/classes/${charClass.slug}`} 
-                                    className="link" 
-                                    href=""
-                                >
-                                    Read More
-                                </Link>
-                                </Button>
-                            </CardActions>
-                        </Card>
+                        <Link 
+                            to={`/libraries/classes/${charClass.slug}`} 
+                            className="link" 
+                            href=""
+                        >
+                            <Card className={charClass.name}>
+                                <CardContent className="content">
+                                    <h5 className="class-name">{charClass.name}</h5>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </div>
                 ))}
                 </div>
             </main>
-        );
-    };
+        </div>
+    );
 };

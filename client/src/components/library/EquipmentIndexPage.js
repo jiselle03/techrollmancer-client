@@ -1,47 +1,41 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { Spinner } from '../Spinner';
+import '../css/Index.css';
+import { CircularProgress } from '@material-ui/core';
 
-export class SpellIndexPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        spells: [],
-        isLoading: true
-        };
+const getEquipments = () => {
+    return axios.get("http://localhost:3000/api/v1/libraries/equipment");
+};
+
+export const EquipmentIndexPage = () => {
+    const [equipments, setEquipments] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        getEquipments().then(equipments => { 
+            setEquipments(equipments.data);
+            setIsLoading(false);
+          });
+    }, []);
+
+    if(isLoading) {
+        return(
+            <CircularProgress variant="determinate" />
+        );
     };
 
-    getSpells = async () => {
-        const { data: {results: spells}} = await axios.get("https://api.open5e.com/spells/");
-        this.setState({ spells, isLoading: false });
-    };
-
-    componentDidMount() {
-        this.getSpells();
-    };
-
-    render() {
-        if(this.state.isLoading) {
-            return(
-            <Spinner message="Loading spells..." />
-            );
-        };
-
-        return (
+    return (
         <main className="Main">
             <h2>Equipment</h2>
-            <ul>
-            {this.state.spells.map(spell => (
-                <div key={spell.slug}>
-                <Link to={`/spells/${spell.slug}`} href="">
-                    {spell.name}
+            {equipments.map(equipment => (
+                <div key={equipment.slug}>
+                <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>
+                    {equipment.name}
                 </Link>
                 </div>
             ))}
-            </ul>
         </main>
-        );
-    };
+    );
 };

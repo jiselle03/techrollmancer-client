@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Advent+Pro&display=swap');
 
+div#mobile.NavBar {
+    margin: 0;
+    width: 50%;
+}
+
 .fa-spin-hover {
     border-radius: 50%;
     transition: transform 1s ease-in-out;
@@ -7,25 +12,64 @@
     color: #ffffff;
 }
 
+header {
+    overflow-y: hidden;
+    background-color: rgba(45,99,127,1);
+}
+
+.NavBar {
+    margin: 0;
+}
+
 .fa-spin-hover:hover {
     transform: rotate(360deg);
 }
 
-#NavBar {
-    color: rgba(45,99,127,1);
-    margin-right: 2em; 
-    min-height: 100vh;
-    position: sticky;
-    top: 0;
-}
-
-a.MuiButtonBase-root.logo {
+a.MuiButtonBase-root.logo, a.MuiButtonBase-root.logo-mobile {
     font-family: 'Bungee Inline', cursive;
     color: #ffffff;
     font-size: 1.75em;
-    margin-left: 0.75em;
+}
+
+div.MuiListItemText-root {
+    margin: 0;
+}
+
+.NavBar#mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.MuiButton-label {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-left: 2em;
 }
 
 .MuiSvgIcon-root {
     color: #ffffff;
+}
+
+#mobile {
+    display: block;
+}
+
+#non-mobile {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #mobile {
+        display: none;
+    }
+
+    #non-mobile {
+        display: block;
+    }
+
+    .NavBar#mobile {
+        display: none;
+    }
+
 }
