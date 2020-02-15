@@ -10,6 +10,14 @@ Rails.application.routes.draw do
       resources :users, only: [:create] do
         get :current, on: :collection
       end
+      get('/libraries/equipment', to: 'libraries#equipment_index')
+      get('/libraries/equipment/:slug', to: 'libraries#equipment_show')
+      get('/libraries/classes', to: 'libraries#class_index')
+      get('/libraries/classes/:slug', to: 'libraries#class_show')
+      get('/libraries/races', to: 'libraries#race_index')
+      get('/libraries/races/:slug', to: 'libraries#race_show')
+      get('/libraries/spells', to: 'libraries#spell_index')
+      get('/libraries/spells/:slug', to: 'libraries#spell_show')
     end
   end
 
