@@ -23,7 +23,10 @@ class Api::V1::CharactersController < Api::ApplicationController
         if @character.update character_params
             render json: { id: @character.id }
         else
-            render :edit
+            render(
+                json: { errors: question.errors },
+                status: 422 #unproceesable entity
+            )
         end
     end
 

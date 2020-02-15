@@ -13,7 +13,11 @@ class Ability
     end
 
     can(:crud, Character) do |character|
-      character.user == user 
+      character.user == user && character.user.is_owner?
+    end
+
+    can(:read, Character) do |character|
+      character.user == user
     end
 
     can(:crud, Proficiency) do |proficiency|
