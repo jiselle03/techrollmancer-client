@@ -36,45 +36,56 @@ export const SignInPage = props => {
     }
 
     return (
-        <div className="signin-background SignUp">
+        <div className="signin-background SignIn">
             <main className="Main">
                 <Card id="signin-form">
                 <h2 className="center">Sign In</h2>
-                    <FormControl>
-                        <InputLabel htmlFor="email">Email*</InputLabel>
-                        <Input
-                        id="email"
-                        type="email"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <AccountCircle id="account-icon" />
-                            </InputAdornment>
-                        }
-                        placeholder="Email Address"
-                        required
-                        />
-                    </FormControl>
-                    
-                    <br />
+                    <form onSubmit={createSession}>
+                    { errors.length > 0 ? (
+                        <div>
+                            <div className="header">
+                                Failed to sign in: { errors.map(error => error.message).join(", ") }
+                            </div>
+                        </div>
+                    ): "" }
+                        <FormControl>
+                            <InputLabel htmlFor="username">Username*</InputLabel>
+                            <Input
+                            id="username"
+                            type="username"
+                            name="username"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                <AccountCircle id="account-icon" />
+                                </InputAdornment>
+                            }
+                            placeholder="Email Address"
+                            required
+                            />
+                        </FormControl>
+                        
+                        <br />
 
-                    <FormControl>
-                        <InputLabel htmlFor="password">Password*</InputLabel>
-                        <Input
-                        id="password"
-                        type="password"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <LockIcon id="password-icon" />
-                            </InputAdornment>
-                        }
-                        placeholder="Password"
-                        required
-                        />
-                    </FormControl>
+                        <FormControl>
+                            <InputLabel htmlFor="password">Password*</InputLabel>
+                            <Input
+                            id="password"
+                            type="password"
+                            name="password"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                <LockIcon id="password-icon" />
+                                </InputAdornment>
+                            }
+                            placeholder="Password"
+                            required
+                            />
+                        </FormControl>
 
-                    <div className="center">
-                        <button className="button">SIGN IN</button>
-                    </div>
+                        <div className="center">
+                            <button className="button">SIGN IN</button>
+                        </div>
+                    </form>
 
                     <Divider variant="middle" />
 
