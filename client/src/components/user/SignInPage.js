@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Session } from '../../api/session';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import LockIcon from '@material-ui/icons/Lock';
+import Card from '@material-ui/core/Card';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
-export class SignInPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            errors: []
-        };
-    };
+export const SignInPage = props => {
+    const [errors, setErrors] = useState([]);
 
-    createSession = event => {
+    const createSession = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
         const fd = new FormData(form);
@@ -20,67 +25,63 @@ export class SignInPage extends Component {
             password: fd.get("password")
         }).then(data => {
             if (data.status === 404) {
-                this.setState({
-                    errors: [{ message: "Incorrect email or password. Please try again." }]
-                });
+                setErrors([...errors, { message: "Wrong email or password"}]);
             } else {
-                this.props.history.push("/");
-                if (typeof this.props.onSignIn === "function") {
-                    this.props.onSignIn();
+                props.history.push("/");
+                if (typeof props.onSignIn === "function") {
+                    props.onSignIn();
                 };
             };
         });
-    };
+    }
 
-    render() {
-        const { errors } = this.state;
+    return (
+        <div className="signin-background SignUp">
+            <main className="Main">
+                <Card id="signin-form">
+                <h2 className="center">Sign In</h2>
+                    <FormControl>
+                        <InputLabel htmlFor="email">Email*</InputLabel>
+                        <Input
+                        id="email"
+                        type="email"
+                        startAdornment={
+                            <InputAdornment position="start">
+                            <AccountCircle id="account-icon" />
+                            </InputAdornment>
+                        }
+                        placeholder="Email Address"
+                        required
+                        />
+                    </FormControl>
+                    
+                    <br />
 
-        return (
-            <div className="Main">
-                <div className="ui placeholder segment Box">
-                    <div className="ui two column very relaxed stackable grid">
-                        <div className="column">
-                            <div className="ui form" onSubmit={this.createSession}>
-                                { errors.length > 0 ? (
-                                    <div className="ui negative message">
-                                        <div className="header">Failed to sign in</div>
-                                            <p>{ errors.map(error => error.message).join(", ") }</p>
-                                    </div>
-                                ): "" }
-                                <div className="field">
-                                    <label>Username</label>
-                                    <div className="ui left icon input">
-                                        <input type="text" name="username" id="username" placeholder="Username" />
-                                        <i className="user icon"></i>
-                                    </div>
-                                </div>
-                                <div className="field">
-                                    <label>Password</label>
-                                    <div className="ui left icon input">
-                                        <input type="password" name="password" id="password" />
-                                        <i className="lock icon"></i>
-                                    </div>
-                                </div>
-                                <input 
-                                    className="ui blue submit button"
-                                    type="submit"
-                                    value="Sign In"
-                                />
-                            </div>
-                        </div>
-                        <div className="middle aligned column">
-                            <div className="ui big button">
-                                <i className="signup icon"></i>
-                                Sign Up
-                            </div>
-                        </div>
+                    <FormControl>
+                        <InputLabel htmlFor="password">Password*</InputLabel>
+                        <Input
+                        id="password"
+                        type="password"
+                        startAdornment={
+                            <InputAdornment position="start">
+                            <LockIcon id="password-icon" />
+                            </InputAdornment>
+                        }
+                        placeholder="Password"
+                        required
+                        />
+                    </FormControl>
+
+                    <div className="center">
+                        <button className="button">SIGN IN</button>
                     </div>
-                    <div className="ui vertical divider">
-                        Or
-                    </div>
-                </div>
-            </div>
 
-        );
-    };
+                    <Divider variant="middle" />
+
+                    <p className="center">Don't have an account? <Link to="/sign_up" className="signup-link">SIGN UP</Link></p>
+                </Card>
+
+            </main>
+        </div>
+    );
 };

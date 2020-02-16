@@ -39,7 +39,7 @@ export const RaceIndexPage = () => {
                             to={`/libraries/races/${race.slug}`} 
                             className="link" 
                         >
-                            <Card className={race.name}>
+                            <Card className={`${race.name} card`}>
                                 <CardContent className="content">
                                     <h5 className="race-name">{race.name}</h5>
                                 </CardContent>

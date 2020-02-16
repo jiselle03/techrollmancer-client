@@ -113,12 +113,12 @@ class App extends Component {
                   <SignInPage {...routeProps} onSignIn={this.getUser} />
                 )}  
               />
-              {/* <Route 
+              <Route 
                 path="/sign_up"
                 render={routeProps => (
                   <SignUpPage {...routeProps} onSignUp={this.getUser} />
                 )}  
-              /> */}
+              />
               <Route component={NotFoundPage} />
             </Switch>
         </BrowserRouter>

@@ -1,71 +1,85 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import '../css/Index.css';
+import { Character } from '../../api/character';
+import { CircularProgress } from "@material-ui/core";
 import { Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { CircularProgress } from "@material-ui/core";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
-export class CharacterIndexPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        characters: [],
-        isLoading: true
-        };
-    };
+export const CharacterIndexPage = () => {
+    const [characters, setCharacters] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    getCharacters = async () => {
-        const characters = [{name: "Ja'el"}]
-        this.setState({ characters, isLoading: false });
-    };
+    useEffect(() => {
+        Character.all().then(characters => { 
+            if (characters.data.length > 0) {
+                setCharacters(characters.data);
+                setIsLoading(false);
+            } else {
+                setCharacters([]);
+                setIsLoading(false);
+            }
+            
+          });
+    }, []);
 
-    componentDidMount() {
-        this.getCharacters();
-    };
-
-    render() {
-        if(this.state.isLoading) {
-            return(
+    if (isLoading) {
+        return(
             <CircularProgress variant="determinate" />
-            );
-        };
+        );
+    };
 
-        return (
+    return (
+        <div className="character-index-background">
             <main className="Main">
-                <h2 className="ui horizontal divider header">Characters</h2>
-                {this.state.characters.map(character => (
-                    <div key={character.id}>
+                <h1>Characters</h1>
+                    <div className={characters.length > 0 ? null : "hidden"}>
                         <Link 
-                            to={`/characters/${character.id}`} 
+                            to={"/characters/new"} 
                             className="link" 
-                            href=""
-                            style={{textDecoration: "none", color: "black"}}    
                         >
-                            {character.name}
+                            <h1>Create your first character!</h1>
                         </Link>
                     </div>
-                ))}
+
+                    <div id="grid-container">
+                    {characters.map(character => (
+                        <div key={character.id}>
+                            <Link 
+                                to={`/characters/${character.id}`} 
+                                className="link" 
+                            >
+                                <Card className={character.name}>
+                                    <CardMedia
+                                        image={character.photo_url}
+                                        title={character.name}
+                                    />
+                                    <CardContent className="content">
+                                        <h5 className="race-name">{character.name}</h5>
+                                    </CardContent>
+                                </Card>
+                            </Link>
+                        </div>
+                    ))}
+                    </div>
+
                 <Link 
                     exact to={`/characters/new`} 
-                    className="link" 
-                    href=""  
-                    style={{color: "white"}}
+                    className="add-link"
                 >
                     <Fab 
-                        color="primary" 
+                        color="secondary" 
                         aria-label="add"
-                        style={{
-                            position: "fixed",
-                            bottom: "40px",
-                            right: "40px",
-                            width: "5em",
-                            height: "5em"
-                        }}
+                        className="add-button"
                     >
                         <AddIcon />
                     </Fab>
                 </Link>
             </main>
-        );
-    };
+        </div>
+    );
 };

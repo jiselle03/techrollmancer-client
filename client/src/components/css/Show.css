@@ -1,9 +1,9 @@
-.list-item {
-    margin-left: 1em;
+div.list-container {
+    max-width: 360px;
 }
 
-.hidden {
-    display: none;
+.list-item {
+    margin-left: 1em;
 }
 
 span.category {
@@ -17,21 +17,94 @@ span.category {
     overflow: auto;
 }
 
+hr {
+    margin: 3em 16px;
+}
+
 /* Classes */
 .barbarian-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/barbarian.png');
-    background-size: 40%;
+    background-size: 70vh;
 }
 
 .bard-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/bard.png');
-    background-size: 35%;
+    background-size: 50vh;
+}
+
+.cleric-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/cleric.png');
+    background-size: 70vh;
+}
+
+.druid-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/druid.png');
+    background-size: 70vh;
+}
+
+.fighter-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/fighter.png');
+    background-size: 80vh;
+}
+
+.monk-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/monk.png');
+    background-size: 70vh;
+}
+
+.paladin-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/paladin.png');
+    background-size: 70vh;
+}
+
+.ranger-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/ranger.png');
+    background-position: right center;
+    background-size: 70vh;
+}
+
+.rogue-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/rogue.png');
+    background-size: 70vh;
+    background-position: left top;
+}
+
+.sorcerer-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/sorcerer.png');
+    background-size: 60vh;
+    background-position: bottom right;
+}
+
+
+.warlock-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/warlock.png');
+    background-size: 100vh;
 }
 
 .wizard-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
-    url('../../assets/wizard.png');;
+    url('../../assets/wizard.png');
+    background-size: 70vh;
 }
 
+
+@media (min-width: 768px) {
+    .rogue-background {
+        background-size: 100vh;
+    }
+
+    .sorcerer-background {
+        background-size: 70vh;
+    }
+}

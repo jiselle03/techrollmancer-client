@@ -1,4 +1,6 @@
-.welcome-background {
+.welcome-background,
+.signup-background,
+.signin-background {
     min-height: 100vh;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
         url('../../assets/d20.png');
@@ -11,3 +13,62 @@
     width: 100vw;
 }
 
+.SignUp,
+.SignIn {
+    height: 100vh;
+}
+
+div#signup-form, 
+div#signin-form {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 1em;
+    width: 25em;
+}
+
+div#signin-form {
+    height: 50vh;
+    margin: 25vh auto;
+}
+
+div#signup-form {
+    height: 80vh;
+    margin: 10vh auto;
+}
+
+div.MuiFormControl-root {
+    padding: 0.5em; 
+    margin: 1em 2em;
+    width: 85%;
+}
+
+#account-icon,
+#password-icon,
+#email-icon {
+    color: #000000;
+}
+
+a.signup-link,
+a.signin-link {
+    text-decoration: none;
+    color: rgba(45,99,127,1);
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.button {
+    background-color: rgba(83,98,111,1);
+    color: #ffffff;
+    font-size: 1em;
+    padding: 1em 3em;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.button:hover {
+    background-color: rgba(45,99,127,1);
+}

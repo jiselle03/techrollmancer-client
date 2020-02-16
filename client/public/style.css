@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 * {
-    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
 body,html {
@@ -15,12 +15,19 @@ body {
     flex-direction: row;
 }
 
+#root {
+    width: 100%;
+}
+
 main.Main {
-    margin: 3em 0;
+    margin: 3em 1.5em;
+}
+
+h1, h2, h4, h5, h6 {
+    margin: 0;
 }
 
 h1 {
-    margin-top: 0;
     font-size: 2.5em;
 }
 
@@ -37,17 +44,21 @@ h4 {
 }
 
 h5 {
-    font-size: 1.25em
+    font-size: 1.25em;
 }
 
 h6, p, span, strong {
-    font-size: 1em
+    font-size: 1em;
 }
 
 a.link,
 .list-item > a {
     text-decoration: none;
     color: black;  
+}
+
+.hidden {
+    display: none;
 }
 
 @media (min-width: 768px) {

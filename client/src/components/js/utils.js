@@ -3,7 +3,7 @@ export const utils = {
         let blurb = "";
         field.map(line => {
             if (line[0] === "!") {
-                blurb += "<Divider /><h2>" + line.slice(1) + "</h2>"
+                blurb += "<hr /><h2>" + line.slice(1) + "</h2>"
             } else if (line[0] === "$") {
                 blurb += "<h3>" + line.slice(1) + "</h3>"
             } else if (line[0] === "#") {

@@ -13,6 +13,7 @@ import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import CreateIcon from '@material-ui/icons/Create';
 import SearchIcon from '@material-ui/icons/Search';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
@@ -98,67 +99,76 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign In / Sign Up" />
-                    </ListItemLink>
+                        <ListItemText primary="Sign In" />
+                </ListItemLink>
+                <ListItemLink button href="/sign_up">
+                        <ListItemIcon>
+                            <PersonAddIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sign Up" />
+                </ListItemLink>
                 <ListItemLink button href="/characters">
                         <ListItemIcon>
                             <CreateIcon />
                         </ListItemIcon>
                         <ListItemText primary="Characters" />
-                    </ListItemLink>
+                </ListItemLink>
                 <ListItemLink button href="/generator">
                     <ListItemIcon>
                         <i className="fas fa-dice MuiSvgIcon-root"></i>
                     </ListItemIcon>
-                    <ListItemText primary="Generator" />
+                <ListItemText primary="Generator" />
                 </ListItemLink>
                 <ListItemLink button href="/scheduler">
                     <ListItemIcon>
                         <EventAvailableIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Scheduler" />
+                <ListItemText primary="Scheduler" />
                 </ListItemLink>
                 <ListItem button onClick={() => handleClick("libraries")}>
-                        <ListItemIcon>
-                            <SearchIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Libraries" />
+                    <ListItemIcon>
+                        <SearchIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Libraries" />
                 </ListItem>
+
                 <Divider />
+
                 <List component="div" disablePadding>
-                        <ListItemLink button className={classes.nested} href="/libraries/races">
-                            <ListItemText primary="Races" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nested} href="/libraries/classes">
-                            <ListItemText primary="Classes" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nested} href="/libraries/conditions">
-                            <ListItemText primary="Conditions" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nested} href="/libraries/spells">
-                            <ListItemText primary="Spells" />
-                        </ListItemLink>
-                        <ListItem button onClick={() => handleClick("equipment")}>
-                        <ListItemText primary="Equipment:" className={classes.nestedRoot} />
-                        </ListItem>
-                    </List>
+                    <ListItemLink button className={classes.nested} href="/libraries/races">
+                        <ListItemText primary="Races" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nested} href="/libraries/classes">
+                        <ListItemText primary="Classes" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nested} href="/libraries/conditions">
+                        <ListItemText primary="Conditions" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nested} href="/libraries/spells">
+                        <ListItemText primary="Spells" />
+                    </ListItemLink>
+                    <ListItem button onClick={() => handleClick("equipment")}>
+                    <ListItemText primary="Equipment:" className={classes.nestedRoot} />
+                    </ListItem>
+                </List>
+
                 <List component="div" disablePadding>
-                        <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/adventuring-gear">
-                            <ListItemText primary="Adventuring Gear" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/armor">
-                            <ListItemText primary="Armor" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/mounts-and-vehicles">
-                            <ListItemText primary="Mounts and Vehicles" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/tools">
-                            <ListItemText primary="Tools" />
-                        </ListItemLink>
-                        <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/weapons">
-                            <ListItemText primary="Weapons" />
-                        </ListItemLink>
-                    </List>
+                    <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/adventuring-gear">
+                        <ListItemText primary="Adventuring Gear" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/armor">
+                        <ListItemText primary="Armor" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/mounts-and-vehicles">
+                        <ListItemText primary="Mounts and Vehicles" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/tools">
+                        <ListItemText primary="Tools" />
+                    </ListItemLink>
+                    <ListItemLink button className={classes.nestedDouble} href="/libraries/equipment/weapons">
+                        <ListItemText primary="Weapons" />
+                    </ListItemLink>
+                </List>
             </List>
         </div>
     );
@@ -200,8 +210,14 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                             <ListItemIcon>
                                 <AccountCircleIcon />
                             </ListItemIcon>
-                            <ListItemText primary="Sign In / Sign Up" />
-                        </ListItemLink>
+                            <ListItemText primary="Sign In" />
+                    </ListItemLink>
+                    <ListItemLink button href="/sign_up">
+                            <ListItemIcon>
+                                <PersonAddIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Sign Up" />
+                    </ListItemLink>
                     <ListItemLink button href="/characters">
                             <ListItemIcon>
                                 <CreateIcon />
