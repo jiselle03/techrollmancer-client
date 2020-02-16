@@ -1,8 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Advent+Pro&display=swap');
 
-div#mobile.NavBar {
-    margin: 0;
-    width: 50%;
+header {
+    overflow-y: hidden;
+}
+
+nav.MuiList-root.NavBar {
+    color: #ffffff;
+    position: fixed;
+    max-width: 360px;
+    box-shadow: 5px 0 5px -2px #888;
+    min-height: 100vh;
+    border-right: 1px solid rgba(189, 195, 199, 0.5);
+    background-color: rgba(45,99,127,1);
+}
+
+div.nested.MuiListItemText-root {
+    padding-left: 5em;
+}
+
+div.double-nested.MuiListItemText-root {
+    padding-left: 6em;
 }
 
 .fa-spin-hover {
@@ -10,15 +27,6 @@ div#mobile.NavBar {
     transition: transform 1s ease-in-out;
     margin: 0.5em 0.1em;
     color: #ffffff;
-}
-
-header {
-    overflow-y: hidden;
-    background-color: rgba(45,99,127,1);
-}
-
-.NavBar {
-    margin: 0;
 }
 
 .fa-spin-hover:hover {
@@ -44,7 +52,7 @@ div.MuiListItemText-root {
 .MuiButton-label {
     color: #ffffff;
     font-size: 1.5em;
-    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .MuiSvgIcon-root {

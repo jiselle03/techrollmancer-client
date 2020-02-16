@@ -56,7 +56,7 @@ div.MuiPaper-root.MuiCard-root.card {
 /* Races */
 .Dragonborn {
     background-image: url('../../assets/dragonborn.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Dwarf {
@@ -67,8 +67,7 @@ div.MuiPaper-root.MuiCard-root.card {
 
 .Elf {
     background-image: url('../../assets/elf.png');
-    background-size: 100%;
-    background-position: 50%;
+    background-size: cover;
 }
 
 .Gnome {
@@ -79,12 +78,12 @@ div.MuiPaper-root.MuiCard-root.card {
 
 .Half-Elf {
     background-image: url('../../assets/half-elf.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Half-Orc {
     background-image: url('../../assets/half-orc.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Halfling {
@@ -95,21 +94,20 @@ div.MuiPaper-root.MuiCard-root.card {
 
 .Human {
     background-image: url('../../assets/human.png');
-    background-size: 80%;
-    background-position: 50%;
+    background-size: 85%;
 }
 
 .Tiefling {
     background-image: url('../../assets/tiefling.png');
-    background-size: 140%;
+    background-size: 115%;
     background-position: 50%;
 }
 
 /* Classes */
 .Barbarian {
     background-image: url('../../assets/barbarian.png');
-    background-size: 90%;
-    background-position: 100%;
+    background-size: 75%;
+    background-position: 50%;
 }
 
 .Bard {
@@ -126,49 +124,47 @@ div.MuiPaper-root.MuiCard-root.card {
 
 .Druid {
     background-image: url('../../assets/druid.png');
-    background-size: 100%;
+    background-size: 90%;
 }
 
 .Fighter {
     background-image: url('../../assets/fighter.png');
-    background-size: 107%;
-    background-position: 50%;
+    background-size: cover;
 }
 
 .Monk {
     background-image: url('../../assets/monk.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Paladin {
     background-image: url('../../assets/paladin.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Ranger {
     background-image: url('../../assets/ranger.png');
-    background-size: 120%;
-    background-position: 50%;
+    background-size: cover;
 }
 
 .Rogue {
     background-image: url('../../assets/rogue.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Sorcerer {
     background-image: url('../../assets/sorcerer.png');
-    background-size: 110%;
+    background-size: cover;
 }
 
 .Warlock {
     background-image: url('../../assets/warlock.png');
-    background-size: 100%;
+    background-size: cover;
 }
 
 .Wizard {
     background-image: url('../../assets/wizard.png');
-    background-size: 110%;
+    background-size: cover;
 }
 
 @media (min-width: 768px) {
