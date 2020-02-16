@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_041546) do
+ActiveRecord::Schema.define(version: 2020_02_12_012401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2020_01_16_041546) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "characters_spells", force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "spell_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_characters_spells_on_character_id"
+    t.index ["spell_id"], name: "index_characters_spells_on_spell_id"
   end
 
   create_table "proficiencies", force: :cascade do |t|
@@ -73,6 +82,24 @@ ActiveRecord::Schema.define(version: 2020_01_16_041546) do
     t.index ["character_id"], name: "index_proficiencies_on_character_id"
   end
 
+  create_table "spells", force: :cascade do |t|
+    t.string "slug"
+    t.string "name"
+    t.text "desc"
+    t.text "higher_level"
+    t.string "range"
+    t.string "components"
+    t.string "material"
+    t.string "ritual"
+    t.string "duration"
+    t.string "concentration"
+    t.string "casting_time"
+    t.integer "level_int"
+    t.string "school"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -83,5 +110,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_041546) do
   end
 
   add_foreign_key "characters", "users"
+  add_foreign_key "characters_spells", "characters"
+  add_foreign_key "characters_spells", "spells"
   add_foreign_key "proficiencies", "characters"
 end
