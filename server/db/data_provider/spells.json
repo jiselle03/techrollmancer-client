@@ -18,9 +18,7 @@
         "dnd_class": "Druid, Wizard",
         "archetype": "Druid: Swamp",
         "circles": "Swamp",
-        "document__slug": "wotc-srd",
-        "document__title": "Systems Reference Document",
-        "document__license_url": "http://open5e.com/legal"
+        "document__slug": "wotc-srd"
     },
     {
         "slug": "acid-splash",
@@ -41,9 +39,7 @@
         "dnd_class": "Sorcerer, Wizard",
         "archetype": "",
         "circles": "",
-        "document__slug": "wotc-srd",
-        "document__title": "Systems Reference Document",
-        "document__license_url": "http://open5e.com/legal"
+        "document__slug": "wotc-srd"
     },
     {
         "slug": "aid",
@@ -64,9 +60,7 @@
         "dnd_class": "Cleric, Paladin",
         "archetype": "",
         "circles": "",
-        "document__slug": "wotc-srd",
-        "document__title": "Systems Reference Document",
-        "document__license_url": "http://open5e.com/legal"
+        "document__slug": "wotc-srd"
     },
     {
         "slug": "alarm",
