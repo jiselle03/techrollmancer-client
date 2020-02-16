@@ -13,8 +13,10 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CreateIcon from '@material-ui/icons/Create';
 import SearchIcon from '@material-ui/icons/Search';
+import CasinoIcon from '@material-ui/icons/Casino';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 
 function ListItemLink(props) {
@@ -93,7 +95,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                 <>
                     <ListItemLink button onClick={handleSignOutClick}>
                         <ListItemIcon>
-                            <AccountCircleIcon />
+                            <ExitToAppIcon />
                         </ListItemIcon>
                         <ListItemText primary="Sign Out" />
                     </ListItemLink>
@@ -107,7 +109,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                 </ListItemLink>
                 <ListItemLink button href="/generator">
                     <ListItemIcon>
-                        <i className="fas fa-dice MuiSvgIcon-root"></i>
+                        <CasinoIcon />
                     </ListItemIcon>
                 <ListItemText primary="Generator" />
                 </ListItemLink>
@@ -218,7 +220,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                 <>
                     <ListItemLink button onClick={handleSignOutClick}>
                         <ListItemIcon>
-                            <AccountCircleIcon />
+                            <ExitToAppIcon />
                         </ListItemIcon>
                         <ListItemText primary="Sign Out" />
                     </ListItemLink>
@@ -232,7 +234,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                     </ListItemLink>
                 <ListItemLink button href="/generator">
                     <ListItemIcon>
-                        <i className="fas fa-dice MuiSvgIcon-root"></i>
+                        <CasinoIcon />
                     </ListItemIcon>
                     <ListItemText primary="Generator" />
                 </ListItemLink>
