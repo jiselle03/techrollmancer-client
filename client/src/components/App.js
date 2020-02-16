@@ -31,6 +31,7 @@ import { ConditionIndexPage } from './library/ConditionIndexPage';
 import { CharacterShowPage } from './character/CharacterShowPage';
 import { CharacterNewPage } from './character/CharacterNewPage';
 import { CharacterIndexPage } from './character/CharacterIndexPage';
+import { GeneratorPage } from './GeneratorPage';
 
 class App extends Component {
     constructor(props) {
@@ -118,6 +119,10 @@ class App extends Component {
                 render={routeProps => (
                   <SignUpPage {...routeProps} onSignUp={this.getUser} />
                 )}  
+              />
+              <Route 
+                path="/generator"
+                component={GeneratorPage}  
               />
               <Route component={NotFoundPage} />
             </Switch>
