@@ -13,7 +13,7 @@ class Ability
     end
 
     can(:crud, Character) do |character|
-      character.user == user && character.user.is_owner?
+      character.user == user
     end
 
     can(:read, Character) do |character|
@@ -24,5 +24,9 @@ class Ability
       proficiency.character.user == user 
     end
 
+    can(:crud, Spell) do |spell|
+      user.is_admin?
+    end
+    
   end
 end
