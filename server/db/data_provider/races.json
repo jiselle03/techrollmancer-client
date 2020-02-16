@@ -114,15 +114,19 @@
         },
         "speed_desc": "Your base walking speed is 25 feet.",
         "languages": "You can speak, read, and write Common and Halfling. The Halfling language isn't secret, but halflings are loath to share it with others. They write very little, so they don't have a rich body of literature. Their oral tradition, however, is very strong. Almost all halflings speak Common to converse with the people in whose lands they dwell or through which they are traveling.",
-        "vision": "",
+        "vision": [],
         "traits": [
-            "$Lucky", "When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll.", "$Brave", "You have advantage on saving throws against being frightened.", "$Halfling Nimbleness", "You can move through the space of any creature that is of a size larger than yours."
+            "$Lucky", "When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll.", 
+            "$Brave", "You have advantage on saving throws against being frightened.", 
+            "$Halfling Nimbleness", "You can move through the space of any creature that is of a size larger than yours."
         ],
         "subraces": [
             {
                 "name": "Lightfoot",
                 "slug": "lightfoot",
-                "desc": "As a lightfoot halfling, you can easily hide from notice, even using other people as cover. You're inclined to be affable and get along well with others.\nLightfoots are more prone to wanderlust than other halflings, and often dwell alongside other races or take up a nomadic life.",
+                "desc": [
+                    "As a lightfoot halfling, you can easily hide from notice, even using other people as cover. You're inclined to be affable and get along well with others.", "Lightfoots are more prone to wanderlust than other halflings, and often dwell alongside other races or take up a nomadic life."
+                ],
                 "asi": [
                     {
                         "attributes": [
@@ -189,8 +193,8 @@
         },
         "speed_desc": "Your base walking speed is 30 feet.",
         "languages": "You can speak, read, and write Common and one extra language of your choice. Humans typically learn the languages of other peoples they deal with, including obscure dialects. They are fond of sprinkling their speech with words borrowed from other tongues: Orc curses, Elvish musical expressions, Dwarvish military phrases, and so on.",
-        "vision": "",
-        "traits": "",
+        "vision": [],
+        "traits": [],
         "subraces": []
     },
     {
@@ -220,7 +224,7 @@
         },
         "speed_desc": "Your base walking speed is 30 feet.",
         "languages": "You can speak, read, and write Common and Draconic. Draconic is thought to be one of the oldest languages and is often used in the study of magic. The language sounds harsh to most other creatures and includes numerous hard consonants and sibilants.",
-        "vision": "",
+        "vision": [],
         "traits": [
             "$Draconic Ancestry", "| Dragon       | Damage Type       | Breath Weapon                |\n|--------------|-------------------|------------------------------|\n| Black        | Acid              | 5 by 30 ft. line (Dex. save) |\n| Blue         | Lightning         | 5 by 30 ft. line (Dex. save) |\n| Brass        | Fire              | 5 by 30 ft. line (Dex. save) |\n| Bronze       | Lightning         | 5 by 30 ft. line (Dex. save) |\n| Copper       | Acid              | 5 by 30 ft. line (Dex. save) |\n| Gold         | Fire              | 15 ft. cone (Dex. save)      |\n| Green        | Poison            | 15 ft. cone (Con. save)      |\n| Red          | Fire              | 15 ft. cone (Dex. save)      |\n| Silver       | Cold              | 15 ft. cone (Con. save)      |\n| White        | Cold              | 15 ft. cone (Con. save)      |\n\n\n**_Draconic Ancestry._** You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon and damage resistance are determined by the dragon type, as shown in the table.\n\n**_Breath Weapon._** You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation.\nWhen you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level.\nAfter you use your breath weapon, you can't use it again until you complete a short or long rest.\n\n**_Damage Resistance._** You have resistance to the damage type associated with your draconic ancestry."
         ],
@@ -247,7 +251,9 @@
         },
         "speed_desc": "Your base walking speed is 25 feet.",
         "languages": "You can speak, read, and write Common and Gnomish. The Gnomish language, which uses the Dwarvish script, is renowned for its technical treatises and its catalogs of knowledge about the natural world.",
-        "vision": "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+        "vision": [
+            "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+        ],
         "traits": [
             "$Gnome Cunning", "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
         ],
