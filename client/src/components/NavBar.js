@@ -22,6 +22,13 @@ function ListItemLink(props) {
 };
 
 export const NavBar = ({ currentUser, onSignOut }) => {
+    const handleSignOutClick = event => {
+        event.preventDefault();
+        if (typeof onSignOut === "function") {
+            onSignOut();
+        }
+    };
+
     const [state, setState] = useState({
         left: false
       });
@@ -66,18 +73,32 @@ export const NavBar = ({ currentUser, onSignOut }) => {
             }
             className="NavBar mobile-header"
             >
-                <ListItemLink button href="/sign_in">
-                    <ListItemIcon>
-                        <AccountCircleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Sign In" />
-                </ListItemLink>
-                <ListItemLink button href="/sign_up">
-                    <ListItemIcon>
-                        <PersonAddIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Sign Up" />
-                </ListItemLink>
+            {!currentUser && (
+                <>
+                    <ListItemLink button href="/sign_in">
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sign In" />
+                    </ListItemLink>
+                    <ListItemLink button href="/sign_up">
+                        <ListItemIcon>
+                            <PersonAddIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sign Up" />
+                    </ListItemLink>
+                </>
+            )}
+            {currentUser && (
+                <>
+                    <ListItemLink button onClick={handleSignOutClick}>
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sign Out" />
+                    </ListItemLink>
+                </>
+            )}
                 <ListItemLink button href="/characters">
                     <ListItemIcon>
                         <CreateIcon />
@@ -177,18 +198,32 @@ export const NavBar = ({ currentUser, onSignOut }) => {
             className="NavBar"
             id="non-mobile"
             >
-                <ListItemLink button href="/sign_in">
+                {!currentUser && (
+                <>
+                    <ListItemLink button href="/sign_in">
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>
                         <ListItemText primary="Sign In" />
-                </ListItemLink>
-                <ListItemLink button href="/sign_up">
+                    </ListItemLink>
+                    <ListItemLink button href="/sign_up">
                         <ListItemIcon>
                             <PersonAddIcon />
                         </ListItemIcon>
                         <ListItemText primary="Sign Up" />
-                </ListItemLink>
+                    </ListItemLink>
+                </>
+            )}
+            {currentUser && (
+                <>
+                    <ListItemLink button onClick={handleSignOutClick}>
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Sign Out" />
+                    </ListItemLink>
+                </>
+            )}
                 <ListItemLink button href="/characters">
                         <ListItemIcon>
                             <CreateIcon />
