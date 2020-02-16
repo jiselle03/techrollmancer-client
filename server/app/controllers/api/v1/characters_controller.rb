@@ -16,9 +16,6 @@ class Api::V1::CharactersController < Api::ApplicationController
         end
     end
 
-    def edit
-    end
-
     def update
         if @character.update character_params
             render json: { id: @character.id }
@@ -31,12 +28,11 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
 
     def index
-        characters = Character.where(:user_id => current_user.id)
+        characters = current_user.characters.order
         render json: characters
     end
 
     def show
-        # proficiency = Proficiency.find params[:id]
         render json: @character
     end
 
