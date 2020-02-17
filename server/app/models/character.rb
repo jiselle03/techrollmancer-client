@@ -1,7 +1,7 @@
 class Character < ApplicationRecord
     belongs_to :user
 
-    has_many :proficiencies, dependent: :destroy
+    has_one :proficiency, dependent: :destroy
     
     has_many :characters_spells, dependent: :destroy
     has_many :spells, through: :characters_spells
