@@ -10,19 +10,16 @@ span.category {
     font-size: 1.25em;
 }
 
-.Show-Container {
-    background-repeat: no-repeat;
-    background-position-x: 100%;
-    background-attachment: fixed;
-    overflow: auto;
-}
-
 hr {
     margin: 3em 16px;
 }
 
 div.character-show {
-    margin: 0;
+    margin-left: 7em;
+}
+
+div.MuiTabs-scroller.MuiTabs-fixed {
+    width: 100%;
 }
 
 .character-form {
@@ -33,8 +30,11 @@ div.character-show {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.character-stats {
+.character-name-title {
+}
 
+.stats {
+    padding: 1em;
 }
 
 /* Races */

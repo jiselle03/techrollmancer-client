@@ -32,7 +32,7 @@ export const SpellIndexPage = () => {
     };
 
     return (
-        <div className="spell-index-background">
+        <div className="spell index-background">
             <main className="Main">
                 <div className="list-container">
                     <h2>Spells</h2>

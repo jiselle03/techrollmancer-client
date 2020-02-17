@@ -31,8 +31,8 @@ export const ToolIndexPage = () => {
     };
 
     return (
-        <div className="equipment-index-background">
-            <main className="Index-Container Main">
+        <div className="tools index-background">
+            <main className="Main">
                 <h1>Tools</h1>
 
                 <div className="list-container">

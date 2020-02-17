@@ -1,9 +1,4 @@
-.class-index-background,
-.race-index-background,
-.character-index-background,
-.equipment-index-background,
-.condition-index-background,
-.spell-index-background {
+.index-background {
     min-height: 100vh;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
         url('../../assets/d20.png');

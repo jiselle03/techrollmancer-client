@@ -31,8 +31,8 @@ export const ArmorIndexPage = () => {
     };
 
     return (
-        <div className="equipment-index-background">
-            <main className="Index-Container Main">
+        <div className="armor index-background">
+            <main className="Main">
                 <h1>Armor</h1>
 
                 <div className="list-container">

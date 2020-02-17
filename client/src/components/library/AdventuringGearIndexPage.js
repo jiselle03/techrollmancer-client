@@ -31,7 +31,7 @@ export const AdventuringGearIndexPage = () => {
     };
 
     return (
-        <div className="equipment-index-background">
+        <div className="adventuring-gear index-background">
             <main className="Index-Container Main">
                 <h1>Adventuring Gear</h1><br />
 

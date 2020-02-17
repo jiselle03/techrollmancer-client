@@ -29,7 +29,7 @@ export const ClassIndexPage = () => {
     };
 
     return (
-        <div className="class-index-background Index-Container">
+        <div className="class index-background">
             <main className="Main">
                 <h2>Classes</h2>
                 <div id="grid-container">

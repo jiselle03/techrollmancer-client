@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import '../css/Index.css';
 import { CircularProgress } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -32,7 +31,7 @@ export const WeaponIndexPage = () => {
     };
 
     return (
-        <div className="equipment-index-background">
+        <div className="weapons index-background">
             <main className="Index-Container Main">
                 <h1>Weapons</h1>
 

@@ -40,7 +40,7 @@ export const ConditionIndexPage = () => {
     };
 
     return (
-        <div className="condition-index-background">
+        <div className="condition index-background">
             <main className="Main">
                 <h2>Conditions</h2>
                 

@@ -29,7 +29,7 @@ export const RaceIndexPage = () => {
     };
 
     return (
-        <div className="race-index-background">
+        <div className="race index-background">
             <main className="Main">
                 <h2>Races</h2>
                 <div id="grid-container">
