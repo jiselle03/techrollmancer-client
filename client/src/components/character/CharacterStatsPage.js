@@ -98,7 +98,7 @@ export const CharacterStatsPage = props => {
         </Card>
 
         <Card className="conditions stats">
-
+          <h3>Conditions</h3>
         </Card>
 
       </div>
