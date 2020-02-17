@@ -10,7 +10,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider';
-import Button from '@material-ui/core/Button';
 
 export const SignInPage = props => {
     const [errors, setErrors] = useState([]);
