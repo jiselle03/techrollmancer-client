@@ -31,7 +31,7 @@ export const EquipmentShowPage = props => {
     return (
         <main className="Main">
             <div className="equipment-name">
-                <h1>{equipment.name}</h1>&nbsp;
+                <h1>{equipment.name.toUpperCase()}</h1>&nbsp;
                 <span className="category"><em>{equipment.equipment_category}, {utils.getCategory(equipment)}</em></span>
             </div>
 

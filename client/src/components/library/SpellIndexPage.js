@@ -35,7 +35,7 @@ export const SpellIndexPage = () => {
         <div className="spell index-background">
             <main className="Main">
                 <div className="list-container">
-                    <h2>Spells</h2>
+                    <h1>SPELLS</h1>
                     <List component="nav">
                     <h3>Cantrips</h3>
                     {spells.filter(spell => {

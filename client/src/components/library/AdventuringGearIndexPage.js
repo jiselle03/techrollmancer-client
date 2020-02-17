@@ -33,7 +33,7 @@ export const AdventuringGearIndexPage = () => {
     return (
         <div className="adventuring-gear index-background">
             <main className="Index-Container Main">
-                <h1>Adventuring Gear</h1><br />
+                <h1>ADVENTURING GEAR</h1><br />
 
                 <div className="list-container">
                     <h3>Equipment Packs</h3>

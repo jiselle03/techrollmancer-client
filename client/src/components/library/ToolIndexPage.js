@@ -33,7 +33,7 @@ export const ToolIndexPage = () => {
     return (
         <div className="tools index-background">
             <main className="Main">
-                <h1>Tools</h1>
+                <h1>TOOLS</h1>
 
                 <div className="list-container">
                     <h3>Artisan's Tools</h3>

@@ -29,7 +29,7 @@ export const RaceShowPage = props => {
     return (
         <div className={`${race.slug}-background Show-Container`}>
             <main className="Main">
-                <h2>{race.name}</h2>
+                <h2>{race.name.toUpperCase()}</h2>
 
                 <div className={race.desc ? null : "hidden"}>
                     <h3>{race.name} Traits</h3>

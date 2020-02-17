@@ -31,7 +31,7 @@ export const RaceIndexPage = () => {
     return (
         <div className="race index-background">
             <main className="Main">
-                <h2>Races</h2>
+                <h1>RACES</h1>
                 <div id="grid-container">
                 {races.map(race => (
                     <div key={race.slug}>

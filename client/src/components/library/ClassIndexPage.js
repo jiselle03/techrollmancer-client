@@ -31,7 +31,7 @@ export const ClassIndexPage = () => {
     return (
         <div className="class index-background">
             <main className="Main">
-                <h2>Classes</h2>
+                <h1>CLASSES</h1>
                 <div id="grid-container">
                 {classes.map(charClass => (
                     <div key={charClass.slug}>

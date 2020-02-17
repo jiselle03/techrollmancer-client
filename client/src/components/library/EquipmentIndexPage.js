@@ -29,7 +29,7 @@ export const EquipmentIndexPage = () => {
     return (
         <div className="equipment index-background">
             <main className="Main">
-                <h2>Equipment</h2>
+                <h2>EQUIPMENT</h2>
                 {equipments.map(equipment => (
                     <div key={equipment.slug}>
                     <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>

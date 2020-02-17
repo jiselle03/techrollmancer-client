@@ -33,7 +33,7 @@ export const WeaponIndexPage = () => {
     return (
         <div className="weapons index-background">
             <main className="Index-Container Main">
-                <h1>Weapons</h1>
+                <h1>WEAPONS</h1>
 
                 <div className="list-container">
                     <h3>Simple Melee</h3>

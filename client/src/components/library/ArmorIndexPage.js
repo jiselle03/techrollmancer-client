@@ -33,7 +33,7 @@ export const ArmorIndexPage = () => {
     return (
         <div className="armor index-background">
             <main className="Main">
-                <h1>Armor</h1>
+                <h1>ARMOR</h1>
 
                 <div className="list-container">
                     <h3>Light</h3>

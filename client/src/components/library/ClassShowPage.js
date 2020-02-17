@@ -33,7 +33,7 @@ export const ClassShowPage = props => {
     return (
         <div className={`${slug}-background Show-Container`}>
             <main className="Main">
-                <h1>{name}</h1>
+                <h1>{name.toUpperCase()}</h1>
                 <p>As a {name}, you gain the following class features:</p>
                 
                 <h3>Hit Points</h3>

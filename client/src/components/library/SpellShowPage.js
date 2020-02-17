@@ -28,7 +28,7 @@ export const SpellShowPage = props => {
 
     return (
         <main className="Main">
-            <h2>{spell.name}</h2>
+            <h1>{spell.name.toUpperCase()}</h1>
             <h5>Description</h5>
             <p>{(spell.desc)}</p>
             <h5>Higher Level</h5>

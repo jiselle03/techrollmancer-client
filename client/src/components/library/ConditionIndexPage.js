@@ -42,7 +42,7 @@ export const ConditionIndexPage = () => {
     return (
         <div className="condition index-background">
             <main className="Main">
-                <h2>Conditions</h2>
+                <h1>CONDITIONS</h1><br />
                 
                 <h5>Blinded</h5>
                 <p>A blinded creature can't see and automatically fails any ability check that requires sight.</p>
