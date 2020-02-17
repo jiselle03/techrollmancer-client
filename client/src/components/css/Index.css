@@ -24,8 +24,7 @@ div.MuiPaper-root.MuiCard-root.card {
     right: 0;
 }
 
-.class-name,
-.race-name {
+.name {
     font-weight: bold;
     font-size: 2em;
     color: white;

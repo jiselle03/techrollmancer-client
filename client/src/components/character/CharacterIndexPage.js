@@ -75,7 +75,7 @@ export const CharacterIndexPage = () => {
                                         <img src={character.photo_url} alternate={character.name} />
                                     </CardMedia>
                                     <CardContent className="content">
-                                        <h5 className="character-name">{character.name}</h5>
+                                        <h5 className="character name">{character.name}</h5>
                                     </CardContent>
                                 </Card>
                             </Link>

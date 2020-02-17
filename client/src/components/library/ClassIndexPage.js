@@ -42,7 +42,7 @@ export const ClassIndexPage = () => {
                         >
                             <Card className={`${charClass.name} card`}>
                                 <CardContent className="content">
-                                    <h5 className="class-name">{charClass.name}</h5>
+                                    <h5 className="class name">{charClass.name}</h5>
                                 </CardContent>
                             </Card>
                         </Link>

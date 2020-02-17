@@ -41,7 +41,7 @@ export const RaceIndexPage = () => {
                         >
                             <Card className={`${race.name} card`}>
                                 <CardContent className="content">
-                                    <h5 className="race-name">{race.name}</h5>
+                                    <h5 className="race name">{race.name}</h5>
                                 </CardContent>
                             </Card>
                         </Link>
