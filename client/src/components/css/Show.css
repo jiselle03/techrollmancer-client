@@ -14,155 +14,216 @@ hr {
     margin: 3em 16px;
 }
 
-div.character-show {
-    margin-left: 7em;
-}
-
-div.MuiTabs-scroller.MuiTabs-fixed {
-    width: 100%;
-}
-
-.character-form {
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 1em;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-.character-name-title {
-}
-
-.stats {
-    padding: 1em;
-}
-
 /* Races */
+
+.dwarf-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/dwarf.png');
+    background-size: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+.elf-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/elf.png');
+    background-size: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+.gnome-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/gnome.png');
+    background-size: 85vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+}
 
 .half-elf-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/half-elf.png');
-    background-size: 70vh;
+    background-size: 60vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .half-orc-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/half-orc.png');
     background-size: 90vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .halfling-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/halfling.png');
+    background-size: 80vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+.dragonborn-background {
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+    url('../../assets/dragonborn.png');
     background-size: 70vh;
-    background-position: bottom left;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .human-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/human.png');
-    background-size: 90vh;
+    background-size: 60vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .tiefling-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/tiefling.png');
     background-size: 80vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 /* Classes */
 .barbarian-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/barbarian.png');
-    background-size: 60vh;
+    background-size: 50vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .bard-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/bard.png');
     background-size: 50vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .cleric-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/cleric.png');
     background-size: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .druid-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/druid.png');
     background-size: 60vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .fighter-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/fighter.png');
     background-size: 80vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .monk-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/monk.png');
-    background-size: 70vh;
+    background-size: 60vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .paladin-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/paladin.png');
-    background-size: 70vh;
+    background-size: 75vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .ranger-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/ranger.png');
     background-position: right center;
-    background-size: 70vh;
+    background-size: 90vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .rogue-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/rogue.png');
     background-size: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .sorcerer-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/sorcerer.png');
-    background-size: 60vh;
-    background-position: bottom right;
+    background-size: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
-
 
 .warlock-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/warlock.png');
-    background-size: 100vh;
+    background-size: 70vh;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
 
 .wizard-background {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
     url('../../assets/wizard.png');
     background-size: 70vh;
-}
-
-
-@media (min-width: 1024px) {
-    .halfling-background {
-        background-size: 100vh;
-        background-position: center bottom;
-    }
-
-    .rogue-background {
-        background-size: 100vh;
-    }
-
-    .sorcerer-background {
-        background-size: 70vh;
-    }
-
-    div.character-show {
-        margin-left: 20.25em;
-        width: 100vw;
-    }
+    background-position: right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: auto;
 }
