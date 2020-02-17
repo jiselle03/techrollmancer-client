@@ -57,7 +57,7 @@ export const CharacterIndexPage = () => {
     };
 
     return (
-        <div className="character-index-background">
+        <div className="character index-background">
             <main className="Main">
                 <h1>Characters</h1>
 
@@ -75,7 +75,7 @@ export const CharacterIndexPage = () => {
                                         <img src={character.photo_url} alternate={character.name} />
                                     </CardMedia>
                                     <CardContent className="content">
-                                        <h5 className="race-name">{character.name}</h5>
+                                        <h5 className="character-name">{character.name}</h5>
                                     </CardContent>
                                 </Card>
                             </Link>
