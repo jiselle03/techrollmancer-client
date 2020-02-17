@@ -43,5 +43,88 @@ export const utils = {
         } else if (equipment.category_range) {
             return equipment.category_range;
         };
+    },
+
+    getInitiative() {
+
+    },
+
+    getBaseMod(stat) {
+        return Math.floor((stat - 10) / 2);
+    },
+
+    getAbilityMod(character, ability) {
+        switch(ability) {
+            case "acrobatics":
+                return character.proficiency.acrobatics ? this.profAdd(character.dex, this.getProfBonus(character.level)) : Math.floor((character.dex - 10) / 2);
+            case "animal handling":
+                return character.proficiency.animal_handling ? this.profAdd(character.wis, this.getProfBonus(character.level)) : Math.floor((character.wis - 10) / 2);
+            case "arcana":
+                return character.proficiency.arcana ? this.profAdd(character.int, this.getProfBonus(character.level)) : Math.floor((character.int - 10) / 2);
+            case "athletics":
+                return character.proficiency.athletics ? this.profAdd(character.str, this.getProfBonus(character.level)) : Math.floor((character.str - 10) / 2);
+            case "deception":
+                return character.proficiency.deception ? this.profAdd(character.cha, this.getProfBonus(character.level)) : Math.floor((character.cha - 10) / 2);
+            case "history":
+                return character.proficiency.history ? this.profAdd(character.int, this.getProfBonus(character.level)) : Math.floor((character.int - 10) / 2);
+            case "insight":
+                return character.proficiency.insight ? this.profAdd(character.wis, this.getProfBonus(character.level)) : Math.floor((character.wis - 10) / 2);
+            case "intimidation":
+                return character.proficiency.intimidation ? this.profAdd(character.cha, this.getProfBonus(character.level)) : Math.floor((character.cha - 10) / 2);
+            case "investigation":
+                return character.proficiency.investigation ? this.profAdd(character.int, this.getProfBonus(character.level)) : Math.floor((character.int - 10) / 2);
+            case "medicine":
+                return character.proficiency.medicine ? this.profAdd(character.wis, this.getProfBonus(character.level)) : Math.floor((character.wis - 10) / 2);
+            case "nature":
+                return character.proficiency.nature ? this.profAdd(character.int, this.getProfBonus(character.level)) : Math.floor((character.int - 10) / 2);
+            case "perception":
+                character.proficiency.perception ? this.profAdd(character.wis, this.getProfBonus(character.level)) : Math.floor((character.wis - 10) / 2);
+                break;
+            case "performance":
+                character.proficiency.performance ? this.profAdd(character.cha, this.getProfBonus(character.level)) : Math.floor((character.cha - 10) / 2);
+                break;
+            case "persuasion":
+                return character.proficiency.persuasion ? this.profAdd(character.cha, this.getProfBonus(character.level)) : Math.floor((character.cha - 10) / 2);
+            case "religion":
+                return character.proficiency.religion ? this.profAdd(character.int, this.getProfBonus(character.level)) : Math.floor((character.int - 10) / 2);
+            case "sleight of hand":
+                return character.proficiency.sleight_of_hand ? this.profAdd(character.dex, this.getProfBonus(character.level)) : Math.floor((character.dex - 10) / 2);
+            case "stealth":
+                return character.proficiency.stealth ? this.profAdd(character.dex, this.getProfBonus(character.level)) : Math.floor((character.dex - 10) / 2);
+            case "survival":
+                return character.proficiency.survival ? this.profAdd(character.wis, this.getProfBonus(character.level)) : Math.floor((character.wis - 10) / 2);
+            case "str_save":
+                return character.proficiency.str_save ? this.profAdd(character.str, this.getProfBonus(character.level)) : Math.floor((character.str - 10) / 2);
+            case "dex_save":
+                return character.proficiency.dex_save ? this.profAdd(character.dex, this.getProfBonus(character.level)) : Math.floor((character.dex - 10) / 2);
+            case "con_save":
+                return character.proficiency.con_save ? this.profAdd(character.con, this.getProfBonus(character.level)) : Math.floor((character.con - 10) / 2);
+            case "int_save":
+                return character.proficiency.int_save ? this.profAdd(character.int, this.getProfBonus(character.level)) : Math.floor((character.int - 10) / 2);
+            case "wis_save":
+                return character.proficiency.wis_save ? this.profAdd(character.wis, this.getProfBonus(character.level)) : Math.floor((character.wis - 10) / 2);
+            case "cha_save":
+                return character.proficiency.cha_save ? this.profAdd(character.cha, this.getProfBonus(character.level)) : Math.floor((character.cha - 10) / 2);;
+        }
+    },
+
+    getProfBonus(level) {
+        if (level < 0 || level > 20) {
+            throw new Error("Level must be between 1 and 20.");
+        } else if (level <= 4) {
+            return 2;
+        } else if (level <= 8) {
+            return 3;
+        } else if (level <= 12) {
+            return 4;
+        } else if (level <= 16) {
+            return 5;
+        } else {
+            return 6;
+        };
+    },
+
+    profAdd(stat, bonus) {
+        return this.getBaseMod(stat) + bonus;
     }
 };
