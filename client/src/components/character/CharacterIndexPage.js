@@ -59,29 +59,28 @@ export const CharacterIndexPage = () => {
     return (
         <div className="character index-background">
             <main className="Main">
-                <h1>Characters</h1>
-
-                    <div id="grid-container">
-                    {characters.map(character => (
-                        <div key={character.id}>
-                            <Link 
-                                to={`/characters/${character.id}/stats`} 
-                                className="link" 
-                            >
-                                <Card className={`${character.name} card`}>
-                                    <CardMedia
-                                        title={character.name}
-                                    >
-                                        <img src={character.photo_url} alternate={character.name} />
-                                    </CardMedia>
-                                    <CardContent className="content">
-                                        <h5 className="character name">{character.name}</h5>
-                                    </CardContent>
-                                </Card>
-                            </Link>
-                        </div>
-                    ))}
+                <h1>CHARACTERS</h1>
+                <div id="grid-container">
+                {characters.map(character => (
+                    <div key={character.id}>
+                        <Link 
+                            to={`/characters/${character.id}/stats`} 
+                            className="link" 
+                        >
+                            <Card className={`${character.name} card`}>
+                                <CardMedia
+                                    title={character.name}
+                                >
+                                    <img src={character.photo_url} alternate={character.name} />
+                                </CardMedia>
+                                <CardContent className="content">
+                                    <h5 className="character name">{character.name}</h5>
+                                </CardContent>
+                            </Card>
+                        </Link>
                     </div>
+                ))}
+                </div>
 
                 <Link 
                     exact to={`/characters/new`} 

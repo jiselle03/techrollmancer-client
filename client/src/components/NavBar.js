@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './css/NavBar.css';
 import Drawer from '@material-ui/core/Drawer';
@@ -81,13 +82,13 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign In" />
+                        <ListItemText primary="SIGN IN" />
                     </ListItemLink>
                     <ListItemLink button href="/sign_up">
                         <ListItemIcon>
                             <PersonAddIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign Up" />
+                        <ListItemText primary="SIGN UP" />
                     </ListItemLink>
                 </>
             )}
@@ -97,7 +98,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                         <ListItemIcon>
                             <ExitToAppIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign Out" />
+                        <ListItemText primary="SIGN OUT" />
                     </ListItemLink>
                 </>
             )}
@@ -105,25 +106,25 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                     <ListItemIcon>
                         <CreateIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Characters" />
+                    <ListItemText primary="CHARACTERS" />
                 </ListItemLink>
                 <ListItemLink button href="/generator">
                     <ListItemIcon>
                         <CasinoIcon />
                     </ListItemIcon>
-                <ListItemText primary="Generator" />
+                <ListItemText primary="RANDOM GENERATOR" />
                 </ListItemLink>
                 <ListItemLink button href="/scheduler">
                     <ListItemIcon>
                         <EventAvailableIcon />
                     </ListItemIcon>
-                <ListItemText primary="Scheduler" />
+                <ListItemText primary="SCHEDULER" />
                 </ListItemLink>
                 <ListItem button onClick={() => handleClick("libraries")}>
                     <ListItemIcon>
                         <SearchIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Libraries" />
+                    <ListItemText primary="LIBRARIES" />
                 </ListItem>
 
                 <Divider />
@@ -180,6 +181,9 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                             <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
                             LLMANCER
                     </ListItemLink>
+                    {currentUser && (
+                        <Link className="USERNAME" to="/characters">{currentUser.username.toUpperCase()}</Link>
+                    )}
                 </div>
                 <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
                     {sideList('left')}
@@ -208,23 +212,29 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                         <ListItemIcon>
                             <AccountCircleIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign In" />
+                        <ListItemText primary="SIGN IN" />
                     </ListItemLink>
                     <ListItemLink button href="/sign_up">
                         <ListItemIcon>
                             <PersonAddIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign Up" />
+                        <ListItemText primary="SIGN UP" />
                     </ListItemLink>
                 </>
             )}
             {currentUser && (
                 <>
+                    <ListItemLink button href="/characters">
+                        <ListItemIcon>
+                            <AccountCircleIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={currentUser.username.toUpperCase()} />
+                    </ListItemLink>
                     <ListItemLink button onClick={handleSignOutClick}>
                         <ListItemIcon>
                             <ExitToAppIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Sign Out" />
+                        <ListItemText primary="SIGN OUT" />
                     </ListItemLink>
                 </>
             )}
@@ -232,25 +242,25 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                         <ListItemIcon>
                             <CreateIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Characters" />
+                        <ListItemText primary="CHARACTERS" />
                     </ListItemLink>
                 <ListItemLink button href="/generator">
                     <ListItemIcon>
                         <CasinoIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Generator" />
+                    <ListItemText primary="RANDOM GENERATOR" />
                 </ListItemLink>
                 <ListItemLink button href="/scheduler">
                     <ListItemIcon>
                         <EventAvailableIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Scheduler" />
+                    <ListItemText primary="SCHEDULER" />
                 </ListItemLink>
                 <ListItem button onClick={() => handleClick("libraries")}>
                         <ListItemIcon>
                             <SearchIcon />
                         </ListItemIcon>
-                        <ListItemText primary="Libraries" />
+                        <ListItemText primary="LIBRARIES" />
                         {librariesOpen ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Divider />

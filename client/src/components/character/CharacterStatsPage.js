@@ -26,7 +26,7 @@ export const CharacterStatsPage = props => {
 
   return (
     <div className="main-stats character-background">
-      <h1 className="character-name-title">{character.name}</h1>
+      <h1 className="character-name-title">{character.name.toUpperCase()}</h1>
       <CharacterNav character={character} />
 
       <div className="character-sheet">

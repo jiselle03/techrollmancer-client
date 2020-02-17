@@ -40,23 +40,37 @@ div.MuiListItemText-root {
     margin: 0;
 }
 
+a.logo-collapsible {
+    align-self: center;
+    justify-content: center;
+}
+
 .sidebar-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 100vh;
 }
 
 a.MuiButtonBase-root.logo-collapsible,
-button.MuiButtonBase-root.MuiButton-root.MENU {
+button.MuiButtonBase-root.MuiButton-root.MENU,
+a.USERNAME {
     transform: rotate(-90deg);
     margin: 0;
     width: 2em;
 }
 
-.MuiButton-label {
+.MuiButton-label,
+a.USERNAME {
     color: #ffffff;
     font-size: 1.5em;
     margin-left: 0;
+    text-decoration: none;
+    align-self: center;
+}
+
+a.USERNAME {
+    margin-top: 2em;
 }
 
 .MuiSvgIcon-root {
