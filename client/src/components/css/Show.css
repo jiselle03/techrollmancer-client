@@ -21,6 +21,22 @@ hr {
     margin: 3em 16px;
 }
 
+div.character-show {
+    margin: 0;
+}
+
+.character-form {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.character-stats {
+
+}
+
 /* Races */
 
 .half-elf-background {
@@ -131,7 +147,7 @@ hr {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .halfling-background {
         background-size: 100vh;
         background-position: center bottom;
@@ -143,5 +159,10 @@ hr {
 
     .sorcerer-background {
         background-size: 70vh;
+    }
+
+    div.character-show {
+        margin-left: 20.25em;
+        width: 100vw;
     }
 }

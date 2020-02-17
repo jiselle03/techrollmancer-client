@@ -49,8 +49,9 @@ div.MuiPaper-root.MuiCard-root.card {
     color: #ffffff;
 }
 
-.MuiTableContainer-root {
+div.MuiTableContainer-root {
     margin: 2em;
+    width: 90%;
 }
 
 /* Races */
@@ -167,14 +168,14 @@ div.MuiPaper-root.MuiCard-root.card {
     background-size: cover;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 550px) {
     #grid-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     #grid-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);

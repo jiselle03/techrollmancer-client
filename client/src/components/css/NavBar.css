@@ -1,16 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Advent+Pro&display=swap');
 
-header {
-    overflow-y: hidden;
-}
-
 nav.MuiList-root.NavBar {
     color: #ffffff;
     position: fixed;
     max-width: 360px;
-    box-shadow: 5px 0 5px -2px #888;
-    min-height: 100vh;
+    box-shadow: 5px 0 5px -2px #888888;
     border-right: 1px solid rgba(189, 195, 199, 0.5);
+    min-height: 100vh;
     background-color: rgba(45,99,127,1);
 }
 
@@ -33,7 +29,8 @@ div.double-nested.MuiListItemText-root {
     transform: rotate(360deg);
 }
 
-a.MuiButtonBase-root.logo, a.MuiButtonBase-root.logo-mobile {
+a.MuiButtonBase-root.logo-static, 
+a.MuiButtonBase-root.logo-collapsible {
     font-family: 'Bungee Inline', cursive;
     color: #ffffff;
     font-size: 1.75em;
@@ -43,41 +40,54 @@ div.MuiListItemText-root {
     margin: 0;
 }
 
-.NavBar#mobile {
+.sidebar-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+a.MuiButtonBase-root.logo-collapsible,
+button.MuiButtonBase-root.MuiButton-root.MENU {
+    transform: rotate(-90deg);
+    margin: 0;
+    width: 2em;
 }
 
 .MuiButton-label {
     color: #ffffff;
     font-size: 1.5em;
-    margin-right: 2em;
+    margin-left: 0;
 }
 
 .MuiSvgIcon-root {
     color: #ffffff;
 }
 
-#mobile {
+.NavBar#collapsible {
     display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    background-color: rgba(45,99,127,1);
+    box-shadow:  5px 0 5px -2px #888888;
+    border-bottom: 1px solid rgba(189, 195, 199, 0.5);
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
 }
 
-#non-mobile {
+.NavBar#static {
     display: none;
 }
 
-@media (min-width: 768px) {
-    #mobile {
+@media (min-width: 1024px) {
+    .NavBar#collapsible {
         display: none;
     }
 
-    #non-mobile {
+    .NavBar#static {
         display: block;
-    }
-
-    .NavBar#mobile {
-        display: none;
     }
 
 }

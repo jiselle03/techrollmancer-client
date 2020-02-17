@@ -66,14 +66,14 @@ export const NavBar = ({ currentUser, onSignOut }) => {
             subheader={
                 <ListItemLink button 
                     href="/"
-                    className="logo"
+                    className="logo-static"
                 >
                     TECHR
                     <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
                     LLMANCER
-                </ListItemLink>         
+                </ListItemLink>     
             }
-            className="NavBar mobile-header"
+            className="NavBar collapsible-header"
             >
             {!currentUser && (
                 <>
@@ -169,16 +169,18 @@ export const NavBar = ({ currentUser, onSignOut }) => {
 
     return (
         <div className="NavBar-container">
-            <div className="NavBar" id="mobile" >
-                <ListItemLink button 
-                    href="/"
-                    className="logo-mobile"
-                >
-                    TECHR
-                    <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
-                    LLMANCER
-                </ListItemLink>
-                <Button onClick={toggleDrawer('left', true)} className="MENU">MENU</Button>
+            <div className="NavBar" id="collapsible" >
+                <div className="sidebar-container">
+                    <Button onClick={toggleDrawer('left', true)} className="MENU">MENU</Button>
+                    <ListItemLink button 
+                            href="/"
+                            className="logo-collapsible"
+                        >
+                            TECHR
+                            <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
+                            LLMANCER
+                    </ListItemLink>
+                </div>
                 <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
                     {sideList('left')}
                 </Drawer>
@@ -190,7 +192,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
             subheader={
                 <ListItemLink button 
                     href="/"
-                    className="logo"
+                    className="logo-static"
                 >
                     TECHR
                     <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
@@ -198,7 +200,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                 </ListItemLink>         
             }
             className="NavBar"
-            id="non-mobile"
+            id="static"
             >
                 {!currentUser && (
                 <>

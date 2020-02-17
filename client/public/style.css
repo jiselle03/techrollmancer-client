@@ -10,17 +10,13 @@ body,html {
     padding: 0;
 }
 
-body {
-    display: flex;
-    flex-direction: row;
-}
-
 #root {
     width: 100%;
 }
 
 main.Main {
-    margin: 3em 1.5em;
+    margin: 2em;
+    margin-left: 7em;
 }
 
 h1, h2, h4, h5, h6 {
@@ -65,15 +61,17 @@ a.link,
     #root {
         margin: 0;
     }
+}
+
+@media (min-width: 1024px) {
+    body {
+        display: flex;
+        flex-direction: row;
+    }
 
     main.Main {
         margin-left: 25em;
-        width: 50%;
-    }
-}
-
-@media (min-width: 1200px) {
-    main.Main {
         width: 65%;
+        height: 100%;
     }
 }

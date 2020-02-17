@@ -12,7 +12,7 @@
 }
 
 h1.error {
-    color: red;
+    color: maroon;
 }
 
 .Home-Container {
@@ -33,7 +33,7 @@ div#signin-form {
 }
 
 div#signin-form {
-    height: 50vh;
+    height: 55vh;
     margin: 25vh auto;
 }
 
