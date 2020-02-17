@@ -1,7 +1,7 @@
 class Api::V1::CharactersController < Api::ApplicationController
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!
     before_action :find_character, only: [:edit,:update,:show, :destroy]
-    before_action :authorize!, only: [:edit, :update, :destroy]
+    # before_action :authorize!
 
     def create
         character = Character.new character_params
@@ -28,7 +28,7 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
 
     def index
-        characters = current_user.characters.order
+        characters = current_user.characters.order(:name)
         render json: characters
     end
 
@@ -51,9 +51,9 @@ class Api::V1::CharactersController < Api::ApplicationController
         params.require(:character).permit(:title, :description, :price)
     end
 
-    def authorize!
-        unless can?(:crud, @character)
-            redirect_to root_path, alert: 'Not Authorized'
-        end
-    end
+    # def authorize!
+    #     unless can?(:crud, @character)
+    #         redirect_to root_path, alert: 'Not Authorized'
+    #     end
+    # end
 end
