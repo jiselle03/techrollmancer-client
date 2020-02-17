@@ -69,7 +69,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                     className="logo-static"
                 >
                     TECHR
-                    <i className="fas fa-dice-d20 fa fa-spin-hover"></i>
+                    <i className="fas fa-dice-d20 fa fa-spin"></i>
                     LLMANCER
                 </ListItemLink>     
             }
