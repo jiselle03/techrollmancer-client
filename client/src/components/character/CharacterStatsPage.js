@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import '../css/Show.css';
+import '../css/Character.css';
 import { utils } from '../js/utils';
 import { Character } from '../../api/character';
 import { CharacterNav } from './CharacterNav';
@@ -25,7 +25,7 @@ export const CharacterStatsPage = props => {
   };
 
   return (
-    <div className="character-show index-background">
+    <div className="main-stats character-background">
       <h1 className="character-name-title">{character.name}</h1>
       <CharacterNav character={character} />
 
