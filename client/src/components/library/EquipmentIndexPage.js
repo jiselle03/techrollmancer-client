@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import '../css/Index.css';
 import { CircularProgress } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -29,7 +30,9 @@ export const EquipmentIndexPage = () => {
     return (
         <div className="equipment index-background">
             <main className="Main">
-                <h2>EQUIPMENT</h2>
+                <h1>EQUIPMENT</h1>
+                <Divider />
+
                 {equipments.map(equipment => (
                     <div key={equipment.slug}>
                     <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>

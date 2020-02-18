@@ -32,8 +32,9 @@ export const AdventuringGearIndexPage = () => {
 
     return (
         <div className="adventuring-gear index-background">
-            <main className="Index-Container Main">
-                <h1>ADVENTURING GEAR</h1><br />
+            <main className="Main">
+                <h1>ADVENTURING GEAR</h1>
+                <Divider />
 
                 <div className="list-container">
                     <h3>Equipment Packs</h3>

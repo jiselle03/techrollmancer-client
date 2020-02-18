@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../css/Show.css';
 import { CircularProgress } from '@material-ui/core';
 import { utils } from '../js/utils';
+import Divider from '@material-ui/core/Divider';
 
 const getClass = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
@@ -31,9 +32,11 @@ export const ClassShowPage = props => {
         desc, equipment, spellcasting_ability } = oneClass;
 
     return (
-        <div className={`${slug}-background Show-Container`}>
+        <div className={`${slug}-background`}>
             <main className="Main">
                 <h1>{name.toUpperCase()}</h1>
+                <Divider />
+
                 <p>As a {name}, you gain the following class features:</p>
                 
                 <h3>Hit Points</h3>

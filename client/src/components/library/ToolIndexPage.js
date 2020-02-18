@@ -34,6 +34,7 @@ export const ToolIndexPage = () => {
         <div className="tools index-background">
             <main className="Main">
                 <h1>TOOLS</h1>
+                <Divider />
 
                 <div className="list-container">
                     <h3>Artisan's Tools</h3>

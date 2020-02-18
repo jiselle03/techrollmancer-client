@@ -36,6 +36,8 @@ export const SpellIndexPage = () => {
             <main className="Main">
                 <div className="list-container">
                     <h1>SPELLS</h1>
+                    <Divider />
+                    
                     <List component="nav">
                     <h3>Cantrips</h3>
                     {spells.filter(spell => {

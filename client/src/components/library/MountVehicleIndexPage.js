@@ -35,6 +35,7 @@ export const MountVehicleIndexPage = () => {
         <div className="mounts-and-vehicles index-background">
             <main className="Main">
                 <h1>MOUNTS AND VEHICLES</h1>
+                <Divider />
 
                 <div className="list-container">
                     <h3>Mounts and Other Animals</h3>

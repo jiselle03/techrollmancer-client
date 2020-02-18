@@ -1,0 +1,48 @@
+
+div.character-background {
+    margin-left: 4em;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+        url('../../assets/d20.png');
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: auto;
+}
+
+div.MuiTabs-root.tabs {
+    max-width: 100vw;
+}
+
+.character-sheet {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.character-name-title {
+}
+
+.stats {
+    padding: 1em;
+    margin: 0.5em;
+    max-width: 360px;
+}
+
+@media (min-width: 768px) {
+    .character-sheet {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    div.character-background {
+        margin-left: 20.25em;
+        max-width: 100vw;
+    }
+
+    .character-sheet {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

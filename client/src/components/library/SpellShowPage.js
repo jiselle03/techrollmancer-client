@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import '../css/Show.css';
 import { CircularProgress } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
 
 const getSpell = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
@@ -27,22 +28,26 @@ export const SpellShowPage = props => {
     };
 
     return (
-        <main className="Main">
-            <h1>{spell.name.toUpperCase()}</h1>
-            <h5>Description</h5>
-            <p>{(spell.desc)}</p>
-            <h5>Higher Level</h5>
-            <p>{spell.higher_level}</p>
-            <p><strong>Range:</strong> {spell.range}</p>
-            <p><strong>Components:</strong> {spell.components}</p>
-            <p><strong>Material:</strong> {spell.material}</p>
-            <p><strong>Ritual:</strong> {spell.ritual}</p>
-            <p><strong>Duration:</strong> {spell.duration}</p>
-            <p><strong>Concentration:</strong> {spell.concentration}</p>
-            <p><strong>Casting Time:</strong> {spell.casting_time}</p>
-            <p><strong>Level:</strong> {spell.level}</p>
-            <p><strong>School:</strong> {spell.school}</p>
-            <p><strong>Class:</strong> {spell.dnd_class}</p>
-        </main>
+        <div className="spell show-background">
+            <main className="Main">
+                <h1>{spell.name.toUpperCase()}</h1>
+                <Divider /><br />
+
+                <h5>Description</h5>
+                <p>{(spell.desc)}</p>
+                <h5>Higher Level</h5>
+                <p>{spell.higher_level}</p>
+                <p><strong>Range:</strong> {spell.range}</p>
+                <p><strong>Components:</strong> {spell.components}</p>
+                <p><strong>Material:</strong> {spell.material}</p>
+                <p><strong>Ritual:</strong> {spell.ritual}</p>
+                <p><strong>Duration:</strong> {spell.duration}</p>
+                <p><strong>Concentration:</strong> {spell.concentration}</p>
+                <p><strong>Casting Time:</strong> {spell.casting_time}</p>
+                <p><strong>Level:</strong> {spell.level}</p>
+                <p><strong>School:</strong> {spell.school}</p>
+                <p><strong>Class:</strong> {spell.dnd_class}</p>
+            </main>
+        </div>
     );
 };

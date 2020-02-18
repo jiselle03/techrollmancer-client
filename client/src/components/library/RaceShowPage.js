@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../css/Show.css';
 import { CircularProgress } from '@material-ui/core';
 import { utils } from '../js/utils';
+import Divider from '@material-ui/core/Divider';
 
 const getRace = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/races/${slug}`);
@@ -27,9 +28,10 @@ export const RaceShowPage = props => {
     };
 
     return (
-        <div className={`${race.slug}-background Show-Container`}>
+        <div className={`${race.slug}-background`}>
             <main className="Main">
                 <h2>{race.name.toUpperCase()}</h2>
+                <Divider />
 
                 <div className={race.desc ? null : "hidden"}>
                     <h3>{race.name} Traits</h3>

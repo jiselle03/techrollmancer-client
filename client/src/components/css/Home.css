@@ -2,7 +2,8 @@
 .signup-background,
 .signin-background,
 .error-background,
-.generator-background {
+.generator-background,
+.scheduler-background {
     min-height: 100vh;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
         url('../../assets/d20.png');

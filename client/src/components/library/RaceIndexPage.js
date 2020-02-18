@@ -6,6 +6,7 @@ import '../css/Index.css';
 import { CircularProgress } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
 
 const getRaces = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/races");
@@ -32,6 +33,8 @@ export const RaceIndexPage = () => {
         <div className="race index-background">
             <main className="Main">
                 <h1>RACES</h1>
+                <Divider />
+
                 <div id="grid-container">
                 {races.map(race => (
                     <div key={race.slug}>

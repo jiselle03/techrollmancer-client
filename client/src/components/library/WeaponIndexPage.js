@@ -34,6 +34,7 @@ export const WeaponIndexPage = () => {
         <div className="weapons index-background">
             <main className="Index-Container Main">
                 <h1>WEAPONS</h1>
+                <Divider />
 
                 <div className="list-container">
                     <h3>Simple Melee</h3>
