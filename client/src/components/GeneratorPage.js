@@ -122,62 +122,55 @@ export const GeneratorPage = () => {
                 <Card className="point-buy generator">
                     <h3>Point Buy</h3>
                     <p>
-                        You have 27 points to spend on your ability scores. 
-                        The cost of each score is shown on the Ability Score Point Cost table below. 
-                        For example, a score of 14 costs 7 points. Using this method, 
-                        15 is the highest ability score you can end up with, before applying 
-                        racial increases. You cannot have a score lower than 8.
-                    </p>
-                    <p>
-                        This method of determining ability scores enables you to create a set 
-                        of three high numbers and three low ones (15, 15, 15, 8, 8, 8), 
-                        a set of numbers that are above average and nearly equal (13, 13, 13, 12, 12, 12), 
-                        or any set of numbers between those extremes.
+                        You have 27 points to spend on your character's ability scores. 
+                        The cost of each score is shown on the table below. 15 is the highest 
+                        ability score you can end up with before applying racial increases. 
+                        You cannot have a score lower than 8.
                     </p>
                     <TableContainer component={Paper}>
-      <Table className="point-buy table" aria-label="point buy table">
-        <TableHead>
-          <TableRow>
-            <TableCell>SCORE</TableCell>
-            <TableCell>COST</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow key="8">
-              <TableCell>8</TableCell>
-              <TableCell>0</TableCell>
-            </TableRow>
-            <TableRow key="9">
-              <TableCell>9</TableCell>
-              <TableCell>1</TableCell>
-            </TableRow>
-            <TableRow key="10">
-              <TableCell>10</TableCell>
-              <TableCell>2</TableCell>
-            </TableRow>
-            <TableRow key="11">
-              <TableCell>11</TableCell>
-              <TableCell>3</TableCell>
-            </TableRow>
-            <TableRow key="12">
-              <TableCell>12</TableCell>
-              <TableCell>4</TableCell>
-            </TableRow>
-            <TableRow key="13">
-              <TableCell>13</TableCell>
-              <TableCell>5</TableCell>
-            </TableRow>
-            <TableRow key="10">
-              <TableCell>14</TableCell>
-              <TableCell>7</TableCell>
-            </TableRow>
-            <TableRow key="15">
-              <TableCell>15</TableCell>
-              <TableCell>9</TableCell>
-            </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+                    <Table className="point-buy table" aria-label="point buy table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>SCORE</TableCell>
+                                <TableCell>COST</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow key="8">
+                                <TableCell>8</TableCell>
+                                <TableCell>0</TableCell>
+                            </TableRow>
+                            <TableRow key="9">
+                                <TableCell>9</TableCell>
+                                <TableCell>1</TableCell>
+                            </TableRow>
+                            <TableRow key="10">
+                                <TableCell>10</TableCell>
+                                <TableCell>2</TableCell>
+                            </TableRow>
+                            <TableRow key="11">
+                                <TableCell>11</TableCell>
+                                <TableCell>3</TableCell>
+                            </TableRow>
+                            <TableRow key="12">
+                                <TableCell>12</TableCell>
+                                <TableCell>4</TableCell>
+                            </TableRow>
+                            <TableRow key="13">
+                                <TableCell>13</TableCell>
+                                <TableCell>5</TableCell>
+                            </TableRow>
+                            <TableRow key="10">
+                                <TableCell>14</TableCell>
+                                <TableCell>7</TableCell>
+                            </TableRow>
+                            <TableRow key="15">
+                                <TableCell>15</TableCell>
+                                <TableCell>9</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                    </TableContainer>
                 </Card>
 
                 <Card className="roll-stats generator">
