@@ -9,6 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import Divider from '@material-ui/core/Divider';
 
 export const CharacterIndexPage = () => {
     const [characters, setCharacters] = useState([]);
@@ -32,6 +33,8 @@ export const CharacterIndexPage = () => {
             <div className="character-index-background">
                 <main className="Main">
                     <h1>Characters</h1>
+                    <Divider /><br />
+
                     <Link 
                         to={"/characters/new"} 
                         className="link" 
@@ -60,6 +63,8 @@ export const CharacterIndexPage = () => {
         <div className="character index-background">
             <main className="Main">
                 <h1>CHARACTERS</h1>
+                <Divider /><br />
+
                 <div id="grid-container">
                 {characters.map(character => (
                     <div key={character.id}>
