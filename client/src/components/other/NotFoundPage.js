@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../css/Home.css';
+
 export const NotFoundPage = () => {
     return (
         <div className="error-background">

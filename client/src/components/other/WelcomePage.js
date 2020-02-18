@@ -1,6 +1,6 @@
 import React from "react";
 
-import './css/Home.css';
+import '../css/Home.css';
 
 export const WelcomePage = (props) => (
     <div className="welcome-background Home-Container">

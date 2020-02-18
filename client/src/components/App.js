@@ -9,8 +9,11 @@ import { NavBar } from './NavBar';
 import { AuthRoute } from './AuthRoute';
 import { SignUpPage } from './user/SignUpPage';
 import { SignInPage } from './user/SignInPage';
-import { WelcomePage } from './WelcomePage';
-import { NotFoundPage } from './NotFoundPage';
+
+import { WelcomePage } from './other/WelcomePage';
+import { GeneratorPage } from './other/GeneratorPage';
+import { SchedulerPage } from './other/SchedulerPage';
+import { NotFoundPage } from './other/NotFoundPage';
 
 import { Libraries } from './library/Libraries';
 import { RaceIndexPage } from './library/RaceIndexPage';
@@ -36,7 +39,6 @@ import { CharacterTraitsPage } from './character/CharacterTraitsPage';
 import { CharacterJournalPage } from './character/CharacterJournalPage';
 import { CharacterNewPage } from './character/CharacterNewPage';
 import { CharacterIndexPage } from './character/CharacterIndexPage';
-import { GeneratorPage } from './GeneratorPage';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -136,6 +138,11 @@ const App = () => {
             isAuthenticated={!!currentUser}
             component={CharacterJournalPage}
             path="/characters/:id/journal"
+          />
+          <AuthRoute 
+            isAuthenticated={!!currentUser}
+            component={SchedulerPage}
+            path="/scheduler"
           />
           <Route 
             path="/sign_in"

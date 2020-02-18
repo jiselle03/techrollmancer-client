@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import './css/Home.css';
-import { RandomCharacter } from './js/generator.js';
-import { utils } from './js/utils.js';
+import '../css/Home.css';
+import { RandomCharacter } from '../js/generator.js';
+import { utils } from '../js/utils.js';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
