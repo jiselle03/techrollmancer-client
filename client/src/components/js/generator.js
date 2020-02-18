@@ -1,22 +1,18 @@
 // Random Character Generator
 
-const RACES = ['Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Half-elf', 'Halfling', 'Half-orc', 'Human', 'Tiefling'];
-const RANDOM_RACE = Math.floor(Math.random() * 9);
-
+const RACES = ['Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'Half-Orc', 'Human', 'Tiefling'];
 const CLASSES = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'];
-const RANDOM_CLASS = Math.floor(Math.random() * 12);
 
 export class RandomCharacter {
-    constructor(charName, charRace, charClass) {
-      this._charName = charName || "Unnamed Character";
-      this._charRace = charRace || RACES[RANDOM_RACE];
-      this._charClass = charClass || CLASSES[RANDOM_CLASS];
-      this._strength = RandomCharacter.rollAbility();
-      this._dexterity = RandomCharacter.rollAbility();
-      this._constitution = RandomCharacter.rollAbility();
-      this._intelligence = RandomCharacter.rollAbility();
-      this._wisdom = RandomCharacter.rollAbility();
-      this._charisma = RandomCharacter.rollAbility();
+    constructor() {
+      this._charRace = RandomCharacter.getRace();
+      this._charClass = RandomCharacter.getClass();
+      this._roll1 = RandomCharacter.rollAbility();
+      this._roll2 = RandomCharacter.rollAbility();
+      this._roll3 = RandomCharacter.rollAbility();
+      this._roll4 = RandomCharacter.rollAbility();
+      this._roll5 = RandomCharacter.rollAbility();
+      this._roll6 = RandomCharacter.rollAbility();
     };
 
     static rollAbility() {
@@ -34,10 +30,15 @@ export class RandomCharacter {
       abilityScore -= Math.min(...rolls);
       return abilityScore;
     };
-    
-    get charName() {
-        return this._charName;
+
+    static getRace() {
+      return RACES[Math.floor(Math.random() * 9)];
+    };  
+
+    static getClass() {
+      return CLASSES[Math.floor(Math.random() * 12)];
     };
+    
     get charRace(){
         return this._charRace;
     };
@@ -45,26 +46,22 @@ export class RandomCharacter {
       return this._charClass;
     };
   
-    get strength() {
-      return this._strength;
+    get roll1() {
+      return this._roll1;
     };
-    get dexterity() {
-      return this._dexterity;
+    get roll2() {
+      return this._roll2;
     };
-    get constitution() {
-      return this._constitution;
+    get roll3() {
+      return this._roll3;
     };
-    get intelligence() {
-      return this._intelligence;
+    get roll4() {
+      return this._roll4;
     };
-    get wisdom() {
-      return this._wisdom;
+    get roll5() {
+      return this._roll5;
     };
-    get charisma() {
-      return this._charisma;
-    };
-  
-    get hitpoints() {
-      return 10 + Math.floor((this._constitution - 10) / 2);
+    get roll6() {
+      return this._roll6;
     };
 };

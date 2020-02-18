@@ -78,3 +78,47 @@ a.signin-link {
 .button:hover {
     background-color: rgba(45,99,127,1);
 }
+
+button.roll-button {
+    color: #ffffff;
+    font-size: 1.5em;
+    padding: 0.5em 1em;
+    background-color: rgba(83,98,111,1);
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+button.roll-button.modal {
+    font-size: 1em;
+    margin: 2em;
+}
+
+.generator {
+    margin: 0.5em;
+    padding: 1em;
+}
+
+.roll-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1em;
+}
+
+div.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.fade {
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    box-shadow:  5px 0 5px -2px #888888;
+    border-radius: 5px;
+    padding: 2em 4em;
+}
+
+p.instructions {
+    font-size: 1.5em;
+}

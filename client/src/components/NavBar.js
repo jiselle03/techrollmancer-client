@@ -112,7 +112,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                     <ListItemIcon>
                         <CasinoIcon />
                     </ListItemIcon>
-                <ListItemText primary="RANDOM GENERATOR" />
+                <ListItemText primary="CHARACTER GENERATOR" />
                 </ListItemLink>
                 <ListItemLink button href="/scheduler">
                     <ListItemIcon>
@@ -248,7 +248,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                     <ListItemIcon>
                         <CasinoIcon />
                     </ListItemIcon>
-                    <ListItemText primary="RANDOM GENERATOR" />
+                    <ListItemText primary="CHARACTER GENERATOR" />
                 </ListItemLink>
                 <ListItemLink button href="/scheduler">
                     <ListItemIcon>

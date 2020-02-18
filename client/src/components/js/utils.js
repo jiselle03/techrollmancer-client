@@ -126,5 +126,44 @@ export const utils = {
 
     profAdd(stat, bonus) {
         return this.getBaseMod(stat) + bonus;
+    },
+
+    rollD4() {
+        return Math.ceil(Math.random() * 4);
+    },
+
+    rollD6() {
+        return Math.ceil(Math.random() * 6);
+    },
+
+    rollD8() {
+        return Math.ceil(Math.random() * 8);
+    },
+
+    rollD10() {
+        return Math.ceil(Math.random() * 10);
+    },
+
+    rollD12() {
+        return Math.ceil(Math.random() * 12);
+    },
+
+    rollD20() {
+        return Math.ceil(Math.random() * 20);
+    },
+
+    rollD100() {
+        return Math.ceil(Math.random() * 100);
+    },
+
+    rollAbility(rolls) {
+        let abilityScore = 0;
+  
+        for (let i = 0; i < rolls.length; i++) {
+          abilityScore += rolls[i];
+        };
+  
+        abilityScore -= Math.min(...rolls);
+        return abilityScore;
     }
 };
