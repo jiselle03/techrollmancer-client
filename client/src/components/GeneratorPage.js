@@ -160,7 +160,7 @@ export const GeneratorPage = () => {
                                 <TableCell>13</TableCell>
                                 <TableCell>5</TableCell>
                             </TableRow>
-                            <TableRow key="10">
+                            <TableRow key="14">
                                 <TableCell>14</TableCell>
                                 <TableCell>7</TableCell>
                             </TableRow>
@@ -278,8 +278,8 @@ export const GeneratorPage = () => {
                 </Card>
 
                 <p className="instructions">
-                After assigning your ability scores, you can determine your ability modifiers by  
-                subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
+                    After assigning your ability scores, you can determine your ability modifiers by  
+                    subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
                 </p>
             </main>
         </div>
