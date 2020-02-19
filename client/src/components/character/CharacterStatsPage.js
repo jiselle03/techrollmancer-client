@@ -23,43 +23,45 @@ export const CharacterStatsPage = props => {
         <CircularProgress variant="determinate" />
     );
   };
+  
+  const { name, hp, armor_class, level, str, dex, con, int, wis, cha } = character;
 
   return (
     <div className="main-stats character-background">
-      <h1 className="character-name-title">{character.name.toUpperCase()}</h1>
+      <h1 className="character-name-title">{name.toUpperCase()}</h1>
       <CharacterNav character={character} />
 
       <div className="character-sheet">
         <Card className="hp-ac-initiative stats">
-          <h3>{character.hp}</h3><p>Hit Points</p>
-          <h3>{character.armor_class}</h3><p>Armor Class</p>
+          <h3>{hp}</h3><p>Hit Points</p>
+          <h3>{armor_class}</h3><p>Armor Class</p>
           <h3>{utils.getInitiative}</h3><p>Initiative</p>
-          <h3>{utils.getProfBonus(character.level)}</h3><p>Proficiency Bonus</p>
+          <h3>{utils.getProfBonus(level)}</h3><p>Proficiency Bonus</p>
         </Card>
 
         <Card className="basic stats">
-          <h3>{character.str}</h3>
-          <p>({utils.getBaseMod(character.str)})</p>
+          <h3>{str}</h3>
+          <p>({utils.getBaseMod(str)})</p>
           <p>STR</p>
 
-          <h3>{character.dex}</h3>
-          <p>({utils.getBaseMod(character.dex)})</p>
+          <h3>{dex}</h3>
+          <p>({utils.getBaseMod(dex)})</p>
           <p>DEX</p>
 
-          <h3>{character.con}</h3>
-          <p>({utils.getBaseMod(character.con)})</p>
+          <h3>{con}</h3>
+          <p>({utils.getBaseMod(con)})</p>
           <p>CON</p>
 
-          <h3>{character.int}</h3>
-          <p>({utils.getBaseMod(character.int)})</p>
+          <h3>{int}</h3>
+          <p>({utils.getBaseMod(int)})</p>
           <p>INT</p>
 
-          <h3>{character.wis}</h3>
-          <p>({utils.getBaseMod(character.wis)})</p>
+          <h3>{wis}</h3>
+          <p>({utils.getBaseMod(wis)})</p>
           <p>WIS</p>
           
-          <h3>{character.cha}</h3>
-          <p>({utils.getBaseMod(character.cha)})</p>
+          <h3>{cha}</h3>
+          <p>({utils.getBaseMod(cha)})</p>
           <p>CHA</p>
 
         </Card>
