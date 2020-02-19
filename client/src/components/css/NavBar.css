@@ -40,37 +40,39 @@ div.MuiListItemText-root {
     margin: 0;
 }
 
-a.logo-collapsible {
-    align-self: center;
-    justify-content: center;
-}
-
 .sidebar-container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100vh;
+    align-items: center;
+    min-height: 100vh;
+    width: 3.5em;
+    margin: auto;
+    flex-basis: auto;
 }
 
 a.MuiButtonBase-root.logo-collapsible,
 button.MuiButtonBase-root.MuiButton-root.MENU,
 a.USERNAME {
     transform: rotate(-90deg);
-    margin: 0;
-    width: 2em;
-}
-
-.MuiButton-label,
-a.USERNAME {
     color: #ffffff;
     font-size: 1.5em;
     margin-left: 0;
     text-decoration: none;
-    align-self: center;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MENU {
+    margin-top: 1em;
+    
 }
 
 a.USERNAME {
-    margin-top: 2em;
+    margin-bottom: 3em;
+}
+
+a.logo-collapsible {
+    justify-content: center;
+    margin: auto 0;
 }
 
 .MuiSvgIcon-root {
@@ -79,10 +81,6 @@ a.USERNAME {
 
 .NavBar#collapsible {
     display: block;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
     background-color: rgba(45,99,127,1);
     box-shadow:  5px 0 5px -2px #888888;
     border-bottom: 1px solid rgba(189, 195, 199, 0.5);
