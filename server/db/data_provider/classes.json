@@ -3,6 +3,7 @@
         "name": "Barbarian",
         "slug": "barbarian",
         "desc": [
+            "!Class Features",
             "$Rage", "In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action.", "While raging, you gain the following benefits if you aren't wearing heavy armor:", "*You have advantage on Strength checks and Strength saving throws.", "*When you make a melee weapon attack using Strength, you gain a bonus to the damage roll that increases as you gain levels as a barbarian, as shown in the Rage Damage column of the Barbarian table.", "*You have resistance to bludgeoning, piercing, and slashing damage.", "If you are able to cast spells, you can't cast them or concentrate on them while raging.", "Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action.", "Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.", 
             "$Unarmored Defense", "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.", 
             "$Reckless Attack", "Starting at 2nd level, you can throw aside all concern for defense to attack with fierce desperation. When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.", 
@@ -44,6 +45,7 @@
         "name": "Bard",
         "slug": "bard",
         "desc": [
+            "!Class Features",
             "$Spellcasting", "You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music.", "Your spells are part of your vast repertoire, magic that you can tune to different situations.", 
             "#Cantrips", "You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Bard table.", 
             "#Spell Slots", "The Bard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.", "For example, if you know the 1st-level spell /", "@cure wounds", "/ and have a 1st-level and a 2nd-level spell slot available, you can cast /", "@cure wounds", "/ using either slot.", 
@@ -90,6 +92,7 @@
         "name": "Cleric",
         "slug": "cleric",
         "desc": [
+            "!Class Features",
             "$Spellcasting", "As a conduit for divine power, you can cast cleric spells.", 
             "#Cantrips", "At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.", 
             "#Preparing and Casting Spells", "The Cleric table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.", "You prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.", "For example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell /", "@cure wounds", "/, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.", "You can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.", 
@@ -133,6 +136,7 @@
         "name": "Druid",
         "slug": "druid",
         "desc": [
+            "!Class Features",
             "$Druidic", "You know Druidic, the secret language of druids. You can speak the language and use it to leave hidden messages. You and others who know this language automatically spot such a message. Others spot the message's presence with a successful DC 15 Wisdom (Perception) check but can't decipher it without magic.", 
             "$Spellcasting", "Drawing on the divine essence of nature itself, you can cast spells to shape that essence to your will.", 
             "#Cantrips", "At 1st level, you know two cantrips of your choice from the druid spell list. You learn additional druid cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Druid table.", 
@@ -175,6 +179,7 @@
         "name": "Fighter",
         "slug": "fighter",
         "desc": [
+            "!Class Features",
             "$Fighting Style", "You adopt a particular style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if you later get to choose again.", 
             "#Archery", "You gain a +2 bonus to attack rolls you make with ranged weapons.", 
             "#Defense", "While you are wearing armor, you gain a +1 bonus to AC.", "Dueling", "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.", 
@@ -197,7 +202,9 @@
         "prof_tools": "None",
         "prof_saving_throws": "Strength, Constitution",
         "prof_skills": "Choose two skills from Acrobatics, Animal, Handling, Athletics, History, Insight, Intimidation, Perception, and Survival",
-        "equipment": "You start with the following equipment, in addition to the equipment granted by your background: \n \n* (*a*) chain mail or (*b*) leather armor, longbow, and 20 arrows \n* (*a*) a martial weapon and a shield or (*b*) two martial weapons \n* (*a*) a light crossbow and 20 bolts or (*b*) two handaxes \n* (*a*) a dungeoneer's pack or (*b*) an explorer's pack",
+        "equipment": [
+            "You start with the following equipment, in addition to the equipment granted by your background:", "*Chain mail or leather armor, longbow, and 20 arrows", "*A martial weapon and a shield or two martial weapons", "*A light crossbow and 20 bolts or two handaxes", "A dungeoneer's pack or an explorer's pack"
+        ],
         "table": "| Level | Proficiency Bonus | Features                                          | \n|-------|-------------------|---------------------------------------------------| \n| 1st   | +2                | Fighting Style, Second Wind                       | \n| 2nd   | +2                | Action Surge (one use)                            | \n| 3rd   | +2                | Martial Archetype                                 | \n| 4th   | +2                | Ability Score Improvement                         | \n| 5th   | +3                | Extra Attack                                      | \n| 6th   | +3                | Ability Score Improvement                         | \n| 7th   | +3                | Martial Archetype Feature                         | \n| 8th   | +3                | Ability Score Improvement                         | \n| 9th   | +4                | Indomitable (one use)                             | \n| 10th  | +4                | Martial Archetype Feature                         | \n| 11th  | +4                | Extra Attack (2)                                  | \n| 12th  | +4                | Ability Score Improvement                         | \n| 13th  | +5                | Indomitable (two uses)                            | \n| 14th  | +5                | Ability Score Improvement                         | \n| 15th  | +5                | Martial Archetype Feature                         | \n| 16th  | +5                | Ability Score Improvement                         | \n| 17th  | +6                | Action Surge (two uses), Indomitable (three uses) | \n| 18th  | +6                | Martial Archetype Feature                         | \n| 19th  | +6                | Ability Score Improvement                         | \n| 20th  | +6                | Extra Attack (3)                                  | ",
         "spellcasting_ability": "",
         "subtypes_name": "Martial Archetypes",
