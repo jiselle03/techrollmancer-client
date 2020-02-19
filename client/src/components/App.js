@@ -56,16 +56,13 @@ const App = () => {
     });
   }, []);
 
-  useEffect(() => {
-    User.current().then(currentUser => { 
-        setCurrentUser(currentUser);
-        setIsLoading(false);
-      });
-  }, []);
-
   const destroySession = () => {
     Session.destroy().then(setCurrentUser(null));
   };
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
   
   if(isLoading) {
     return(
