@@ -18,13 +18,14 @@ export const SignInPage = props => {
         event.preventDefault();
         const { currentTarget: form } = event;
         const fd = new FormData(form);
+        setErrors([]);
         
         Session.create({
-            email: fd.get("email"),
+            username: fd.get("username"),
             password: fd.get("password")
         }).then(data => {
             if (data.status === 404) {
-                setErrors([...errors, { message: "Wrong email or password"}]);
+                setErrors([...errors, { message: "Wrong username or password"}]);
             } else {
                 props.history.push("/");
                 if (typeof props.onSignIn === "function") {
@@ -51,14 +52,14 @@ export const SignInPage = props => {
                             <InputLabel htmlFor="username">Username*</InputLabel>
                             <Input
                             id="username"
-                            type="username"
+                            type="text"
                             name="username"
                             startAdornment={
                                 <InputAdornment position="start">
                                 <AccountCircle id="account-icon" />
                                 </InputAdornment>
                             }
-                            placeholder="Email Address"
+                            placeholder="Username"
                             required
                             />
                         </FormControl>
