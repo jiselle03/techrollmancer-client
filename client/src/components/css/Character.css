@@ -35,12 +35,14 @@ div.MuiTabs-root.tabs {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 960px) {
     div.character-background {
         margin-left: 20.25em;
         max-width: 100vw;
     }
+}
 
+@media (min-width: 1200px) {
     .character-sheet {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
