@@ -31,14 +31,9 @@ import { WeaponIndexPage } from './library/WeaponIndexPage';
 import { ArmorIndexPage } from './library/ArmorIndexPage';
 import { ConditionIndexPage } from './library/ConditionIndexPage';
 
-import { CharacterStatsPage } from './character/CharacterStatsPage';
-import { CharacterSpellsPage } from './character/CharacterSpellsPage';
-import { CharacterInventoryPage } from './character/CharacterInventoryPage';
-import { CharacterFeaturesPage } from './character/CharacterFeaturesPage';
-import { CharacterTraitsPage } from './character/CharacterTraitsPage';
-import { CharacterJournalPage } from './character/CharacterJournalPage';
 import { CharacterNewPage } from './character/CharacterNewPage';
 import { CharacterIndexPage } from './character/CharacterIndexPage';
+import { CharacterShowPage } from './character/CharacterShowPage';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -108,33 +103,8 @@ const App = () => {
           />
           <AuthRoute 
             isAuthenticated={!!currentUser}
-            component={CharacterStatsPage}
-            path="/characters/:id/stats"
-          />
-          <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={CharacterSpellsPage}
-            path="/characters/:id/spells"
-          />
-          <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={CharacterInventoryPage}
-            path="/characters/:id/inventory"
-          />
-          <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={CharacterFeaturesPage}
-            path="/characters/:id/features"
-          />
-          <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={CharacterTraitsPage}
-            path="/characters/:id/traits"
-          />
-          <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={CharacterJournalPage}
-            path="/characters/:id/journal"
+            component={CharacterShowPage}
+            path="/characters/:id"
           />
           <AuthRoute 
             isAuthenticated={!!currentUser}

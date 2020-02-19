@@ -1,35 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import '../css/Character.css';
 import { utils } from '../js/utils';
-import { Character } from '../../api/character';
-import { CharacterNav } from './CharacterNav';
-import { CircularProgress } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 
-export const CharacterStatsPage = props => {
-  const [character, setCharacter] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    Character.one(props.match.params.id).then(character => { 
-        setCharacter(character);
-        setIsLoading(false);
-      });
-  }, [props.match.params.id]);
-
-  if (isLoading) {
-    return(
-        <CircularProgress variant="determinate" />
-    );
-  };
+export const CharacterStats = props => {
   
-  const { name, hp, armor_class, level, str, dex, con, int, wis, cha } = character;
+  const { character } = props;
+  const { name, hp, armor_class, level, str, dex, con, int, wis, cha } = props.character;
 
   return (
-    <div className="main-stats character-background">
+    <>
       <h1 className="character-name-title">{name.toUpperCase()}</h1>
-      <CharacterNav character={character} />
 
       <div className="character-sheet">
         <Card className="hp-ac-initiative stats">
@@ -104,6 +86,6 @@ export const CharacterStatsPage = props => {
         </Card>
 
       </div>
-    </div>
+    </>
   );
 };

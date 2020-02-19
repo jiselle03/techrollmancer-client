@@ -1,6 +1,6 @@
 
 div.character-background {
-    margin-left: 4em;
+    margin-left: 3.5em;
     min-height: 100vh;
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
         url('../../assets/d20.png');
@@ -20,6 +20,7 @@ div.MuiTabs-root.tabs {
 }
 
 .character-name-title {
+    margin: 0.5em 0 0 0.5em;
 }
 
 .stats {
