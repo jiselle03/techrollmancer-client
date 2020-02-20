@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 
 import '../css/Home.css';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { RandomCharacter } from '../js/generator.js';
 import { utils } from '../js/utils.js';
+import { RandomCharacter } from '../js/generator.js';
+import { BackgroundImage } from '../styles/BackgroundImage';
+import { MainStyle } from '../styles/MainStyle';
 import { Fade } from '../Fade';
-import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
+
+import { Backdrop, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
   
 Fade.propTypes = {
     children: PropTypes.element,
@@ -77,7 +69,7 @@ export const GeneratorPage = () => {
             image={require('../../assets/d20.png')}
             
         >
-            <main className="Main">
+            <MainStyle>
                 <h1>CHARACTER GENERATOR</h1>
                 <Divider />
                 <br />
@@ -261,7 +253,7 @@ export const GeneratorPage = () => {
                     After assigning your ability scores, you can determine your ability modifiers by  
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
                 </p>
-            </main>
+            </MainStyle>
         </BackgroundImage>
     );
 };
