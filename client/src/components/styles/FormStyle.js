@@ -17,3 +17,9 @@ export const FormStyle = props => {
         </div>
     );
 };
+
+export const FormContent = {
+    icon: {
+        color: "#000"
+    }
+};

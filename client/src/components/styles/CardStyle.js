@@ -25,32 +25,13 @@ export const CardStyle = props => {
     );
 };
 
-export const CardContentStyle = props => {
-    const { children } = props;
-
-    return(
-        <div 
-            style={{
-                position: "absolute",
-                bottom: "0",
-                right: "0",
-            }}
-        >
-            {children}
-        </div>
-    );
-};
-
-export const CardTextStyle = props => {
-    const { children } = props;
-
-    return(
-        <div
-            style={{
-                color: "#fff",
-            }}
-        >
-            {children}
-        </div>
-    );
+export const CardContentStyle = {
+    content: {
+        position: "absolute",
+        bottom: "0",
+        right: "0",
+    },
+    text: {
+        color: "#fff",
+    }
 };

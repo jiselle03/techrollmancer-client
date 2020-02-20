@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { User } from '../../api/user';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
-import { FormStyle } from '../styles/FormStyle';
+import { FormStyle, FormContent } from '../styles/FormStyle';
+import { ButtonStyle } from '../styles/ButtonStyle';
 
 import { Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
+import { FlexBox } from '../styles/FlexBox';
 
 export const SignUpPage = props => {
     const handleSubmit = event => {
@@ -56,7 +58,7 @@ export const SignUpPage = props => {
                             type="text"
                             startAdornment={
                                 <InputAdornment position="start">
-                                <AccountCircle id="account-icon" />
+                                    <AccountCircle style={FormContent.icon} />
                                 </InputAdornment>
                             }
                             placeholder="Username"
@@ -71,7 +73,7 @@ export const SignUpPage = props => {
                             type="email"
                             startAdornment={
                                 <InputAdornment position="start">
-                                <Email id="email-icon" />
+                                    <Email style={FormContent.icon} />
                                 </InputAdornment>
                             }
                             placeholder="Email Address"
@@ -85,7 +87,7 @@ export const SignUpPage = props => {
                             type="password"
                             startAdornment={
                                 <InputAdornment position="start">
-                                <Lock id="password-icon" />
+                                    <Lock style={FormContent.icon} />
                                 </InputAdornment>
                             }
                             placeholder="Password"
@@ -100,7 +102,7 @@ export const SignUpPage = props => {
                             type="password"
                             startAdornment={
                                 <InputAdornment position="start">
-                                <Lock id="password-icon" />
+                                    <Lock style={FormContent.icon} />
                                 </InputAdornment>
                             }
                             placeholder="Password Confirmation"
@@ -108,13 +110,21 @@ export const SignUpPage = props => {
                             />
                         </FormControl>
 
-                        <div className="center">
-                            <button className="button" onClick={handleSubmit}>SIGN UP</button>
-                        </div>
+                        <FlexBox
+                            justifyContent="center"
+                        >
+                            <button style={ButtonStyle.formButton} onClick={handleSubmit}>SIGN UP</button>
+                        </FlexBox>
 
                         <Divider variant="middle" />
 
-                        <p className="center">Don't have an account? <Link to="/sign_in" className="signin-link">SIGN IN</Link></p>
+                        <FlexBox
+                            justifyContent="center"
+                        >
+                            <Typography variant="p" style={{marginTop: "1em"}}>
+                                Don't have an account? <Link to="/sign_in" className="signin-link">SIGN IN</Link>
+                            </Typography>
+                        </FlexBox>
                     </Card>
                 </FormStyle>
             </MainStyle>

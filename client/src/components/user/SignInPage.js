@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { Session } from '../../api/session';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
-import { FormStyle } from '../styles/FormStyle';
+import { FormStyle, FormContent } from '../styles/FormStyle';
+import { ButtonStyle } from '../styles/ButtonStyle';
+import { FlexBox } from '../styles/FlexBox';
 
 import { Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
 import { AccountCircle, Lock } from '@material-ui/icons';
@@ -67,7 +69,7 @@ export const SignInPage = props => {
                                 name="username"
                                 startAdornment={
                                     <InputAdornment position="start">
-                                    <AccountCircle id="account-icon" />
+                                        <AccountCircle style={FormContent.icon} />
                                     </InputAdornment>
                                 }
                                 placeholder="Username"
@@ -85,7 +87,7 @@ export const SignInPage = props => {
                                 name="password"
                                 startAdornment={
                                     <InputAdornment position="start">
-                                    <Lock id="password-icon" />
+                                        <Lock style={FormContent.icon} />
                                     </InputAdornment>
                                 }
                                 placeholder="Password"
@@ -93,14 +95,22 @@ export const SignInPage = props => {
                                 />
                             </FormControl>
 
-                            <div className="center">
-                                <button className="button">SIGN IN</button>
-                            </div>
+                            <FlexBox
+                                justifyContent="center"
+                            >
+                                <button style={ButtonStyle.formButton}>SIGN IN</button>
+                            </FlexBox>
                         </form>
 
                         <Divider variant="middle" />
-
-                        <p className="center">Don't have an account? <Link to="/sign_up" className="signup-link">SIGN UP</Link></p>
+                        
+                        <FlexBox
+                            justifyContent="center"
+                        >
+                            <Typography variant="p" style={{marginTop: "1em"}}>
+                                Don't have an account? <Link to="/sign_up" className="signup-link">SIGN UP</Link>
+                            </Typography>
+                        </FlexBox>
                     </Card>
                 </FormStyle>
 

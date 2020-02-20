@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
-import { CardStyle, CardContentStyle, CardTextStyle } from '../styles/CardStyle';
+import { MainStyle } from '../styles/MainStyle';
+import { Grid } from '../styles/Grid';
+import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Divider, Typography } from '@material-ui/core';
 
@@ -59,8 +60,8 @@ export const RaceIndexPage = () => {
 
                 <Divider />
                 
-                <div id="grid-container">
-                    <br />
+                <br />
+                <Grid>
                 {races.map(race => (
                     <div key={race.slug}>
                         <Link 
@@ -72,24 +73,21 @@ export const RaceIndexPage = () => {
                                 imagePosition="50%"
                             >
                                 <Card>
-                                    <CardContentStyle>
-                                        <CardContent>
-                                            <CardTextStyle>
-                                                <Typography 
-                                                    variant={race.slug === "dragonborn" ? "h4" : "h3"} 
-                                                    gutterBottom={false}
-                                                >
-                                                    {race.name}
-                                                </Typography>
-                                            </CardTextStyle>
-                                        </CardContent>
-                                    </CardContentStyle>
+                                    <CardContent style={CardContentStyle.content}>
+                                            <Typography 
+                                                variant={race.slug === "dragonborn" ? "h4" : "h3"} 
+                                                gutterBottom={false}
+                                                style={CardContentStyle.text}
+                                            >
+                                                {race.name}
+                                            </Typography>
+                                    </CardContent>
                                 </Card>
                             </CardStyle>
                         </Link>
                     </div>
                 ))}
-                </div>
+                </Grid>
             </MainStyle>
         </BackgroundImage>
     );

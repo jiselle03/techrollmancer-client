@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
-import { CardStyle, CardContentStyle, CardTextStyle } from '../styles/CardStyle';
+import { MainStyle } from '../styles/MainStyle';
+import { Grid } from '../styles/Grid';
+import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Divider, Typography } from '@material-ui/core';
 
@@ -57,8 +58,9 @@ export const ClassIndexPage = () => {
                 
                 <Divider />
 
-                <div id="grid-container">
-                    <br />
+                <br />
+                
+                <Grid>
                 {classes.map(charClass => (
                     <div key={charClass.slug}>
                         <Link 
@@ -71,21 +73,21 @@ export const ClassIndexPage = () => {
                                 imagePosition="50%"
                             >
                                 <Card>
-                                    <CardContentStyle>
-                                        <CardContent>
-                                            <CardTextStyle>
-                                                <Typography variant="h3" align="right">
-                                                    {charClass.name}
-                                                </Typography>
-                                            </CardTextStyle>
-                                        </CardContent>
-                                    </CardContentStyle>
+                                    <CardContent style={CardContentStyle.content}>
+                                        <Typography 
+                                            variant="h3" 
+                                            align="right"
+                                            style={CardContentStyle.text}
+                                        >
+                                            {charClass.name}
+                                        </Typography>
+                                    </CardContent>
                                 </Card>
                             </CardStyle>
                         </Link>
                     </div>
                 ))}
-                </div>
+                </Grid>
             </MainStyle>
         </BackgroundImage>
     );

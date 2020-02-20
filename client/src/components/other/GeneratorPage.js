@@ -4,7 +4,9 @@ import { utils } from '../js/utils.js';
 import { RandomCharacter } from '../js/generator.js';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
-import { Fade } from '../Fade';
+import { FlexBox } from '../styles/FlexBox';
+import { ButtonStyle } from '../styles/ButtonStyle';
+import { FadeStyle, Fade } from '../styles/FadeStyle';
 
 import { Backdrop, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -56,7 +58,6 @@ export const GeneratorPage = () => {
     };
     const refreshD6 = () => {
         setRolls([]);
-        handleCloseD6();
     };
     const d6Roll = () => {
         handleOpenD6();
@@ -69,35 +70,54 @@ export const GeneratorPage = () => {
             
         >
             <MainStyle>
-                <h1>CHARACTER GENERATOR</h1>
+                <Typography variant="h2">
+                    CHARACTER GENERATOR
+                </Typography>
+
                 <Divider />
-                <br />
-                <p className="instructions">
+
+                <Typography variant="subtitle1" style={{marginTop: "1em"}}>
                     Much of what your character does in the game depends on their scores for the following six abilities: 
                     <strong> Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.</strong>
-                </p>
+                </Typography>
                 
-                <p className="instructions">You can create a character in 3 ways:</p>
+                <Typography variant="subtitle1" style={{marginTop: "1em"}}>
+                    You can create a character in 3 ways:
+                </Typography>
 
-                <Card className="standard-array generator">
-                    <h3>Standard Array</h3>
-                    <p>
+                <Card 
+                    style={{
+                        margin: "0.5em",
+                        padding: "1em"
+                    }}
+                >
+                    <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
+                        Standard Array
+                    </Typography>
+                    <Typography variant="subtitle1">
                         Assign each of the following numbers to the one of the six abilities: 
                         <strong> 15, 14, 13, 12, 10, 8</strong>.
-                    </p>
-                    <p>
+                    </Typography>
+                    <Typography variant="subtitle1">
                         Then make any changes to your ability scores as a result of your race choice.
-                    </p>
+                    </Typography>
                 </Card>
 
-                <Card className="point-buy generator">
-                    <h3>Point Buy</h3>
-                    <p>
+                <Card 
+                    style={{
+                        margin: "0.5em",
+                        padding: "1em"
+                    }}
+                >
+                    <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
+                        Point Buy
+                    </Typography>
+                    <Typography variant="subtitle1">
                         You have 27 points to spend on your character's ability scores. 
                         The cost of each score is shown on the table below. 15 is the highest 
                         ability score you can end up with before applying racial increases. 
                         You cannot have a score lower than 8.
-                    </p>
+                    </Typography>
                     <TableContainer component={Paper}>
                     <Table className="point-buy table" aria-label="point buy table">
                         <TableHead>
@@ -144,114 +164,163 @@ export const GeneratorPage = () => {
                     </TableContainer>
                 </Card>
 
-                <Card className="roll-stats generator">
-                    <h3>Rolling Stats</h3>
-                    <p>
+                <Card 
+                    style={{
+                        margin: "0.5em",
+                        padding: "1em"
+                    }}
+                >
+                    <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
+                        Rolling Stats
+                    </Typography>
+                    <Typography variant="subtitle1">
                         Roll <strong>4d6</strong> and record the cumulative total of the highest three results six times.
                         Assign each score to one of the six ability scores, then make any changes to your ability scores as a result of your race choice.
-                    </p>
+                    </Typography>
+
                     <Divider />
-                    <div className="roll-buttons">
+
+                    <FlexBox
+                        justifyContent="center"
+                    >
                         <button 
                             onClick={quickRoll}
-                            className="roll-button"
+                            style={ButtonStyle.modalButton}
                         >
                             QUICK ROLL
                         </button>
 
                         <button 
                             onClick={d6Roll}
-                            className="roll-button"
+                            style={ButtonStyle.modalButton}
                         >
                             ROLL D6
                         </button>
-                    </div>
+                    </FlexBox>
 
-                        <Modal
-                            className="quick-roll modal"
-                            open={openQR}
-                            onClose={handleCloseQR}
-                            closeAfterTransition
-                            BackdropComponent={Backdrop}
-                            BackdropProps={{
+                    
+                    <Modal
+                        open={openQR}
+                        onClose={handleCloseQR}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
                             timeout: 500,
-                            }}
+                        }}
+                    >
+                        <FlexBox
+                            alignItems="center"
+                            justifyContent="center"
+                            margin="10% 0"
                         >
                             <Fade in={openQR}>
-                            <div className="quick-roll fade center">
-                                <h3 id="modal-title">CHARACTER STATS</h3>
+                                <FadeStyle>
+                                    <h3 id="modal-title">CHARACTER STATS</h3>
 
-                                <p id="race"><strong>Race:</strong> {character._charRace}</p>
-                                <p id="class"><strong>Class:</strong> {character._charClass}</p>
-                                <Divider />
-                                <p id="ability"><strong>Ability Scores</strong></p>
-                                <p>{character._roll1}</p>
-                                <p>{character._roll2}</p>
-                                <p>{character._roll3}</p>
-                                <p>{character._roll4}</p>
-                                <p>{character._roll5}</p>
-                                <p>{character._roll6}</p>
+                                    <p id="race"><strong>Race:</strong> {character._charRace}</p>
+                                    <p id="class"><strong>Class:</strong> {character._charClass}</p>
+                                    <Divider />
+                                    <p id="ability"><strong>Ability Scores</strong></p>
+                                    <p>{character._roll1}</p>
+                                    <p>{character._roll2}</p>
+                                    <p>{character._roll3}</p>
+                                    <p>{character._roll4}</p>
+                                    <p>{character._roll5}</p>
+                                    <p>{character._roll6}</p>
 
-                                <button 
-                                    onClick={handleCloseQR}
-                                    className="roll-button modal"
-                                >
-                                    EXIT
-                                </button>
-                            </div>
+                                    <button 
+                                        onClick={handleCloseQR}
+                                        style={ButtonStyle.modalButton}
+                                    >
+                                        EXIT
+                                    </button>
+                                </FadeStyle>
                             </Fade>
-                        </Modal>
-
+                        </FlexBox>
+                    </Modal>
 
                         <Modal
-                            id="d6-modal"
-                            className="d6 modal"
                             open={openD6}
                             onClose={handleCloseD6}
                             closeAfterTransition
                             BackdropComponent={Backdrop}
                             BackdropProps={{
-                            timeout: 500,
-                        }}
+                                timeout: 500,
+                            }}
+                            
                         >
-                            <Fade in={openD6}>
-                            <div className="d6 fade">
-                                <h2 id="modal-title">ROLLS</h2>
+                            <FlexBox
+                                justifyContent="center"
+                                alignItems="center"
+                                margin="20% 0"
+                            >
+                                <Fade in={openD6}>
+                                    <FadeStyle>
+                                        <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
+                                            ROLLS
+                                        </Typography>
 
-                                <p id="roll-1">1ST: <strong>{rolls[0] ? rolls[0] : ""}</strong></p>
-                                <p id="roll-2">2ND: <strong>{rolls[1] ? rolls[1] : ""}</strong></p>
-                                <p id="roll-3">3RD: <strong>{rolls[2] ? rolls[2] : ""}</strong></p>
-                                <p id="roll-4">4TH: <strong>{rolls[3] ? rolls[3] : ""}</strong></p>
-                                <Divider />
-                                <p id="roll-4">STAT: <strong>{rolls[3] ? utils.rollAbility(rolls) : ""}</strong></p>
+                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                            1ST: <strong>{rolls[0] ? rolls[0] : " "}</strong>
+                                        </Typography>
+                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                            2ND: <strong>{rolls[1] ? rolls[1] : " "}</strong>
+                                        </Typography>
+                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                            3RD: <strong>{rolls[2] ? rolls[2] : " "}</strong>
+                                        </Typography>
+                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                            4TH: <strong>{rolls[3] ? rolls[3] : " "}</strong>
+                                        </Typography>
 
-                                <div className="center">
-                                    <div className={!rolls[3] ? null : "hidden"}>
-                                        <button 
-                                            onClick={rollD6}
-                                            className="roll-button modal"
+                                        <Divider />
+
+                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                            STAT: <strong>{rolls[3] ? utils.rollAbility(rolls) : " "}</strong>
+                                        </Typography>
+
+                                        <FlexBox
+                                            justifyContent="center"
                                         >
-                                            ROLL D6
-                                        </button>
-                                    </div>
-                                    <div className={rolls[3] ? null : "hidden"}>
-                                        <button 
-                                            onClick={refreshD6}
-                                            className="roll-button modal"
-                                        >
-                                            START OVER
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            </Fade>
+                                            <div className={!rolls[3] ? null : "hidden"}>
+                                                    <button 
+                                                        onClick={rollD6}
+                                                        style={ButtonStyle.modalButton}
+                                                    >
+                                                        ROLL D6
+                                                    </button>
+                                                    <button 
+                                                        onClick={handleCloseD6}
+                                                        style={ButtonStyle.modalButton}
+                                                    >
+                                                        EXIT
+                                                    </button>
+                                            </div>
+                                            <div className={rolls[3] ? null : "hidden"}>
+                                                <button 
+                                                    onClick={refreshD6}
+                                                    style={ButtonStyle.modalButton}
+                                                >
+                                                    START OVER
+                                                </button>
+                                                <button 
+                                                    onClick={handleCloseD6}
+                                                    style={ButtonStyle.modalButton}
+                                                >
+                                                    EXIT
+                                                </button>
+                                            </div>
+                                        </FlexBox>
+                                    </FadeStyle>
+                                </Fade>
+                            </FlexBox>    
                         </Modal>
                 </Card>
 
-                <p className="instructions">
+                <Typography variant="subtitle1">
                     After assigning your ability scores, you can determine your ability modifiers by  
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
-                </p>
+                </Typography>
             </MainStyle>
         </BackgroundImage>
     );

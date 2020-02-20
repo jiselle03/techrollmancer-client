@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import { Character } from '../../api/character';
 import { CharacterNew } from './CharacterNew';
-import { Fade } from '../Fade';
+import { FadeStyle, Fade } from '../styles/FadeStyle';
 import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
-import { CardStyle, CardContentStyle, CardTextStyle } from '../styles/CardStyle';
+import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import Typography from '@material-ui/core/Typography';
 import { Backdrop, Card, CardContent, CircularProgress, Divider, Fab, Modal } from '@material-ui/core';
@@ -130,19 +130,23 @@ export const CharacterIndexPage = () => {
                                         image={character.photo_url}
                                         imageSize="100%"
                                     >
-                                        <Card className={`${character.name} card`}>
-                                            <CardContentStyle>
-                                                <CardContent className="content">
-                                                    <CardTextStyle>
-                                                        <Typography variant="h5" align="right">
-                                                            {character.name}
-                                                        </Typography>
-                                                        <Typography variant="subtitle1" align="right">
-                                                            {character.gender} {character.race}
-                                                        </Typography>
-                                                    </CardTextStyle>
-                                                </CardContent>
-                                            </CardContentStyle>
+                                        <Card>
+                                            <CardContent style={CardContentStyle.content}>
+                                                <Typography
+                                                    variant="h5" 
+                                                    align="right"
+                                                    style={CardContentStyle.text}
+                                                >
+                                                    {character.name}
+                                                </Typography>
+                                                <Typography 
+                                                    variant="subtitle1" 
+                                                    align="right"
+                                                    style={CardContentStyle.text}
+                                                >
+                                                    {character.gender} {character.race}
+                                                </Typography>
+                                            </CardContent>
                                         </Card>
                                     </CardStyle>
                                 </Link>
