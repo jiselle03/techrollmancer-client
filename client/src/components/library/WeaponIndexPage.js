@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import '../css/Index.css';
 import { BackgroundImage } from '../styles/BackgroundImage';
 
 import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';

@@ -2,18 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { BackgroundImage } from '../styles/BackgroundImage';
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { MainStyle } from '../styles/MainStyle';
+
+import { Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 
 export const LibrariesIndexPage = () => {
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
         >
-            <main className="Main">
-                <h1>Libraries</h1>
+            <MainStyle>
+                <Typography variant="h2">
+                    Libraries
+                </Typography>
+
                 <Divider />
                 <br />
 
@@ -48,7 +50,7 @@ export const LibrariesIndexPage = () => {
                         </ListItem>
                     </Link>
                 </List>
-            </main>
+            </MainStyle>
         </BackgroundImage>
     );
 };

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import '../css/Home.css';
 import { utils } from '../js/utils.js';
 import { RandomCharacter } from '../js/generator.js';
 import { BackgroundImage } from '../styles/BackgroundImage';
