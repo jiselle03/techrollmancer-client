@@ -19,4 +19,17 @@ class Character < ApplicationRecord
     validates :wis, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :cha, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :speed, numericality: { only_integer: true }
+
+    before_save :titleize_name
+    before_save :titleize_gender
+
+    private
+
+    def titleize_name
+        self.name.titleize
+    end
+
+    def titleize_gender
+        self.gender.titleize
+    end
 end

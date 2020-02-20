@@ -40,6 +40,7 @@ super_user = User.create(
 
 c = Character.create(
     name: "Ja'el Willow",
+    gender: "Male",
     race: "Half-Elf",
     class_1: "Monk",
     class_2: "Cleric",

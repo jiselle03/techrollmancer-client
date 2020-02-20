@@ -50,6 +50,7 @@ class Api::V1::CharactersController < Api::ApplicationController
     def character_params
         params.require(:character).permit(
             :name,
+            :gender,
             :race,
             :class_1,
             :class_2,
