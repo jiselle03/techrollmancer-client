@@ -2,15 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { User } from '../../api/user';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import EmailIcon from '@material-ui/icons/Email';
-import LockIcon from '@material-ui/icons/Lock';
-import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
+import { MainStyle } from '../styles/MainStyle';
+
+import { Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
+import { AccountCircle, Email, Lock } from '@material-ui/icons';
 
 export const SignUpPage = props => {
     const handleSubmit = event => {
@@ -36,7 +31,7 @@ export const SignUpPage = props => {
 
     return (
         <div className="signup-background SignUp">
-            <main className="Main">
+            <MainStyle>
                 <Card id="signup-form">
                     <h2 className="center">Create an Account</h2>
                     <FormControl>
@@ -61,7 +56,7 @@ export const SignUpPage = props => {
                         type="email"
                         startAdornment={
                             <InputAdornment position="start">
-                            <EmailIcon id="email-icon" />
+                            <Email id="email-icon" />
                             </InputAdornment>
                         }
                         placeholder="Email Address"
@@ -75,7 +70,7 @@ export const SignUpPage = props => {
                         type="password"
                         startAdornment={
                             <InputAdornment position="start">
-                            <LockIcon id="password-icon" />
+                            <Lock id="password-icon" />
                             </InputAdornment>
                         }
                         placeholder="Password"
@@ -90,7 +85,7 @@ export const SignUpPage = props => {
                         type="password"
                         startAdornment={
                             <InputAdornment position="start">
-                            <LockIcon id="password-icon" />
+                            <Lock id="password-icon" />
                             </InputAdornment>
                         }
                         placeholder="Password Confirmation"
@@ -106,7 +101,7 @@ export const SignUpPage = props => {
 
                     <p className="center">Don't have an account? <Link to="/sign_in" className="signin-link">SIGN IN</Link></p>
                 </Card>
-            </main>
+            </MainStyle>
         </div>
     );
 };

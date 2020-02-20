@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Session } from '../../api/session';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LockIcon from '@material-ui/icons/Lock';
-import Card from '@material-ui/core/Card';
-import Divider from '@material-ui/core/Divider';
+import { MainStyle } from '../styles/MainStyle';
+
+import { Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
+import { AccountCircle, Lock } from '@material-ui/icons';
 
 export const SignInPage = props => {
     const [errors, setErrors] = useState([]);
@@ -37,7 +33,7 @@ export const SignInPage = props => {
 
     return (
         <div className="signin-background SignIn">
-            <main className="Main">
+            <MainStyle>
                 <Card id="signin-form">
                 <h2 className="center">Sign In</h2>
                     <form onSubmit={createSession}>
@@ -74,7 +70,7 @@ export const SignInPage = props => {
                             name="password"
                             startAdornment={
                                 <InputAdornment position="start">
-                                <LockIcon id="password-icon" />
+                                <Lock id="password-icon" />
                                 </InputAdornment>
                             }
                             placeholder="Password"
@@ -92,7 +88,7 @@ export const SignInPage = props => {
                     <p className="center">Don't have an account? <Link to="/sign_up" className="signup-link">SIGN UP</Link></p>
                 </Card>
 
-            </main>
+            </MainStyle>
         </div>
     );
 };
