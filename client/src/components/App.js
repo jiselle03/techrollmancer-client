@@ -15,7 +15,7 @@ import { GeneratorPage } from './other/GeneratorPage';
 import { SchedulerPage } from './other/SchedulerPage';
 import { NotFoundPage } from './other/NotFoundPage';
 
-import { Libraries } from './library/Libraries';
+import { LibrariesIndexPage } from './library/LibrariesIndexPage';
 import { RaceIndexPage } from './library/RaceIndexPage';
 import { RaceShowPage } from './library/RaceShowPage';
 import { ClassIndexPage } from './library/ClassIndexPage';
@@ -75,7 +75,7 @@ const App = () => {
         </header>
         <Switch>
           <Route exact path="/" component={WelcomePage} />
-          <Route exact path="/libraries" component={Libraries} />
+          <Route exact path="/libraries" component={LibrariesIndexPage} />
           <Route exact path="/libraries/races" component={RaceIndexPage} />
           <Route path="/libraries/races/:slug" component={RaceShowPage} />
           <Route exact path="/libraries/classes" component={ClassIndexPage} />
