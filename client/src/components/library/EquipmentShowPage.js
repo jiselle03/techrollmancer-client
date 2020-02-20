@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { CircularProgress } from '@material-ui/core';
 import { utils } from '../js/utils';
-import Divider from '@material-ui/core/Divider';
+import { BackgroundImage } from '../styles/BackgroundImage';
+import { MainStyle } from '../styles/MainStyle';
+
+import { CircularProgress, Divider, Typography } from '@material-ui/core';
 
 const getEquipment = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/equipment/${slug}`);
@@ -30,8 +32,10 @@ export const EquipmentShowPage = props => {
     const { armor_class, str_minimum, stealth_disadvantage, damage, speed, capacity, weight, cost, desc } = equipment;
 
     return (
-        <div className="equipment show-background">
-            <main className="Main">
+        <BackgroundImage
+            image={require('../../assets/d20.png')}
+        >
+            <MainStyle>
                 <div className="equipment-name">
                     <h1>{equipment.name.toUpperCase()}</h1>
                     <span className="category"><em>{equipment.equipment_category}, {utils.getCategory(equipment)}</em></span>
@@ -73,7 +77,7 @@ export const EquipmentShowPage = props => {
                     <p>{desc}</p>
                 </div>
 
-            </main>
-        </div>
+            </MainStyle>
+        </BackgroundImage>
     );
 };
