@@ -1,12 +1,13 @@
 import React from "react";
 
 import '../css/Home.css';
+import { MainStyle } from '../styles/MainStyle';
 
 export const WelcomePage = (props) => (
     <div className="welcome-background Home-Container">
-        <main className="Main">
+        <MainStyle>
             <div>Techrollmancer</div>
             <div> Welcome to Techrollmancer</div>
-        </main>
+        </MainStyle>
     </div>
 );
