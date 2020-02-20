@@ -18,13 +18,12 @@ ActiveRecord::Schema.define(version: 2020_02_12_012401) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "race"
-    t.integer "level"
     t.string "class_1"
     t.string "class_2"
     t.string "class_3"
     t.integer "class_1_level", default: 1
-    t.integer "class_2_level", default: 1
-    t.integer "class_3_level", default: 1
+    t.integer "class_2_level", default: 0
+    t.integer "class_3_level", default: 0
     t.integer "hp"
     t.string "alignment"
     t.text "photo_url"

@@ -8,11 +8,10 @@ class Character < ApplicationRecord
 
     validates :name, presence: true, uniqueness: true
     validates :race, presence: true
-    validates :level, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :class_1, presence: true
     validates :class_1_level, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
-    validates :class_2_level, numericality: { only_integer: true }, inclusion: { in: 1..19 }
-    validates :class_3_level, numericality: { only_integer: true }, inclusion: { in: 1..18 }
+    validates :class_2_level, numericality: { only_integer: true }, inclusion: { in: 0..19 }
+    validates :class_3_level, numericality: { only_integer: true }, inclusion: { in: 0..18 }
     validates :str, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :dex, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :con, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }

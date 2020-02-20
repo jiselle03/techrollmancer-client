@@ -7,7 +7,8 @@ import Card from '@material-ui/core/Card';
 export const CharacterStats = props => {
   
   const { character } = props;
-  const { name, hp, armor_class, level, str, dex, con, int, wis, cha } = props.character;
+  const { name, hp, armor_class, str, dex, con, int, wis, cha } = character;
+  const level = utils.getLevel(character);
 
   return (
     <>
@@ -60,24 +61,24 @@ export const CharacterStats = props => {
 
         <Card className="ability stats">
           <h3>Skills</h3>
-          <p>{utils.getAbilityMod(character, "acrobatics")} Acrobatics</p>
-          <p>{utils.getAbilityMod(character, "animal handling")} Animal Handling</p>
-          <p>{utils.getAbilityMod(character, "arcana")} Arcana</p>
-          <p>{utils.getAbilityMod(character, "athletics")} Athletics</p>
-          <p>{utils.getAbilityMod(character, "deception")} Deception</p>
-          <p>{utils.getAbilityMod(character, "history")} History</p>
-          <p>{utils.getAbilityMod(character, "insight")} Insight</p>
-          <p>{utils.getAbilityMod(character, "intimidation")} Intimidation</p>
-          <p>{utils.getAbilityMod(character, "investigation")} Investigation</p>
-          <p>{utils.getAbilityMod(character, "medicine")} Medicine</p>
-          <p>{utils.getAbilityMod(character, "nature")} Nature</p>
-          <p>{utils.getAbilityMod(character, "perception")} Perception</p>
-          <p>{utils.getAbilityMod(character, "performance")} Performance</p>
-          <p>{utils.getAbilityMod(character, "persuasion")} Persuasion</p>
-          <p>{utils.getAbilityMod(character, "religion")} Religion</p>
-          <p>{utils.getAbilityMod(character, "sleight_of_hand")} Sleight of Hand</p>
-          <p>{utils.getAbilityMod(character, "stealth")} Stealth</p>
-          <p>{utils.getAbilityMod(character, "survival")} Survival</p>
+          <p>{utils.getAbilityMod(character, level, "acrobatics")} Acrobatics</p>
+          <p>{utils.getAbilityMod(character, level, "animal handling")} Animal Handling</p>
+          <p>{utils.getAbilityMod(character, level, "arcana")} Arcana</p>
+          <p>{utils.getAbilityMod(character, level, "athletics")} Athletics</p>
+          <p>{utils.getAbilityMod(character, level, "deception")} Deception</p>
+          <p>{utils.getAbilityMod(character, level, "history")} History</p>
+          <p>{utils.getAbilityMod(character, level, "insight")} Insight</p>
+          <p>{utils.getAbilityMod(character, level, "intimidation")} Intimidation</p>
+          <p>{utils.getAbilityMod(character, level, "investigation")} Investigation</p>
+          <p>{utils.getAbilityMod(character, level, "medicine")} Medicine</p>
+          <p>{utils.getAbilityMod(character, level, "nature")} Nature</p>
+          <p>{utils.getAbilityMod(character, level, "perception")} Perception</p>
+          <p>{utils.getAbilityMod(character, level, "performance")} Performance</p>
+          <p>{utils.getAbilityMod(character, level, "persuasion")} Persuasion</p>
+          <p>{utils.getAbilityMod(character, level, "religion")} Religion</p>
+          <p>{utils.getAbilityMod(character, level, "sleight_of_hand")} Sleight of Hand</p>
+          <p>{utils.getAbilityMod(character, level, "stealth")} Stealth</p>
+          <p>{utils.getAbilityMod(character, level, "survival")} Survival</p>
 
         </Card>
 

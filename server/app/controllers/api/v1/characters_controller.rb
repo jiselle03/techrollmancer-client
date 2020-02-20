@@ -48,7 +48,22 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
     
     def character_params
-        params.require(:character).permit(:title, :description, :price)
+        params.require(:character).permit(
+            :name,
+            :race,
+            :class_1,
+            :class_2,
+            :class_3,
+            :class_1_level,
+            :class_2_level,
+            :class_3_level,
+            :hp,
+            :alignment,
+            :photo_url,
+            :str, :dex, :con, :int, :wis, :cha,
+            :armor_class,
+            :speed
+        )
     end
 
     # def authorize!

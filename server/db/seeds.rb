@@ -41,7 +41,6 @@ super_user = User.create(
 c = Character.create(
     name: "Ja'el Willow",
     race: "Half-Elf",
-    level: 10,
     class_1: "Monk",
     class_2: "Cleric",
     class_1_level: 8,
@@ -60,19 +59,6 @@ c = Character.create(
     user_id: 1
 )
 
-if c.valid?
-    Proficiency.create(
-        str_save: true,
-        dex_save: true,
-        athletics: true,
-        deception: true,
-        history: true,
-        medicine: true,
-        religion: true,
-        stealth: true,
-        character_id: 1
-    )
-end
 
 puts Cowsay.say("Generated #{Spell.count} spells.", :dragon)
 puts Cowsay.say("Generated #{User.count} users.", :tux)

@@ -3,13 +3,12 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
     create_table :characters do |t|
       t.string :name
       t.string :race
-      t.integer :level
       t.string :class_1
       t.string :class_2
       t.string :class_3
       t.integer :class_1_level, default: 1
-      t.integer :class_2_level, default: 1
-      t.integer :class_3_level, default: 1
+      t.integer :class_2_level, default: 0
+      t.integer :class_3_level, default: 0
       t.integer :hp
       t.string :alignment
       t.text :photo_url
