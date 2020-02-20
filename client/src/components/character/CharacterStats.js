@@ -51,12 +51,12 @@ export const CharacterStats = props => {
 
         <Card className="saving-throws stats">
           <h3>Saving Throws</h3>
-          <p>{utils.getAbilityMod(character, "str_save")} Strength</p>
-          <p>{utils.getAbilityMod(character, "dex_save")} Dexterity</p>
-          <p>{utils.getAbilityMod(character, "con_save")} Constitution</p>
-          <p>{utils.getAbilityMod(character, "int_save")} Intelligence</p>
-          <p>{utils.getAbilityMod(character, "wis_save")} Wisdom</p>
-          <p>{utils.getAbilityMod(character, "cha_save")} Charisma</p>
+          <p>{utils.getAbilityMod(character, level, "str_save")} Strength</p>
+          <p>{utils.getAbilityMod(character, level, "dex_save")} Dexterity</p>
+          <p>{utils.getAbilityMod(character, level, "con_save")} Constitution</p>
+          <p>{utils.getAbilityMod(character, level, "int_save")} Intelligence</p>
+          <p>{utils.getAbilityMod(character, level, "wis_save")} Wisdom</p>
+          <p>{utils.getAbilityMod(character, level, "cha_save")} Charisma</p>
         </Card>
 
         <Card className="ability stats">

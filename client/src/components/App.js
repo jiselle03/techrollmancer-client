@@ -104,7 +104,7 @@ const App = () => {
           <AuthRoute 
             isAuthenticated={!!currentUser}
             component={CharacterShowPage}
-            path="/characters/:id"
+            exact path="/characters/:id"
           />
           <AuthRoute 
             isAuthenticated={!!currentUser}

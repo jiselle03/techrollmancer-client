@@ -69,7 +69,7 @@ export const CharacterIndexPage = () => {
                 {characters.map(character => (
                     <div key={character.id}>
                         <Link 
-                            to={`/characters/${character.id}/stats`} 
+                            to={`/characters/${character.id}`} 
                             className="link" 
                         >
                             <Card className={`${character.name} card`}>
