@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import '../css/Index.css';
+import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { CardStyle, CardContentStyle, CardTextStyle } from '../styles/CardStyle';
-import { CircularProgress } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
+
+import { Card, CardContent, CircularProgress, Divider, Typography } from '@material-ui/core';
 
 const getRaces = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/races");
@@ -55,10 +53,15 @@ export const RaceIndexPage = () => {
         <BackgroundImage 
             image={require('../../assets/d20.png')}
         >
-            <main className="Main">
-                <h1>RACES</h1>
+            <MainStyle>
+                <Typography variant="h2">
+                    RACES
+                </Typography>
+
                 <Divider />
+                
                 <div id="grid-container">
+                    <br />
                 {races.map(race => (
                     <div key={race.slug}>
                         <Link 
@@ -88,7 +91,7 @@ export const RaceIndexPage = () => {
                     </div>
                 ))}
                 </div>
-            </main>
+            </MainStyle>
         </BackgroundImage>
     );
 };

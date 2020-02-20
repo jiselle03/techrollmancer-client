@@ -4,11 +4,9 @@ import axios from 'axios';
 
 import '../css/Index.css';
 import { BackgroundImage } from '../styles/BackgroundImage';
-import { CircularProgress } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
+
+import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { MainStyle } from '../styles/MainStyle';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -35,12 +33,17 @@ export const WeaponIndexPage = () => {
         <BackgroundImage 
             image={require('../../assets/d20.png')}
         >
-            <main className="Index-Container Main">
-                <h1>WEAPONS</h1>
+            <MainStyle>
+                <Typography variant="h2">
+                    WEAPONS
+                </Typography>
+                
                 <Divider />
 
                 <div className="list-container">
-                    <h3>Simple Melee</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Simple Melee
+                    </Typography>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Weapon" && equipment.category_range === "Simple Melee"
@@ -57,7 +60,9 @@ export const WeaponIndexPage = () => {
 
                     <Divider />
 
-                    <h3>Simple Ranged</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Simple Ranged
+                    </Typography>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Weapon" && equipment.category_range === "Simple Ranged"
@@ -74,7 +79,9 @@ export const WeaponIndexPage = () => {
 
                     <Divider />
 
-                    <h3>Martial Melee</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Martial Melee
+                    </Typography>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Weapon" && equipment.category_range === "Martial Melee"
@@ -91,7 +98,9 @@ export const WeaponIndexPage = () => {
 
                     <Divider />
 
-                    <h3>Martial Ranged</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Martial Ranged
+                    </Typography>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Weapon" && equipment.category_range === "Martial Ranged"
@@ -107,7 +116,7 @@ export const WeaponIndexPage = () => {
                     </List>
                 
                 </div>
-            </main>
+            </MainStyle>
         </BackgroundImage>
     );
 };

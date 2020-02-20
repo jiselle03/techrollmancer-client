@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import './css/NavBar.css';
+import { NavBarDetails } from './NavBarDetails';
+
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
-import { NavBarDetails } from './NavBarDetails';
 
 function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;

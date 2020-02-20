@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import '../css/Show.css';
-import { CircularProgress } from '@material-ui/core';
 import { utils } from '../js/utils';
-import Divider from '@material-ui/core/Divider';
+import { MainStyle } from '../styles/MainStyle';
+
+import { CircularProgress, Divider, Typography } from '@material-ui/core';
 
 const getRace = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/races/${slug}`);
@@ -29,42 +29,59 @@ export const RaceShowPage = props => {
 
     return (
         <div className={`${race.slug}-background`}>
-            <main className="Main">
-                <h2>{race.name.toUpperCase()}</h2>
+            <MainStyle>
+                <Typography variant="h2">
+                    {race.name.toUpperCase()}
+                </Typography>
+
                 <Divider />
 
                 <div className={race.desc ? null : "hidden"}>
-                    <h3>{race.name} Traits</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        {race.name} Traits
+                    </Typography>
                     <p>{race.desc}</p>
                 </div>
 
                 <div className={race.asi_desc ? null : "hidden"}>
-                    <h3>Ability Score Increase</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Ability Score Increase
+                    </Typography>
                     <p>{race.asi_desc}</p>
                 </div>
                 
                 <div className={race.age ? null : "hidden"}>
-                    <h3>Age</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Age
+                    </Typography>
                     <p>{race.age}</p>
                 </div>
 
                 <div className={race.alignment ? null : "hidden"}>
-                    <h3>Alignment</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Alignment
+                    </Typography>
                     <p>{race.alignment}</p>
                 </div>
 
                 <div className={race.size ? null : "hidden"}>
-                    <h3>Size</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Size
+                    </Typography>
                     <p>{race.size}</p>
                 </div>
 
                 <div className={race.speed_desc ? null : "hidden"}>
-                    <h3>Speed</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Speed
+                    </Typography>
                     <p>{race.speed_desc}</p>
                 </div>
 
                 <div className={race.languages ? null : "hidden"}>
-                    <h3>Languages</h3>
+                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                        Languages
+                    </Typography>
                     <p>{race.languages}</p>
                 </div>
 
@@ -81,16 +98,24 @@ export const RaceShowPage = props => {
                 </div>
                 
                 <div className={race.subraces ? null : "hidden"}>
-                    <h2>Subraces</h2>
+                    <Typography variant="h4" style={{marginTop: "1em"}}>
+                        Subraces
+                    </Typography>
 
                     {race.subraces.map(subrace => (
                         <div className="subrace">
-                            <h3>{subrace.name}</h3>
+                            <Typography variant="h5" style={{marginTop: "1em"}}>
+                                {subrace.name}
+                            </Typography>
 
-                            <h3>Description</h3>
+                            <Typography variant="h6" style={{marginTop: "1em"}}>
+                                Description
+                            </Typography>
                             <p>{subrace.desc}</p>
 
-                            <h3>Ability Score Improvement</h3>
+                            <Typography variant="h6" style={{marginTop: "1em"}}>
+                                Ability Score Improvement
+                            </Typography>
                             <p>{subrace.asi_desc}</p>
 
                             <p dangerouslySetInnerHTML={{
@@ -99,7 +124,7 @@ export const RaceShowPage = props => {
                         </div>
                     ))}
                 </div>
-            </main>
+            </MainStyle>
         </div>
     );
 };

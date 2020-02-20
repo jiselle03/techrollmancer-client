@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import '../css/Show.css';
-import { CircularProgress } from '@material-ui/core';
 import { utils } from '../js/utils';
-import Divider from '@material-ui/core/Divider';
+import { MainStyle } from '../styles/MainStyle';
+
+import { CircularProgress, Divider, Typography } from '@material-ui/core';
 
 const getClass = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
@@ -33,18 +33,25 @@ export const ClassShowPage = props => {
 
     return (
         <div className={`${slug}-background`}>
-            <main className="Main">
-                <h1>{name.toUpperCase()}</h1>
+            <MainStyle>
+                <Typography variant="h2">
+                    {name.toUpperCase()}
+                </Typography>
+
                 <Divider />
 
                 <p>As a {name}, you gain the following class features:</p>
                 
-                <h3>Hit Points</h3>
+                <Typography variant="h5" style={{marginTop: "1em"}}>
+                    Hit Points
+                </Typography>
                 <strong>Hit Dice:</strong> {hit_dice} per {name} level<br />
                 <strong>HP at 1st Level:</strong> {hp_at_1st_level}<br />
                 <strong>HP at Higher Levels:</strong> {hp_at_higher_levels}<br />
                 
-                <h3>Proficiencies</h3>
+                <Typography variant="h5" style={{marginTop: "1em"}}>
+                    Proficiencies
+                </Typography>
                 <p><strong>Armor:</strong> {prof_armor}<br />
                 <strong>Weapons:</strong> {prof_weapons}<br />
                 <strong>Tools:</strong> {prof_tools}<br />
@@ -58,12 +65,14 @@ export const ClassShowPage = props => {
                     __html: utils.getBlurb(desc)
                 }}></div>
                 
-                <h3>Equipment</h3>
+                <Typography variant="h5" style={{marginTop: "1em"}}>
+                    Equipment
+                </Typography>
                 <div dangerouslySetInnerHTML={{
                     __html: utils.getBlurb(equipment)
                 }}></div>
 
-            </main>
+            </MainStyle>
         </div>
     );
 };

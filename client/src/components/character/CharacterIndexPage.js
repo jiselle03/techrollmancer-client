@@ -5,18 +5,14 @@ import '../css/Index.css';
 import { Character } from '../../api/character';
 import { CharacterNew } from './CharacterNew';
 import { Fade } from '../Fade';
+import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { CardStyle, CardContentStyle, CardTextStyle } from '../styles/CardStyle';
+
 import Typography from '@material-ui/core/Typography';
-import { CircularProgress } from '@material-ui/core';
-import { Fab } from '@material-ui/core';
+import { Backdrop, Card, CardContent, CircularProgress, Divider, Fab, Modal } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
 
 Fade.propTypes = {
     children: PropTypes.element,
@@ -29,7 +25,7 @@ export const CharacterIndexPage = () => {
     const [characters, setCharacters] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [openNew, setOpenNew] = useState(false);
-
+    
     const handleOpenNew = () => {
         setOpenNew(true);
     };
@@ -42,11 +38,23 @@ export const CharacterIndexPage = () => {
             <>
                 <Fab 
                     color="secondary" 
+                    size="large"
                     aria-label="add"
                     className="add-button"
                     onClick={handleOpenNew}
+                    style={{
+                        position: "fixed",
+                        bottom: "40px",
+                        right: "40px",
+                        width: "5em",
+                        height: "5em"
+                    }}
                 >
-                    <AddIcon />
+                    <AddIcon 
+                        style={{
+                            color: "#fff"
+                        }}
+                    />
                 </Fab>
     
                 <Modal
@@ -93,55 +101,60 @@ export const CharacterIndexPage = () => {
         <BackgroundImage 
             image={require('../../assets/d20.png')}  
         >
-            {!characters && (
-                <main className="Main">
-                    <h1>Characters</h1>
-                    <Divider /><br />
+            <MainStyle>
+                <Typography variant="h2">
+                    CHARACTERS
+                </Typography>
 
-                    <h4>You have not created any characters.</h4>
-                    {addButton()}
-                </main>
-            )}
+                <Divider />
 
-            {characters && (
-                <main className="Main">
-                    <h1>CHARACTERS</h1>
-                    <Divider /><br />
+                {!characters && (
+                    <>
+                        <Typography variant="h4" style={{marginTop: "1em"}}>
+                            You have not created any characters.
+                        </Typography>
+                        {addButton()}
+                    </>
+                )}
 
-                    <div id="grid-container">
-                    {characters.map(character => (
-                        <div key={character.id}>
-                            <Link 
-                                to={`/characters/${character.id}`} 
-                                className="link" 
-                            >
-                                <CardStyle
-                                    image={character.photo_url}
-                                    imageSize="100%"
+                {characters && (
+                    <>
+                        <div id="grid-container">
+                        <br />
+                        {characters.map(character => (
+                            <div key={character.id}>
+                                <Link 
+                                    to={`/characters/${character.id}`} 
+                                    className="link" 
                                 >
-                                    <Card className={`${character.name} card`}>
-                                        <CardContentStyle>
-                                            <CardContent className="content">
-                                                <CardTextStyle>
-                                                    <Typography variant="h5" align="right">
-                                                        {character.name}
-                                                    </Typography>
-                                                    <Typography variant="subtitle1" align="right">
-                                                        {character.gender} {character.race}
-                                                    </Typography>
-                                                </CardTextStyle>
-                                            </CardContent>
-                                        </CardContentStyle>
-                                    </Card>
-                                </CardStyle>
-                            </Link>
+                                    <CardStyle
+                                        image={character.photo_url}
+                                        imageSize="100%"
+                                    >
+                                        <Card className={`${character.name} card`}>
+                                            <CardContentStyle>
+                                                <CardContent className="content">
+                                                    <CardTextStyle>
+                                                        <Typography variant="h5" align="right">
+                                                            {character.name}
+                                                        </Typography>
+                                                        <Typography variant="subtitle1" align="right">
+                                                            {character.gender} {character.race}
+                                                        </Typography>
+                                                    </CardTextStyle>
+                                                </CardContent>
+                                            </CardContentStyle>
+                                        </Card>
+                                    </CardStyle>
+                                </Link>
+                            </div>
+                        ))}
                         </div>
-                    ))}
-                    </div>
 
-                    {addButton()}
-                </main>
-            )}
+                        {addButton()}
+                    </>
+                )}
+            </MainStyle>
         </BackgroundImage>
     );
 };

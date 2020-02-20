@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import '../css/Index.css';
 import { BackgroundImage } from '../styles/BackgroundImage';
-import { CircularProgress } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
+import { MainStyle } from '../styles/MainStyle';
+
+import { CircularProgress, List, ListItem, ListItemText, Typography } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -32,18 +32,23 @@ export const EquipmentIndexPage = () => {
         <BackgroundImage 
             image={require('../../assets/d20.png')}
         >
-            <main className="Main">
-                <h1>EQUIPMENT</h1>
-                <Divider />
+            <MainStyle>
+                <Typography variant="h2">
+                    EQUIPMENT
+                </Typography>
 
+                <List component="nav">
                 {equipments.map(equipment => (
                     <div key={equipment.slug}>
-                    <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>
-                        {equipment.name}
-                    </Link>
+                            <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>
+                                <ListItem button>
+                                    <ListItemText primary={equipment.name} />
+                                </ListItem>
+                            </Link>
                     </div>
                 ))}
-            </main>
+                </List>
+            </MainStyle>
         </BackgroundImage>
     );
 };
