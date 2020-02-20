@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { User } from '../../api/user';
+import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
+import { FormStyle } from '../styles/FormStyle';
 
-import { Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
+import { Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
 
 export const SignUpPage = props => {
@@ -30,78 +32,92 @@ export const SignUpPage = props => {
     };
 
     return (
-        <div className="signup-background SignUp">
+        <BackgroundImage
+            image={require('../../assets/d20.png')}
+        >
             <MainStyle>
-                <Card id="signup-form">
-                    <h2 className="center">Create an Account</h2>
-                    <FormControl>
-                        <InputLabel htmlFor="username">Username*</InputLabel>
-                        <Input
-                        id="username"
-                        type="text"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <AccountCircle id="account-icon" />
-                            </InputAdornment>
-                        }
-                        placeholder="Username"
-                        required
-                        />
-                    </FormControl>
+                <FormStyle
+                    height="85vh"
+                    margin="10vh auto"
+                >
+                    <Card style={{
+                            boxShadow: "5px 0 5px -2px #888", 
+                            padding: "1em 0"
+                        }}
+                    >
+                        <Typography variant="h3" align="center">
+                        Create an Account
+                        </Typography>
 
-                    <FormControl>
-                        <InputLabel htmlFor="email">Email</InputLabel>
-                        <Input
-                        id="email"
-                        type="email"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <Email id="email-icon" />
-                            </InputAdornment>
-                        }
-                        placeholder="Email Address"
-                        />
-                    </FormControl>
+                        <FormControl>
+                            <InputLabel htmlFor="username">Username*</InputLabel>
+                            <Input
+                            id="username"
+                            type="text"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                <AccountCircle id="account-icon" />
+                                </InputAdornment>
+                            }
+                            placeholder="Username"
+                            required
+                            />
+                        </FormControl>
 
-                    <FormControl>
-                        <InputLabel htmlFor="password">Password*</InputLabel>
-                        <Input
-                        id="password"
-                        type="password"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <Lock id="password-icon" />
-                            </InputAdornment>
-                        }
-                        placeholder="Password"
-                        required
-                        />
-                    </FormControl>
+                        <FormControl>
+                            <InputLabel htmlFor="email">Email</InputLabel>
+                            <Input
+                            id="email"
+                            type="email"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                <Email id="email-icon" />
+                                </InputAdornment>
+                            }
+                            placeholder="Email Address"
+                            />
+                        </FormControl>
 
-                    <FormControl>
-                        <InputLabel htmlFor="password_confirmation">Password Confirmation*</InputLabel>
-                        <Input
-                        id="password_confirmation"
-                        type="password"
-                        startAdornment={
-                            <InputAdornment position="start">
-                            <Lock id="password-icon" />
-                            </InputAdornment>
-                        }
-                        placeholder="Password Confirmation"
-                        required
-                        />
-                    </FormControl>
+                        <FormControl>
+                            <InputLabel htmlFor="password">Password*</InputLabel>
+                            <Input
+                            id="password"
+                            type="password"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                <Lock id="password-icon" />
+                                </InputAdornment>
+                            }
+                            placeholder="Password"
+                            required
+                            />
+                        </FormControl>
 
-                    <div className="center">
-                        <button className="button" onClick={handleSubmit}>SIGN UP</button>
-                    </div>
+                        <FormControl>
+                            <InputLabel htmlFor="password_confirmation">Password Confirmation*</InputLabel>
+                            <Input
+                            id="password_confirmation"
+                            type="password"
+                            startAdornment={
+                                <InputAdornment position="start">
+                                <Lock id="password-icon" />
+                                </InputAdornment>
+                            }
+                            placeholder="Password Confirmation"
+                            required
+                            />
+                        </FormControl>
 
-                    <Divider variant="middle" />
+                        <div className="center">
+                            <button className="button" onClick={handleSubmit}>SIGN UP</button>
+                        </div>
 
-                    <p className="center">Don't have an account? <Link to="/sign_in" className="signin-link">SIGN IN</Link></p>
-                </Card>
+                        <Divider variant="middle" />
+
+                        <p className="center">Don't have an account? <Link to="/sign_in" className="signin-link">SIGN IN</Link></p>
+                    </Card>
+                </FormStyle>
             </MainStyle>
-        </div>
+        </BackgroundImage>
     );
 };
