@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import '../css/Show.css';
-import { CircularProgress } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
+import { BackgroundImage } from '../styles/BackgroundImage';
+import { MainStyle } from '../styles/MainStyle';
+
+import { CircularProgress, Divider, Typography } from '@material-ui/core';
 
 const getSpell = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
@@ -28,8 +30,10 @@ export const SpellShowPage = props => {
     };
 
     return (
-        <div className="spell show-background">
-            <main className="Main">
+        <BackgroundImage
+            image={require('../../assets/d20.png')}
+        >
+            <MainStyle>
                 <h1>{spell.name.toUpperCase()}</h1>
                 <Divider /><br />
 
@@ -47,7 +51,7 @@ export const SpellShowPage = props => {
                 <p><strong>Level:</strong> {spell.level}</p>
                 <p><strong>School:</strong> {spell.school}</p>
                 <p><strong>Class:</strong> {spell.dnd_class}</p>
-            </main>
-        </div>
+            </MainStyle>
+        </BackgroundImage>
     );
 };
