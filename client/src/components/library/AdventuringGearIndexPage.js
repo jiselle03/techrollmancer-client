@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import '../css/Index.css';
+import { BackgroundImage } from '../styles/BackgroundImage';
 import { CircularProgress } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -31,7 +32,9 @@ export const AdventuringGearIndexPage = () => {
     };
 
     return (
-        <div className="adventuring-gear index-background">
+        <BackgroundImage 
+            image={require('../../assets/d20.png')}
+        >
             <main className="Main">
                 <h1>ADVENTURING GEAR</h1>
                 <Divider />
@@ -156,6 +159,6 @@ export const AdventuringGearIndexPage = () => {
                 </div>
                 
             </main>
-        </div>
+        </BackgroundImage>
     );
 };

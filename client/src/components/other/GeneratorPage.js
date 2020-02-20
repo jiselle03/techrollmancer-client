@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 
 import '../css/Home.css';
+import { BackgroundImage } from '../styles/BackgroundImage';
 import { RandomCharacter } from '../js/generator.js';
 import { utils } from '../js/utils.js';
+import { Fade } from '../Fade';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import { useSpring, animated } from 'react-spring/web.cjs';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,30 +17,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-const Fade = React.forwardRef(function Fade(props, ref) {
-    const { in: open, children, onEnter, onExited, ...other } = props;
-    const style = useSpring({
-      from: { opacity: 0 },
-      to: { opacity: open ? 1 : 0 },
-      onStart: () => {
-        if (open && onEnter) {
-          onEnter();
-        }
-      },
-      onRest: () => {
-        if (!open && onExited) {
-          onExited();
-        }
-      },
-    });
-  
-    return (
-      <animated.div ref={ref} style={style} {...other}>
-        {children}
-      </animated.div>
-    );
-  });
   
 Fade.propTypes = {
     children: PropTypes.element,
@@ -96,7 +73,10 @@ export const GeneratorPage = () => {
     };
 
     return (
-        <div className="generator-background">
+        <BackgroundImage 
+            image={require('../../assets/d20.png')}
+            
+        >
             <main className="Main">
                 <h1>CHARACTER GENERATOR</h1>
                 <Divider />
@@ -282,6 +262,6 @@ export const GeneratorPage = () => {
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
                 </p>
             </main>
-        </div>
+        </BackgroundImage>
     );
 };

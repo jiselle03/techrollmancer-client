@@ -31,7 +31,7 @@ import { WeaponIndexPage } from './library/WeaponIndexPage';
 import { ArmorIndexPage } from './library/ArmorIndexPage';
 import { ConditionIndexPage } from './library/ConditionIndexPage';
 
-import { CharacterNewPage } from './character/CharacterNewPage';
+// import { CharacterNewPage } from './character/CharacterNewPage';
 import { CharacterIndexPage } from './character/CharacterIndexPage';
 import { CharacterShowPage } from './character/CharacterShowPage';
 
@@ -90,12 +90,12 @@ const App = () => {
           <Route exact path="/libraries/equipment" component={EquipmentIndexPage} />
           <Route path="/libraries/equipment/:slug" component={EquipmentShowPage} />
           <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
-          <AuthRoute 
+          {/* <AuthRoute 
             isAuthenticated={!!currentUser}
             component={CharacterNewPage}
             path = "/characters/new"
             exact
-          />
+          /> */}
           <AuthRoute 
             isAuthenticated={!!currentUser}
             component={CharacterIndexPage}

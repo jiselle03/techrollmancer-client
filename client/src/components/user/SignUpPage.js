@@ -99,7 +99,7 @@ export const SignUpPage = props => {
                     </FormControl>
 
                     <div className="center">
-                        <button className="button">SIGN UP</button>
+                        <button className="button" onClick={handleSubmit}>SIGN UP</button>
                     </div>
 
                     <Divider variant="middle" />

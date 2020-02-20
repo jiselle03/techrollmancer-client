@@ -23,8 +23,7 @@ function ListItemLink(props) {
 };
 
 export const NavBarDetails = ({ currentUser, onSignOut }) => {
-    const handleSignOutClick = event => {
-        event.preventDefault();
+    const handleSignOutClick = () => {
         if (typeof onSignOut === "function") {
             onSignOut();
         }
@@ -145,7 +144,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                         </ListItemIcon>
                         <ListItemText primary={currentUser.username.toUpperCase()} />
                     </ListItemLink>
-                    <ListItemLink button onClick={handleSignOutClick}>
+                    <ListItemLink button href="/" onClick={handleSignOutClick}>
                         <ListItemIcon>
                             <ExitToAppIcon />
                         </ListItemIcon>

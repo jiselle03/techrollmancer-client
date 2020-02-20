@@ -12,7 +12,7 @@ function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
 };
 
-export const NavBar = ({ currentUser }) => {
+export const NavBar = ({ currentUser, onSignOut }) => {
     const [state, setState] = useState({
         left: false
       });
@@ -21,7 +21,7 @@ export const NavBar = ({ currentUser }) => {
 
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-        return;
+            return;
         }
 
         setState({ ...state, [side]: open });
@@ -51,14 +51,14 @@ export const NavBar = ({ currentUser }) => {
                             onClick={toggleDrawer('left', false)}
                             onKeyDown={toggleDrawer('left', false)}
                         >
-                            <NavBarDetails currentUser={currentUser} />
+                            <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
                         </div>
                     </Drawer>
                 </div>
             )}
 
             {matches && (
-                <NavBarDetails currentUser={currentUser} />
+                <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
             )}
         </div>
     );

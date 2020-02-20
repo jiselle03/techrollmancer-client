@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import '../css/Index.css';
+import { BackgroundImage } from '../styles/BackgroundImage';
 import { CircularProgress } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -32,7 +33,9 @@ export const SpellIndexPage = () => {
     };
 
     return (
-        <div className="spell index-background">
+        <BackgroundImage 
+            image={require('../../assets/d20.png')}
+        >
             <main className="Main">
                 <div className="list-container">
                     <h1>SPELLS</h1>
@@ -147,6 +150,6 @@ export const SpellIndexPage = () => {
                     </List>
                 </div>
             </main>
-        </div>
+        </BackgroundImage>
     );
 };

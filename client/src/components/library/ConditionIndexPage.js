@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import '../css/Index.css';
+import { BackgroundImage } from '../styles/BackgroundImage';
 import { CircularProgress } from '@material-ui/core';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -41,7 +42,9 @@ export const ConditionIndexPage = () => {
     };
 
     return (
-        <div className="condition index-background">
+        <BackgroundImage 
+            image={require('../../assets/d20.png')}
+        >
             <main className="Main">
                 <h1>CONDITIONS</h1>
                 <Divider /><br />
@@ -136,6 +139,6 @@ export const ConditionIndexPage = () => {
                 <p>Any Attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.</p>
 
             </main>
-        </div>
+        </BackgroundImage>
     );
 };
