@@ -5,6 +5,7 @@ import { utils } from '../js/utils';
 import { MainStyle } from '../styles/MainStyle';
 
 import { CircularProgress, Divider, Typography } from '@material-ui/core';
+import { BackgroundImage } from '../styles/BackgroundImage';
 
 const getClass = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
@@ -13,6 +14,27 @@ const getClass = slug => {
 export const ClassShowPage = props => {
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+
+    const getSize = charClass => {
+        switch(charClass) {
+            case "barbarian":
+                return "50vh";
+            case "bard":
+                return "50vh";
+            case "druid":
+                return "60vh";
+            case "fighter":
+                return "80vh";
+            case "monk":
+                return "60vh";
+            case "paladin":
+                return "75vh";
+            case "ranger":
+                return "90vh";
+            default:
+                return "70vh";
+        };
+    };
 
     useEffect(() => {
         getClass(props.match.params.slug).then(oneClass => {
@@ -32,7 +54,10 @@ export const ClassShowPage = props => {
         desc, equipment, spellcasting_ability } = oneClass;
 
     return (
-        <div className={`${slug}-background`}>
+        <BackgroundImage
+            image={require(`../../assets/${slug}.png`)}
+            size={getSize(slug)}
+        >
             <MainStyle>
                 <Typography variant="h2">
                     {name.toUpperCase()}
@@ -73,6 +98,6 @@ export const ClassShowPage = props => {
                 }}></div>
 
             </MainStyle>
-        </div>
+        </BackgroundImage>
     );
 };

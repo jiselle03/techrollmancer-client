@@ -50,7 +50,6 @@ export const ClassIndexPage = () => {
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
-            
         >
             <MainStyle>
                 <Typography variant="h2">

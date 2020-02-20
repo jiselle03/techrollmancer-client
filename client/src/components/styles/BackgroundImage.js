@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const BackgroundImage = props => {
-    const { children, image, size } = props;
+    const { children, image, size, position } = props;
 
     return(
         <div 
@@ -10,6 +10,8 @@ export const BackgroundImage = props => {
                 url('${image}')`,
                 backgroundSize: size || "cover",
                 backgroundAttachment: "fixed",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: position || "right",
                 overflow: "auto",
                 minHeight: "100vh"
             }}
