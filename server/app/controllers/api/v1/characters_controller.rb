@@ -21,7 +21,7 @@ class Api::V1::CharactersController < Api::ApplicationController
             render json: { id: @character.id }
         else
             render(
-                json: { errors: question.errors },
+                json: { errors: @character.errors },
                 status: 422 #unproceesable entity
             )
         end
