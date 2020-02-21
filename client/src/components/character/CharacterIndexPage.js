@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { Character } from '../../api/character';
 import { CharacterNew } from './CharacterNew';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
-import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
+import { MainStyle } from '../styles/MainStyle';
+import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import Typography from '@material-ui/core/Typography';
@@ -118,7 +119,7 @@ export const CharacterIndexPage = () => {
 
                 {characters && (
                     <>
-                        <div id="grid-container">
+                        <Grid>
                         <br />
                         {characters.map(character => (
                             <div key={character.id}>
@@ -152,7 +153,7 @@ export const CharacterIndexPage = () => {
                                 </Link>
                             </div>
                         ))}
-                        </div>
+                        </Grid>
 
                         {addButton()}
                     </>

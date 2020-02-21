@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 import { Character } from '../../api/character';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import { CircularProgress } from '@material-ui/core'
-import { CharacterStats } from './CharacterStats'
-import { CharacterSpells } from './CharacterSpells'
-import { CharacterInventory } from './CharacterInventory'
-import { CharacterFeatures } from './CharacterFeatures'
-import { CharacterTraits } from './CharacterTraits'
-import { CharacterJournal } from './CharacterJournal'
+import { CharacterStats } from './CharacterStats';
+import { CharacterSpells } from './CharacterSpells';
+import { CharacterInventory } from './CharacterInventory';
+import { CharacterFeatures } from './CharacterFeatures';
+import { CharacterTraits } from './CharacterTraits';
+import { CharacterJournal } from './CharacterJournal';
+import { BackgroundImage } from '../styles/BackgroundImage';
+
+import { Box, CircularProgress, Typography, Tab, Tabs } from '@material-ui/core';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -54,7 +52,9 @@ export const CharacterShowPage = props => {
     };
     
     return (
-      <div className="main-stats character-background">
+      <BackgroundImage
+        image={require('../../assets/d20.png')} 
+      >
         <Tabs
             value={value}
             indicatorColor="secondary"
@@ -87,6 +87,6 @@ export const CharacterShowPage = props => {
         <TabPanel value={value} index={5}>
             <CharacterJournal character={character} />
         </TabPanel>
-      </div>
+      </BackgroundImage>
     );
 };

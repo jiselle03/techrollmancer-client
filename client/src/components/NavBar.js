@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './css/NavBar.css';
 import { NavBarDetails } from './NavBarDetails';
+import { NavBarStyle, NavContainer, Sidebar } from './styles/NavStyle.js';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Drawer from '@material-ui/core/Drawer';
@@ -18,7 +19,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
         left: false
       });
 
-    const ipadPro = useMediaQuery('(min-width:1024px)');
+    const laptop = useMediaQuery('(min-width:1280px)');
 
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -29,10 +30,10 @@ export const NavBar = ({ currentUser, onSignOut }) => {
     };
 
     return (
-        <div className="NavBar-container">
-            {!ipadPro && (
-                <div className="NavBar" id="collapsible">
-                    <div className="sidebar-container">
+        <NavContainer>
+            {!laptop && (
+                <NavBarStyle>
+                    <Sidebar>
                         <Button onClick={toggleDrawer('left', true)} className="MENU">MENU</Button>
                         <ListItemLink button 
                                 href="/"
@@ -45,22 +46,26 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                         {currentUser && (
                             <Link className="USERNAME" to="/characters">{currentUser.username.toUpperCase()}</Link>
                         )}
-                    </div>
+                    </Sidebar>
                     <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
                         <div
                             role="presentation"
                             onClick={toggleDrawer('left', false)}
                             onKeyDown={toggleDrawer('left', false)}
                         >
-                            <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
+                            <NavBarStyle>
+                                <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
+                            </NavBarStyle>
                         </div>
                     </Drawer>
-                </div>
+                </NavBarStyle>
             )}
 
-            {ipadPro && (
-                <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
+            {laptop && (
+                <NavBarStyle>
+                    <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
+                </NavBarStyle>
             )}
-        </div>
+        </NavContainer>
     );
 };

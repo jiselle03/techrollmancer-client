@@ -32,7 +32,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
     const [librariesOpen, setLibrariesOpen] = useState(false);
     const [equipmentOpen, setEquipmentOpen] = useState(false);
 
-    const matches = useMediaQuery('(min-width:960px)');
+    const laptop = useMediaQuery('(min-width:1280px)');
 
 
     const handleClick = tab => {
@@ -62,13 +62,13 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                     <ListItemLink button href="/libraries/spells">
                         <ListItemText className="nested" primary="Spells" />
                     </ListItemLink>
-                    {matches && (
+                    {laptop && (
                     <ListItem button onClick={() => handleClick("equipment")}>
                         <ListItemText className="nested" primary="Equipment" />
                         {equipmentOpen ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
                     )}
-                    {!matches && (
+                    {!laptop && (
                         <ListItemLink button href="/libraries/equipment">
                             <ListItemText className="nested" primary="Equipment" />
                         </ListItemLink>
@@ -113,7 +113,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                     className="logo-static"
                 >
                     TECHR
-                    <i className={`fas fa-dice-d20 fa ${matches ? "fa-spin-hover" : "fa-spin"}`}></i>
+                    <i className={`fas fa-dice-d20 fa ${laptop ? "fa-spin-hover" : "fa-spin"}`}></i>
                     LLMANCER
                 </ListItemLink>         
             }
@@ -171,7 +171,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <ListItemText primary="SCHEDULER" />
             </ListItemLink>
 
-            {matches && (
+            {laptop && (
                 <>
                     <ListItem button onClick={() => handleClick("libraries")}>
                         <ListItemIcon>
@@ -193,7 +193,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 </>
             )}
 
-            {!matches && (
+            {!laptop && (
                 <>
                     <ListItemLink button href="/libraries">
                         <ListItemIcon>
