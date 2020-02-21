@@ -18,7 +18,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
         left: false
       });
 
-    const matches = useMediaQuery('(min-width:960px)');
+    const ipadPro = useMediaQuery('(min-width:1024px)');
 
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -30,7 +30,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
 
     return (
         <div className="NavBar-container">
-            {!matches && (
+            {!ipadPro && (
                 <div className="NavBar" id="collapsible">
                     <div className="sidebar-container">
                         <Button onClick={toggleDrawer('left', true)} className="MENU">MENU</Button>
@@ -58,7 +58,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                 </div>
             )}
 
-            {matches && (
+            {ipadPro && (
                 <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
             )}
         </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import '../css/Home.css';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 

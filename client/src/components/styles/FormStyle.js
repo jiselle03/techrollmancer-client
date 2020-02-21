@@ -21,5 +21,15 @@ export const FormStyle = props => {
 export const FormContent = {
     icon: {
         color: "#000"
+    },
+    link: {
+        textDecoration: "none",
+        color: "rgba(45,99,127,1)",
+        fontWeight: "bold"
+    },
+    field: {
+        padding: "0.5em",
+        margin: "1em 2em",
+        width: "85%"
     }
 };

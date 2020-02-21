@@ -7,7 +7,7 @@ import { MainStyle } from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 import { ButtonStyle } from '../styles/ButtonStyle';
 
-import { Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
+import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
 import { FlexBox } from '../styles/FlexBox';
 
@@ -51,7 +51,7 @@ export const SignUpPage = props => {
                         Create an Account
                         </Typography>
 
-                        <FormControl>
+                        <FormControl style={FormContent.field}>
                             <InputLabel htmlFor="username">Username*</InputLabel>
                             <Input
                             id="username"
@@ -66,7 +66,7 @@ export const SignUpPage = props => {
                             />
                         </FormControl>
 
-                        <FormControl>
+                        <FormControl style={FormContent.field}>
                             <InputLabel htmlFor="email">Email</InputLabel>
                             <Input
                             id="email"
@@ -80,7 +80,7 @@ export const SignUpPage = props => {
                             />
                         </FormControl>
 
-                        <FormControl>
+                        <FormControl style={FormContent.field}>
                             <InputLabel htmlFor="password">Password*</InputLabel>
                             <Input
                             id="password"
@@ -95,7 +95,7 @@ export const SignUpPage = props => {
                             />
                         </FormControl>
 
-                        <FormControl>
+                        <FormControl style={FormContent.field}>
                             <InputLabel htmlFor="password_confirmation">Password Confirmation*</InputLabel>
                             <Input
                             id="password_confirmation"
@@ -113,7 +113,9 @@ export const SignUpPage = props => {
                         <FlexBox
                             justifyContent="center"
                         >
-                            <button style={ButtonStyle.formButton} onClick={handleSubmit}>SIGN UP</button>
+                            <Button variant="contained" style={ButtonStyle.formButton} onClick={handleSubmit}>
+                                SIGN UP
+                            </Button>
                         </FlexBox>
 
                         <Divider variant="middle" />
@@ -122,7 +124,7 @@ export const SignUpPage = props => {
                             justifyContent="center"
                         >
                             <Typography variant="p" style={{marginTop: "1em"}}>
-                                Don't have an account? <Link to="/sign_in" className="signin-link">SIGN IN</Link>
+                                Don't have an account? <Link to="/sign_in" style={FormContent.link}>SIGN IN</Link>
                             </Typography>
                         </FlexBox>
                     </Card>

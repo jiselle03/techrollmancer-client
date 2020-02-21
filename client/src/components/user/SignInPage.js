@@ -8,7 +8,7 @@ import { FormStyle, FormContent } from '../styles/FormStyle';
 import { ButtonStyle } from '../styles/ButtonStyle';
 import { FlexBox } from '../styles/FlexBox';
 
-import { Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
+import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
 import { AccountCircle, Lock } from '@material-ui/icons';
 
 export const SignInPage = props => {
@@ -61,7 +61,7 @@ export const SignInPage = props => {
                                 </div>
                             </div>
                         ): "" }
-                            <FormControl>
+                            <FormControl style={FormContent.field}>
                                 <InputLabel htmlFor="username">Username*</InputLabel>
                                 <Input
                                 id="username"
@@ -79,7 +79,7 @@ export const SignInPage = props => {
                             
                             <br />
 
-                            <FormControl>
+                            <FormControl style={FormContent.field}>
                                 <InputLabel htmlFor="password">Password*</InputLabel>
                                 <Input
                                 id="password"
@@ -98,7 +98,10 @@ export const SignInPage = props => {
                             <FlexBox
                                 justifyContent="center"
                             >
-                                <button style={ButtonStyle.formButton}>SIGN IN</button>
+                                <Button variant="contained" type="submit" style={ButtonStyle.formButton}>
+                                    Sign In
+                                </Button>
+
                             </FlexBox>
                         </form>
 
@@ -108,7 +111,7 @@ export const SignInPage = props => {
                             justifyContent="center"
                         >
                             <Typography variant="p" style={{marginTop: "1em"}}>
-                                Don't have an account? <Link to="/sign_up" className="signup-link">SIGN UP</Link>
+                                Don't have an account? <Link to="/sign_up" style={FormContent.link}>SIGN UP</Link>
                             </Typography>
                         </FlexBox>
                     </Card>

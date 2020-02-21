@@ -4,17 +4,19 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export const Grid = props => {
     const { children, margin } = props;
-    const mediumScreen = useMediaQuery('(min-width:660px)');
-    const largeScreen = useMediaQuery('(min-width:1100px)');
+    
+    const ipad = useMediaQuery('(min-width: 768px)');
+    const desktop = useMediaQuery('(min-width:1280px)');
 
     const getScreenSize = () => {
-        if (largeScreen) {
-            return "repeat(3, 1fr)";
-        } else if (mediumScreen) {
-            return "repeat(2, 1fr)";
-        } else {
-            return "repeat(1, fr)";
-        };;
+        switch(true) {
+            case desktop:
+                return "repeat(3, 1fr)";
+            case ipad:
+                return "repeat(2, 1fr)";
+            default: 
+                return "fr";
+        };
     };
 
     return(
