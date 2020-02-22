@@ -90,16 +90,16 @@ export const ClassShowPage = props => {
                     </p>
                 </div>
                 
-                <div dangerouslySetInnerHTML={{
+                <p dangerouslySetInnerHTML={{
                     __html: utils.getBlurb(desc)
-                }}></div>
+                }}></p>
                 
                 <h2>
                     Equipment
                 </h2>
-                <div dangerouslySetInnerHTML={{
+                <p dangerouslySetInnerHTML={{
                     __html: utils.getBlurb(equipment)
-                }}></div>
+                }}></p>
 
             </MainStyle>
         </BackgroundImage>
