@@ -1,3 +1,22 @@
+/* Techrollmancer */
+
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue',
@@ -6,7 +25,151 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Text */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bungee';
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: 3.5em;
+  color: #000;
+}
+
+h2 {
+  font-size: 2.5em;
+  color: rgba(45,99,127,1);
+}
+
+h3 {
+  font-size: 2.5em;
+  color: #000;
+}
+
+h4 {
+  font-size: 2em;
+  color: rgba(45,99,127,1);
+}
+
+h5 {
+  font-size: 1.5em;
+  color: rgba(45,99,127,1);
+}
+
+h6, p {
+  font-size: 1em;
+}
+
+strong {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.card-text {
+  color: #fff;
+  text-shadow: -1px -1px 0px #000,
+                0px -1px 0px #000,
+                1px -1px 0px #000,
+                -1px  0px 0px #000,
+                1px  0px 0px #000,
+                -1px  1px 0px #000,
+                0px  1px 0px #000,
+                1px  1px 0px #000;
+}
+
+/* Logo */
+
+.fa-spin-hover {
+  border-radius: 50%;
+  transition: transform 1s ease-in-out;
+  margin: 0.5em 0.1em;
+}
+
+.fa-spin-hover:hover {
+  transform: rotate(360deg);
+}
+
+.d20 {
+  padding: 0.1em;
+}
+
+/* Menu Icons */
+
+.MuiSvgIcon-root {
+  color: #fff;
+}
+
+.MuiListItemIcon-root.menu-icon {
+  min-width: 2em;
+}
+
+div.MuiList-root > .MuiListItem-root.MuiButtonBase-root {
+  padding: 0px 1em;
+}
+
+nav > .MuiButtonBase-root.MuiListItem-root {
+  padding: 0 1em;
+  font-size: 1em;
+}
+
+a.link,
+.list-item > a {
+  text-decoration: none;
+  color: black;  
+}
+
+.hidden {
+  display: none;
+}
+
+div.list-container {
+  max-width: 360px;
+}
+
+.list-item {
+  margin-left: 1em;
+}
+
+span.category {
+  font-size: 1.25em;
+}
+
+div.MuiTabs-root.tabs {
+  max-width: 100vw;
+}
+
+.character-sheet {
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.stats {
+  padding: 1em;
+  margin: 0.5em;
+  max-width: 360px;
+}
+
+@media (min-width: 768px) {
+  .character-sheet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 960px) {
+  div.character-background {
+      margin-left: 20.25em;
+      max-width: 100vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .character-sheet {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+  }
 }

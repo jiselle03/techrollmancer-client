@@ -5,7 +5,7 @@ export const utils = {
             if (line[0] === "!") {
                 blurb += "<hr /><h2>" + line.slice(1) + "</h2>"
             } else if (line[0] === "$") {
-                blurb += "<h3>" + line.slice(1) + "</h3>"
+                blurb += "<h2>" + line.slice(1) + "</h2>"
             } else if (line[0] === "#") {
                 blurb += "<h5>" + line.slice(1) + "</h5>"
             } else if (line[0] === "%") {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { utils } from '../js/utils';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, Typography } from '@material-ui/core';
+import { CircularProgress, Divider } from '@material-ui/core';
 import { BackgroundImage } from '../styles/BackgroundImage';
 
 const getClass = slug => {
@@ -59,40 +59,44 @@ export const ClassShowPage = props => {
             size={getSize(slug)}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     {name.toUpperCase()}
-                </Typography>
+                </h1>
 
-                <Divider />
-
-                <p>As a {name}, you gain the following class features:</p>
+                <p>
+                    As a {name}, you gain the following class features:
+                </p>
                 
-                <Typography variant="h5" style={{marginTop: "1em"}}>
+                <h2>
                     Hit Points
-                </Typography>
+                </h2>
                 <strong>Hit Dice:</strong> {hit_dice} per {name} level<br />
                 <strong>HP at 1st Level:</strong> {hp_at_1st_level}<br />
                 <strong>HP at Higher Levels:</strong> {hp_at_higher_levels}<br />
                 
-                <Typography variant="h5" style={{marginTop: "1em"}}>
+                <h2>
                     Proficiencies
-                </Typography>
-                <p><strong>Armor:</strong> {prof_armor}<br />
-                <strong>Weapons:</strong> {prof_weapons}<br />
-                <strong>Tools:</strong> {prof_tools}<br />
-                <strong>Skills:</strong> {prof_skills}</p>
+                </h2>
+                <p>
+                    <strong>Armor:</strong> {prof_armor}<br />
+                    <strong>Weapons:</strong> {prof_weapons}<br />
+                    <strong>Tools:</strong> {prof_tools}<br />
+                    <strong>Skills:</strong> {prof_skills}
+                </p>
 
                 <div className={spellcasting_ability ? null : "hidden"}>
-                    <strong>Spellcasting Ability:</strong> {spellcasting_ability}<br />
+                    <p>
+                        <strong>Spellcasting Ability:</strong> {spellcasting_ability}<br />
+                    </p>
                 </div>
                 
                 <div dangerouslySetInnerHTML={{
                     __html: utils.getBlurb(desc)
                 }}></div>
                 
-                <Typography variant="h5" style={{marginTop: "1em"}}>
+                <h2>
                     Equipment
-                </Typography>
+                </h2>
                 <div dangerouslySetInnerHTML={{
                     __html: utils.getBlurb(equipment)
                 }}></div>

@@ -7,8 +7,10 @@ import { MainStyle } from '../styles/MainStyle';
 import { FlexBox } from '../styles/FlexBox';
 import { ButtonStyle } from '../styles/ButtonStyle';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
+import { TableStyle } from '../styles/TableStyle';
+import { Center } from '../styles/Center';
 
-import { Backdrop, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
+import { Backdrop, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from '@material-ui/core';
 import PropTypes from 'prop-types';
   
 Fade.propTypes = {
@@ -21,6 +23,8 @@ Fade.propTypes = {
 export const GeneratorPage = () => {
     const [openQR, setOpenQR] = useState(false);
     const [character, setCharacter] = useState({});
+
+    const laptop = useMediaQuery('(min-width:1280px)');
 
     const handleOpenQR = () => {
         setOpenQR(true);
@@ -70,113 +74,117 @@ export const GeneratorPage = () => {
             
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     CHARACTER GENERATOR
-                </Typography>
+                </h1>
 
-                <Divider />
-
-                <Typography variant="subtitle1" style={{marginTop: "1em"}}>
+                <p>
                     Much of what your character does in the game depends on their scores for the following six abilities: 
                     <strong> Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.</strong>
-                </Typography>
+                </p>
                 
-                <Typography variant="subtitle1" style={{marginTop: "1em"}}>
+                <p>
                     You can create a character in 3 ways:
-                </Typography>
+                </p>
+                <Center>
+                    <Card 
+                        style={{
+                            width: laptop ? "60vw" : "70vw",
+                            padding: "2em",
+                            margin: "1em 0",
+                        }}
+                    >
+                        <h2>
+                            Standard Array
+                        </h2>
+                        <p>
+                            Assign each of the following numbers to the one of the six abilities: 
+                            <strong> 15, 14, 13, 12, 10, 8</strong>.
+                        </p>
+                        <p>
+                            Then make any changes to your ability scores as a result of your race choice.
+                        </p>
+                    </Card>
 
-                <Card 
-                    style={{
-                        margin: "0.5em",
-                        padding: "1em"
-                    }}
-                >
-                    <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
-                        Standard Array
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        Assign each of the following numbers to the one of the six abilities: 
-                        <strong> 15, 14, 13, 12, 10, 8</strong>.
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        Then make any changes to your ability scores as a result of your race choice.
-                    </Typography>
-                </Card>
+                    <Card 
+                        style={{
+                            width: laptop ? "60vw" : "70vw",
+                            padding: "2em",
+                            margin: "1em 0",
+                        }}
+                    >
+                        <h2>
+                            Point Buy
+                        </h2>
+                        <p>
+                            You have 27 points to spend on your character's ability scores. 
+                            The cost of each score is shown on the table below. 15 is the highest 
+                            ability score you can end up with before applying racial increases. 
+                            You cannot have a score lower than 8.
+                        </p>
 
-                <Card 
-                    style={{
-                        margin: "0.5em",
-                        padding: "1em"
-                    }}
-                >
-                    <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
-                        Point Buy
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        You have 27 points to spend on your character's ability scores. 
-                        The cost of each score is shown on the table below. 15 is the highest 
-                        ability score you can end up with before applying racial increases. 
-                        You cannot have a score lower than 8.
-                    </Typography>
-                    <TableContainer component={Paper}>
-                    <Table className="point-buy table" aria-label="point buy table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>SCORE</TableCell>
-                                <TableCell>COST</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableRow key="8">
-                                <TableCell>8</TableCell>
-                                <TableCell>0</TableCell>
-                            </TableRow>
-                            <TableRow key="9">
-                                <TableCell>9</TableCell>
-                                <TableCell>1</TableCell>
-                            </TableRow>
-                            <TableRow key="10">
-                                <TableCell>10</TableCell>
-                                <TableCell>2</TableCell>
-                            </TableRow>
-                            <TableRow key="11">
-                                <TableCell>11</TableCell>
-                                <TableCell>3</TableCell>
-                            </TableRow>
-                            <TableRow key="12">
-                                <TableCell>12</TableCell>
-                                <TableCell>4</TableCell>
-                            </TableRow>
-                            <TableRow key="13">
-                                <TableCell>13</TableCell>
-                                <TableCell>5</TableCell>
-                            </TableRow>
-                            <TableRow key="14">
-                                <TableCell>14</TableCell>
-                                <TableCell>7</TableCell>
-                            </TableRow>
-                            <TableRow key="15">
-                                <TableCell>15</TableCell>
-                                <TableCell>9</TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                    </TableContainer>
-                </Card>
+                        <TableStyle>
+                            <TableContainer component={Paper}>
+                            <Table className="point-buy table" aria-label="point buy table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>SCORE</TableCell>
+                                        <TableCell>COST</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow key="8">
+                                        <TableCell>8</TableCell>
+                                        <TableCell>0</TableCell>
+                                    </TableRow>
+                                    <TableRow key="9">
+                                        <TableCell>9</TableCell>
+                                        <TableCell>1</TableCell>
+                                    </TableRow>
+                                    <TableRow key="10">
+                                        <TableCell>10</TableCell>
+                                        <TableCell>2</TableCell>
+                                    </TableRow>
+                                    <TableRow key="11">
+                                        <TableCell>11</TableCell>
+                                        <TableCell>3</TableCell>
+                                    </TableRow>
+                                    <TableRow key="12">
+                                        <TableCell>12</TableCell>
+                                        <TableCell>4</TableCell>
+                                    </TableRow>
+                                    <TableRow key="13">
+                                        <TableCell>13</TableCell>
+                                        <TableCell>5</TableCell>
+                                    </TableRow>
+                                    <TableRow key="14">
+                                        <TableCell>14</TableCell>
+                                        <TableCell>7</TableCell>
+                                    </TableRow>
+                                    <TableRow key="15">
+                                        <TableCell>15</TableCell>
+                                        <TableCell>9</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                            </TableContainer>
+                        </TableStyle>
+                    </Card>
 
-                <Card 
-                    style={{
-                        margin: "0.5em",
-                        padding: "1em"
-                    }}
-                >
-                    <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
-                        Rolling Stats
-                    </Typography>
-                    <Typography variant="subtitle1">
-                        Roll <strong>4d6</strong> and record the cumulative total of the highest three results six times.
-                        Assign each score to one of the six ability scores, then make any changes to your ability scores as a result of your race choice.
-                    </Typography>
+                    <Card 
+                        style={{
+                            width: laptop ? "60vw" : "70vw",
+                            padding: "2em",
+                            margin: "1em 0",
+                        }}
+                    >
+                        <h2>
+                            Rolling Stats
+                        </h2>
+                        <p>
+                            Roll <strong>4d6</strong> and record the cumulative total of the highest three results six times.
+                            Assign each score to one of the six ability scores, then make any changes to your ability scores as a result of your race choice.
+                        </p>
 
                     <Divider />
 
@@ -211,22 +219,43 @@ export const GeneratorPage = () => {
                         <FlexBox
                             alignItems="center"
                             justifyContent="center"
-                            margin="10% 0"
+                            margin="10vh 0"
                         >
                             <Fade in={openQR}>
                                 <FadeStyle>
                                     <h3 id="modal-title">CHARACTER STATS</h3>
 
-                                    <p id="race"><strong>Race:</strong> {character._charRace}</p>
-                                    <p id="class"><strong>Class:</strong> {character._charClass}</p>
+                                    <p>
+                                        <strong>Race:</strong> {character._charRace}
+                                    </p>
+                                    <p>
+                                        <strong>Class:</strong> {character._charClass}
+                                    </p>
+                                    
                                     <Divider />
-                                    <p id="ability"><strong>Ability Scores</strong></p>
-                                    <p>{character._roll1}</p>
-                                    <p>{character._roll2}</p>
-                                    <p>{character._roll3}</p>
-                                    <p>{character._roll4}</p>
-                                    <p>{character._roll5}</p>
-                                    <p>{character._roll6}</p>
+                                    
+                                    <h3>
+                                        <strong>Ability Scores</strong>
+                                    </h3>
+                                    
+                                    <p>
+                                        {character._roll1}
+                                    </p>
+                                    <p>
+                                        {character._roll2}
+                                    </p>
+                                    <p>
+                                        {character._roll3}
+                                    </p>
+                                    <p>
+                                        {character._roll4}
+                                    </p>
+                                    <p>
+                                        {character._roll5}
+                                    </p>
+                                    <p>
+                                        {character._roll6}
+                                    </p>
 
                                     <button 
                                         onClick={handleCloseQR}
@@ -252,32 +281,32 @@ export const GeneratorPage = () => {
                             <FlexBox
                                 justifyContent="center"
                                 alignItems="center"
-                                margin="20% 0"
+                                margin="20vh 0"
                             >
                                 <Fade in={openD6}>
                                     <FadeStyle>
-                                        <Typography variant="h4"  style={{marginBottom: "0.5em"}}>
+                                        <h3>
                                             ROLLS
-                                        </Typography>
+                                        </h3>
 
-                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                        <p>
                                             1ST: <strong>{rolls[0] ? rolls[0] : " "}</strong>
-                                        </Typography>
-                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                        </p>
+                                        <p>
                                             2ND: <strong>{rolls[1] ? rolls[1] : " "}</strong>
-                                        </Typography>
-                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                        </p>
+                                        <p>
                                             3RD: <strong>{rolls[2] ? rolls[2] : " "}</strong>
-                                        </Typography>
-                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                        </p>
+                                        <p>
                                             4TH: <strong>{rolls[3] ? rolls[3] : " "}</strong>
-                                        </Typography>
+                                        </p>
 
                                         <Divider />
 
-                                        <Typography variant="h6"  style={{marginBottom: "0.5em"}}>
+                                        <p>
                                             STAT: <strong>{rolls[3] ? utils.rollAbility(rolls) : " "}</strong>
-                                        </Typography>
+                                        </p>
 
                                         <FlexBox
                                             justifyContent="center"
@@ -316,11 +345,12 @@ export const GeneratorPage = () => {
                             </FlexBox>    
                         </Modal>
                 </Card>
+                </Center>
 
-                <Typography variant="subtitle1">
+                <p>
                     After assigning your ability scores, you can determine your ability modifiers by  
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
-                </Typography>
+                </p>
             </MainStyle>
         </BackgroundImage>
     );

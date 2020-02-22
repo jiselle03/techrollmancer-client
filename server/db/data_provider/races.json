@@ -40,7 +40,7 @@
                     }
                 ],
                 "traits": [
-                    "$Dwarven Toughness", "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
+                    "#Dwarven Toughness", "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."
                 ],
                 "asi_desc": "Your Wisdom score increases by 1."
             }
@@ -87,7 +87,7 @@
                     }
                 ],
                 "traits": [
-                    "$Elf Weapon Training", "You have proficiency with the longsword, shortsword, shortbow, and longbow.", "$Cantrip", "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.", "$Extra Language", "You can speak, read, and write one extra language of your choice."
+                    "#Elf Weapon Training", "You have proficiency with the longsword, shortsword, shortbow, and longbow.", "$Cantrip", "You know one cantrip of your choice from the wizard spell list. Intelligence is your spellcasting ability for it.", "$Extra Language", "You can speak, read, and write one extra language of your choice."
                 ],
                 "asi_desc": "Your Intelligence score increases by 1."
             }
@@ -136,7 +136,7 @@
                     }
                 ],
                 "traits": [
-                    "$Naturally Stealthy", "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
+                    "#Naturally Stealthy", "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you."
                 ],
                 "asi_desc": "Your Charisma score increases by 1."
             }
@@ -252,7 +252,7 @@
         "speed_desc": "Your base walking speed is 25 feet.",
         "languages": "You can speak, read, and write Common and Gnomish. The Gnomish language, which uses the Dwarvish script, is renowned for its technical treatises and its catalogs of knowledge about the natural world.",
         "vision": [
-            "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+            "$Darkvision", "Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
         ],
         "traits": [
             "$Gnome Cunning", "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
@@ -271,7 +271,7 @@
                     }
                 ],
                 "traits": [
-                    "$Artificer's Lore", "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.", "Tinker", "You have proficiency with artisan's tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time.", "When you create a device, choose one of the following options:", "*Clockwork Toy", "This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.", "*Fire Starter", "The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.", "*Music Box", "When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
+                    "#Artificer's Lore", "Whenever you make an Intelligence (History) check related to magic items, alchemical objects, or technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply.", "Tinker", "You have proficiency with artisan's tools (tinker's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours (unless you spend 1 hour repairing it to keep the device functioning), or when you use your action to dismantle it; at that time, you can reclaim the materials used to create it. You can have up to three such devices active at a time.", "When you create a device, choose one of the following options:", "*Clockwork Toy", "This toy is a clockwork animal, monster, or person, such as a frog, mouse, bird, dragon, or soldier. When placed on the ground, the toy moves 5 feet across the ground on each of your turns in a random direction. It makes noises as appropriate to the creature it represents.", "*Fire Starter", "The device produces a miniature flame, which you can use to light a candle, torch, or campfire. Using the device requires your action.", "*Music Box", "When opened, this music box plays a single song at a moderate volume. The box stops playing when it reaches the song's end or when it is closed."
                 ],
                 "asi_desc": "Your Constitution score increases by 1."
             }

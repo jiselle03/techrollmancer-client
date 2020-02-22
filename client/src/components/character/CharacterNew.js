@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import '../css/Character.css';
 import { Character } from '../../api/character';
 
 export const CharacterNew = props => {

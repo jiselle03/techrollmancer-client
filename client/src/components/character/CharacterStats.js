@@ -1,7 +1,7 @@
 import React from 'react';
 
-import '../css/Character.css';
 import { utils } from '../js/utils';
+
 import Card from '@material-ui/core/Card';
 
 export const CharacterStats = props => {
@@ -12,7 +12,9 @@ export const CharacterStats = props => {
 
   return (
     <>
-      <h1 className="character-name-title">{name.toUpperCase()}</h1>
+      <h1>
+        {name.toUpperCase()}
+      </h1>
 
       <div className="character-sheet">
         <Card className="hp-ac-initiative stats">

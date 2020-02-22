@@ -9,7 +9,7 @@ export const CardStyle = props => {
                 minWidth: "220px",
                 width: "10em",
                 height: "20em",
-                margin: "0.5em",
+                margin: "1em",
                 borderRadius: "5px",
                 boxShadow: "5px 0 5px -2px #888",
                 position: "relative",
@@ -30,8 +30,5 @@ export const CardContentStyle = {
         position: "absolute",
         bottom: "0",
         right: "0",
-    },
-    text: {
-        color: "#fff",
     }
 };

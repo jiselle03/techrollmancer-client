@@ -9,7 +9,6 @@ import { MainStyle } from '../styles/MainStyle';
 import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
-import Typography from '@material-ui/core/Typography';
 import { Backdrop, Card, CardContent, CircularProgress, Divider, Fab, Modal } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import PropTypes from 'prop-types';
@@ -102,25 +101,25 @@ export const CharacterIndexPage = () => {
             image={require('../../assets/d20.png')}  
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1 style={{marginLeft: "0.2em"}}>
                     CHARACTERS
-                </Typography>
+                </h1>
 
                 <Divider />
 
                 {!characters && (
                     <>
-                        <Typography variant="h4" style={{marginTop: "1em"}}>
+                        <p>
                             You have not created any characters.
-                        </Typography>
+                        </p>
                         {addButton()}
                     </>
                 )}
 
                 {characters && (
                     <>
-                        <Grid>
                         <br />
+                        <Grid>
                         {characters.map(character => (
                             <div key={character.id}>
                                 <Link 
@@ -133,20 +132,12 @@ export const CharacterIndexPage = () => {
                                     >
                                         <Card>
                                             <CardContent style={CardContentStyle.content}>
-                                                <Typography
-                                                    variant="h5" 
-                                                    align="right"
-                                                    style={CardContentStyle.text}
-                                                >
+                                                <h6 className="card-text">
                                                     {character.name}
-                                                </Typography>
-                                                <Typography 
-                                                    variant="subtitle1" 
-                                                    align="right"
-                                                    style={CardContentStyle.text}
-                                                >
+                                                </h6>
+                                                <p className="card-text">
                                                     {character.gender} {character.race}
-                                                </Typography>
+                                                </p>
                                             </CardContent>
                                         </Card>
                                     </CardStyle>

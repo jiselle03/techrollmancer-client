@@ -1,13 +1,12 @@
 import React from 'react';
 
-export const TableStyle = props => {
+export const Center = props => {
     const { children } = props;
 
     return(
-        <div 
+        <div
             style={{
-                margin: "2em auto",
-                width: "50vw",
+                margin: "0 auto"
             }}
         >
             {children}

@@ -6,7 +6,7 @@ import { utils } from '../js/utils';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, Typography } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 const getEquipment = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/equipment/${slug}`);
@@ -37,11 +37,11 @@ export const EquipmentShowPage = props => {
         >
             <MainStyle>
                 <div className="equipment-name">
-                    <h1>{equipment.name.toUpperCase()}</h1>
+                    <h1>
+                        {equipment.name.toUpperCase()}
+                    </h1>
                     <span className="category"><em>{equipment.equipment_category}, {utils.getCategory(equipment)}</em></span>
                 </div>
-
-                <Divider />
 
                 <div className={equipment.equipment_category === "Weapon" ? null : "hidden"}>
                     <p><strong>Damage Dice:</strong> {damage && damage.damage_dice}</p>

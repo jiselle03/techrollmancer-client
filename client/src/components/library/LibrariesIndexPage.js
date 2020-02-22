@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { List, ListItem, ListItemText } from '@material-ui/core';
 
 export const LibrariesIndexPage = () => {
     return (
@@ -12,12 +12,9 @@ export const LibrariesIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     Libraries
-                </Typography>
-
-                <Divider />
-                <br />
+                </h1>
 
                 <List component="nav">
                     <Link className="link" exact to="/libraries/races">

@@ -8,6 +8,7 @@ import { CharacterFeatures } from './CharacterFeatures';
 import { CharacterTraits } from './CharacterTraits';
 import { CharacterJournal } from './CharacterJournal';
 import { BackgroundImage } from '../styles/BackgroundImage';
+import { CharacterNav } from '../styles/CharacterNav';
 
 import { Box, CircularProgress, Typography, Tab, Tabs } from '@material-ui/core';
 
@@ -55,38 +56,42 @@ export const CharacterShowPage = props => {
       <BackgroundImage
         image={require('../../assets/d20.png')} 
       >
-        <Tabs
-            value={value}
-            indicatorColor="secondary"
-            textColor="secondary"
-            onChange={handleChange}
-            className="tabs"
-        >
-            <Tab label="STATS" value={0} />
-            <Tab label="SPELLS" value={1}  />
-            <Tab label="INVENTORY" value={2} />
-            <Tab label="FEATURES" value={3} />
-            <Tab label="TRAITS" value={4} />
-            <Tab label="JOURNAL" value={5} />
-        </Tabs>
-        <TabPanel value={value} index={0}>
-            <CharacterStats character={character} />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-            <CharacterSpells character={character} />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-            <CharacterInventory character={character} />
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-            <CharacterFeatures character={character} />
-        </TabPanel>
-        <TabPanel value={value} index={4}>
-            <CharacterTraits character={character} />
-        </TabPanel>
-        <TabPanel value={value} index={5}>
-            <CharacterJournal character={character} />
-        </TabPanel>
+        <CharacterNav>
+          <Tabs
+              value={value}
+              indicatorColor="secondary"
+              textColor="secondary"
+              onChange={handleChange}
+              className="tabs"
+              variant="scrollable"
+              scrollButtons="auto"
+          >
+              <Tab label="STATS" value={0} />
+              <Tab label="SPELLS" value={1} />
+              <Tab label="INVENTORY" value={2} />
+              <Tab label="FEATURES" value={3} />
+              <Tab label="TRAITS" value={4} />
+              <Tab label="JOURNAL" value={5} />
+          </Tabs>
+          <TabPanel value={value} index={0}>
+              <CharacterStats character={character} />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+              <CharacterSpells character={character} />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+              <CharacterInventory character={character} />
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+              <CharacterFeatures character={character} />
+          </TabPanel>
+          <TabPanel value={value} index={4}>
+              <CharacterTraits character={character} />
+          </TabPanel>
+          <TabPanel value={value} index={5}>
+              <CharacterJournal character={character} />
+          </TabPanel>
+        </CharacterNav>
       </BackgroundImage>
     );
 };

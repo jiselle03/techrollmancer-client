@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -33,16 +33,14 @@ export const MountVehicleIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     MOUNTS AND VEHICLES
-                </Typography>
-
-                <Divider />
+                </h1>
 
                 <div className="list-container">
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Mounts and Other Animals
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Mounts and Other Animals"
@@ -59,9 +57,9 @@ export const MountVehicleIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Tack, Harness, and Drawn Vehicles
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Tack, Harness, and Drawn Vehicles"
@@ -78,9 +76,9 @@ export const MountVehicleIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Waterborne Vehicles
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Waterborne Vehicles"

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -33,9 +33,9 @@ export const EquipmentIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     EQUIPMENT
-                </Typography>
+                </h1>
 
                 <List component="nav">
                 {equipments.map(equipment => (

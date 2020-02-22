@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import './css/NavBar.css';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Collapse from '@material-ui/core/Collapse';
+import { Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from '@material-ui/core';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -51,27 +44,47 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             <>
                 <List component="div" disablePadding>
                     <ListItemLink button href="/libraries/races">
-                        <ListItemText className="nested" primary="Races" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Races" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/classes">
-                        <ListItemText className="nested" primary="Classes" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Classes" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/conditions">
-                        <ListItemText className="nested" primary="Conditions" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Conditions" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/spells">
-                        <ListItemText className="nested" primary="Spells" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Spells" />
                     </ListItemLink>
                     {laptop && (
-                    <ListItem button onClick={() => handleClick("equipment")}>
-                        <ListItemText className="nested" primary="Equipment" />
-                        {equipmentOpen ? <ExpandLess /> : <ExpandMore />}
-                    </ListItem>
+                        <>
+                            <ListItem button onClick={() => handleClick("equipment")}>
+                                <ListItemIcon className="menu-icon">
+                                </ListItemIcon>
+                                <ListItemText primary="Equipment" />
+                                {equipmentOpen ? <ExpandLess /> : <ExpandMore />}
+                            </ListItem>
+
+                            <Divider />
+                        </>
                     )}
                     {!laptop && (
-                        <ListItemLink button href="/libraries/equipment">
-                            <ListItemText className="nested" primary="Equipment" />
-                        </ListItemLink>
+                        <>
+                            <ListItemLink button href="/libraries/equipment">
+                                <ListItemIcon className="menu-icon">
+                                </ListItemIcon>
+                                <ListItemText primary="Equipment" />
+                            </ListItemLink>
+
+                            <Divider />
+                        </>
                     )}
                 </List>
             </>
@@ -83,19 +96,29 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             <>
                 <List component="div" disablePadding>
                     <ListItemLink button href="/libraries/equipment/adventuring-gear">
-                        <ListItemText className="double-nested" primary="Adventuring Gear" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Adventuring Gear" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/armor">
-                        <ListItemText className="double-nested" primary="Armor" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Armor" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/mounts-and-vehicles">
-                        <ListItemText className="double-nested" primary="Mounts and Vehicles" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Mounts and Vehicles" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/tools">
-                        <ListItemText className="double-nested" primary="Tools" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Tools" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/weapons">
-                        <ListItemText className="double-nested" primary="Weapons" />
+                        <ListItemIcon className="menu-icon">
+                        </ListItemIcon>
+                        <ListItemText primary="Weapons" />
                     </ListItemLink>
                 </List>
             </>
@@ -108,28 +131,40 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
-                <ListItemLink button 
-                    href="/"
-                    className="logo-static"
-                >
-                    TECHR
-                    <i className={`fas fa-dice-d20 fa ${laptop ? "fa-spin-hover" : "fa-spin"}`}></i>
-                    LLMANCER
+                <ListItemLink button href="/">
+                    <div
+                        style={{
+                            fontFamily: "Bungee Inline",
+                            fontSize: "1.5em",
+                            color: "#fff",
+                            margin: "0.5em",
+                        }}
+                    >
+                        <div className="branding">
+                            <span>
+                                TECHR
+                            </span>
+                            <span className="d20">
+                                <i className={`fas fa-dice-d20 fa ${laptop ? "fa-spin-hover" : "fa-spin"}`}></i>
+                            </span>
+                            <span>
+                                LLMANCER
+                            </span>
+                        </div>
+                    </div>
                 </ListItemLink>         
             }
-            className="NavBar"
-            id="static"
             >
                 {!currentUser && (
                 <>
                     <ListItemLink button href="/sign_in">
-                        <ListItemIcon>
+                        <ListItemIcon className="menu-icon">
                             <AccountCircleIcon />
                         </ListItemIcon>
                         <ListItemText primary="SIGN IN" />
                     </ListItemLink>
                     <ListItemLink button href="/sign_up">
-                        <ListItemIcon>
+                        <ListItemIcon className="menu-icon">
                             <PersonAddIcon />
                         </ListItemIcon>
                         <ListItemText primary="SIGN UP" />
@@ -139,13 +174,13 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             {currentUser && (
                 <>
                     <ListItemLink button href="/characters">
-                        <ListItemIcon>
+                        <ListItemIcon className="menu-icon">
                             <AccountCircleIcon />
                         </ListItemIcon>
                         <ListItemText primary={currentUser.username.toUpperCase()} />
                     </ListItemLink>
                     <ListItemLink button href="/" onClick={handleSignOutClick}>
-                        <ListItemIcon>
+                        <ListItemIcon className="menu-icon">
                             <ExitToAppIcon />
                         </ListItemIcon>
                         <ListItemText primary="SIGN OUT" />
@@ -153,19 +188,19 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 </>
             )}
             <ListItemLink button href="/characters">
-                    <ListItemIcon>
+                    <ListItemIcon className="menu-icon">
                         <CreateIcon />
                     </ListItemIcon>
                     <ListItemText primary="CHARACTERS" />
                 </ListItemLink>
             <ListItemLink button href="/generator">
-                <ListItemIcon>
+                <ListItemIcon className="menu-icon">
                     <CasinoIcon />
                 </ListItemIcon>
                 <ListItemText primary="CHARACTER GENERATOR" />
             </ListItemLink>
             <ListItemLink button href="/scheduler">
-                <ListItemIcon>
+                <ListItemIcon className="menu-icon">
                     <EventAvailableIcon />
                 </ListItemIcon>
                 <ListItemText primary="SCHEDULER" />
@@ -174,7 +209,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             {laptop && (
                 <>
                     <ListItem button onClick={() => handleClick("libraries")}>
-                        <ListItemIcon>
+                        <ListItemIcon className="menu-icon">
                             <SearchIcon />
                         </ListItemIcon>
                         <ListItemText primary="LIBRARIES" />
@@ -196,11 +231,13 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             {!laptop && (
                 <>
                     <ListItemLink button href="/libraries">
-                        <ListItemIcon>
+                        <ListItemIcon className="menu-icon">
                             <SearchIcon />
                         </ListItemIcon>
                         <ListItemText primary="LIBRARIES" />
                     </ListItemLink>
+
+                    <Divider />
                     {nestedList()}
                     {doubleNestedList()}
                 </>

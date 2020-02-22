@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, Typography } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 const getSpell = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
@@ -33,8 +33,9 @@ export const SpellShowPage = props => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <h1>{spell.name.toUpperCase()}</h1>
-                <Divider /><br />
+                <h1>
+                    {spell.name.toUpperCase()}
+                </h1>
 
                 <h5>Description</h5>
                 <p>{(spell.desc)}</p>

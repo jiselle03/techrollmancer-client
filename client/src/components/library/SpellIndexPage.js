@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getSpells = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/spells");
@@ -35,16 +35,14 @@ export const SpellIndexPage = () => {
         >
             <MainStyle>
                 <div className="list-container">
-                    <Typography variant="h2">
+                    <h1>
                         SPELLS
-                    </Typography>
-
-                    <Divider />
+                    </h1>
                     
                     <List component="nav">
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Cantrips
-                    </Typography>
+                    </h2>
                     {spells.filter(spell => {
                         return spell.level === "Cantrip"
                     }).map(spell => (
@@ -62,9 +60,9 @@ export const SpellIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         1st Level
-                    </Typography>
+                    </h2>
                     {spells.filter(spell => {
                         return spell.level === "1st-level"
                     }).map(spell => (
@@ -82,9 +80,9 @@ export const SpellIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Second Level
-                    </Typography>
+                    </h2>
                     {spells.filter(spell => {
                         return spell.level === "2nd-level"
                     }).map(spell => (
@@ -102,9 +100,9 @@ export const SpellIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Third Level
-                    </Typography>
+                    </h2>
                     {spells.filter(spell => {
                         return spell.level === "3rd-level"
                     }).map(spell => (
@@ -122,9 +120,9 @@ export const SpellIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         4th Level
-                    </Typography>
+                    </h2>
                     {spells.filter(spell => {
                         return spell.level === "4th-level"
                     }).map(spell => (
@@ -142,9 +140,9 @@ export const SpellIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         5th Level
-                    </Typography>
+                    </h2>
                     {spells.filter(spell => {
                         return spell.level === "5th-level"
                     }).map(spell => (

@@ -13,7 +13,7 @@ export const BackgroundImage = props => {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: position || "right",
                 overflow: "auto",
-                minHeight: "100vh"
+                minHeight: "100vh",
             }}
         >
             {children}

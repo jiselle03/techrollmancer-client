@@ -7,7 +7,7 @@ import { MainStyle } from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 import { ButtonStyle } from '../styles/ButtonStyle';
 
-import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
+import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
 import { FlexBox } from '../styles/FlexBox';
 
@@ -47,9 +47,9 @@ export const SignUpPage = props => {
                             padding: "1em 0"
                         }}
                     >
-                        <Typography variant="h3" align="center">
+                        <h3>
                         Create an Account
-                        </Typography>
+                        </h3>
 
                         <FormControl style={FormContent.field}>
                             <InputLabel htmlFor="username">Username*</InputLabel>
@@ -123,9 +123,9 @@ export const SignUpPage = props => {
                         <FlexBox
                             justifyContent="center"
                         >
-                            <Typography variant="p" style={{marginTop: "1em"}}>
+                            <p>
                                 Don't have an account? <Link to="/sign_in" style={FormContent.link}>SIGN IN</Link>
-                            </Typography>
+                            </p>
                         </FlexBox>
                     </Card>
                 </FormStyle>

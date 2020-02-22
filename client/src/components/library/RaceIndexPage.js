@@ -7,7 +7,7 @@ import { MainStyle } from '../styles/MainStyle';
 import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress, Divider, Typography } from '@material-ui/core';
+import { Card, CardContent, CircularProgress, Divider } from '@material-ui/core';
 
 const getRaces = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/races");
@@ -54,13 +54,10 @@ export const RaceIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1 style={{marginLeft: "0.2em"}}>
                     RACES
-                </Typography>
+                </h1>
 
-                <Divider />
-                
-                <br />
                 <Grid>
                 {races.map(race => (
                     <div key={race.slug}>
@@ -74,13 +71,9 @@ export const RaceIndexPage = () => {
                             >
                                 <Card>
                                     <CardContent style={CardContentStyle.content}>
-                                            <Typography 
-                                                variant={race.slug === "dragonborn" ? "h4" : "h3"} 
-                                                gutterBottom={false}
-                                                style={CardContentStyle.text}
-                                            >
-                                                {race.name}
-                                            </Typography>
+                                        <h5 className="card-text">
+                                            {race.name}
+                                        </h5>
                                     </CardContent>
                                 </Card>
                             </CardStyle>

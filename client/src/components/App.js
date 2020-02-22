@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import './css/NavBar.css';
 import { CircularProgress } from '@material-ui/core';
 import { User } from '../api/user';
 import { Session } from '../api/session';

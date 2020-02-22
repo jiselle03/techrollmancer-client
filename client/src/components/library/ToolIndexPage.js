@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -33,16 +33,16 @@ export const ToolIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     TOOLS
-                </Typography>
+                </h1>
                 
                 <Divider />
 
                 <div className="list-container">
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Artisan's Tools
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Tools" && equipment.tool_category === "Artisan's Tools"
@@ -59,9 +59,9 @@ export const ToolIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Gaming Sets
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Tools" && equipment.tool_category === "Gaming Sets"
@@ -78,9 +78,9 @@ export const ToolIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Musical Instruments
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Tools" && equipment.tool_category === "Musical Instrument"
@@ -97,9 +97,9 @@ export const ToolIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Other Tools
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Tools" && equipment.tool_category === "Other Tools"

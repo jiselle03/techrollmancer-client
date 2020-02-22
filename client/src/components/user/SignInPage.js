@@ -8,7 +8,7 @@ import { FormStyle, FormContent } from '../styles/FormStyle';
 import { ButtonStyle } from '../styles/ButtonStyle';
 import { FlexBox } from '../styles/FlexBox';
 
-import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel, Typography } from '@material-ui/core';
+import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Lock } from '@material-ui/icons';
 
 export const SignInPage = props => {
@@ -49,9 +49,9 @@ export const SignInPage = props => {
                         padding: "1em 0"
                         }}
                     >
-                        <Typography variant="h3" align="center">
+                        <h3>
                             Sign In
-                        </Typography>
+                        </h3>
 
                         <form onSubmit={createSession}>
                         { errors.length > 0 ? (
@@ -110,9 +110,9 @@ export const SignInPage = props => {
                         <FlexBox
                             justifyContent="center"
                         >
-                            <Typography variant="p" style={{marginTop: "1em"}}>
+                            <p>
                                 Don't have an account? <Link to="/sign_up" style={FormContent.link}>SIGN UP</Link>
-                            </Typography>
+                            </p>
                         </FlexBox>
                     </Card>
                 </FormStyle>

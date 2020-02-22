@@ -5,7 +5,7 @@ import { utils } from '../js/utils';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, Typography } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 const getRace = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/races/${slug}`);
@@ -57,59 +57,71 @@ export const RaceShowPage = props => {
             size={getSize(slug)}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     {name.toUpperCase()}
-                </Typography>
-
-                <Divider />
+                </h1>
 
                 <div className={desc ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         {name} Traits
-                    </Typography>
-                    <p>{desc}</p>
+                    </h2>
+                    <p>
+                        {desc}
+                    </p>
                 </div>
 
                 <div className={asi_desc ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Ability Score Increase
-                    </Typography>
-                    <p>{asi_desc}</p>
+                    </h2>
+                    <p>
+                        {asi_desc}
+                    </p>
                 </div>
                 
                 <div className={age ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Age
-                    </Typography>
-                    <p>{age}</p>
+                    </h2>
+                    <p>
+                        {age}
+                    </p>
                 </div>
 
                 <div className={alignment ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Alignment
-                    </Typography>
-                    <p>{alignment}</p>
+                    </h2>
+                    <p>
+                        {alignment}
+                    </p>
                 </div>
 
                 <div className={size ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Size
-                    </Typography>
-                    <p>{size}</p>
+                    </h2>
+                    <p>
+                        {size}
+                    </p>
                 </div>
 
                 <div className={speed_desc ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Speed
-                    </Typography>
-                    <p>{speed_desc}</p>
+                    </h2>
+                    <p>
+                        {speed_desc}
+                    </p>
                 </div>
 
                 <div className={languages ? null : "hidden"}>
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Languages
-                    </Typography>
-                    <p>{languages}</p>
+                    </h2>
+                    <p>
+                        {languages}
+                    </p>
                 </div>
 
                 <div className={vision ? null : "hidden"}>
@@ -125,30 +137,34 @@ export const RaceShowPage = props => {
                 </div>
                 
                 <div className={subraces ? null : "hidden"}>
-                    <Typography variant="h4" style={{marginTop: "1em"}}>
+                    <h3>
                         Subraces
-                    </Typography>
+                    </h3>
 
                     {subraces.map(subrace => (
-                        <div className="subrace">
-                            <Typography variant="h5" style={{marginTop: "1em"}}>
+                        <>
+                            <h4>
                                 {subrace.name}
-                            </Typography>
+                            </h4>
 
-                            <Typography variant="h6" style={{marginTop: "1em"}}>
+                            <h5>
                                 Description
-                            </Typography>
-                            <p>{subrace.desc}</p>
+                            </h5>
+                            <p>
+                                {subrace.desc}
+                            </p>
 
-                            <Typography variant="h6" style={{marginTop: "1em"}}>
+                            <h5>
                                 Ability Score Improvement
-                            </Typography>
-                            <p>{subrace.asi_desc}</p>
+                            </h5>
+                            <p>
+                                {subrace.asi_desc}
+                            </p>
 
-                            <p dangerouslySetInnerHTML={{
+                            <span dangerouslySetInnerHTML={{
                                 __html: utils.getBlurb(subrace.traits)
-                            }}></p>
-                        </div>
+                            }}></span>
+                        </>
                     ))}
                 </div>
             </MainStyle>

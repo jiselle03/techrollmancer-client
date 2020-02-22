@@ -5,7 +5,7 @@ import axios from 'axios';
 import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -33,16 +33,14 @@ export const AdventuringGearIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     ADVENTURING GEAR
-                </Typography>
-
-                <Divider />
+                </h1>
 
                 <div className="list-container">
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Equipment Packs
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Equipment Pack"
@@ -59,9 +57,9 @@ export const AdventuringGearIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Standard Gear
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Standard Gear"
@@ -78,9 +76,9 @@ export const AdventuringGearIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Ammunition
-                    </Typography>
+                    </h2>
                     <List component="nav" aria-label="main mailbox folders">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Ammunition"
@@ -97,9 +95,9 @@ export const AdventuringGearIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Arcane Focus
-                    </Typography>
+                    </h2>
                     <List component="nav" aria-label="main mailbox folders">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Arcane focus"
@@ -116,9 +114,9 @@ export const AdventuringGearIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Druidic Focus
-                    </Typography>
+                    </h2>
                     <List component="nav" aria-label="main mailbox folders">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Druidic focus"
@@ -135,9 +133,9 @@ export const AdventuringGearIndexPage = () => {
 
                     <Divider />
                     
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Holy Symbols
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Holy Symbol"
@@ -154,9 +152,9 @@ export const AdventuringGearIndexPage = () => {
 
                     <Divider />
                     
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Kits
-                    </Typography>
+                    </h2>
                     <List component="nav" aria-label="main mailbox folders">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Kit"

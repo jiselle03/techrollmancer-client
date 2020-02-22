@@ -5,7 +5,7 @@ import axios from 'axios';
 import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -33,16 +33,16 @@ export const ArmorIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1>
                     ARMOR
-                </Typography>
+                </h1>
                 
                 <Divider />
 
                 <div className="list-container">
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Light
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Armor" && equipment.armor_category === "Light"
@@ -59,9 +59,9 @@ export const ArmorIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Medium
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Armor" && equipment.armor_category === "Medium"
@@ -78,9 +78,9 @@ export const ArmorIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Heavy
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Armor" && equipment.armor_category === "Heavy"
@@ -97,9 +97,9 @@ export const ArmorIndexPage = () => {
 
                     <Divider />
 
-                    <Typography variant="h5" style={{marginTop: "1em"}}>
+                    <h2>
                         Shield
-                    </Typography>
+                    </h2>
                     <List component="nav">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Armor" && equipment.armor_category === "Shield"

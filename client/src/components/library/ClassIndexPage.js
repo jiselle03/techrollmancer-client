@@ -7,7 +7,7 @@ import { MainStyle } from '../styles/MainStyle';
 import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress, Divider, Typography } from '@material-ui/core';
+import { Card, CardContent, CircularProgress } from '@material-ui/core';
 
 const getClasses = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/classes");
@@ -52,13 +52,9 @@ export const ClassIndexPage = () => {
             image={require('../../assets/d20.png')}
         >
             <MainStyle>
-                <Typography variant="h2">
+                <h1 style={{marginLeft: "0.2em"}}>
                     CLASSES
-                </Typography>
-                
-                <Divider />
-
-                <br />
+                </h1>
                 
                 <Grid>
                 {classes.map(charClass => (
@@ -74,13 +70,9 @@ export const ClassIndexPage = () => {
                             >
                                 <Card>
                                     <CardContent style={CardContentStyle.content}>
-                                        <Typography 
-                                            variant="h3" 
-                                            align="right"
-                                            style={CardContentStyle.text}
-                                        >
+                                        <h5 className="card-text">
                                             {charClass.name}
-                                        </Typography>
+                                        </h5>
                                     </CardContent>
                                 </Card>
                             </CardStyle>

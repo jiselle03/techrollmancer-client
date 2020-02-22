@@ -7,10 +7,7 @@ export const FadeStyle = props => {
     return(
         <div 
             style={{
-                backgroundColor: "#fff",
-                border: "1px solid #000",
-                boxShadow: "5px 0 5px -2px #888",
-                borderRadius: "5px",
+                backgroundColor: "rgba(255,255,255,0.9)",
                 padding: "2em 4em",
                 textAlign: "center"
             }}

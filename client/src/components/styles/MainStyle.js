@@ -10,10 +10,9 @@ export const MainStyle = props => {
     return(
         <div 
             style={{
-                margin: "2em",
-                marginLeft: laptop ? "25em" : "7em",
-                width: laptop ? "65%" : "auto",
-                height: "100%",
+                margin: laptop ? "1em 2em 2em 27vw" : "1em 2em 2em 17vw",
+                width: "75vw",
+                minHeight: "100vh",
             }}
         >
             {children}

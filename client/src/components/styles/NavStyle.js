@@ -1,7 +1,5 @@
 import React from 'react';
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-
 export const NavContainer = props => {
     const { children } = props;
 
@@ -9,7 +7,7 @@ export const NavContainer = props => {
         <div
             style={{
                 display: "flex",
-                flexDirection: "row"
+                flexDirection: "row",
             }}
         >
             {children}
@@ -25,11 +23,9 @@ export const NavBarStyle = props => {
             style={{
                 color: "#fff",
                 position: "fixed",
-                maxWidth: "360px",
                 boxShadow: "5px 0 5px -2px #888",
-                borderRight: "1px solid rgba(189, 195, 199, 0.5)",
                 minHeight: "100vh",
-                backgroundColor: "rgba(45,99,127,1)"
+                backgroundColor: "rgba(45,99,127,1)",
             }}
         >
             {children}
@@ -45,15 +41,27 @@ export const Sidebar = props => {
             style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
                 alignItems: "center",
                 minHeight: "100vh",
                 width: "3.5em",
-                margin: "auto",
-                flexBasis: "auto"
+                background: "rgba(45,99,127,1)",
+                position: "fixed",
+                boxShadow: "5px 0 5px -2px #888",
             }}
         >
             {children}
         </div>
     );
+};
+
+export const sidebarText = {
+    transform: "rotate(-90deg)",
+    color: "#fff",
+    fontSize: "1.5em",
+    textDecoration: "none",
+    size: "30%",
+    justifyContent: "flex-start",
+    marginTop: "2em",
+    marginBottom: "3em",
 };
