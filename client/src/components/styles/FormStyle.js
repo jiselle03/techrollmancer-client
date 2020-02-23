@@ -1,13 +1,13 @@
 import React from 'react';
 
 export const FormStyle = props => {
-    const { children, height, margin } = props;
+    const { children, height, padding, margin } = props;
 
     return(
         <div 
             style={{
                 borderRadius: "5px",
-                padding: "1em",
+                padding: padding,
                 width: "25em",
                 height: height,
                 margin: margin
@@ -20,16 +20,24 @@ export const FormStyle = props => {
 
 export const FormContent = {
     icon: {
-        color: "#000"
+        color: "#000",
     },
     link: {
         textDecoration: "none",
         color: "rgba(45,99,127,1)",
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     field: {
         padding: "0.5em",
         margin: "1em 2em",
-        width: "85%"
+        width: "85%",
+    },
+    character: {
+        margin: "0.5em",
+        width: "85%",
+    },
+    stat: {
+        margin: "0.5em 1em",
+        width: "35%",
     }
 };

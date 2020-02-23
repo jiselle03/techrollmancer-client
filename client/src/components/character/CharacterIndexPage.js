@@ -3,85 +3,16 @@ import { Link } from 'react-router-dom';
 
 import { Character } from '../../api/character';
 import { CharacterNew } from './CharacterNew';
-import { FadeStyle, Fade } from '../styles/FadeStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
-import { Backdrop, Card, CardContent, CircularProgress, Divider, Fab, Modal } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import PropTypes from 'prop-types';
-
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};
+import { Card, CardContent, CircularProgress, Divider } from '@material-ui/core';
 
 export const CharacterIndexPage = () => {
     const [characters, setCharacters] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [openNew, setOpenNew] = useState(false);
-    
-    const handleOpenNew = () => {
-        setOpenNew(true);
-    };
-    const handleCloseNew = () => {
-        setOpenNew(false);
-    };
-
-    const addButton = () => {
-        return(
-            <>
-                <Fab 
-                    color="secondary" 
-                    size="large"
-                    aria-label="add"
-                    className="add-button"
-                    onClick={handleOpenNew}
-                    style={{
-                        position: "fixed",
-                        bottom: "40px",
-                        right: "40px",
-                        width: "5em",
-                        height: "5em"
-                    }}
-                >
-                    <AddIcon 
-                        style={{
-                            color: "#fff"
-                        }}
-                    />
-                </Fab>
-    
-                <Modal
-                    className="new-character modal"
-                    open={openNew}
-                    onClose={handleCloseNew}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                        timeout: 500,
-                    }}
-                >
-                    <Fade in={openNew}>
-                    <div className="new-character fade">
-                        <CharacterNew />
-    
-                        <button 
-                            onClick={handleCloseNew}
-                            className="cancel"
-                        >
-                            CANCEL
-                        </button>
-                    </div>
-                    </Fade>
-                </Modal>
-            </>
-        );
-    };    
 
     useEffect(() => {
         Character.all().then(characters => { 
@@ -112,7 +43,7 @@ export const CharacterIndexPage = () => {
                         <p>
                             You have not created any characters.
                         </p>
-                        {addButton()}
+                        <CharacterNew />
                     </>
                 )}
 
@@ -146,7 +77,7 @@ export const CharacterIndexPage = () => {
                         ))}
                         </Grid>
 
-                        {addButton()}
+                        <CharacterNew />
                     </>
                 )}
             </MainStyle>

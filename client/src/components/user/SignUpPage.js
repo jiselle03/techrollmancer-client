@@ -40,6 +40,7 @@ export const SignUpPage = props => {
             <MainStyle>
                 <FormStyle
                     height="85vh"
+                    padding="1em"
                     margin="10vh auto"
                 >
                     <Card style={{

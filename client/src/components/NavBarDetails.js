@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 
 import { Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from '@material-ui/core';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import CreateIcon from '@material-ui/icons/Create';
-import SearchIcon from '@material-ui/icons/Search';
-import CasinoIcon from '@material-ui/icons/Casino';
-import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import { AccountCircle, Casino, Create, EventAvailable, ExitToApp, ExpandLess, ExpandMore, PersonAdd, Search } from '@material-ui/icons';
 
 function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
@@ -159,13 +151,13 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <>
                     <ListItemLink button href="/sign_in">
                         <ListItemIcon className="menu-icon">
-                            <AccountCircleIcon />
+                            <AccountCircle />
                         </ListItemIcon>
                         <ListItemText primary="SIGN IN" />
                     </ListItemLink>
                     <ListItemLink button href="/sign_up">
                         <ListItemIcon className="menu-icon">
-                            <PersonAddIcon />
+                            <PersonAdd />
                         </ListItemIcon>
                         <ListItemText primary="SIGN UP" />
                     </ListItemLink>
@@ -175,13 +167,13 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <>
                     <ListItemLink button href="/characters">
                         <ListItemIcon className="menu-icon">
-                            <AccountCircleIcon />
+                            <AccountCircle />
                         </ListItemIcon>
                         <ListItemText primary={currentUser.username.toUpperCase()} />
                     </ListItemLink>
                     <ListItemLink button href="/" onClick={handleSignOutClick}>
                         <ListItemIcon className="menu-icon">
-                            <ExitToAppIcon />
+                            <ExitToApp />
                         </ListItemIcon>
                         <ListItemText primary="SIGN OUT" />
                     </ListItemLink>
@@ -189,19 +181,19 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
             )}
             <ListItemLink button href="/characters">
                     <ListItemIcon className="menu-icon">
-                        <CreateIcon />
+                        <Create />
                     </ListItemIcon>
                     <ListItemText primary="CHARACTERS" />
                 </ListItemLink>
             <ListItemLink button href="/generator">
                 <ListItemIcon className="menu-icon">
-                    <CasinoIcon />
+                    <Casino />
                 </ListItemIcon>
                 <ListItemText primary="CHARACTER GENERATOR" />
             </ListItemLink>
             <ListItemLink button href="/scheduler">
                 <ListItemIcon className="menu-icon">
-                    <EventAvailableIcon />
+                    <EventAvailable />
                 </ListItemIcon>
                 <ListItemText primary="SCHEDULER" />
             </ListItemLink>
@@ -210,7 +202,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <>
                     <ListItem button onClick={() => handleClick("libraries")}>
                         <ListItemIcon className="menu-icon">
-                            <SearchIcon />
+                            <Search />
                         </ListItemIcon>
                         <ListItemText primary="LIBRARIES" />
                         {librariesOpen ? <ExpandLess /> : <ExpandMore />}
@@ -232,7 +224,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <>
                     <ListItemLink button href="/libraries">
                         <ListItemIcon className="menu-icon">
-                            <SearchIcon />
+                            <Search />
                         </ListItemIcon>
                         <ListItemText primary="LIBRARIES" />
                     </ListItemLink>

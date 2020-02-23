@@ -223,7 +223,7 @@ export const GeneratorPage = () => {
                         >
                             <Fade in={openQR}>
                                 <FadeStyle>
-                                    <h3 id="modal-title">CHARACTER STATS</h3>
+                                    <h3>CHARACTER STATS</h3>
 
                                     <p>
                                         <strong>Race:</strong> {character._charRace}

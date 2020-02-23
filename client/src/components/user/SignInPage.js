@@ -42,6 +42,7 @@ export const SignInPage = props => {
             <MainStyle>
                 <FormStyle
                     height="55vh"
+                    padding="1em"
                     margin="25vh auto"
                 >
                     <Card style={{
