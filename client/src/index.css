@@ -147,7 +147,8 @@ div.MuiTabs-root.tabs {
   padding: 1em;
 }
 
-.stats {
+.stats,
+.spells {
   padding: 1em;
   margin: 0.5em;
   max-width: 360px;

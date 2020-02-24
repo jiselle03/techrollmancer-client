@@ -7,9 +7,19 @@ export const CharacterJournal = props => {
     const { name } = props.character;
 
     return (
-        <div className="journal character-background">
-            <h1 className="character-name-title">{name.toUpperCase()}</h1>
+        <>
+            <h1>
+                {name.toUpperCase()}
+            </h1>
 
-        </div>
+            <div className="character-sheet">
+                <Card>
+                    <h2>
+                        Journal
+                    </h2>
+                </Card>
+            </div>
+
+        </>
     );
 };

@@ -5,12 +5,22 @@ import Card from '@material-ui/core/Card';
 
 export const CharacterTraits = props => {
 
-    const { character } = props;
+    const { name } = props.character;
 
     return (
-        <div className="traits character-background">
-            <h1 className="character-name-title">{character.name.toUpperCase()}</h1>
+        <>
+            <h1>
+                {name.toUpperCase()}
+            </h1>
 
-        </div>
+            <div className="character-sheet">
+                <Card>
+                    <h2>
+                        Traits
+                    </h2>
+                </Card>
+            </div>
+
+        </>
     );
 };

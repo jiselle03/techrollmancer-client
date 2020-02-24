@@ -7,9 +7,19 @@ export const CharacterInventory = props => {
     const { name } = props.character;
 
     return (
-        <div className="inventory character-background">
-            <h1 className="character-name-title">{name.toUpperCase()}</h1>
+        <>
+            <h1>
+                {name.toUpperCase()}
+            </h1>
 
-        </div>
+            <div className="character-sheet">
+                <Card>
+                    <h2>
+                        Inventory
+                    </h2>
+                </Card>
+            </div>
+
+        </>
     );
 };
