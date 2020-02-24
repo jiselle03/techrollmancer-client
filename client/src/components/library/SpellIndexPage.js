@@ -11,7 +11,6 @@ const getSpells = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/spells");
 };
 
-
 export const SpellIndexPage = () => {
     const [spells, setSpells] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -145,6 +144,84 @@ export const SpellIndexPage = () => {
                     </h2>
                     {spells.filter(spell => {
                         return spell.level === "5th-level"
+                    }).map(spell => (
+                        <div key={spell.slug}>
+                        <Link 
+                            to={`/libraries/spells/${spell.slug}`} 
+                            className="link"
+                        >
+                            <ListItem button>
+                                    <ListItemText primary={spell.name} />
+                                </ListItem>
+                        </Link>
+                        </div>
+                    ))}
+
+                    <Divider />
+
+                    <h2>
+                        6th Level
+                    </h2>
+                    {spells.filter(spell => {
+                        return spell.level === "6th-level"
+                    }).map(spell => (
+                        <div key={spell.slug}>
+                        <Link 
+                            to={`/libraries/spells/${spell.slug}`} 
+                            className="link"
+                        >
+                            <ListItem button>
+                                    <ListItemText primary={spell.name} />
+                                </ListItem>
+                        </Link>
+                        </div>
+                    ))}
+
+                    <Divider />
+
+                    <h2>
+                        7th Level
+                    </h2>
+                    {spells.filter(spell => {
+                        return spell.level === "7th-level"
+                    }).map(spell => (
+                        <div key={spell.slug}>
+                        <Link 
+                            to={`/libraries/spells/${spell.slug}`} 
+                            className="link"
+                        >
+                            <ListItem button>
+                                    <ListItemText primary={spell.name} />
+                                </ListItem>
+                        </Link>
+                        </div>
+                    ))}
+
+                    <Divider />
+
+                    <h2>
+                        8th Level
+                    </h2>
+                    {spells.filter(spell => {
+                        return spell.level === "8th-level"
+                    }).map(spell => (
+                        <div key={spell.slug}>
+                        <Link 
+                            to={`/libraries/spells/${spell.slug}`} 
+                            className="link"
+                        >
+                            <ListItem button>
+                                    <ListItemText primary={spell.name} />
+                                </ListItem>
+                        </Link>
+                        </div>
+                    ))}
+
+                    <h2>
+                        9th Level
+                    </h2>
+                    {spells.filter(spell => {
+                        return spell.level === "9th-level"
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
