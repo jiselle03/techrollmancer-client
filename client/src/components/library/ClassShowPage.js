@@ -3,8 +3,9 @@ import axios from 'axios';
 
 import { utils } from '../js/utils';
 import { MainStyle } from '../styles/MainStyle';
+import { TableStyle } from '../styles/TableStyle';
 
-import { CircularProgress, Divider } from '@material-ui/core';
+import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { BackgroundImage } from '../styles/BackgroundImage';
 
 const getClass = slug => {
@@ -14,6 +15,45 @@ const getClass = slug => {
 export const ClassShowPage = props => {
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+
+    const getCols = oneClass => {
+        switch(oneClass.slug) {
+            case "barbarian":
+                return 5;
+            case "bard":
+                return 14;
+            case "fighter":
+                return 3;
+            case "monk":
+                return 6;
+            case "paladin" || "warlock":
+                return 8;
+            case "ranger":
+                return 9;
+            case "rogue":
+                return 4;
+            case "sorcerer":
+                return 15;
+            default:
+                return 13;
+        };
+    };
+
+    const getColNames = oneClass => {
+        const cols = getCols(oneClass);
+        let colNames = [];
+        for (let i = 0; i < cols; i++) {
+            colNames.push(oneClass.table[i]);
+        };
+        return colNames;
+    };
+    
+    const getRow = i => {
+        const cols = getCols(oneClass);
+        const start = i * cols;
+        const end = i * cols + cols;
+        return oneClass.table.slice(start, end);
+    };
 
     const getSize = charClass => {
         switch(charClass) {
@@ -100,6 +140,34 @@ export const ClassShowPage = props => {
                 <p dangerouslySetInnerHTML={{
                     __html: utils.getBlurb(equipment)
                 }}></p>
+
+                <h2>{name} Table</h2>
+                <TableStyle
+                    width = "100%"
+                >
+                    <TableContainer component={Paper}>
+                        <Table className="table" aria-label="simple table">
+                            <TableHead>
+                            <TableRow>
+                                {getColNames(oneClass).map(col => (
+                                    <TableCell>{col}</TableCell>
+                                ))}
+                            </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {Array.from({length: 21}, (x,i) => i).map(i => (
+                                <TableRow key={i + 1}>
+                                    {getRow(i + 1).map(row => (
+                                        <TableCell component="th" scope="row">
+                                            {row}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </TableStyle>
 
             </MainStyle>
         </BackgroundImage>
