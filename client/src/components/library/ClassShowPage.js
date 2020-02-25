@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { utils } from '../js/utils';
+import { SpellModal } from './SpellModal';
+import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { TableStyle } from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import { BackgroundImage } from '../styles/BackgroundImage';
 
 const getClass = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
 };
 
 export const ClassShowPage = props => {
+    const [open, setOpen] = useState(false);
+    const [fadeContent, setFadeContent] = useState(null);
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -76,10 +79,34 @@ export const ClassShowPage = props => {
         };
     };
 
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
+    const findNodes = () => {
+        const nodes = document.querySelectorAll("em");
+        // nodes.forEach(node => {
+        //     node.addEventListener('mouseenter', () => {
+        //         handleOpen();
+        //     });
+        //     node.addEventListener('mouseleave', () => {
+        //         handleClose();
+        //     });
+        //     // setFadeContent(node.innerText.split(" ").join("-"));
+        // });
+    };
+
     useEffect(() => {
         getClass(props.match.params.slug).then(oneClass => {
             setOneClass(oneClass.data);
             setIsLoading(false);
+        }).then(data => {
+            findNodes();
         })
     }, [props.match.params.slug]);
 
@@ -149,16 +176,16 @@ export const ClassShowPage = props => {
                         <Table className="table" aria-label="simple table">
                             <TableHead>
                             <TableRow>
-                                {getColNames(oneClass).map(col => (
-                                    <TableCell>{col}</TableCell>
+                                {getColNames(oneClass).map((col, index) => (
+                                    <TableCell key={index}>{col}</TableCell>
                                 ))}
                             </TableRow>
                             </TableHead>
                             <TableBody>
                                 {Array.from({length: 21}, (x,i) => i).map(i => (
                                 <TableRow key={i + 1}>
-                                    {getRow(i + 1).map(row => (
-                                        <TableCell component="th" scope="row">
+                                    {getRow(i + 1).map((row, index) => (
+                                        <TableCell component="th" scope="row" key={index}>
                                             {row}
                                         </TableCell>
                                     ))}
@@ -168,7 +195,8 @@ export const ClassShowPage = props => {
                         </Table>
                     </TableContainer>
                 </TableStyle>
-
+                {/* {console.log(fadeContent)} */}
+                <SpellModal open={open} fadeContent={fadeContent} />
             </MainStyle>
         </BackgroundImage>
     );

@@ -69,6 +69,11 @@ strong {
   font-size: 1.25em;
 }
 
+em {
+  font-style: italic;
+  color: rgba(45,99,127,1);
+}
+
 .card-text {
   color: #fff;
   text-shadow: -1px -1px 0px #000,

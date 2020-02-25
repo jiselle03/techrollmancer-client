@@ -6,7 +6,8 @@ import { CharacterSpellSet } from './CharacterSpellSet';
 import Card from '@material-ui/core/Card';
 
 export const CharacterSpells = props => {
-    const { spells, name, id } = props.character;
+    const { character } = props;
+    const { spells, name } = props.character;
 
     return (
         <>
@@ -117,7 +118,7 @@ export const CharacterSpells = props => {
                     )}
                 </Card>
 
-                <CharacterSpellSet character={props.character} />
+                <CharacterSpellSet character={character} />
             </div>
         </>
     );
