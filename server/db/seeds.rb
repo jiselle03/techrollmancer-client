@@ -72,6 +72,10 @@ if c.valid?
         stealth: true,
         character_id: 1
     )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 3
+    )
 end
 
 puts Cowsay.say("Generated #{Spell.count} spells.", :dragon)

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_12_012401) do
+ActiveRecord::Schema.define(version: 2020_02_25_033735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "character_spells", force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "spell_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_character_spells_on_character_id"
+    t.index ["spell_id"], name: "index_character_spells_on_spell_id"
+  end
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -36,19 +45,11 @@ ActiveRecord::Schema.define(version: 2020_02_12_012401) do
     t.integer "cha", default: 8
     t.integer "armor_class"
     t.integer "speed"
+    t.text "spells_known", default: [], array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
-  end
-
-  create_table "characters_spells", force: :cascade do |t|
-    t.bigint "character_id", null: false
-    t.bigint "spell_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["character_id"], name: "index_characters_spells_on_character_id"
-    t.index ["spell_id"], name: "index_characters_spells_on_spell_id"
   end
 
   create_table "proficiencies", force: :cascade do |t|
@@ -109,8 +110,8 @@ ActiveRecord::Schema.define(version: 2020_02_12_012401) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "character_spells", "characters"
+  add_foreign_key "character_spells", "spells"
   add_foreign_key "characters", "users"
-  add_foreign_key "characters_spells", "characters"
-  add_foreign_key "characters_spells", "spells"
   add_foreign_key "proficiencies", "characters"
 end
