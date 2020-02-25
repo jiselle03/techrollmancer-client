@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :characters_spell do
+  factory :character_spell do
     character { nil }
     spell { nil }
   end

@@ -2,9 +2,8 @@ class Character < ApplicationRecord
     belongs_to :user
 
     has_one :proficiency, dependent: :destroy
-    
-    has_many :characters_spells, dependent: :destroy
-    has_many :spells, through: :characters_spells
+    has_many :character_spells, dependent: :destroy
+    has_many :spells, through: :character_spells
 
     validates :name, presence: true, uniqueness: true
     validates :race, presence: true
