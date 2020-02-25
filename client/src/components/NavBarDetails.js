@@ -37,21 +37,25 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <List component="div" disablePadding>
                     <ListItemLink button href="/libraries/races">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Races" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/classes">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Classes" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/conditions">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Conditions" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/spells">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Spells" />
                     </ListItemLink>
@@ -59,6 +63,7 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                         <>
                             <ListItem button onClick={() => handleClick("equipment")}>
                                 <ListItemIcon className="menu-icon">
+                                    <Search style={{color: "transparent"}} />
                                 </ListItemIcon>
                                 <ListItemText primary="Equipment" />
                                 {equipmentOpen ? <ExpandLess /> : <ExpandMore />}
@@ -89,26 +94,31 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
                 <List component="div" disablePadding>
                     <ListItemLink button href="/libraries/equipment/adventuring-gear">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Adventuring Gear" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/armor">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Armor" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/mounts-and-vehicles">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Mounts and Vehicles" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/tools">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Tools" />
                     </ListItemLink>
                     <ListItemLink button href="/libraries/equipment/weapons">
                         <ListItemIcon className="menu-icon">
+                            <Search style={{color: "transparent"}} />
                         </ListItemIcon>
                         <ListItemText primary="Weapons" />
                     </ListItemLink>

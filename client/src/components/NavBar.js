@@ -32,7 +32,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
             {!laptop && (
                 <NavBarStyle>
                     <Sidebar className="sidebar">
-                        <Link onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</Link>
+                        <Link to="" onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</Link>
                         <ListItemLink button
                                 href="/"
                                 style={{
