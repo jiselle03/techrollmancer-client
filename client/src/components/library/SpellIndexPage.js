@@ -43,7 +43,7 @@ export const SpellIndexPage = () => {
                         Cantrips
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "Cantrip"
+                        return spell.level_int === 0
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -63,7 +63,7 @@ export const SpellIndexPage = () => {
                         1st Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "1st-level"
+                        return spell.level_int === 1
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -83,7 +83,7 @@ export const SpellIndexPage = () => {
                         Second Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "2nd-level"
+                        return spell.level_int === 2
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -103,7 +103,7 @@ export const SpellIndexPage = () => {
                         Third Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "3rd-level"
+                        return spell.level_int === 3
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -123,7 +123,7 @@ export const SpellIndexPage = () => {
                         4th Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "4th-level"
+                        return spell.level_int === 4
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -143,7 +143,7 @@ export const SpellIndexPage = () => {
                         5th Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "5th-level"
+                        return spell.level_int === 5
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -163,7 +163,7 @@ export const SpellIndexPage = () => {
                         6th Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "6th-level"
+                        return spell.level_int === 6
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -183,7 +183,7 @@ export const SpellIndexPage = () => {
                         7th Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "7th-level"
+                        return spell.level_int === 7
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -203,7 +203,7 @@ export const SpellIndexPage = () => {
                         8th Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "8th-level"
+                        return spell.level_int === 8
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 
@@ -221,7 +221,7 @@ export const SpellIndexPage = () => {
                         9th Level
                     </h2>
                     {spells.filter(spell => {
-                        return spell.level === "9th-level"
+                        return spell.level_int === 9
                     }).map(spell => (
                         <div key={spell.slug}>
                         <Link 

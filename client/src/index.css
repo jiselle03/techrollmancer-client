@@ -99,7 +99,7 @@ strong {
 
 /* Menu Icons */
 
-.MuiSvgIcon-root {
+.menu-icon > .MuiSvgIcon-root {
   color: #fff;
 }
 

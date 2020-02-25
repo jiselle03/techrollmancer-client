@@ -20,7 +20,7 @@ export const CharacterStats = props => {
         <Card className="hp-ac-initiative stats">
           <h3>{hp}</h3><p>Hit Points</p>
           <h3>{armor_class}</h3><p>Armor Class</p>
-          <h3>{utils.getInitiative}</h3><p>Initiative</p>
+          <h3>{utils.getInitiative()}</h3><p>Initiative</p>
           <h3>{utils.getProfBonus(level)}</h3><p>Proficiency Bonus</p>
         </Card>
 

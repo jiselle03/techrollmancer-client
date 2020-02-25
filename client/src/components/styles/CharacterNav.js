@@ -14,7 +14,7 @@ export const CharacterNav = props => {
                 marginLeft: laptop ? "25vw" : "3.5vw",
                 width: "75vw",
                 height: "100%",
-                position: "absolute",
+                overflowX: "hidden",
             }}
         >
             {children}
