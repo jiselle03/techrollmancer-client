@@ -61,6 +61,6 @@ export const sidebarText = {
     fontSize: "1.5em",
     textDecoration: "none",
     size: "30%",
-    marginTop: "3em",
-    marginBottom: "1em",
+    marginTop: "2em",
+    marginBottom: "3em",
 };
