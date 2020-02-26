@@ -41,15 +41,15 @@ export const SignUpPage = props => {
                 <FormStyle
                     height="85vh"
                     padding="1em"
-                    margin="10vh auto"
+                    margin="auto"
                 >
                     <Card style={{
                             boxShadow: "5px 0 5px -2px #888", 
                             padding: "1em 0"
                         }}
                     >
-                        <h3>
-                        Create an Account
+                        <h3 style={{paddingLeft: "0.75em"}}>
+                            Create an Account
                         </h3>
 
                         <FormControl style={FormContent.field}>

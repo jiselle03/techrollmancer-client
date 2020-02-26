@@ -39,18 +39,20 @@ export const SignInPage = props => {
         <BackgroundImage
             image={require('../../assets/d20.png')}
         >
-            <MainStyle>
+            <MainStyle
+                style={{overflow: "hidden"}}
+            >
                 <FormStyle
                     height="55vh"
                     padding="1em"
-                    margin="25vh auto"
+                    margin="10vh auto"
                 >
                     <Card style={{
                         boxShadow: "5px 0 5px -2px #888", 
-                        padding: "1em 0"
+                        padding: "1em 0",
                         }}
                     >
-                        <h3>
+                        <h3 style={{paddingLeft: "0.75em"}}>
                             Sign In
                         </h3>
 

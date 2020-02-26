@@ -31,8 +31,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
         <NavContainer>
             {!laptop && (
                 <NavBarStyle>
-                    <Sidebar className="sidebar">
-                        <Link to="" onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</Link>
+                    <Sidebar className="sidebar" currentUser={currentUser} >
                         <ListItemLink button
                                 href="/"
                                 style={{
@@ -41,7 +40,9 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                                     transform: "rotate(-90deg)",
                                     color: "#fff",
                                     width: "12em",
-                                    justifyContent: "center",
+                                    position: "absolute",
+                                    top: "40vh",
+                                    marginLeft: "0",
                                 }}
                             >   
                                 <div className="branding">
@@ -56,8 +57,9 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                                     </span>    
                                 </div>
                         </ListItemLink>
+                        <ListItemLink to="" onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</ListItemLink>
                         {currentUser && (
-                            <Link style={sidebarText} to="/characters">{currentUser.username.toUpperCase()}</Link>
+                            <ListItemLink style={sidebarText} to="/characters">{currentUser.username.toUpperCase()}</ListItemLink>
                             )}
                     </Sidebar>
                     <Drawer open={state.left} onClose={toggleDrawer('left', false)}>

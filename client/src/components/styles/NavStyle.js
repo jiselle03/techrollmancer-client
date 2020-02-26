@@ -61,7 +61,6 @@ export const sidebarText = {
     fontSize: "1.5em",
     textDecoration: "none",
     size: "30%",
-    justifyContent: "flex-start",
-    marginTop: "2em",
-    marginBottom: "3em",
+    marginTop: "3em",
+    marginBottom: "1em",
 };
