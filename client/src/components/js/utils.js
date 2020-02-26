@@ -11,7 +11,7 @@ export const utils = {
             } else if (line[0] === "%") {
                 blurb += "<strong>" + line.slice(1) + "</strong>"
             } else if (line[0] === "@") {
-                blurb += "<em onmouseenter='handleOpen()'>" + line.slice(1) + "</em>"
+                blurb += "<em>" + line.slice(1) + "</em>"
             } else if (line[0] === "=") {
                 blurb += line.slice(1) + "<br />"
             } else if (line[0] === "*") {

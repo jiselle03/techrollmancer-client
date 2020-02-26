@@ -11,39 +11,29 @@ const getSpell = slug => {
 };
 
 export const SpellModal = props => {
-    const [spell, setSpell] = useState(null);
+    const [spell, setSpell] = useState({});
 
     const { open, fadeContent } = props;
 
     useEffect(() => {
-        console.log(fadeContent)
+        // console.log(fadeContent)
         getSpell(fadeContent).then(spell => {
             setSpell(spell.data);
-            // console.log(spell.data)
         })
     }, []);
 
     return(
-        <Modal
-            open={open}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-                timeout: 500,
-            }}
-        >
-            <FlexBox
-                alignItems="center"
-                justifyContent="center"
-                margin="10vh 0"
-            >
-                <Fade in={open}>
-                    <FadeStyle>
-                        {/* <p>{spell.name}</p> */}
-                        {/* {console.log(spell)} */}
-                    </FadeStyle>
-                </Fade>
-            </FlexBox>
-        </Modal>
+        <>
+        hello
+        </>
+    //     <HtmlTooltip
+    //         title={
+    //         <React.Fragment>
+                
+    //         </React.Fragment>
+    //         }
+    //     >
+    //         <Button>HTML</Button>
+    //   </HtmlTooltip>
     );
 };

@@ -19,8 +19,10 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>Cantrips</h2>
                     {spells && (
-                        spells.map(spell => (
-                            spell.level_int === 0 ? <p>{spell.name}</p> : null
+                        spells.map((spell, index) => (
+                            spell.level_int === 0 && (
+                                <p key={index}>{spell.name}</p>
+                            )
                         ))
                     )}
                 </Card>
@@ -29,7 +31,9 @@ export const CharacterSpells = props => {
                     <h2>1st Level</h2>
                     {spells && (
                         spells.map((spell,index) => (
-                            spell.level_int === 1 ? <p key={index}>{spell.name}</p> : null
+                            spell.level_int === 1 && (
+                                <p key={index}>{spell.name}</p>
+                            )
                         ))
                     )}
                 </Card>
@@ -38,7 +42,9 @@ export const CharacterSpells = props => {
                     <h2>2nd Level</h2>
                     {spells && (
                         spells.map((spell, index) => (
-                            spell.level_int === 2 ? <p key={index}>{spell.name}</p> : null
+                            spell.level_int === 2 && (
+                                <p key={index}>{spell.name}</p>
+                            )
                         ))
                     )}
                 </Card>
@@ -46,8 +52,10 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>3rd Level</h2>
                     {spells && (
-                        spells.map(spell => (
-                            spell.level_int === 3 ? <p>{spell.name}</p> : null
+                        spells.map((spell, index) => (
+                            spell.level_int === 3 && (
+                                <p key={index}>{spell.name}</p>
+                            )
                         ))
                     )}
                 </Card>
@@ -55,9 +63,9 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>4th Level</h2>
                     {spells && (
-                        spells.map(spell => (
+                        spells.map((spell, index) => (
                             spell.level_int === 4 && (
-                                <p>{spell.name}</p>
+                                <p key={index}>{spell.name}</p>
                             )
                         ))
                     )}
@@ -66,9 +74,9 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>5th Level</h2>
                     {spells && (
-                        spells.map(spell => (
+                        spells.map((spell, index) => (
                             spell.level_int === 5 && (
-                                <p>{spell.name}</p>
+                                <p key={index}>{spell.name}</p>
                             )
                         ))
                     )}
@@ -77,9 +85,9 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>6th Level</h2>
                     {spells && (
-                        spells.map(spell => (
+                        spells.map((spell, index) => (
                             spell.level_int === 6 && (
-                                <p>{spell.name}</p>
+                                <p key={index}>{spell.name}</p>
                             )
                         ))
                     )}
@@ -88,9 +96,9 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>7th Level</h2>
                     {spells && (
-                        spells.map(spell => (
+                        spells.map((spell, index) => (
                             spell.level_int === 7 && (
-                                <p>{spell.name}</p>
+                                <p key={index}>{spell.name}</p>
                             )
                         ))
                     )}
@@ -99,9 +107,9 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>8th Level</h2>
                     {spells && (
-                        spells.map(spell => (
+                        spells.map((spell, index) => (
                             spell.level_int === 8 && (
-                                <p>{spell.name}</p>
+                                <p key={index}>{spell.name}</p>
                             )
                         ))
                     )}
@@ -110,9 +118,9 @@ export const CharacterSpells = props => {
                 <Card className="spells">
                     <h2>9th Level</h2>
                     {spells && (
-                        spells.map(spell => (
+                        spells.map((spell, index) => (
                             spell.level_int === 9 && (
-                                <p>{spell.name}</p>
+                                <p key={index}>{spell.name}</p>
                             )
                         ))
                     )}

@@ -15,7 +15,7 @@ const getClass = slug => {
 
 export const ClassShowPage = props => {
     const [open, setOpen] = useState(false);
-    const [fadeContent, setFadeContent] = useState(null);
+    const [fadeContent, setFadeContent] = useState([]);
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -79,8 +79,10 @@ export const ClassShowPage = props => {
         };
     };
 
-    const handleOpen = () => {
+    const handleOpen = (slug) => {
         setOpen(true);
+        getContent(slug)
+        console.log(slug)
     };
 
     const handleClose = () => {
@@ -90,15 +92,33 @@ export const ClassShowPage = props => {
 
     const findNodes = () => {
         const nodes = document.querySelectorAll("em");
-        // nodes.forEach(node => {
-        //     node.addEventListener('mouseenter', () => {
-        //         handleOpen();
-        //     });
-        //     node.addEventListener('mouseleave', () => {
-        //         handleClose();
-        //     });
-        //     // setFadeContent(node.innerText.split(" ").join("-"));
-        // });
+        let slug = "";
+        nodes.forEach((node) => {
+    //         <HtmlTooltip
+    //         title={
+    //         <React.Fragment>
+                
+    //         </React.Fragment>
+    //         }
+    //     >
+    //         <Button>HTML</Button>
+    //   </HtmlTooltip>
+            // slug = node.innerText.split(" ").join("-");
+            // node.setAttribute("data-text", slug);
+            // node.addEventListener('mouseenter', () => {
+            //     handleOpen(slug);
+            // });
+            // node.addEventListener('mouseleave', () => {
+            //     handleClose();
+            // });
+            // fadeContent.push({[slug]: slug});
+        });
+    };
+
+    const getContent = (slug) => {
+        const text = document.getAttribute("data-text");
+
+        return slug;
     };
 
     useEffect(() => {
@@ -196,7 +216,7 @@ export const ClassShowPage = props => {
                     </TableContainer>
                 </TableStyle>
                 {/* {console.log(fadeContent)} */}
-                <SpellModal open={open} fadeContent={fadeContent} />
+                <SpellModal open={open} fadeContent={getContent} />
             </MainStyle>
         </BackgroundImage>
     );

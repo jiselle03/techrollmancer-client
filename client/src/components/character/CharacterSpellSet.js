@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 import { SpellListItem } from './SpellListItem';
@@ -19,10 +19,6 @@ Fade.propTypes = {
     onExited: PropTypes.func,
 };
 
-const getSpells = () => {
-    return axios.get("http://localhost:3000/api/v1/libraries/spells");
-};
-
 const updateSpellList = (id, params) => {
     return fetch(`http://localhost:3000/api/v1/characters/${id}/spells`, {
       method: "PATCH",
@@ -37,6 +33,14 @@ const updateSpellList = (id, params) => {
 export const CharacterSpellSet = props => {
     const [spells, setSpells] = useState([]);
     const [openNew, setOpenNew] = useState(false);
+    const [newSpells, setNewSpells] = useState([]);
+    const [checkedSpell, setCheckedSpell] = useState(false);
+
+    const ids = props.character.spells.map(spell => spell.id);
+    
+    const getSpells = () => {
+        return axios.get("http://localhost:3000/api/v1/libraries/spells");
+    };
     
     const handleOpenNew = () => {
         setOpenNew(true);
@@ -45,28 +49,44 @@ export const CharacterSpellSet = props => {
         setOpenNew(false);
     };
 
-    const handleUpdateSpellList = event => {
+    const handleChange =  event => {
         event.preventDefault();
-        const { currentTarget } = event;
-
-        const spellList = spells.map(spell => {
-            return spell.is_true;
-        });
-
-        updateSpellList(props.character.id, spellList).then(data => {
-            props.history.push(`/characters/${data.id}`);
-        });
+        const { id } = event.target.parentNode.parentNode.dataset;
+        const { checked } = event.target;
+        setCheckedSpell(checked);
+        // debugger;
         
-        currentTarget.reset();
+        if (checked) {
+            setNewSpells([...newSpells, parseInt(id)]);
+            console.log(newSpells)
+        } else {
+            const filteredSpells = newSpells.filter(spellId => spellId !== parseInt(id));
+            setNewSpells(filteredSpells);
+            console.log(newSpells)
+        } 
     };
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        // the body of your post request is newSpells
+        // and once you click on add (submit) you have a byebug,
+        // checkout (params) in your rails api and then you can
+        // post it to your backend => destroy the previous spells in
+        // CharacterSpells and add the new ones
+        axios.post('http://localhost:3000/api/v1/character_spells').then(() => {
+            props.history.push(`/characters/${character.id}`);
+        })
+        debugger;
+    }
+
+    const { character } = props;
 
     useEffect(() => { 
         getSpells().then(spells => {
             setSpells(spells.data);
+            setNewSpells(ids);
         });
     }, []);
-
-    const { character } = props;
 
     return(
         <>
@@ -116,15 +136,15 @@ export const CharacterSpellSet = props => {
                                 Spell List
                             </h3>
 
-                            <form onSubmit={handleUpdateSpellList}>
+                            <form onSubmit={handleSubmit}>
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Cantrips</FormLabel>
                                 <FormGroup>
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 0 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -138,8 +158,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 1 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -153,8 +173,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 2 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -168,8 +188,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 3 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -183,8 +203,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 4 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -198,8 +218,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 5 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -213,8 +233,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 6 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -228,8 +248,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 7 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -243,8 +263,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 8 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))
@@ -258,8 +278,8 @@ export const CharacterSpellSet = props => {
                                 {spells && (
                                     spells.map(spell => (
                                         spell.level_int === 9 && (
-                                            <div key={spell.id}>
-                                                <SpellListItem spell={spell} character={character} />
+                                            <div key={spell.id} data-id={spell.id}>
+                                                <SpellListItem onHandleChange={handleChange} checkedSpell={checkedSpell} characterSpells={newSpells} spell={spell} />
                                             </div>
                                         )
                                     ))

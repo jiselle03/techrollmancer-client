@@ -3,26 +3,26 @@ import React, { useState, useEffect } from 'react';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 export const SpellListItem = props => {
-    const [state, setState] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
-    const { spell, character } = props;
+    const handleChange = event => {
+        setIsChecked(!isChecked);
+        props.onHandleChange(event);
+    }
 
-    const handleChange = state => event => {
-        setState(event.target.checked);
-    };
-    
-    useEffect(()=> {
-        character.spells.map(charSpell => {
-            if (charSpell.id === spell.id) {
-                return setState(true);
-            };
-        });
-    }, []);
+    useEffect(() => {
+        const { characterSpells, checkedSpell, spell } = props;
+        const isChecked = checkedSpell || characterSpells.includes(spell.id);
+        setIsChecked(isChecked);
+    }, [isChecked]);
+
+    const { spell } = props;
 
     return(
         <FormControlLabel
-            control={<Checkbox checked={state}  onClick={handleChange(state)} value={spell.slug} />}
+            control={<Checkbox checked={isChecked}  onChange={handleChange} value={spell.slug} data-id={spell.id} />}
             label={spell.name}
         />
     );
 };
+
