@@ -71,7 +71,6 @@ strong {
 
 em {
   font-style: italic;
-  color: rgba(45,99,127,1);
 }
 
 .card-text {
@@ -157,6 +156,36 @@ div.MuiTabs-root.tabs {
   padding: 1em;
   margin: 0.5em;
   max-width: 360px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 25vw;
+  background-color: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 5px 0;
+  border-radius: 5px;
+  top: 100%;
+  left: 50%;
+  padding: 0.5em;
+  overflow: scroll;
+ 
+  /* Position tooltip text */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show tooltip text on mouseover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 @media (min-width: 768px) {

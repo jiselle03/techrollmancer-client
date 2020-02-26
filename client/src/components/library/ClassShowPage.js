@@ -2,20 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { utils } from '../js/utils';
-import { SpellModal } from './SpellModal';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { TableStyle } from '../styles/TableStyle';
 
-import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip } from '@material-ui/core';
 
 const getClass = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
 };
 
 export const ClassShowPage = props => {
-    const [open, setOpen] = useState(false);
-    const [fadeContent, setFadeContent] = useState([]);
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -79,46 +76,24 @@ export const ClassShowPage = props => {
         };
     };
 
-    const handleOpen = (slug) => {
-        setOpen(true);
-        getContent(slug)
-        console.log(slug)
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-
     const findNodes = () => {
         const nodes = document.querySelectorAll("em");
+        let name = "";
         let slug = "";
         nodes.forEach((node) => {
-    //         <HtmlTooltip
-    //         title={
-    //         <React.Fragment>
-                
-    //         </React.Fragment>
-    //         }
-    //     >
-    //         <Button>HTML</Button>
-    //   </HtmlTooltip>
-            // slug = node.innerText.split(" ").join("-");
-            // node.setAttribute("data-text", slug);
-            // node.addEventListener('mouseenter', () => {
-            //     handleOpen(slug);
-            // });
-            // node.addEventListener('mouseleave', () => {
-            //     handleClose();
-            // });
-            // fadeContent.push({[slug]: slug});
+            slug = node.innerText.split(" ").join("-");
+            axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`).then(spell => {
+                console.log(spell.data)
+                return node.outerHTML=`
+                    <div class="tooltip">${spell.data.name}
+                        <span class="tooltiptext">
+                            <p><strong>${spell.data.name}</strong> | <em>${spell.data.school}</em></p>
+                            <p>${spell.data.desc}</p>
+                        </span>
+                    </div>
+                `    
+            });
         });
-    };
-
-    const getContent = (slug) => {
-        const text = document.getAttribute("data-text");
-
-        return slug;
     };
 
     useEffect(() => {
@@ -215,8 +190,6 @@ export const ClassShowPage = props => {
                         </Table>
                     </TableContainer>
                 </TableStyle>
-                {/* {console.log(fadeContent)} */}
-                <SpellModal open={open} fadeContent={getContent} />
             </MainStyle>
         </BackgroundImage>
     );

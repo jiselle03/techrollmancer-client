@@ -13,7 +13,7 @@ export const MainStyle = props => {
                 margin: laptop ? "1em 2em 2em 27vw" : "1em 2em 2em 15vw",
                 width: "70vw",
                 minHeight: "100vh",
-                overflowX: "hidden",
+                overflowX: "visible",
             }}
         >
             {children}
