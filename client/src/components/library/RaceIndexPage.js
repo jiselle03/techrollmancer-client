@@ -4,10 +4,9 @@ import axios from 'axios';
 
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
-import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress, Divider } from '@material-ui/core';
+import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
 
 const getRaces = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/races");
@@ -58,7 +57,7 @@ export const RaceIndexPage = () => {
                     RACES
                 </h1>
 
-                <Grid>
+                <Grid container>
                 {races.map(race => (
                     <div key={race.slug}>
                         <Link 

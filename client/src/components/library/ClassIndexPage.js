@@ -4,10 +4,9 @@ import axios from 'axios';
 
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
-import { Grid } from '../styles/Grid';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress } from '@material-ui/core';
+import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
 
 const getClasses = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/classes");
@@ -56,7 +55,7 @@ export const ClassIndexPage = () => {
                     CLASSES
                 </h1>
                 
-                <Grid>
+                <Grid container>
                 {classes.map(charClass => (
                     <div key={charClass.slug}>
                         <Link 
