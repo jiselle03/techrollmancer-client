@@ -57,7 +57,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                                     </span>    
                                 </div>
                         </ListItemLink>
-                        <Link to="" onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</Link>
+                        <Link to="#" onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</Link>
                         {currentUser && (
                             <Link style={sidebarText} to="/characters">{currentUser.username.toUpperCase()}</Link>
                             )}
