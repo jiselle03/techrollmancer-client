@@ -89,15 +89,9 @@ const App = () => {
           <Route exact path="/libraries/equipment" component={EquipmentIndexPage} />
           <Route path="/libraries/equipment/:slug" component={EquipmentShowPage} />
           <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
-          {/* <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={CharacterNewPage}
-            path = "/characters/new"
-            exact
-          /> */}
           <AuthRoute 
             isAuthenticated={!!currentUser}
-            component={CharacterIndexPage}
+            component={() => <CharacterIndexPage currentUser={currentUser} />}
             exact path="/characters"
           />
           <AuthRoute 

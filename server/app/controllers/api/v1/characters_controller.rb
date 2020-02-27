@@ -1,12 +1,10 @@
 class Api::V1::CharactersController < Api::ApplicationController
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :find_character, only: [:edit,:update,:show, :destroy]
-    before_action :authorize!
+    # before_action :authorize!
 
     def create
         character = Character.new character_params
-        character.user = current_user
-
         if character.save
             render json: { id: character.id }
         else
@@ -24,14 +22,14 @@ class Api::V1::CharactersController < Api::ApplicationController
         else
             render(
                 json: { errors: @character.errors },
-                status: 422 #unproceesable entity
+                status: 422 #unprocessable entity
             )
         end
     end
 
     def index
-        characters = current_user.characters.order(:name)
-        render json: characters
+        @characters = current_user.characters.order(:name)
+        render json: @characters
     end
 
     def show
@@ -54,6 +52,7 @@ class Api::V1::CharactersController < Api::ApplicationController
     
     def character_params
         params.require(:character).permit(
+            :user_id,
             :name,
             :gender,
             :race,

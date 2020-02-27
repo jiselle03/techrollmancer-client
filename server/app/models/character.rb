@@ -17,7 +17,8 @@ class Character < ApplicationRecord
     validates :int, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :wis, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
     validates :cha, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
-    validates :speed, numericality: { only_integer: true }
+    validates :speed, numericality: { only_integer: true }, allow_blank: true
+    validates :armor_class, numericality: { only_integer: true }, allow_blank: true
 
     before_save :titleize_name
     before_save :titleize_gender
@@ -25,10 +26,10 @@ class Character < ApplicationRecord
     private
 
     def titleize_name
-        self.name.titleize
+        self.name = self.name.titleize
     end
 
     def titleize_gender
-        self.gender.titleize
+        self.gender = self.gender.titleize
     end
 end

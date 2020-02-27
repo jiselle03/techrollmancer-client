@@ -21,6 +21,7 @@ Fade.propTypes = {
 export const CharacterNew = props => {
     const [errors, setErrors] = useState([]);
     const [openNew, setOpenNew] = useState(false);
+    const { currentUser } = props;
     
     const handleOpenNew = () => {
         setOpenNew(true);
@@ -45,11 +46,14 @@ export const CharacterNew = props => {
             con: fd.get("con"),
             int: fd.get("int"),
             wis: fd.get("wis"),
-            cha: fd.get("cha")
+            cha: fd.get("cha"),
+            user_id: currentUser.id
         };
-
+        console.log(newCharacter)
+        console.log(JSON.stringify(newCharacter))
         Character.create(newCharacter).then(data => {
             if (!data.errors) {
+                handleCloseNew();
                 props.history.push(`/characters/${data.id}`);
                 
             } else {
@@ -198,7 +202,7 @@ export const CharacterNew = props => {
                                                 <Input
                                                     id="dex"
                                                     type="number"
-                                                    name="con"
+                                                    name="dex"
                                                     placeholder="8"
                                                     step="1"
                                                     min="1"

@@ -9,7 +9,7 @@ import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
 
-export const CharacterIndexPage = () => {
+export const CharacterIndexPage = props => {
     const [characters, setCharacters] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -40,7 +40,6 @@ export const CharacterIndexPage = () => {
                         <p>
                             You have not created any characters.
                         </p>
-                        <CharacterNew />
                     </>
                 )}
 
@@ -73,10 +72,11 @@ export const CharacterIndexPage = () => {
                             </div>
                         ))}
                         </Grid>
-
-                        <CharacterNew />
                     </>
                 )}
+
+                <CharacterNew currentUser={props.currentUser} />
+                
             </MainStyle>
         </BackgroundImage>
     );
