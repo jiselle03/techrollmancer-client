@@ -51,7 +51,6 @@ export const CharacterShowPage = props => {
     const handleRefresh = () => {
       Character.one(props.match.params.id).then(character => { 
         setCharacter(character);
-        setIsLoading(false);
       }); 
     };
 
@@ -103,7 +102,7 @@ export const CharacterShowPage = props => {
               <CharacterStats character={character} />
           </TabPanel>
           <TabPanel value={value} index={1}>
-              <CharacterSpells character={character} {...props} handleRefresh={handleRefresh}/>
+              <CharacterSpells character={character} handleRefresh={handleRefresh}/>
           </TabPanel>
           <TabPanel value={value} index={2}>
               <CharacterInventory character={character} />

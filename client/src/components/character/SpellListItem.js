@@ -11,8 +11,8 @@ export const SpellListItem = props => {
     }
 
     useEffect(() => {
-        const { characterSpells, checkedSpell, spell } = props;
-        const isChecked = checkedSpell || characterSpells.includes(spell.id);
+        const { characterSpells, spell } = props;
+        const isChecked = characterSpells.includes(spell.id);
         setIsChecked(isChecked);
     }, [isChecked]);
 
