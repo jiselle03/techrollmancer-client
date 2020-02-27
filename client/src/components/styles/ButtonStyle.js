@@ -9,7 +9,7 @@ export const ButtonStyle = {
     },
     modalButton: {
         color: "#fff",
-        fontSize: "1.5em",
+        fontSize: "1.25em",
         padding: "0.5em 1em",
         margin: "0.5em",
         backgroundColor: "rgba(83,98,111,1)",

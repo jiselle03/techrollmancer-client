@@ -83,7 +83,6 @@ export const ClassShowPage = props => {
         nodes.forEach((node) => {
             slug = node.innerText.split(" ").join("-");
             axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`).then(spell => {
-                console.log(spell.data)
                 return node.outerHTML=`
                     <div class="tooltip">${spell.data.name}
                         <span class="tooltiptext">

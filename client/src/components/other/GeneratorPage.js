@@ -218,43 +218,44 @@ export const GeneratorPage = () => {
                         <FlexBox
                             alignItems="center"
                             justifyContent="center"
-                            margin="10vh 0"
+                            margin="5vh 0"
                         >
                             <Fade in={openQR}>
                                 <FadeStyle>
                                     <h3>CHARACTER STATS</h3>
 
-                                    <p>
-                                        <strong>Race:</strong> {character._charRace}
-                                    </p>
-                                    <p>
-                                        <strong>Class:</strong> {character._charClass}
-                                    </p>
+                                    <div>
+                                    <span className="roll">
+                                        <h5>Race: </h5> 
+                                    </span>
+                                    <span className="roll">
+                                        <h4>{character._charRace}</h4>
+                                    </span>
+                                    </div>
+                                    <div>
+                                    <span className="roll">
+                                        <h5>Class: </h5>
+                                    </span>
+                                    <span className="roll">
+                                        <h4>{character._charClass}</h4>
+                                    </span>
+                                    </div>
                                     
                                     <Divider />
                                     
                                     <h3>
-                                        <strong>Ability Scores</strong>
+                                        ABILITY SCORES
                                     </h3>
                                     
-                                    <p>
-                                        {character._roll1}
-                                    </p>
-                                    <p>
-                                        {character._roll2}
-                                    </p>
-                                    <p>
-                                        {character._roll3}
-                                    </p>
-                                    <p>
-                                        {character._roll4}
-                                    </p>
-                                    <p>
-                                        {character._roll5}
-                                    </p>
-                                    <p>
-                                        {character._roll6}
-                                    </p>
+                                    <h4>
+                                        {character._roll1}, {character._roll2},
+                                    </h4>
+                                    <h4>
+                                        {character._roll3}, {character._roll4},
+                                    </h4>
+                                    <h4>
+                                        {character._roll5}, {character._roll6}
+                                    </h4>
 
                                     <button 
                                         onClick={handleCloseQR}
@@ -280,32 +281,60 @@ export const GeneratorPage = () => {
                             <FlexBox
                                 justifyContent="center"
                                 alignItems="center"
-                                margin="20vh 0"
+                                margin="8vh 0"
                             >
                                 <Fade in={openD6}>
                                     <FadeStyle>
                                         <h3>
                                             ROLLS
                                         </h3>
+                                        
+                                        <div>
+                                        <span className="roll">
+                                            <h5>1ST: </h5>
+                                        </span>
+                                        <span className="roll">
+                                            <h4>{rolls[0] ? rolls[0] : " "}</h4>
+                                        </span>
+                                        </div>
 
-                                        <p>
-                                            1ST: <strong>{rolls[0] ? rolls[0] : " "}</strong>
-                                        </p>
-                                        <p>
-                                            2ND: <strong>{rolls[1] ? rolls[1] : " "}</strong>
-                                        </p>
-                                        <p>
-                                            3RD: <strong>{rolls[2] ? rolls[2] : " "}</strong>
-                                        </p>
-                                        <p>
-                                            4TH: <strong>{rolls[3] ? rolls[3] : " "}</strong>
-                                        </p>
+                                        <div>
+                                        <span className="roll">
+                                            <h5>2ND: </h5>
+                                        </span>
+                                        <span className="roll">
+                                            <h4>{rolls[1] ? rolls[1] : " "}</h4>
+                                        </span>
+                                        </div>
+
+                                        <div>
+                                        <span className="roll">
+                                            <h5>3RD: </h5>
+                                        </span>
+                                        <span className="roll">
+                                            <h4>{rolls[2] ? rolls[2] : " "}</h4>
+                                        </span>
+                                        </div>
+
+                                        <div>
+                                        <span className="roll">
+                                            <h5>4TH: </h5>
+                                        </span>
+                                        <span className="roll">
+                                            <h4>{rolls[3] ? rolls[3] : " "}</h4>
+                                        </span>
+                                        </div>
 
                                         <Divider />
 
-                                        <p>
-                                            STAT: <strong>{rolls[3] ? utils.rollAbility(rolls) : " "}</strong>
-                                        </p>
+                                        <div>
+                                        <span className="roll">
+                                            <h3>STAT: </h3> 
+                                        </span>
+                                        <span className="roll">
+                                            <h3>{rolls[3] ? utils.rollAbility(rolls) : " "}</h3>
+                                        </span>
+                                        </div>
 
                                         <FlexBox
                                             justifyContent="center"

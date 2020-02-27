@@ -46,7 +46,7 @@ export const utils = {
     },
 
     getInitiative() {
-
+        return 17;
     },
 
     getBaseMod(stat) {

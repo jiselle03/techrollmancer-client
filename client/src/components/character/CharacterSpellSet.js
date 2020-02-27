@@ -19,24 +19,14 @@ Fade.propTypes = {
     onExited: PropTypes.func,
 };
 
-const updateSpellList = (id, params) => {
-    return fetch(`http://localhost:3000/api/v1/characters/${id}/spells`, {
-      method: "PATCH",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(params)
-    }).then(res => res.json());
-};
-
 export const CharacterSpellSet = props => {
     const [spells, setSpells] = useState([]);
     const [openNew, setOpenNew] = useState(false);
     const [newSpells, setNewSpells] = useState([]);
     const [checkedSpell, setCheckedSpell] = useState(false);
 
-    const ids = props.character.spells.map(spell => spell.id);
+    const { character } = props;
+    const ids = character.spells.map(spell => spell.id);
     
     const getSpells = () => {
         return axios.get("http://localhost:3000/api/v1/libraries/spells");
@@ -54,7 +44,6 @@ export const CharacterSpellSet = props => {
         const { id } = event.target.parentNode.parentNode.dataset;
         const { checked } = event.target;
         setCheckedSpell(checked);
-        // debugger;
         
         if (checked) {
             setNewSpells([...newSpells, parseInt(id)]);
@@ -68,25 +57,21 @@ export const CharacterSpellSet = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // the body of your post request is newSpells
-        // and once you click on add (submit) you have a byebug,
-        // checkout (params) in your rails api and then you can
-        // post it to your backend => destroy the previous spells in
-        // CharacterSpells and add the new ones
-        axios.post('http://localhost:3000/api/v1/character_spells').then(() => {
-            props.history.push(`/characters/${character.id}`);
-        })
-        debugger;
-    }
-
-    const { character } = props;
+        axios.post(`http://localhost:3000/api/v1/characters/${character.id}/character_spells`, {
+            spells: newSpells
+        }).then(() => {
+            setOpenNew(false);
+        }).then(() => {
+            props.handleRefresh();
+        });
+    };
 
     useEffect(() => { 
         getSpells().then(spells => {
             setSpells(spells.data);
             setNewSpells(ids);
         });
-    }, []);
+    }, [openNew]);
 
     return(
         <>
@@ -126,17 +111,44 @@ export const CharacterSpellSet = props => {
                     justifyContent="center"
                 >
                     <Fade in={openNew}>
-                        <FadeStyle
-                            align="left"
-                        > 
                         <FormStyle
                             padding="0.5em"
                         >
-                            <h3>
-                                Spell List
-                            </h3>
 
                             <form onSubmit={handleSubmit}>
+                                <div 
+                                    style={{
+                                        position: "sticky", 
+                                        top: "0", 
+                                        zIndex: "1",
+                                        backgroundColor: "rgba(45,99,127,1)",
+                                        padding: "1em",
+                                        textAlign: "center",
+                                        boxShadow: "0 5px 5px -2px #888",
+                                    }}
+                                >
+                                    <h3>
+                                        Spell List
+                                    </h3>
+                                    <Button 
+                                        variant="contained" 
+                                        type="submit" 
+                                        style={ButtonStyle.modalButton}
+                                    >
+                                        SAVE
+                                    </Button>
+
+                                    <Button
+                                        onClick={handleCloseNew}
+                                        style={ButtonStyle.modalButton}
+                                    >
+                                        CANCEL
+                                    </Button>
+                                </div>
+                                <FadeStyle
+                            align="left"
+                        > 
+                            <div>
                             <FormControl component="fieldset">
                                 <FormLabel component="legend">Cantrips</FormLabel>
                                 <FormGroup>
@@ -286,27 +298,11 @@ export const CharacterSpellSet = props => {
                                 )}
                                 </FormGroup>
                             </FormControl>
-
-                            <FlexBox
-                                justifyContent="center"
-                            >
-                                <Button variant="contained" type="submit" style={ButtonStyle.modalButton}>
-                                    ADD
-                                </Button>
-
-                                <Button
-                                    onClick={handleCloseNew}
-                                    style={ButtonStyle.modalButton}
-                                >
-                                    CANCEL
-                                </Button>
-
-                            </FlexBox>
+                            </div>
                                         
+                            </FadeStyle>
                             </form>
-                                
                         </FormStyle>
-                        </FadeStyle>
                     </Fade>
                 </FlexBox>
             </Modal>

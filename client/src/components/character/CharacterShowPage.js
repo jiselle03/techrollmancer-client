@@ -8,9 +8,8 @@ import { CharacterFeatures } from './CharacterFeatures';
 import { CharacterTraits } from './CharacterTraits';
 import { CharacterJournal } from './CharacterJournal';
 import { BackgroundImage } from '../styles/BackgroundImage';
-import { CharacterNav } from '../styles/CharacterNav';
 
-import { Box, CircularProgress, Typography, Tab, Tabs } from '@material-ui/core';
+import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -34,10 +33,31 @@ export const CharacterShowPage = props => {
     const [value, setValue] = useState(0);
     const [character, setCharacter] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+
+    const ipad = useMediaQuery('(min-width: 768px)');
+    const laptop = useMediaQuery('(min-width:1280px)');
+
+    const getScreenSize = () => {
+      switch(true) {
+        case laptop:
+            return "auto auto auto 24vw";
+        case ipad:
+            return "auto auto auto 5vw";
+        default: 
+            return "auto auto auto 15vw";
+      };
+    };
   
+    const handleRefresh = () => {
+      Character.one(props.match.params.id).then(character => { 
+        setCharacter(character);
+        setIsLoading(false);
+      }); 
+    };
+
     useEffect(() => {
         Character.one(props.match.params.id).then(character => { 
-            setCharacter(character);
+          setCharacter(character);
           setIsLoading(false);
         });
     }, [props.match.params.id]);
@@ -56,15 +76,20 @@ export const CharacterShowPage = props => {
       <BackgroundImage
         image={require('../../assets/d20.png')} 
       >
-        <CharacterNav>
+        <div
+          style={{
+            margin: getScreenSize(),
+            width: laptop ? "75vw" : "92.5vw",
+          }}
+        >
           <Tabs
+              className="tabs"
               value={value}
               indicatorColor="secondary"
               textColor="secondary"
               onChange={handleChange}
-              className="tabs"
-              variant="scrollable"
-              scrollButtons="auto"
+              variant={!laptop ? "scrollable" : null}
+              scrollButtons={!laptop ? "auto" : null}
           >
               <Tab label="STATS" value={0} />
               <Tab label="SPELLS" value={1} />
@@ -73,11 +98,12 @@ export const CharacterShowPage = props => {
               <Tab label="TRAITS" value={4} />
               <Tab label="JOURNAL" value={5} />
           </Tabs>
+          <div style={{margin: "auto 2em"}}>
           <TabPanel value={value} index={0}>
               <CharacterStats character={character} />
           </TabPanel>
           <TabPanel value={value} index={1}>
-              <CharacterSpells character={character} />
+              <CharacterSpells character={character} {...props} handleRefresh={handleRefresh}/>
           </TabPanel>
           <TabPanel value={value} index={2}>
               <CharacterInventory character={character} />
@@ -91,7 +117,8 @@ export const CharacterShowPage = props => {
           <TabPanel value={value} index={5}>
               <CharacterJournal character={character} />
           </TabPanel>
-        </CharacterNav>
+          </div>
+        </div>
       </BackgroundImage>
     );
 };
