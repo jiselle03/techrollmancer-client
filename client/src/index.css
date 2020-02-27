@@ -92,7 +92,8 @@ h6.header {
 }
 
 span.stat,
-span.roll {
+span.roll,
+span.header {
   display: inline-block;
   margin: 0 0.75vw;
 }
@@ -218,7 +219,7 @@ div.MuiTabs-root.tabs {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  border-bottom: 1px dotted black;
 }
 
 /* Tooltip text */
