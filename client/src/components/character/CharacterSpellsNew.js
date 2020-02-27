@@ -19,11 +19,10 @@ Fade.propTypes = {
     onExited: PropTypes.func,
 };
 
-export const CharacterSpellSet = props => {
+export const CharacterSpellsNew = props => {
     const [spells, setSpells] = useState([]);
     const [open, setOpen] = useState(false);
     const [newSpells, setNewSpells] = useState([]);
-    // const [checkedSpell, setCheckedSpell] = useState(false);
 
     const { character } = props;
     const ids = character.spells.map(spell => spell.id);
@@ -44,7 +43,6 @@ export const CharacterSpellSet = props => {
         event.preventDefault();
         const { id } = event.target.parentNode.parentNode.dataset;
         const { checked } = event.target;
-        // setCheckedSpell(checked);
         
         if (checked) {
             setNewSpells([...newSpells, parseInt(id)]);
@@ -69,7 +67,6 @@ export const CharacterSpellSet = props => {
         getSpells().then(spells => {
             setSpells(spells.data);
             setNewSpells(ids);
-            // console.log(ids);
         });
     }, [open]);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CharacterSpellSet } from './CharacterSpellSet';
+import { CharacterSpellsNew } from './CharacterSpellsNew';
 
 import Card from '@material-ui/core/Card';
 
@@ -124,7 +124,7 @@ export const CharacterSpells = props => {
                 )}
             </Card>
 
-            <CharacterSpellSet character={character}  handleRefresh={handleRefresh}/>
+            <CharacterSpellsNew character={character}  handleRefresh={handleRefresh}/>
         </>
     );
 };
