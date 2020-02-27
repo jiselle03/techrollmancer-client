@@ -49,8 +49,6 @@ export const CharacterNew = props => {
             cha: fd.get("cha"),
             user_id: currentUser.id
         };
-        console.log(newCharacter)
-        console.log(JSON.stringify(newCharacter))
         Character.create(newCharacter).then(data => {
             if (!data.errors) {
                 handleCloseNew();

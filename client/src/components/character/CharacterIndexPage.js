@@ -75,8 +75,8 @@ export const CharacterIndexPage = props => {
                     </>
                 )}
 
-                <CharacterNew currentUser={props.currentUser} />
-                
+                <CharacterNew currentUser={props.currentUser} {...props} />
+
             </MainStyle>
         </BackgroundImage>
     );

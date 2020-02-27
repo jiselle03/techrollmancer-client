@@ -30,7 +30,6 @@ import { WeaponIndexPage } from './library/WeaponIndexPage';
 import { ArmorIndexPage } from './library/ArmorIndexPage';
 import { ConditionIndexPage } from './library/ConditionIndexPage';
 
-// import { CharacterNewPage } from './character/CharacterNewPage';
 import { CharacterIndexPage } from './character/CharacterIndexPage';
 import { CharacterShowPage } from './character/CharacterShowPage';
 
@@ -91,7 +90,9 @@ const App = () => {
           <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
           <AuthRoute 
             isAuthenticated={!!currentUser}
-            component={() => <CharacterIndexPage currentUser={currentUser} />}
+            render={routeProps => (
+              <CharacterIndexPage {...routeProps} currentUser={currentUser} />
+            )}
             exact path="/characters"
           />
           <AuthRoute 
