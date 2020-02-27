@@ -1,11 +1,12 @@
 class Api::V1::CharactersController < Api::ApplicationController
     before_action :authenticate_user!
     before_action :find_character, only: [:edit,:update,:show, :destroy]
-    # before_action :authorize!
+    before_action :authorize!
 
     def create
         character = Character.new character_params
         character.user = current_user
+
         if character.save
             render json: { id: character.id }
         else
@@ -17,6 +18,7 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
 
     def update
+
         if @character.update character_params
             render json: { id: @character.id }
         else
@@ -38,7 +40,10 @@ class Api::V1::CharactersController < Api::ApplicationController
 
     def destroy
         @character.destroy
-        render json: { status: 200 }, status: 200
+        render(
+            json: { status: 200 }, 
+            status: 200
+        ) 
     end
 
     private
@@ -63,13 +68,17 @@ class Api::V1::CharactersController < Api::ApplicationController
             :photo_url,
             :str, :dex, :con, :int, :wis, :cha,
             :armor_class,
-            :speed
+            :speed,
+            :spells
         )
     end
 
-    # def authorize!
-    #     unless can?(:crud, @character)
-    #         redirect_to root_path, alert: 'Not Authorized'
-    #     end
-    # end
+    def authorize!
+        unless can?(:crud, @character)
+            render(
+                json: { status: 401 },
+                status: 401 #unauthorized
+            )
+        end
+    end
 end

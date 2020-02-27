@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: { format: :json } do
     namespace :v1 do 
-      resources :characters
+      # patch('/characters/:id/spells', to: 'character_spells#update')
+      resources :characters do
+        resources :character_spells, only: [:create]
+      end
       resource :session, only: [:create, :destroy]
       resources :users, only: [:create] do
         get :current, on: :collection

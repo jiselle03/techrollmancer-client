@@ -9,7 +9,7 @@ class CharacterSerializer < ActiveModel::Serializer
 
   class SpellSerializer < ActiveModel::Serializer
     attributes :id, :slug, :name, :level_int, :created_at, :updated_at
-    has_many :characters, through: :character_spells
+    # has_many :characters, through: :character_spells
   end
 
 end

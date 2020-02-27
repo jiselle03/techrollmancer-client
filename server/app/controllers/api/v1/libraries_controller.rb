@@ -45,15 +45,12 @@ class Api::V1::LibrariesController < Api::ApplicationController
     end
 
     def spell_index
-        spells = File.read "./db/data_provider/spells.json"
+        spells = Spell.all.order(id: :asc)
         render json: spells
     end
 
     def spell_show
-        spells = File.read "./db/data_provider/spells.json"
-        spells = JSON.parse spells
-
-        spells = spells.filter do |spell| 
+        spells = Spell.all.filter do |spell| 
             spell["slug"] == params[:slug]
         end
         render json: spells[0]
