@@ -1,15 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { utils } from '../js/utils';
 import { FlexBox } from '../styles/FlexBox';
+import { ButtonStyle } from '../styles/ButtonStyle';
+import { FadeStyle } from '../styles/FadeStyle';
+import { InputEdit } from './InputEdit';
 
-import { Card, Fab } from '@material-ui/core';
+import { Backdrop, Card, Fab, Fade, Modal } from '@material-ui/core';
 import { Edit } from '@material-ui/icons';
 
 export const CharacterStats = props => {
+  const [editLevel, setEditLevel] = useState(false);
+  const [editHP, setEditHP] = useState(false);
+  const [editAC, setEditAC] = useState(false);
+  const [editInitiative, setEditInitiative] = useState(false);
+  const [editSpeed, setEditSpeed] = useState(false);
+  const [editStr, setEditStr] = useState(false);
+  const [editDex, setEditDex] = useState(false);
+  const [editCon, setEditCon] = useState(false);
+  const [editInt, setEditInt] = useState(false);
+  const [editWis, setEditWis] = useState(false);
+  const [editCha, setEditCha] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [roll, setRoll] = useState(0);
+  const [bonus, setBonus] = useState(0);
+
+  let count, timeout = 0;
+  const handleClick = field => {
+    // cancel previous callback
+    if (timeout) setTimeout(timeout);
+    count++;
+
+    // schedule new callback [timeBetweenClicks] ms after last click
+    timeout = setTimeout(() => {
+      if (count === 2) {
+        // turn on edit mode
+        switch(field) {
+          case "class_1_level":
+            return setEditLevel(true);
+          case "hp":
+            return setEditHP(true);
+          case "armor_class":
+            return setEditAC(true);
+          case "initiative":
+            return setEditInitiative(true);
+          case "speed":
+            return setEditSpeed(true);
+          case "str":
+            return setEditStr(true);
+          case "dex":
+            return setEditDex(true);
+          case "con":
+            return setEditCon(true);
+          case "int":
+            return setEditInt(true);
+          case "wis":
+            return setEditWis(true);
+          case "cha":
+            return setEditCha(true);
+        };
+      };
+
+      // reset count
+      count = 0;
+    }, 250);
+  };
+
+  const handleBlur = field => {
+    // handle saving
+    console.log(field)
+    // turn off edit mode
+    switch(field) {
+      case "class_1_level":
+        return setEditLevel(false);
+      case "hp":
+        return setEditHP(false);
+      case "armor_class":
+        return setEditAC(false);
+      case "initiative":
+        return setEditInitiative(false);
+      case "speed":
+        return setEditSpeed(false);
+      case "str":
+        return setEditStr(false);
+      case "dex":
+        return setEditDex(false);
+      case "con":
+        return setEditCon(false);
+      case "int":
+        return setEditInt(false);
+      case "wis":
+        return setEditWis(false);
+      case "cha":
+        return setEditCha(false);
+    };
+  };
   
   const { character } = props;
-  const { name, hp, armor_class, str, dex, con, int, wis, cha } = character;
+  const { name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha } = character;
   const level = utils.getLevel(character);
 
   const checkBaseMod = (stat) => {
@@ -20,6 +108,27 @@ export const CharacterStats = props => {
   const checkAbilityMod = (character, level, ability) => {
     const mod = utils.getAbilityMod(character, level, ability);
     return mod > 0 ? "+" + mod : mod;
+  };
+
+  const checkInitiative = initiative => {
+    return initiative > 0 ? "+" + initiative : initiative;
+  };
+
+  const checkProfBonus = level => {
+    const bonus = utils.getProfBonus(level);
+    return bonus > 0 ? "+" + bonus : bonus;
+  };
+
+  const handleOpen = bonusNum => {
+    setOpen(true);
+    setRoll(utils.roll(20) + bonusNum);
+    bonusNum > 0 ? setBonus("+" + bonusNum) : setBonus(bonusNum);
+  };
+
+  const handleClose = () => {
+    setRoll(0);
+    setBonus(0);
+    setOpen(false);
   };
 
   return (
@@ -41,42 +150,114 @@ export const CharacterStats = props => {
       </div>
 
       <div className="character-sheet">
-        <Card className="hp-ac-initiative stats">
+        <Card className="stats">
+        <h6 className="header">Level</h6>
+          <div className="stat-header"> 
+          {editLevel && (
+            <InputEdit 
+              onHandleBlur={handleBlur} 
+              field="class_1_level"
+              step="1"
+              defaultValue={level}
+            />
+          )}
+          {!editLevel && (
+            <h2 onClick={() => handleClick("class_1_level")} className=" main-stats">{level}</h2>
+          )}
+          </div>
+
           <h6 className="header">Hit Points</h6>
           <div className="stat-header">
-            <h2 className="main-stats">{hp}</h2>
+          {editHP && (
+            <InputEdit 
+              onHandleBlur={handleBlur}
+              field="hp" 
+              step="1"
+              defaultValue={hp} />
+          )}
+          {!editHP && (
+            <h2 onClick={() => handleClick("hp")} className="main-stats">{hp}</h2>
+          )}
           </div>
 
           <h6 className="header">Armor Class</h6>
           <div className="stat-header">
-            <h2 className=" main-stats">{armor_class}</h2>
-          </div>
-
-          <h6 className="header">Initiative</h6>
-          <div className="stat-header"> 
-            <h2 className=" main-stats">{utils.getInitiative()}</h2>
-          </div>
-
-          <h6 className="header">Proficiency Bonus</h6>
-          <div className="stat-header">
-            <h2 className="main-stats">{utils.getProfBonus(level)}</h2>
+          {editAC && (
+            <InputEdit 
+              onHandleBlur={handleBlur} 
+              field="armor_class"
+              step="1"
+              defaultValue={armor_class}
+            />
+          )}
+          {!editAC && (
+            <h2 onClick={() => handleClick("ac")} className=" main-stats">{armor_class}</h2>
+          )}
           </div>
         </Card>
 
-        <Card className="conditions stats">
+        <Card className="stats">
+        <h6 className="header">Speed</h6>
+          <div className="stat-header"> 
+          {editSpeed && (
+            <InputEdit 
+              onHandleBlur={handleBlur} 
+              field="speed"
+              step="1"
+              min="0"
+              defaultValue={speed}
+            />
+          )}
+          {!editSpeed && (
+            <h2 onClick={() => handleClick("speed")} className=" main-stats">{speed}</h2>
+          )}
+          </div>
+
+          <h6 className="header" onClick={() => handleOpen(initiative)}>Initiative</h6>
+          <div className="stat-header"> 
+            {editInitiative && (
+              <InputEdit 
+                onHandleBlur={handleBlur} 
+                field="initiative"
+                step="1"
+                defaultValue={initiative}
+              />
+            )}
+            {!editInitiative && (
+              <h2 onClick={() => handleClick("initiative")} className=" main-stats">{checkInitiative(initiative)}</h2>
+            )}
+          </div>
+
+          <h6 className="header">Proficiency Bonus</h6>
+            <div className="stat-header">
+              <h2 onClick={() => handleClick("bonus")} className="main-stats">{checkProfBonus(level)}</h2>
+          </div>
+
           <h6 className="header">Conditions</h6>
         </Card>
 
         <Card className="str stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 className="header">Strength</h6>
+              <h6 onClick={() => handleOpen(utils.getBaseMod(str))} className="header">Strength</h6>
               <div className="stat-header">
                 <FlexBox 
                   direction="column" 
                   alignItems="center"
                   className="str"
                 >
-                  <h2 className="stat-base">{str}</h2>
+                  {editStr && (
+                    <InputEdit 
+                      onHandleBlur={handleBlur} 
+                      field="str"
+                      step="1"
+                      min="0"
+                      max="20"
+                      defaultValue={str} 
+                    />
+                  )}
+                  {!editStr && (
+                    <h2 onClick={() => handleClick("str")} className="stat-base">{str}</h2>
+                  )}
                   <h6 className="stat-mod">{checkBaseMod(str)}</h6>
                 </FlexBox>
               </div>
@@ -88,7 +269,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "str_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Saving Throw</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "str_save"))}>
+                    Saving Throw
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -96,7 +279,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "athletics")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Athletics</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "athletics"))}>
+                    Athletics
+                  </p>
                 </span>
               </div>
               </div>
@@ -106,14 +291,25 @@ export const CharacterStats = props => {
 
         <Card className="dex stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 className="header">Dexterity</h6>
+              <h6 onClick={() => handleOpen(utils.getBaseMod(dex))} className="header">Dexterity</h6>
               <div className="stat-header">
                 <FlexBox 
                   direction="column" 
                   alignItems="center"
                   className="dex"
                 >
-                  <h2 className="stat-base">{dex}</h2>
+                {editDex && (
+                  <InputEdit 
+                    onHandleBlur={handleBlur} 
+                    field="dex"
+                    step="1"
+                    min="0"
+                    max="20"
+                    defaultValue={dex} />
+                )}
+                {!editDex && (
+                  <h2 onClick={() => handleClick("dex")} className="stat-base">{dex}</h2>
+                )}
                   <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
                 </FlexBox>
               </div>
@@ -125,7 +321,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "dex_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Saving Throw</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "dex_save"))}>
+                    Saving Throw
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -133,7 +331,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "acrobatics")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Acrobatics</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "acrobatics"))}>
+                    Acrobatics
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -141,7 +341,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "sleight of hand")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Sleight of Hand</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "sleight of hand"))}>
+                    Sleight of Hand
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -149,7 +351,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "stealth")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Stealth</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "stealth"))}>
+                    Stealth
+                  </p>
                 </span>
               </div>
               </div>
@@ -159,14 +363,25 @@ export const CharacterStats = props => {
         
         <Card className="con stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 className="header">Constitution</h6>
+              <h6 onClick={() => handleOpen(utils.getBaseMod(con))} className="header">Constitution</h6>
               <div className="stat-header">
                 <FlexBox 
                   direction="column" 
                   alignItems="center"
                   className="con"
                 >
-                  <h2 className="stat-base">{con}</h2>
+                {editCon && (
+                  <InputEdit 
+                    onHandleBlur={() => handleBlur("con")} 
+                    field="con"
+                    step="1"
+                    min="0"
+                    max="20"
+                    defaultValue={con} />
+                )}
+                {!editCon && (
+                  <h2 onClick={() => handleClick("con")} className="stat-base">{con}</h2>
+                )}
                   <h6 className="stat-mod">{checkBaseMod(int)}</h6>
                 </FlexBox>
               </div>
@@ -178,7 +393,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "con_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Saving Throw</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "con_save"))}>
+                    Saving Throw
+                  </p>
                 </span>
               </div>
             </div>
@@ -195,7 +412,19 @@ export const CharacterStats = props => {
                   alignItems="center"
                   className="int"
                 >
-                  <h2 className="stat-base">{int}</h2>
+                {editInt && (
+                  <InputEdit 
+                    onHandleBlur={() => handleBlur("int")} 
+                    field="int"
+                    step="1"
+                    min="0"
+                    max="20"
+                    defaultValue={int} 
+                  />
+                )}
+                {!editInt && (
+                  <h2 onClick={() => handleClick("int")} className="stat-base">{int}</h2>
+                )}
                   <h6 className="stat-mod">{checkBaseMod(int)}</h6>
                 </FlexBox>
               </div>
@@ -207,7 +436,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "int_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Saving Throw</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "int_save"))}>
+                    Saving Throw
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -215,7 +446,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "arcana")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Arcana</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "arcana"))}>
+                    Arcana
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -223,7 +456,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "history")}</h6>
                 </span>
                 <span className="stat">
-                  <p>History</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "history"))}>
+                    History
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -231,7 +466,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "investigation")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Investigation</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "investigation"))}>
+                    Investigation
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -239,7 +476,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "nature")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Nature</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "nature"))}>
+                    Nature
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -247,7 +486,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "religion")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Religion</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "religion"))}>
+                    Religion
+                  </p>
                 </span>
               </div>
             </div>
@@ -257,14 +498,26 @@ export const CharacterStats = props => {
 
         <Card className="wis stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 className="header">Wisdom</h6>
+              <h6 onClick={() => handleOpen(utils.getBaseMod(wis))} className="header">Wisdom</h6>
               <div className="stat-header">
                 <FlexBox 
                   direction="column" 
                   alignItems="center"
                   className="wis"
                 >
-                  <h2 className="stat-base">{wis}</h2>
+                {editWis && (
+                  <InputEdit 
+                    onHandleBlur={() => handleBlur("wis")} 
+                    field="wis"
+                    step="1"
+                    min="0"
+                    max="20"
+                    defaultValue={wis} 
+                  />
+                )}
+                {!editWis && (
+                  <h2 onClick={() => handleClick("wis")} className="stat-base">{wis}</h2>
+                )}
                   <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
                 </FlexBox>
               </div>
@@ -276,7 +529,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "wis_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Saving Throw</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "wis_save"))}>
+                    Saving Throw
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -284,7 +539,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "animal handling")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Animal Handling</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "animal handling"))}>
+                    Animal Handling
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -292,7 +549,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "insight")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Insight</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "insight"))}>
+                    Insight
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -300,7 +559,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "medicine")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Medicine</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "medicine"))}>
+                    Medicine
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -308,7 +569,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "perception")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Perception</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "perception"))}>
+                    Perception
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -316,7 +579,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "survival")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Survival</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "survival"))}>
+                    Survival
+                  </p>
                 </span>
               </div>
             </div>
@@ -326,14 +591,26 @@ export const CharacterStats = props => {
           
           <Card className="cha stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 className="header">Charisma</h6>
+              <h6 onClick={() => handleOpen(utils.getBaseMod(cha))} className="header">Charisma</h6>
               <div className="stat-header">
                 <FlexBox 
                   direction="column" 
                   alignItems="center"
                   className="cha"
                 >
-                  <h2 className="stat-base">{cha}</h2>
+                {editCha && (
+                  <InputEdit 
+                    onHandleBlur={() => handleBlur("cha")} 
+                    field="cha"
+                    step="1"
+                    min="0"
+                    max="20"
+                    defaultValue={cha} 
+                  />
+                )}
+                {!editCha && (
+                  <h2 onClick={() => handleClick("cha")} className="stat-base">{cha}</h2>
+                )}
                   <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
                 </FlexBox>
               </div>
@@ -345,7 +622,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "cha_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Saving Throw</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "cha_save"))}>
+                    Saving Throw
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -353,7 +632,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "deception")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Deception</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "deception"))}>
+                    Deception
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -361,15 +642,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "intimidation")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Intimidation</p>
-                </span>
-              </div>
-              <div className="stat-container">
-                <span className="stat">
-                  <h6>{checkAbilityMod(character, level, "intimidation")}</h6>
-                </span>
-                <span className="stat">
-                  <p>Intimidation</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "intimidation"))}>
+                    Intimidation
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -377,7 +652,9 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "performance")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Performance</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "performance"))}>
+                    Performance
+                  </p>
                 </span>
               </div>
               <div className="stat-container">
@@ -385,13 +662,45 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "persuasion")}</h6>
                 </span>
                 <span className="stat">
-                  <p>Persuasion</p>
+                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "persuasion"))}>
+                    Persuasion
+                  </p>
                 </span>
               </div>
             </div>
             </FlexBox>
           </FlexBox>
         </Card>
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+              timeout: 500,
+          }}
+        >
+          <FlexBox
+              alignItems="center"
+              justifyContent="center"
+              margin="35vh 0"
+          >
+              <Fade in={open}>
+                  <FadeStyle>
+                      <h2>{roll}</h2>
+                      <h5>({bonus})</h5>
+
+                      <button 
+                          onClick={handleClose}
+                          style={ButtonStyle.modalButton}
+                      >
+                          EXIT
+                      </button>
+                  </FadeStyle>
+              </Fade>
+          </FlexBox>
+        </Modal>
 
       </div>
     </>

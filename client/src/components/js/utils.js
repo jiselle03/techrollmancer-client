@@ -45,10 +45,6 @@ export const utils = {
         };
     },
 
-    getInitiative() {
-        return 17;
-    },
-
     getBaseMod(stat) {
         return Math.floor((stat - 10) / 2);
     },
