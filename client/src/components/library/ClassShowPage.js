@@ -117,6 +117,7 @@ export const ClassShowPage = props => {
         <BackgroundImage
             image={require(`../../assets/classes/${slug}.png`)}
             size={getSize(slug)}
+            light={false}
         >
             <MainStyle>
                 <h1>

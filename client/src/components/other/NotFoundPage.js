@@ -7,6 +7,7 @@ export const NotFoundPage = () => {
     return (
         <BackgroundImage
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <h1 style={{color: "maroon"}}>

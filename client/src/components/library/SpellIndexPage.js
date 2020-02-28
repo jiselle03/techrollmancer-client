@@ -31,6 +31,7 @@ export const SpellIndexPage = () => {
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <div className="list-container">

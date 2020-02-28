@@ -55,6 +55,7 @@ export const RaceShowPage = props => {
         <BackgroundImage
             image={require(`../../assets/races/${slug}.png`)}
             size={getSize(slug)}
+            light={false}
         >
             <MainStyle>
                 <h1>

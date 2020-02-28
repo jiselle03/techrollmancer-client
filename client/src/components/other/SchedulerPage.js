@@ -22,6 +22,7 @@ export const SchedulerPage = () => {
     return(
         <BackgroundImage 
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <h1>

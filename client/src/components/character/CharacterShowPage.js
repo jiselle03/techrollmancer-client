@@ -74,6 +74,7 @@ export const CharacterShowPage = props => {
     return (
       <BackgroundImage
         image={require('../../assets/d20.png')} 
+        light={true}
       >
         <div
           style={{

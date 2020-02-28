@@ -29,6 +29,7 @@ export const WelcomePage = () => {
     return(
         <BackgroundImage
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <h1> Welcome to Techrollmancer</h1>

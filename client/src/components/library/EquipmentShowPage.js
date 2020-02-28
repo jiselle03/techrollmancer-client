@@ -34,6 +34,7 @@ export const EquipmentShowPage = props => {
     return (
         <BackgroundImage
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <div className="equipment-name">

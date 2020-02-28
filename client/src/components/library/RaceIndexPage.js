@@ -51,6 +51,7 @@ export const RaceIndexPage = () => {
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <h1 style={{marginLeft: "0.2em"}}>

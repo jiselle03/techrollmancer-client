@@ -71,6 +71,7 @@ export const GeneratorPage = () => {
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
+            light={true}
         >
             <MainStyle>
                 <h1>
