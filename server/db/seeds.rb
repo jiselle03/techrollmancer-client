@@ -56,6 +56,7 @@ c = Character.create(
     wis: 14,
     cha:14,
     armor_class: 17,
+    initiative: 5,
     speed: 45,
     user_id: 1
 )

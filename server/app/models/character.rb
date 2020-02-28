@@ -11,7 +11,7 @@ class Character < ApplicationRecord
     validates :class_2_level, numericality: { only_integer: true }, inclusion: { in: 0..19 }
     validates :class_3_level, numericality: { only_integer: true }, inclusion: { in: 0..18 }
     validates :str, :dex, :con, :int, :wis, :cha, presence: true, numericality: { only_integer: true }, inclusion: { in: 1..20 }
-    validates :speed, :armor_class, numericality: { only_integer: true }, allow_blank: true
+    validates :speed, :armor_class, :initiative, numericality: { only_integer: true }, allow_blank: true
 
     before_save :titleize_name
     before_save :titleize_gender

@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_033735) do
     t.integer "wis", default: 8
     t.integer "cha", default: 8
     t.integer "armor_class"
+    t.integer "initiative", default: 0
     t.integer "speed"
     t.text "spells_known", default: [], array: true
     t.bigint "user_id", null: false
