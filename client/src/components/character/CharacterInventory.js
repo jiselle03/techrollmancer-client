@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { utils } from '../js/utils';
 import Card from '@material-ui/core/Card';
 
 export const CharacterInventory = props => {

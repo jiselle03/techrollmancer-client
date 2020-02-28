@@ -5,9 +5,9 @@ import { FlexBox } from '../styles/FlexBox';
 import { ButtonStyle } from '../styles/ButtonStyle';
 import { FadeStyle } from '../styles/FadeStyle';
 import { InputEdit } from './InputEdit';
+import { TooltipRoll } from './CharacterTooltips';
 
-import { Backdrop, Card, Fab, Fade, Modal } from '@material-ui/core';
-import { Edit } from '@material-ui/icons';
+import { Backdrop, Card, Fade, Modal } from '@material-ui/core';
 
 export const CharacterStats = props => {
   const [editLevel, setEditLevel] = useState(false);
@@ -26,45 +26,31 @@ export const CharacterStats = props => {
   const [bonus, setBonus] = useState(0);
   const [ability, setAbility] = useState(null);
 
-  let count, timeout = 0;
   const handleClick = field => {
-    // cancel previous callback
-    if (timeout) setTimeout(timeout);
-    count++;
-
-    // schedule new callback [timeBetweenClicks] ms after last click
-    timeout = setTimeout(() => {
-      if (count === 2) {
-        // turn on edit mode
-        switch(field) {
-          case "class_1_level":
-            return setEditLevel(true);
-          case "hp":
-            return setEditHP(true);
-          case "armor_class":
-            return setEditAC(true);
-          case "initiative":
-            return setEditInitiative(true);
-          case "speed":
-            return setEditSpeed(true);
-          case "str":
-            return setEditStr(true);
-          case "dex":
-            return setEditDex(true);
-          case "con":
-            return setEditCon(true);
-          case "int":
-            return setEditInt(true);
-          case "wis":
-            return setEditWis(true);
-          case "cha":
-            return setEditCha(true);
-        };
-      };
-
-      // reset count
-      count = 0;
-    }, 250);
+    switch(field) {
+      case "class_1_level":
+        return setEditLevel(true);
+      case "hp":
+        return setEditHP(true);
+      case "armor_class":
+        return setEditAC(true);
+      case "initiative":
+        return setEditInitiative(true);
+      case "speed":
+        return setEditSpeed(true);
+      case "str":
+        return setEditStr(true);
+      case "dex":
+        return setEditDex(true);
+      case "con":
+        return setEditCon(true);
+      case "int":
+        return setEditInt(true);
+      case "wis":
+        return setEditWis(true);
+      case "cha":
+        return setEditCha(true);
+    };
   };
 
   const handleBlur = field => {
@@ -149,7 +135,6 @@ export const CharacterStats = props => {
           height: "5em"
         }}
       >
-        <Fab color="secondary" aria-label="edit"><Edit /></Fab>
       </div>
 
       <div className="character-sheet">
@@ -194,7 +179,7 @@ export const CharacterStats = props => {
             />
           )}
           {!editAC && (
-            <h2 onClick={() => handleClick("ac")} className=" main-stats">{armor_class}</h2>
+            <h2 onClick={() => handleClick("armor_class")} className=" main-stats">{armor_class}</h2>
           )}
           </div>
         </Card>
@@ -216,7 +201,13 @@ export const CharacterStats = props => {
           )}
           </div>
 
-          <h6 className="header" onClick={() => handleOpen(initiative, "Initiative")}>Initiative</h6>
+          <TooltipRoll 
+            bonus={initiative} 
+            ability={"initiative"} 
+            name={"Initiative"} 
+            header
+            onHandleOpen={handleOpen} 
+          />
           <div className="stat-header"> 
             {editInitiative && (
               <InputEdit 
@@ -235,35 +226,39 @@ export const CharacterStats = props => {
             <div className="stat-header">
               <h2 onClick={() => handleClick("bonus")} className="main-stats">{checkProfBonus(level)}</h2>
           </div>
-
-          <h6 className="header">Conditions</h6>
         </Card>
 
         <Card className="str stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 onClick={() => handleOpen(utils.getBaseMod(str), "Strength")} className="header">Strength</h6>
-              <div className="stat-header">
-                <FlexBox 
-                  direction="column" 
-                  alignItems="center"
-                  className="str"
-                >
-                  {editStr && (
-                    <InputEdit 
-                      onHandleBlur={handleBlur} 
-                      field="str"
-                      step="1"
-                      min="0"
-                      max="20"
-                      defaultValue={str} 
-                    />
-                  )}
-                  {!editStr && (
-                    <h2 onClick={() => handleClick("str")} className="stat-base">{str}</h2>
-                  )}
-                  <h6 className="stat-mod">{checkBaseMod(str)}</h6>
-                </FlexBox>
-              </div>
+            <TooltipRoll 
+              bonus={str} 
+              ability={"str"} 
+              name={"Strength"} 
+              header
+              onHandleOpen={handleOpen} 
+            />
+            <div className="stat-header">
+              <FlexBox 
+                direction="column" 
+                alignItems="center"
+                className="str"
+              >
+                {editStr && (
+                  <InputEdit 
+                    onHandleBlur={handleBlur} 
+                    field="str"
+                    step="1"
+                    min="0"
+                    max="20"
+                    defaultValue={str} 
+                  />
+                )}
+                {!editStr && (
+                  <h2 onClick={() => handleClick("str")} className="stat-base">{str}</h2>
+                )}
+                <h6 className="stat-mod">{checkBaseMod(str)}</h6>
+              </FlexBox>
+            </div>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
@@ -272,9 +267,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "str_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "str_save"), "Strength Save")}>
-                    Saving Throw
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "str_save")}
+                    ability={"Strength Save"}
+                    name={"Saving Throw"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -282,9 +281,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "athletics")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "athletics"), "Athletics")}>
-                    Athletics
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "athletics")}
+                    ability={"athletics"}
+                    name={"Athletics"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               </div>
@@ -294,28 +297,34 @@ export const CharacterStats = props => {
 
         <Card className="dex stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 onClick={() => handleOpen(utils.getBaseMod(dex), "Dexterity")} className="header">Dexterity</h6>
-              <div className="stat-header">
-                <FlexBox 
-                  direction="column" 
-                  alignItems="center"
-                  className="dex"
-                >
-                {editDex && (
-                  <InputEdit 
-                    onHandleBlur={handleBlur} 
-                    field="dex"
-                    step="1"
-                    min="0"
-                    max="20"
-                    defaultValue={dex} />
-                )}
-                {!editDex && (
-                  <h2 onClick={() => handleClick("dex")} className="stat-base">{dex}</h2>
-                )}
-                  <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
-                </FlexBox>
-              </div>
+            <TooltipRoll 
+              bonus={utils.getBaseMod(dex)}
+              ability={"Dexterity"}
+              name={"Dexterity"}
+              header
+              onHandleOpen={handleOpen} 
+            />
+            <div className="stat-header">
+              <FlexBox 
+                direction="column" 
+                alignItems="center"
+                className="dex"
+              >
+              {editDex && (
+                <InputEdit 
+                  onHandleBlur={handleBlur} 
+                  field="dex"
+                  step="1"
+                  min="0"
+                  max="20"
+                  defaultValue={dex} />
+              )}
+              {!editDex && (
+                <h2 onClick={() => handleClick("dex")} className="stat-base">{dex}</h2>
+              )}
+                <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
+              </FlexBox>
+            </div>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
@@ -324,9 +333,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "dex_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "dex_save"), "Dexterity Save")}>
-                    Saving Throw
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "dex_save")}
+                    ability={"Dexterity Save"}
+                    name={"Saving Throw"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -334,9 +347,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "acrobatics")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "acrobatics"), "Acrobatics")}>
-                    Acrobatics
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "acrobatics")}
+                    ability={"Acrobatics"}
+                    name={"Acrobatics"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -344,9 +361,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "sleight of hand")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "sleight of hand"), "Sleight of Hand")}>
-                    Sleight of Hand
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "sleight of hand")}
+                    ability={"Sleight of Hand"}
+                    name={"Sleight of Hand"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -354,9 +375,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "stealth")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "stealth"), "Stealth")}>
-                    Stealth
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "stealth")}
+                    ability={"Stealth"}
+                    name={"Stealth"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               </div>
@@ -366,28 +391,34 @@ export const CharacterStats = props => {
         
         <Card className="con stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 onClick={() => handleOpen(utils.getBaseMod(con), "Constitution")} className="header">Constitution</h6>
-              <div className="stat-header">
-                <FlexBox 
-                  direction="column" 
-                  alignItems="center"
-                  className="con"
-                >
-                {editCon && (
-                  <InputEdit 
-                    onHandleBlur={() => handleBlur("con")} 
-                    field="con"
-                    step="1"
-                    min="0"
-                    max="20"
-                    defaultValue={con} />
-                )}
-                {!editCon && (
-                  <h2 onClick={() => handleClick("con")} className="stat-base">{con}</h2>
-                )}
-                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
-                </FlexBox>
-              </div>
+            <TooltipRoll 
+              bonus={utils.getBaseMod(con)}
+              ability={"Constitution"}
+              name={"Constitution"}
+              header
+              onHandleOpen={handleOpen} 
+            />
+            <div className="stat-header">
+              <FlexBox 
+                direction="column" 
+                alignItems="center"
+                className="con"
+              >
+              {editCon && (
+                <InputEdit 
+                  onHandleBlur={() => handleBlur("con")} 
+                  field="con"
+                  step="1"
+                  min="0"
+                  max="20"
+                  defaultValue={con} />
+              )}
+              {!editCon && (
+                <h2 onClick={() => handleClick("con")} className="stat-base">{con}</h2>
+              )}
+                <h6 className="stat-mod">{checkBaseMod(int)}</h6>
+              </FlexBox>
+            </div>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
@@ -396,9 +427,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "con_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "con_save"), "Constitution Save")}>
-                    Saving Throw
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "con_save")}
+                    ability={"Constitution Save"}
+                    name={"Saving Throw"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
             </div>
@@ -408,29 +443,35 @@ export const CharacterStats = props => {
 
         <Card className="int stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 onclick={() => handleOpen(utils.getBaseMod(int), "Intelligence")} className="header">Intelligence</h6>
-              <div className="stat-header">
-                <FlexBox 
-                  direction="column" 
-                  alignItems="center"
-                  className="int"
-                >
-                {editInt && (
-                  <InputEdit 
-                    onHandleBlur={() => handleBlur("int")} 
-                    field="int"
-                    step="1"
-                    min="0"
-                    max="20"
-                    defaultValue={int} 
-                  />
-                )}
-                {!editInt && (
-                  <h2 onClick={() => handleClick("int")} className="stat-base">{int}</h2>
-                )}
-                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
-                </FlexBox>
-              </div>
+            <TooltipRoll 
+              bonus={utils.getBaseMod(int)}
+              ability={"Intelligence"}
+              name={"Intelligence"}
+              header
+              onHandleOpen={handleOpen} 
+            />
+            <div className="stat-header">
+              <FlexBox 
+                direction="column" 
+                alignItems="center"
+                className="int"
+              >
+              {editInt && (
+                <InputEdit 
+                  onHandleBlur={() => handleBlur("int")} 
+                  field="int"
+                  step="1"
+                  min="0"
+                  max="20"
+                  defaultValue={int} 
+                />
+              )}
+              {!editInt && (
+                <h2 onClick={() => handleClick("int")} className="stat-base">{int}</h2>
+              )}
+                <h6 className="stat-mod">{checkBaseMod(int)}</h6>
+              </FlexBox>
+            </div>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
@@ -439,9 +480,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "int_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "int_save"), "Intelligence Save")}>
-                    Saving Throw
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "int_save")}
+                    ability={"Intelligence Save"}
+                    name={"Saving Throw"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -449,9 +494,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "arcana")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "arcana"), "Arcana")}>
-                    Arcana
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "arcana")}
+                    ability={"Arcana"}
+                    name={"Arcana"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -459,9 +508,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "history")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "history"), "History")}>
-                    History
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "history")}
+                    ability={"History"}
+                    name={"History"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -469,9 +522,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "investigation")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "investigation"), "Investigation")}>
-                    Investigation
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "investigation")}
+                    ability={"Investigation"}
+                    name={"Investigation"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -479,9 +536,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "nature")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "nature"), "Nature")}>
-                    Nature
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "nature")}
+                    ability={"Nature"}
+                    name={"Nature"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -489,9 +550,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "religion")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "religion"), "Religion")}>
-                    Religion
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "religion")}
+                    ability={"Religion"}
+                    name={"Religion"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
             </div>
@@ -501,29 +566,35 @@ export const CharacterStats = props => {
 
         <Card className="wis stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 onClick={() => handleOpen(utils.getBaseMod(wis), "Wisdom")} className="header">Wisdom</h6>
-              <div className="stat-header">
-                <FlexBox 
-                  direction="column" 
-                  alignItems="center"
-                  className="wis"
-                >
-                {editWis && (
-                  <InputEdit 
-                    onHandleBlur={() => handleBlur("wis")} 
-                    field="wis"
-                    step="1"
-                    min="0"
-                    max="20"
-                    defaultValue={wis} 
-                  />
-                )}
-                {!editWis && (
-                  <h2 onClick={() => handleClick("wis")} className="stat-base">{wis}</h2>
-                )}
-                  <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
-                </FlexBox>
-              </div>
+            <TooltipRoll 
+              bonus={utils.getBaseMod(wis)}
+              ability={"Wisdom"}
+              name={"Wisdom"}
+              header
+              onHandleOpen={handleOpen} 
+            />
+            <div className="stat-header">
+              <FlexBox 
+                direction="column" 
+                alignItems="center"
+                className="wis"
+              >
+              {editWis && (
+                <InputEdit 
+                  onHandleBlur={() => handleBlur("wis")} 
+                  field="wis"
+                  step="1"
+                  min="0"
+                  max="20"
+                  defaultValue={wis} 
+                />
+              )}
+              {!editWis && (
+                <h2 onClick={() => handleClick("wis")} className="stat-base">{wis}</h2>
+              )}
+                <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
+              </FlexBox>
+            </div>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
@@ -532,9 +603,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "wis_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "wis_save"), "Wisdom Save")}>
-                    Saving Throw
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "wis_save")}
+                    ability={"Wisdom Save"}
+                    name={"Saving Throw"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -542,9 +617,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "animal handling")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "animal handling"), "Animal Handling")}>
-                    Animal Handling
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "animal handling")}
+                    ability={"Animal Handling"}
+                    name={"Animal Handling"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -552,9 +631,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "insight")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "insight"), "Insight")}>
-                    Insight
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "insight")}
+                    ability={"Insight"}
+                    name={"Insight"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -562,9 +645,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "medicine")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "medicine"), "Medicine")}>
-                    Medicine
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "medicine")}
+                    ability={"Medicine"}
+                    name={"Medicine"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -572,9 +659,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "perception")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "perception"), "Perception")}>
-                    Perception
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "perception")}
+                    ability={"Perception"}
+                    name={"Perception"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -582,9 +673,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "survival")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "survival"), "Survival")}>
-                    Survival
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "survival")}
+                    ability={"Survival"}
+                    name={"Survival"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
             </div>
@@ -594,29 +689,35 @@ export const CharacterStats = props => {
           
           <Card className="cha stats">
           <FlexBox direction="column" justifyContent="space-between">
-              <h6 onClick={() => handleOpen(utils.getBaseMod(cha), "Charisma")} className="header">Charisma</h6>
-              <div className="stat-header">
-                <FlexBox 
-                  direction="column" 
-                  alignItems="center"
-                  className="cha"
-                >
-                {editCha && (
-                  <InputEdit 
-                    onHandleBlur={() => handleBlur("cha")} 
-                    field="cha"
-                    step="1"
-                    min="0"
-                    max="20"
-                    defaultValue={cha} 
-                  />
-                )}
-                {!editCha && (
-                  <h2 onClick={() => handleClick("cha")} className="stat-base">{cha}</h2>
-                )}
-                  <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
-                </FlexBox>
-              </div>
+            <TooltipRoll 
+              bonus={utils.getBaseMod(cha)}
+              ability={"Charisma"}
+              name={"Charisma"}
+              header
+              onHandleOpen={handleOpen} 
+            />
+            <div className="stat-header">
+              <FlexBox 
+                direction="column" 
+                alignItems="center"
+                className="cha"
+              >
+              {editCha && (
+                <InputEdit 
+                  onHandleBlur={() => handleBlur("cha")} 
+                  field="cha"
+                  step="1"
+                  min="0"
+                  max="20"
+                  defaultValue={cha} 
+                />
+              )}
+              {!editCha && (
+                <h2 onClick={() => handleClick("cha")} className="stat-base">{cha}</h2>
+              )}
+                <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
+              </FlexBox>
+            </div>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
@@ -625,9 +726,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "cha_save")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "cha_save"), "Charisma Save")}>
-                    Saving Throw
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "cha_save")}
+                    ability={"Charisma Save"}
+                    name={"Saving Throw"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -635,9 +740,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "deception")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "deception"), "Deception")}>
-                    Deception
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "deception")}
+                    ability={"Deception"}
+                    name={"Deception"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -645,9 +754,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "intimidation")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "intimidation"), "Intimdation")}>
-                    Intimidation
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "intimidation")}
+                    ability={"Intimidation"}
+                    name={"Intimidation"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -655,9 +768,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "performance")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "performance"), "Performance")}>
-                    Performance
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "performance")}
+                    ability={"Performance"}
+                    name={"Performance"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
               <div className="stat-container">
@@ -665,9 +782,13 @@ export const CharacterStats = props => {
                   <h6>{checkAbilityMod(character, level, "persuasion")}</h6>
                 </span>
                 <span className="stat">
-                  <p onClick={() => handleOpen(utils.getAbilityMod(character, level, "persuasion"), "Persuasion")}>
-                    Persuasion
-                  </p>
+                  <TooltipRoll 
+                    bonus={utils.getAbilityMod(character, level, "persuasion")}
+                    ability={"Persuasion"}
+                    name={"Persuasion"}
+                    header={false}
+                    onHandleOpen={handleOpen} 
+                  />
                 </span>
               </div>
             </div>

@@ -11,7 +11,7 @@ export const InputEdit = props => {
     return(
         <form onSubmit={() => handleSubmit}>
             <input 
-                onBlur={handleBlur}
+                onBlur={() => handleBlur(field)}
                 type={type || "number"}
                 field={field}
                 htmlFor={field}

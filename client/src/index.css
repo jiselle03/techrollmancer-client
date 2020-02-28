@@ -265,6 +265,10 @@ div.MuiTabs-root.tabs {
   border-bottom: 1px dotted black;
 }
 
+.tooltip-roll {
+  position: relative;
+}
+
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -283,8 +287,28 @@ div.MuiTabs-root.tabs {
   z-index: 1;
 }
 
+.tooltip-roll .tooltiptext {
+  visibility: hidden;
+  width: 10vw;
+  height: 5vh;
+  background-color: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 5px 0;
+  border-radius: 5px;
+  top: 100%;
+  left: 50%;
+  padding: 0.5em;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip-roll .tooltiptext p {
+  font-size: 0.75em;
+}
+
 /* Show tooltip text on mouseover */
-.tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext,
+.tooltip-roll:hover .tooltiptext {
   visibility: visible;
 }
 

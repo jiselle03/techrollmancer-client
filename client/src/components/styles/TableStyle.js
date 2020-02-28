@@ -6,7 +6,7 @@ export const TableStyle = props => {
     return(
         <div 
             style={{
-                margin: "2em auto",
+                margin: margin || "2em auto",
                 width: width || "50vw",
             }}
         >
