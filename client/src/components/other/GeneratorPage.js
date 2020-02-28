@@ -54,7 +54,7 @@ export const GeneratorPage = () => {
     let currentRoll = 0;
     const rollD6 = () => { 
         if (rolls.length < 4) {
-            currentRoll = utils.rollD6();
+            currentRoll = utils.roll(6);
             setRolls([...rolls, currentRoll]);
         } else {
             return;
@@ -218,7 +218,7 @@ export const GeneratorPage = () => {
                         <FlexBox
                             alignItems="center"
                             justifyContent="center"
-                            margin="5vh 0"
+                            margin="10vh 0"
                         >
                             <Fade in={openQR}>
                                 <FadeStyle>
@@ -241,20 +241,12 @@ export const GeneratorPage = () => {
                                     </span>
                                     </div>
                                     
-                                    <Divider />
-                                    
                                     <h3>
                                         ABILITY SCORES
                                     </h3>
                                     
                                     <h4>
-                                        {character._roll1}, {character._roll2},
-                                    </h4>
-                                    <h4>
-                                        {character._roll3}, {character._roll4},
-                                    </h4>
-                                    <h4>
-                                        {character._roll5}, {character._roll6}
+                                        {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
                                     </h4>
 
                                     <button 

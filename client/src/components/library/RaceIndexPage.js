@@ -64,7 +64,7 @@ export const RaceIndexPage = () => {
                             to={`/libraries/races/${race.slug}`} 
                         >
                             <CardStyle 
-                                image={require(`../../assets/${race.slug}.png`)}
+                                image={require(`../../assets/races/${race.slug}.png`)}
                                 imageSize={getImageSize(race.slug)}
                                 imagePosition="50%"
                             >

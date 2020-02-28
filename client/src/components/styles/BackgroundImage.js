@@ -6,7 +6,7 @@ export const BackgroundImage = props => {
     return(
         <div 
             style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.9) 100%),
+                backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.95) 0%,rgba(255,255,255,0.98) 100%),
                 url('${image}')`,
                 backgroundSize: size || "cover",
                 backgroundAttachment: "fixed",

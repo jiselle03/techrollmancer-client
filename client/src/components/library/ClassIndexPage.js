@@ -63,7 +63,7 @@ export const ClassIndexPage = () => {
                             href=""
                         >
                             <CardStyle
-                                image={require(`../../assets/${charClass.slug}.png`)}
+                                image={require(`../../assets/classes/${charClass.slug}.png`)}
                                 imageSize={getImageSize(charClass.slug)}
                                 imagePosition="50%"
                             >

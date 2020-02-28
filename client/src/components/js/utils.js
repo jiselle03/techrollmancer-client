@@ -130,32 +130,8 @@ export const utils = {
         return this.getBaseMod(stat) + bonus;
     },
 
-    rollD4() {
-        return Math.ceil(Math.random() * 4);
-    },
-
-    rollD6() {
-        return Math.ceil(Math.random() * 6);
-    },
-
-    rollD8() {
-        return Math.ceil(Math.random() * 8);
-    },
-
-    rollD10() {
-        return Math.ceil(Math.random() * 10);
-    },
-
-    rollD12() {
-        return Math.ceil(Math.random() * 12);
-    },
-
-    rollD20() {
-        return Math.ceil(Math.random() * 20);
-    },
-
-    rollD100() {
-        return Math.ceil(Math.random() * 100);
+    roll(sides) {
+        return Math.ceil(Math.random() * sides);
     },
 
     rollAbility(rolls) {

@@ -5,6 +5,10 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+:root {
+  --accent-color: rgba(45,99,127,1);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -31,52 +35,79 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Bungee';
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0.5em 0;
-}
-
 h1 {
-  font-size: 3.5em;
+  font-size: 3.5rem;
   color: #000;
+  margin-bottom: 1em;
 }
 
 h2 {
-  font-size: 2.5em;
-  color: rgba(45,99,127,1);
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  line-height: 1em;
+  margin-bottom: 0.2em;
 }
 
 h3 {
-  font-size: 2.5em;
+  font-size: 2.5rem;
   color: #000;
+  margin-bottom: 1em;
 }
 
 h4 {
-  font-size: 2em;
-  color: rgba(45,99,127,1);
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 1em;
 }
 
 h5 {
-  font-size: 1.5em;
-  color: rgba(45,99,127,1);
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  margin-bottom: 0.2em;
 }
 
 h6, p {
-  font-size: 1em;
+  font-size: 1.3rem;
+}
+
+h6,
+p.card-text {
+  margin-bottom: 0.2em;
+}
+
+p {
+  line-height: 1.3em;
+  margin-bottom: 1em;
 }
 
 strong {
   font-weight: bold;
-  font-size: 1.25em;
+  font-size: 1.25rem;
 }
 
 em {
   font-style: italic;
 }
 
-h2.stat-header {
-  font-size: 3em;
+.stat-header {
+  font-size: 3rem;
   margin: 0.25vh 0.25vw;
   text-align: center;
+  background: var(--accent-color);
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  padding: 0.5em;
+}
+
+.main-stats {
+  margin-bottom: 0.5em;
+  color: #fff;
+}
+
+.stat-base {
+  color: #fff;
+  font-size: 3rem;
+  margin: 0.25vh 0.25vw;
 }
 
 h6.header {
@@ -89,6 +120,11 @@ h6.header {
 
 .stat-mod {
   margin: 0.25vh 0.25vw;
+  color: #fff;
+}
+
+.stat-container p {
+  margin-bottom: .2em;
 }
 
 span.stat,
@@ -119,23 +155,14 @@ span.header {
   margin: 0.25vh 0.25vw;
 }
 
-div.stat.border.num {
-  width: 15vw;
-}
-
 div.stat.border.ability {
-  height: 16em;
-}
-
-.stat-header {
-  border: 2px solid #000;
-  border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%;
-  padding: 0.5em;
+  height: 42vh;
+  width: 100%;
+  margin-top: 2em;
+  padding: 1.25em;
 }
 
 /* Logo */
-
 .fa-spin-hover {
   border-radius: 50%;
   transition: transform 1s ease-in-out;
@@ -187,8 +214,9 @@ div.list-container {
   margin-left: 1em;
 }
 
-span.category {
+p.category {
   font-size: 1.25em;
+  margin-bottom: 0.5em;
 }
 
 div.MuiTabs-root.tabs {

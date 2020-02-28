@@ -43,34 +43,47 @@ export const CharacterStats = props => {
       <div className="character-sheet">
         <Card className="hp-ac-initiative stats">
           <h6 className="header">Hit Points</h6>
-          <h2 className="stat-header">{hp}</h2>
+          <div className="stat-header">
+            <h2 className="main-stats">{hp}</h2>
+          </div>
+
           <h6 className="header">Armor Class</h6>
-          <h2 className="stat-header">{armor_class}</h2>
+          <div className="stat-header">
+            <h2 className=" main-stats">{armor_class}</h2>
+          </div>
+
           <h6 className="header">Initiative</h6>
-          <h2 className="stat-header">{utils.getInitiative()}</h2>
+          <div className="stat-header"> 
+            <h2 className=" main-stats">{utils.getInitiative()}</h2>
+          </div>
+
           <h6 className="header">Proficiency Bonus</h6>
-          <h2 className="stat-header">{utils.getProfBonus(level)}</h2>
+          <div className="stat-header">
+            <h2 className="main-stats">{utils.getProfBonus(level)}</h2>
+          </div>
+        </Card>
+
+        <Card className="conditions stats">
+          <h6 className="header">Conditions</h6>
         </Card>
 
         <Card className="str stats">
           <FlexBox direction="column" justifyContent="space-between">
-            <FlexBox direction="row">
-              <h2 className="stat-header">STR</h2>
-              <div className="stat border num" style={{height: "50%"}}>
-                <FlexBox direction="column" alignItems="center"
+              <h6 className="header">Strength</h6>
+              <div className="stat-header">
+                <FlexBox 
+                  direction="column" 
+                  alignItems="center"
                   className="str"
                 >
-                <div className="main stat">
-                  <h3 className="stat-num">{str}</h3>
-                </div>
-                  <h6 className="stat-mod" style={{textAlign: "center"}}>{checkBaseMod(str)}</h6>
+                  <h2 className="stat-base">{str}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(str)}</h6>
                 </FlexBox>
               </div>
-            </FlexBox>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
-                <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "str_save")}</h6>
                 </span>
@@ -78,7 +91,7 @@ export const CharacterStats = props => {
                   <p>Saving Throw</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "athletics")}</h6>
                 </span>
@@ -91,25 +104,23 @@ export const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="str stats">
+        <Card className="dex stats">
           <FlexBox direction="column" justifyContent="space-between">
-            <FlexBox direction="row">
-              <h2 className="stat-header">DEX</h2>
-              <div className="stat border num" style={{height: "50%"}}>
-                <FlexBox direction="column" alignItems="center"
+              <h6 className="header">Dexterity</h6>
+              <div className="stat-header">
+                <FlexBox 
+                  direction="column" 
+                  alignItems="center"
                   className="dex"
                 >
-                <div className="main stat">
-                  <h3 className="stat-num">{dex}</h3>
-                </div>
-                  <h6 className="stat-mod" style={{textAlign: "center"}}>{checkBaseMod(dex)}</h6>
+                  <h2 className="stat-base">{dex}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
                 </FlexBox>
               </div>
-            </FlexBox>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
-                <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "dex_save")}</h6>
                 </span>
@@ -117,7 +128,7 @@ export const CharacterStats = props => {
                   <p>Saving Throw</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "acrobatics")}</h6>
                 </span>
@@ -125,7 +136,7 @@ export const CharacterStats = props => {
                   <p>Acrobatics</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "sleight of hand")}</h6>
                 </span>
@@ -133,7 +144,7 @@ export const CharacterStats = props => {
                   <p>Sleight of Hand</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "stealth")}</h6>
                 </span>
@@ -146,25 +157,23 @@ export const CharacterStats = props => {
           </FlexBox>
         </Card>
         
-        <Card className="str stats">
+        <Card className="con stats">
           <FlexBox direction="column" justifyContent="space-between">
-            <FlexBox direction="row">
-              <h2 className="stat-header">CON</h2>
-              <div className="stat border num" style={{height: "50%"}}>
-                <FlexBox direction="column" alignItems="center"
+              <h6 className="header">Constitution</h6>
+              <div className="stat-header">
+                <FlexBox 
+                  direction="column" 
+                  alignItems="center"
                   className="con"
                 >
-                <div className="main stat">
-                  <h3 className="stat-num">{con}</h3>
-                </div>
-                  <h6 className="stat-mod" style={{textAlign: "center"}}>{checkBaseMod(int)}</h6>
+                  <h2 className="stat-base">{con}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
                 </FlexBox>
               </div>
-            </FlexBox>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
-                <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "con_save")}</h6>
                 </span>
@@ -177,25 +186,23 @@ export const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="str stats">
+        <Card className="int stats">
           <FlexBox direction="column" justifyContent="space-between">
-            <FlexBox direction="row">
-              <h2 className="stat-header">INT</h2>
-              <div className="stat border num" style={{height: "50%"}}>
-                <FlexBox direction="column" alignItems="center"
+              <h6 className="header">Intelligence</h6>
+              <div className="stat-header">
+                <FlexBox 
+                  direction="column" 
+                  alignItems="center"
                   className="int"
                 >
-                <div className="main stat">
-                  <h3 className="stat-num">{int}</h3>
-                </div>
-                  <h6 className="stat-mod" style={{textAlign: "center"}}>{checkBaseMod(int)}</h6>
+                  <h2 className="stat-base">{int}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
                 </FlexBox>
               </div>
-            </FlexBox>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "int_save")}</h6>
                 </span>
@@ -203,7 +210,7 @@ export const CharacterStats = props => {
                   <p>Saving Throw</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "arcana")}</h6>
                 </span>
@@ -211,7 +218,7 @@ export const CharacterStats = props => {
                   <p>Arcana</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "history")}</h6>
                 </span>
@@ -219,7 +226,7 @@ export const CharacterStats = props => {
                   <p>History</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "investigation")}</h6>
                 </span>
@@ -227,7 +234,7 @@ export const CharacterStats = props => {
                   <p>Investigation</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "nature")}</h6>
                 </span>
@@ -235,7 +242,7 @@ export const CharacterStats = props => {
                   <p>Nature</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "religion")}</h6>
                 </span>
@@ -248,25 +255,23 @@ export const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="str stats">
+        <Card className="wis stats">
           <FlexBox direction="column" justifyContent="space-between">
-            <FlexBox direction="row">
-              <h2 className="stat-header">WIS</h2>
-              <div className="stat border num" style={{height: "50%"}}>
-                <FlexBox direction="column" alignItems="center"
+              <h6 className="header">Wisdom</h6>
+              <div className="stat-header">
+                <FlexBox 
+                  direction="column" 
+                  alignItems="center"
                   className="wis"
                 >
-                <div className="main stat">
-                  <h3 className="stat-num">{wis}</h3>
-                </div>
-                  <h6 className="stat-mod" style={{textAlign: "center"}}>{checkBaseMod(wis)}</h6>
+                  <h2 className="stat-base">{wis}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
                 </FlexBox>
               </div>
-            </FlexBox>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "wis_save")}</h6>
                 </span>
@@ -274,7 +279,7 @@ export const CharacterStats = props => {
                   <p>Saving Throw</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "animal handling")}</h6>
                 </span>
@@ -282,7 +287,7 @@ export const CharacterStats = props => {
                   <p>Animal Handling</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "insight")}</h6>
                 </span>
@@ -290,7 +295,7 @@ export const CharacterStats = props => {
                   <p>Insight</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "medicine")}</h6>
                 </span>
@@ -298,7 +303,7 @@ export const CharacterStats = props => {
                   <p>Medicine</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "perception")}</h6>
                 </span>
@@ -306,7 +311,7 @@ export const CharacterStats = props => {
                   <p>Perception</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "survival")}</h6>
                 </span>
@@ -319,25 +324,23 @@ export const CharacterStats = props => {
           </FlexBox>
         </Card>
           
-          <Card className="str stats">
+          <Card className="cha stats">
           <FlexBox direction="column" justifyContent="space-between">
-            <FlexBox direction="row">
-              <h2 className="stat-header">CHA</h2>
-              <div className="stat border num" style={{height: "50%"}}>
-                <FlexBox direction="column" alignItems="center"
+              <h6 className="header">Charisma</h6>
+              <div className="stat-header">
+                <FlexBox 
+                  direction="column" 
+                  alignItems="center"
                   className="cha"
                 >
-                <div className="main stat">
-                  <h3 className="stat-num">{cha}</h3>
-                </div>
-                  <h6 className="stat-mod" style={{textAlign: "center"}}>{checkBaseMod(cha)}</h6>
+                  <h2 className="stat-base">{cha}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
                 </FlexBox>
               </div>
-            </FlexBox>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
             <div className="stat border ability">
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "cha_save")}</h6>
                 </span>
@@ -345,7 +348,7 @@ export const CharacterStats = props => {
                   <p>Saving Throw</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "deception")}</h6>
                 </span>
@@ -353,7 +356,7 @@ export const CharacterStats = props => {
                   <p>Deception</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "intimidation")}</h6>
                 </span>
@@ -361,7 +364,7 @@ export const CharacterStats = props => {
                   <p>Intimidation</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "intimidation")}</h6>
                 </span>
@@ -369,7 +372,7 @@ export const CharacterStats = props => {
                   <p>Intimidation</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "performance")}</h6>
                 </span>
@@ -377,7 +380,7 @@ export const CharacterStats = props => {
                   <p>Performance</p>
                 </span>
               </div>
-              <div>
+              <div className="stat-container">
                 <span className="stat">
                   <h6>{checkAbilityMod(character, level, "persuasion")}</h6>
                 </span>
@@ -388,10 +391,6 @@ export const CharacterStats = props => {
             </div>
             </FlexBox>
           </FlexBox>
-        </Card>
-
-        <Card className="conditions stats">
-          <h3>Conditions</h3>
         </Card>
 
       </div>

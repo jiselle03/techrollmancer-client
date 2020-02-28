@@ -78,7 +78,6 @@ export const ClassShowPage = props => {
 
     const findNodes = () => {
         const nodes = document.querySelectorAll("em");
-        let name = "";
         let slug = "";
         nodes.forEach((node) => {
             slug = node.innerText.split(" ").join("-");
@@ -116,7 +115,7 @@ export const ClassShowPage = props => {
 
     return (
         <BackgroundImage
-            image={require(`../../assets/${slug}.png`)}
+            image={require(`../../assets/classes/${slug}.png`)}
             size={getSize(slug)}
         >
             <MainStyle>

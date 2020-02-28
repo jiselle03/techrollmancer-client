@@ -40,7 +40,7 @@ export const EquipmentShowPage = props => {
                     <h1>
                         {equipment.name.toUpperCase()}
                     </h1>
-                    <span className="category"><em>{equipment.equipment_category}, {utils.getCategory(equipment)}</em></span>
+                    <p className="category"><em>{equipment.equipment_category}, {utils.getCategory(equipment)}</em></p>
                 </div>
 
                 <div className={equipment.equipment_category === "Weapon" ? null : "hidden"}>
