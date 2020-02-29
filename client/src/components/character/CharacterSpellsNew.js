@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { baseUrl } from '../../config';
 import { SpellListItem } from './SpellListItem';
 import { FormStyle } from '../styles/FormStyle';
 import { FlexBox } from '../styles/FlexBox';
@@ -54,9 +55,15 @@ export const CharacterSpellsNew = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        axios.post(`http://localhost:3000/api/v1/characters/${character.id}/character_spells`, {
-            spells: newSpells
-        }).then(() => {
+        return fetch(`${baseUrl}/characters/${character.id}/character_spells`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({spells: newSpells})
+        }).then(res => res.json())
+        .then(() => {
             props.handleRefresh();
         }).then(() => {
             setOpen(false);
@@ -73,7 +80,6 @@ export const CharacterSpellsNew = props => {
     return(
         <>
             <Fab 
-                variant="extended"
                 color="secondary" 
                 size="large"
                 aria-label="add"
@@ -83,6 +89,8 @@ export const CharacterSpellsNew = props => {
                     position: "fixed",
                     bottom: "40px",
                     right: "40px",
+                    width: "5em",
+                    height: "5em"
                 }}
             >
                 <EditIcon 
@@ -90,7 +98,6 @@ export const CharacterSpellsNew = props => {
                         color: "#fff"
                     }}
                 />
-                Spells
             </Fab>
     
             <Modal
