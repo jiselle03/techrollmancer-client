@@ -62,17 +62,20 @@ export const CharacterTraits = props => {
 
             <div className="character-sheet">
                 <Card
-                    style={{
-                        backgroundImage: `url(${photo_url})`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                    }}
+                    
                     className="traits-container"
                     onClick={handleClickPhoto}
                 >
-                    {!photo_url && (
-                        <h6 className="profile">Photo</h6>
-                    )}
+                    <h6 className="header">Photo</h6>
+                    <div
+                        style={{
+                        backgroundImage: `url(${photo_url})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        }}
+                        className="trait large"
+                    >
+                    </div>
                     {editPhoto && (
                         <div className="photo-edit">
                             <label htmlFor="photo_url" className="photo">Photo URL</label>
@@ -90,7 +93,7 @@ export const CharacterTraits = props => {
 
                 <Card className="traits-container">
                     <h6 className="header">Profile</h6>
-                    <div className="trait" onClick={() => handleClickProfile()}>
+                    <div className="trait large" onClick={() => handleClickProfile()}>
                         {!editProfile && (
                             <>
                                 <p className="profile">Name</p>

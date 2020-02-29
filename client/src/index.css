@@ -150,10 +150,6 @@ span.header {
   margin: 0 0.75vw;
 }
 
-.trait .header {
-  margin: 0.5vh auto;
-}
-
 .card-text,
 label.photo {
   color: #fff;
@@ -177,7 +173,8 @@ input.stats {
   border-bottom: 1px dotted #fff;
   width: 4em;
   text-align: center;
-  margin: 0.25vh 0.25vw;
+  margin: 0;
+  padding: 0;
 }
 
 input.traits {
@@ -189,7 +186,6 @@ input.traits {
   padding: 0.5vh;
   width: 80%;
   text-align: center;
-  margin-bottom: 1.5vh;
   display: block;
 }
 
@@ -228,6 +224,10 @@ label.traits {
   border-radius: 5px 20px 5px;
   padding: 0.5em;
   margin: 0.25vh 0.25vw;
+}
+
+.trait.large {
+  min-height: 65vh;
 }
 
 div.stat.border.ability {
@@ -312,7 +312,7 @@ div.MuiTabs-root.tabs {
 }
 
 .traits-container {
-  min-height: 60vh;
+  min-height: 75vh;
 }
 
 .basic.stats {

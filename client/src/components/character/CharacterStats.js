@@ -200,7 +200,7 @@ export const CharacterStats = props => {
           </div>
 
           <h6 className="header">Hit Points</h6>
-          <div className="stat-header">
+          <div onClick={() => handleClick("hp")} className="stat-header">
           {editHP && (
             <InputEditStats 
               onHandleBlur={handleBlur}
@@ -209,12 +209,12 @@ export const CharacterStats = props => {
               defaultValue={hp} />
           )}
           {!editHP && (
-            <h2 onClick={() => handleClick("hp")} className="main-stats">{hp}</h2>
+            <h2 className="main-stats">{hp}</h2>
           )}
           </div>
 
           <h6 className="header">Armor Class</h6>
-          <div className="stat-header">
+          <div onClick={() => handleClick("armor_class")} className="stat-header">
           {editAC && (
             <InputEditStats 
               onHandleBlur={handleBlur} 
@@ -224,14 +224,14 @@ export const CharacterStats = props => {
             />
           )}
           {!editAC && (
-            <h2 onClick={() => handleClick("armor_class")} className=" main-stats">{armor_class}</h2>
+            <h2 className="main-stats">{armor_class}</h2>
           )}
           </div>
         </Card>
 
         <Card className="stats">
         <h6 className="header">Speed</h6>
-          <div className="stat-header"> 
+          <div onClick={() => handleClick("speed")} className="stat-header"> 
           {editSpeed && (
             <InputEditStats 
               onHandleBlur={handleBlur} 
@@ -242,7 +242,7 @@ export const CharacterStats = props => {
             />
           )}
           {!editSpeed && (
-            <h2 onClick={() => handleClick("speed")} className=" main-stats">{speed}</h2>
+            <h2 className=" main-stats">{speed}</h2>
           )}
           </div>
 
@@ -253,7 +253,7 @@ export const CharacterStats = props => {
             header
             onHandleOpen={handleOpen} 
           />
-          <div className="stat-header"> 
+          <div onClick={() => handleClick("initiative")} className="stat-header"> 
             {editInitiative && (
               <InputEditStats 
                 onHandleBlur={handleBlur} 
@@ -263,14 +263,14 @@ export const CharacterStats = props => {
               />
             )}
             {!editInitiative && (
-              <h2 onClick={() => handleClick("initiative")} className=" main-stats">{checkInitiative(initiative)}</h2>
+              <h2 className=" main-stats">{checkInitiative(initiative)}</h2>
             )}
           </div>
 
           <h6 className="header">Proficiency Bonus</h6>
-            <div className="stat-header">
-              <h2 onClick={() => handleClick("bonus")} className="main-stats">{checkProfBonus(level)}</h2>
-          </div>
+            <div className="stat-header" onClick={() => handleClick("bonus")} >
+              <h2 className="main-stats">{checkProfBonus(level)}</h2>
+            </div>
         </Card>
 
         <Card className="str stats">
@@ -282,7 +282,7 @@ export const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div className="stat-header">
+            <div onClick={() => handleClick("str")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -299,9 +299,11 @@ export const CharacterStats = props => {
                   />
                 )}
                 {!editStr && (
-                  <h2 onClick={() => handleClick("str")} className="stat-base">{str}</h2>
+                  <>
+                    <h2 className="stat-base">{str}</h2>
+                    <h6 className="stat-mod">{checkBaseMod(str)}</h6>
+                  </>
                 )}
-                <h6 className="stat-mod">{checkBaseMod(str)}</h6>
               </FlexBox>
             </div>
               
@@ -349,7 +351,7 @@ export const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div className="stat-header">
+            <div onClick={() => handleClick("dex")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -365,9 +367,11 @@ export const CharacterStats = props => {
                   defaultValue={dex} />
               )}
               {!editDex && (
-                <h2 onClick={() => handleClick("dex")} className="stat-base">{dex}</h2>
+                <>
+                  <h2 className="stat-base">{dex}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
+                </>
               )}
-                <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
               </FlexBox>
             </div>
               
@@ -443,7 +447,7 @@ export const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div className="stat-header">
+            <div onClick={() => handleClick("con")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -459,9 +463,11 @@ export const CharacterStats = props => {
                   defaultValue={con} />
               )}
               {!editCon && (
-                <h2 onClick={() => handleClick("con")} className="stat-base">{con}</h2>
+                <>
+                  <h2 className="stat-base">{con}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
+                </>
               )}
-                <h6 className="stat-mod">{checkBaseMod(int)}</h6>
               </FlexBox>
             </div>
               
@@ -495,7 +501,7 @@ export const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div className="stat-header">
+            <div onClick={() => handleClick("int")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -512,9 +518,11 @@ export const CharacterStats = props => {
                 />
               )}
               {!editInt && (
-                <h2 onClick={() => handleClick("int")} className="stat-base">{int}</h2>
+                <>
+                  <h2 className="stat-base">{int}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
+                </>
               )}
-                <h6 className="stat-mod">{checkBaseMod(int)}</h6>
               </FlexBox>
             </div>
               
@@ -618,7 +626,7 @@ export const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div className="stat-header">
+            <div onClick={() => handleClick("wis")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -635,9 +643,11 @@ export const CharacterStats = props => {
                 />
               )}
               {!editWis && (
-                <h2 onClick={() => handleClick("wis")} className="stat-base">{wis}</h2>
+                <>
+                  <h2 className="stat-base">{wis}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
+                </>
               )}
-                <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
               </FlexBox>
             </div>
               
@@ -741,7 +751,7 @@ export const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div className="stat-header">
+            <div onClick={() => handleClick("cha")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -758,9 +768,11 @@ export const CharacterStats = props => {
                 />
               )}
               {!editCha && (
-                <h2 onClick={() => handleClick("cha")} className="stat-base">{cha}</h2>
+                < >
+                  <h2 className="stat-base">{cha}</h2>
+                  <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
+                </>
               )}
-                <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
               </FlexBox>
             </div>
               
