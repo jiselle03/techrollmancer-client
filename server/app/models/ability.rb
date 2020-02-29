@@ -16,14 +16,6 @@ class Ability
       character.user == user
     end
 
-    can(:read, Character) do |character|
-      character.user == user
-    end
-
-    can(:crud, Proficiency) do |proficiency|
-      proficiency.character.user == user 
-    end
-
     can(:crud, Spell) do |spell|
       user.is_admin?
     end

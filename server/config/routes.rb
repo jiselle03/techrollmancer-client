@@ -7,12 +7,13 @@ Rails.application.routes.draw do
     namespace :v1 do 
       # patch('/characters/:id/spells', to: 'character_spells#update')
       resources :characters do
+        resources :proficiencies, only: [:update]
         resources :character_spells, only: [:create]
       end
-      resource :session, only: [:create, :destroy]
       resources :users, only: [:create] do
         get :current, on: :collection
       end
+      resource :session, only: [:create, :destroy]
       get('/libraries/equipment', to: 'libraries#equipment_index')
       get('/libraries/equipment/:slug', to: 'libraries#equipment_show')
       get('/libraries/classes', to: 'libraries#class_index')

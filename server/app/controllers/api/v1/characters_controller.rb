@@ -1,10 +1,12 @@
 class Api::V1::CharactersController < Api::ApplicationController
-    # before_action :authenticate_user!
+    before_action :authenticate_user!
     before_action :find_character, only: [:edit,:update,:show, :destroy]
-    # before_action :authorize!
+    before_action :authorize!
 
     def create
         character = Character.new character_params
+        character.proficiency = Proficiency.new
+
         if character.save
             render json: { id: character.id }
         else
@@ -66,8 +68,7 @@ class Api::V1::CharactersController < Api::ApplicationController
             :photo_url,
             :str, :dex, :con, :int, :wis, :cha,
             :armor_class,
-            :speed,
-            :spells
+            :speed
         )
     end
 

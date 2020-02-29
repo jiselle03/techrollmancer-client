@@ -62,7 +62,8 @@ c = Character.create(
 )
 
 if c.valid?
-    Proficiency.create(
+    p = Proficiency.where(character_id: 1)
+    p.update(
         str_save: true,
         dex_save: true,
         athletics: true,
