@@ -1,21 +1,21 @@
 import React from 'react';
 
 export const TooltipRoll = props => {
-    const { bonus, ability, name, header } = props;
+    const { modifier, ability, name, header } = props;
 
-    const handleOpen = (bonus, ability) => {
-        return props.onHandleOpen(bonus, ability);
+    const handleOpen = (modifier, ability) => {
+        return props.onHandleOpen(modifier, ability);
     };
 
     return(
         <div className="tooltip-roll">
             {header && (
-                <h6 className="header" onClick={() => handleOpen(bonus, ability)}>
+                <h6 className="header" onClick={() => handleOpen(modifier, ability)}>
                     {name}
                 </h6>
             )}
             {!header && (
-                <p onClick={() => handleOpen(bonus, ability)}>
+                <p onClick={() => handleOpen(modifier, ability)}>
                     {name}
                 </p>
             )}

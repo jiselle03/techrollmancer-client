@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
+import { TooltipRoll } from './CharacterTooltips';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 export const CharacterProficiencies = props => {
     const [isChecked, setIsChecked] = useState(false);
+    const { field, onHandleChange, proficiencies, modifier } = props;
 
     const handleChange = event => {
         setIsChecked(!isChecked);
-        props.onHandleChange(event);
+        onHandleChange(event);
     }
 
     useEffect(() => {
-        const { characterSpells, spell } = props;
-        const isChecked = characterSpells.includes(spell.id);
+        // const isChecked = proficiencies.includes(field);
         setIsChecked(isChecked);
     }, [isChecked]);
 
-    const { spell } = props;
-
     return(
         <FormControlLabel
-            control={<Checkbox checked={isChecked}  onChange={handleChange} value={spell.slug} data-id={spell.id} />}
-            label={spell.name}
+            control={<Checkbox checked={isChecked} onChange={handleChange} value={field} data-id={field} />}
+            label={
+                <>
+                    <span className="stat">
+                        <h6>{modifier}</h6>
+                    </span>
+                </>
+            }
         />
+
+        
+                  
+                
     );
 };
 
