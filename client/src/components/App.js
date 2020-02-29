@@ -30,8 +30,8 @@ import { WeaponIndexPage } from './library/WeaponIndexPage';
 import { ArmorIndexPage } from './library/ArmorIndexPage';
 import { ConditionIndexPage } from './library/ConditionIndexPage';
 
-import { CharacterIndexPage } from './character/CharacterIndexPage';
-import { CharacterShowPage } from './character/CharacterShowPage';
+import { CharacterIndexPage } from './character/pages/CharacterIndexPage';
+import { CharacterShowPage } from './character/pages/CharacterShowPage';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);

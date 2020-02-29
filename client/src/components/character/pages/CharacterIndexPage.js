@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Character } from '../../api/character';
-import { CharacterNew } from './CharacterNew';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
-import { CardStyle, CardContentStyle } from '../styles/CardStyle';
+import { Character } from '../../../api/character';
+import { CharacterNew } from '../CharacterNew';
+import { BackgroundImage } from '../../styles/BackgroundImage';
+import { MainStyle } from '../../styles/MainStyle';
+import { CardStyle, CardContentStyle } from '../../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
 
@@ -28,7 +28,7 @@ export const CharacterIndexPage = props => {
 
     return (
         <BackgroundImage 
-            image={require('../../assets/d20.png')}  
+            image={require('../../../assets/d20.png')}  
         >
             <MainStyle>
                 <h1 style={{marginLeft: "0.2em"}}>

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { Character } from '../../api/character';
-import { CharacterStats } from './CharacterStats';
-import { CharacterSpells } from './CharacterSpells';
-import { CharacterInventory } from './CharacterInventory';
-import { CharacterFeatures } from './CharacterFeatures';
-import { CharacterTraits } from './CharacterTraits';
-import { CharacterJournal } from './CharacterJournal';
-import { BackgroundImage } from '../styles/BackgroundImage';
+import { Character } from '../../../api/character';
+import { CharacterStats } from '../CharacterStats';
+import { CharacterSpells } from '../CharacterSpells';
+import { CharacterInventory } from '../CharacterInventory';
+import { CharacterFeatures } from '../CharacterFeatures';
+import { CharacterTraits } from '../CharacterTraits';
+import { CharacterJournal } from '../CharacterJournal';
+import { BackgroundImage } from '../../styles/BackgroundImage';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 
@@ -73,7 +73,7 @@ export const CharacterShowPage = props => {
     
     return (
       <BackgroundImage
-        image={require('../../assets/d20.png')} 
+        image={require('../../../assets/d20.png')} 
         light={true}
       >
         <div

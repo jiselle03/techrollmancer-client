@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CharacterSpellsNew } from './CharacterSpellsNew';
-import { SpellExpansionPanel } from './SpellExpansionPanel';
+import { SpellDetails } from './SpellDetails';
 
 import { Card } from '@material-ui/core';
 
@@ -21,7 +21,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 0 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -34,7 +34,7 @@ export const CharacterSpells = props => {
                     spells.map((spell,index) => (
                         spell.level_int === 1 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -47,7 +47,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 2 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -60,7 +60,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 3 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -73,7 +73,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 4 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -86,7 +86,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 5 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -99,7 +99,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 6 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -112,7 +112,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 7 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -125,7 +125,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 8 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))
@@ -138,7 +138,7 @@ export const CharacterSpells = props => {
                     spells.map((spell, index) => (
                         spell.level_int === 9 && (
                             <div key={index}>
-                                <SpellExpansionPanel spell={spell} />
+                                <SpellDetails spell={spell} />
                             </div>
                         )
                     ))

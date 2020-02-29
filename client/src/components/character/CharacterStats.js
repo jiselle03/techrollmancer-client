@@ -5,7 +5,7 @@ import { utils } from '../js/utils';
 import { FlexBox } from '../styles/FlexBox';
 import { ButtonStyle } from '../styles/ButtonStyle';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
-import { InputEditStats } from './InputEdit';
+import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
 
 import { Backdrop, Card, Modal } from '@material-ui/core';
