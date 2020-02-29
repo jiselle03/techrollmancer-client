@@ -196,7 +196,8 @@ input.traits.flex {
 input.photo {
   font-size: 1.3rem;
   border: none;
-  width: 95%;
+  width: 75%;
+  border-bottom: 1px dotted #000;
 }
 
 label.photo {
@@ -213,7 +214,8 @@ label.traits {
 
 .photo-edit {
   position: absolute;
-  bottom: 10%;
+  bottom: -5%;
+  margin: auto 2vw;
 }
 
 /* Border */
