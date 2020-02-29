@@ -26,3 +26,16 @@ export const TooltipRoll = props => {
     );
     
 };
+
+export const TooltipEdit = props => {
+    const { field } = props;
+
+    return(
+        <div className="tooltip-edit">
+            <h2 className="main-stats">{field}</h2>
+            <span className="tooltiptext">
+                <p>Click to edit!</p>
+            </span>
+        </div>
+    );
+};

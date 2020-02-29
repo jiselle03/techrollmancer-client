@@ -6,7 +6,7 @@ import { FlexBox } from '../styles/FlexBox';
 import { ButtonStyle } from '../styles/ButtonStyle';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
 import { InputEditStats } from './InputEdit';
-import { TooltipRoll } from './CharacterTooltips';
+import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
 
 import { Backdrop, Card, Modal } from '@material-ui/core';
 
@@ -209,7 +209,7 @@ export const CharacterStats = props => {
               defaultValue={hp} />
           )}
           {!editHP && (
-            <h2 className="main-stats">{hp}</h2>
+            <TooltipEdit field={hp} />
           )}
           </div>
 
@@ -224,7 +224,7 @@ export const CharacterStats = props => {
             />
           )}
           {!editAC && (
-            <h2 className="main-stats">{armor_class}</h2>
+            <TooltipEdit field={armor_class} />
           )}
           </div>
         </Card>
@@ -242,7 +242,7 @@ export const CharacterStats = props => {
             />
           )}
           {!editSpeed && (
-            <h2 className=" main-stats">{speed}</h2>
+            <TooltipEdit field={speed} />
           )}
           </div>
 
@@ -263,7 +263,7 @@ export const CharacterStats = props => {
               />
             )}
             {!editInitiative && (
-              <h2 className=" main-stats">{checkInitiative(initiative)}</h2>
+              <TooltipEdit field={checkInitiative(initiative)} />
             )}
           </div>
 
@@ -300,7 +300,7 @@ export const CharacterStats = props => {
                 )}
                 {!editStr && (
                   <>
-                    <h2 className="stat-base">{str}</h2>
+                    <TooltipEdit field={str} />
                     <h6 className="stat-mod">{checkBaseMod(str)}</h6>
                   </>
                 )}
@@ -368,7 +368,7 @@ export const CharacterStats = props => {
               )}
               {!editDex && (
                 <>
-                  <h2 className="stat-base">{dex}</h2>
+                  <TooltipEdit field={dex} />
                   <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
                 </>
               )}
@@ -464,7 +464,7 @@ export const CharacterStats = props => {
               )}
               {!editCon && (
                 <>
-                  <h2 className="stat-base">{con}</h2>
+                  <TooltipEdit field={con} />
                   <h6 className="stat-mod">{checkBaseMod(int)}</h6>
                 </>
               )}
@@ -519,7 +519,7 @@ export const CharacterStats = props => {
               )}
               {!editInt && (
                 <>
-                  <h2 className="stat-base">{int}</h2>
+                  <TooltipEdit field={int} />
                   <h6 className="stat-mod">{checkBaseMod(int)}</h6>
                 </>
               )}
@@ -644,7 +644,7 @@ export const CharacterStats = props => {
               )}
               {!editWis && (
                 <>
-                  <h2 className="stat-base">{wis}</h2>
+                  <TooltipEdit field={wis} />
                   <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
                 </>
               )}
@@ -769,7 +769,7 @@ export const CharacterStats = props => {
               )}
               {!editCha && (
                 < >
-                  <h2 className="stat-base">{cha}</h2>
+                  <TooltipEdit field={cha} />
                   <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
                 </>
               )}

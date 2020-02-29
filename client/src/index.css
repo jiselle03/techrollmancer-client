@@ -105,7 +105,6 @@ em {
   box-shadow: 5px 0 5px -2px #888
 }
 
-.stat-base,
 .main-stats {
   color: #fff;
   font-size: 3rem;
@@ -333,49 +332,52 @@ div.MuiTabs-root.tabs {
   border-bottom: 1px dotted black;
 }
 
-.tooltip-roll {
+.tooltip-roll,
+.tooltip-edit {
   position: relative;
 }
 
 /* Tooltip text */
-.tooltip .tooltiptext {
+
+.tooltip .tooltiptext,
+.tooltip-roll .tooltiptext,
+.tooltip-edit .tooltiptext {
   visibility: hidden;
-  width: 25vw;
   background-color: rgba(0,0,0,0.9);
   color: #fff;
   padding: 5px 0;
   border-radius: 5px;
   top: 100%;
   left: 50%;
-  padding: 0.5em;
-  overflow: scroll;
- 
-  /* Position tooltip text */
   position: absolute;
   z-index: 1;
+}
+
+.tooltip .tooltiptext {
+  width: 25vw;
+  padding: 0.5em;
+  overflow: scroll;
 }
 
 .tooltip-roll .tooltiptext {
-  visibility: hidden;
   width: 8.5vw;
   height: 3.25vh;
-  background-color: rgba(0,0,0,0.9);
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  top: 100%;
-  left: 50%;
-  position: absolute;
-  z-index: 1;
 }
 
-.tooltip-roll .tooltiptext p {
-  font-size: 0.75em;
+.tooltip-edit .tooltiptext {
+  width: 8.5vw;
+  height: 3.25vh;
+}
+
+.tooltip-roll .tooltiptext p,
+.tooltip-edit .tooltiptext p {
+  font-size: 0.75rem;
 }
 
 /* Show tooltip text on mouseover */
 .tooltip:hover .tooltiptext,
-.tooltip-roll:hover .tooltiptext {
+.tooltip-roll:hover .tooltiptext,
+.tooltip-edit:hover .tooltiptext {
   visibility: visible;
 }
 
