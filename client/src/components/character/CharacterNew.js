@@ -97,7 +97,7 @@ export const CharacterNew = props => {
                     <FlexBox
                         alignItems="center"
                         justifyContent="center"
-                        margin="2vh 0"
+                        margin="10vh 0"
                     >
                         <Fade in={openNew}>
                             <FadeStyle>
