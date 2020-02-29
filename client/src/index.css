@@ -102,6 +102,7 @@ em {
   border-bottom-right-radius: 50% 20%;
   padding: 0.5em;
   min-height: 2.25em;
+  box-shadow: 5px 0 5px -2px #888
 }
 
 .stat-base,
@@ -113,6 +114,20 @@ em {
 
 h6.header {
   text-align: center;
+  margin-top: 1.75vh;
+}
+
+p.profile,
+h6.profile {
+  text-align: center;
+}
+
+h6.profile {
+  margin-bottom: 1.5vh;
+}
+
+p.profile {
+  margin: 0;
 }
 
 .stat-num {
@@ -135,7 +150,12 @@ span.header {
   margin: 0 0.75vw;
 }
 
-.card-text {
+.trait .header {
+  margin: 0.5vh auto;
+}
+
+.card-text,
+label.photo {
   color: #fff;
   text-shadow: -1px -1px 0px #000,
                 0px -1px 0px #000,
@@ -148,21 +168,61 @@ span.header {
 }
 
 /* Input */
-
-input {
+input.stats {
   background-color: var(--accent-color);
   color: #fff;
   font-family: 'Bungee';
   font-size: 3rem;
   border: none;
+  border-bottom: 1px dotted #fff;
   width: 4em;
   text-align: center;
   margin: 0.25vh 0.25vw;
-  border-bottom: 1px dotted #fff;
+}
+
+input.traits {
+  font-family: 'Bungee';
+  font-size: 1.3rem;
+  border: none;
+  border-bottom: 1px dotted #000;
+  margin: 0 auto; 
+  padding: 0.5vh;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 1.5vh;
+  display: block;
+}
+
+input.traits.flex {
+  width: 40%;
+}
+
+input.photo {
+  font-size: 1.3rem;
+  border: none;
+  width: 95%;
+}
+
+label.photo {
+  font-size: 1.3rem;
+  font-family: bungee;
+}
+
+label.traits {
+  padding: 0;
+  font-size: 1.3rem;
+  text-align: center;
+  display: block;
+}
+
+.photo-edit {
+  position: absolute;
+  bottom: 10%;
 }
 
 /* Border */
 
+.trait,
 .stat.border {
   border: 2px solid #000;
   border-radius: 5px 20px 5px;
@@ -244,9 +304,15 @@ div.MuiTabs-root.tabs {
 }
 
 .stats,
-.spells {
+.spells,
+.traits,
+.traits-container {
   padding: 1em;
   margin: 0.5em;
+}
+
+.traits-container {
+  min-height: 60vh;
 }
 
 .basic.stats {

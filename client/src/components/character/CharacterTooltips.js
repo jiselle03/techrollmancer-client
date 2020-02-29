@@ -19,7 +19,7 @@ export const TooltipRoll = props => {
                     {name}
                 </p>
             )}
-            <span class="tooltiptext">
+            <span className="tooltiptext">
                 <p>Click to roll!</p>
             </span>
         </div>

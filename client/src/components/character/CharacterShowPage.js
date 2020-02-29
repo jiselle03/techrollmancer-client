@@ -100,22 +100,22 @@ export const CharacterShowPage = props => {
           </Tabs>
           <div style={{margin: "auto 2em"}}>
           <TabPanel value={value} index={0}>
-              <CharacterStats character={character} />
+              <CharacterStats character={character} handleRefresh={handleRefresh} />
           </TabPanel>
           <TabPanel value={value} index={1}>
-              <CharacterSpells character={character} handleRefresh={handleRefresh}/>
+              <CharacterSpells character={character} handleRefresh={handleRefresh} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-              <CharacterInventory character={character} />
+              <CharacterInventory character={character} handleRefresh={handleRefresh} />
           </TabPanel>
           <TabPanel value={value} index={3}>
-              <CharacterFeatures character={character} />
+              <CharacterFeatures character={character} handleRefresh={handleRefresh} />
           </TabPanel>
           <TabPanel value={value} index={4}>
-              <CharacterTraits character={character} />
+              <CharacterTraits character={character} handleRefresh={handleRefresh} />
           </TabPanel>
           <TabPanel value={value} index={5}>
-              <CharacterJournal character={character} />
+              <CharacterJournal character={character} handleRefresh={handleRefresh} />
           </TabPanel>
           </div>
         </div>

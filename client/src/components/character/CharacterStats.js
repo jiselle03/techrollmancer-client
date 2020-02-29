@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
+import { Character } from '../../api/character';
 import { utils } from '../js/utils';
 import { FlexBox } from '../styles/FlexBox';
 import { ButtonStyle } from '../styles/ButtonStyle';
-import { FadeStyle } from '../styles/FadeStyle';
-import { InputEdit } from './InputEdit';
+import { Fade, FadeStyle } from '../styles/FadeStyle';
+import { InputEditStats } from './InputEdit';
 import { TooltipRoll } from './CharacterTooltips';
 
-import { Backdrop, Card, Fade, Modal } from '@material-ui/core';
+import { Backdrop, Card, Modal } from '@material-ui/core';
 
 export const CharacterStats = props => {
-  const [editLevel, setEditLevel] = useState(false);
   const [editHP, setEditHP] = useState(false);
   const [editAC, setEditAC] = useState(false);
   const [editInitiative, setEditInitiative] = useState(false);
@@ -26,10 +26,12 @@ export const CharacterStats = props => {
   const [bonus, setBonus] = useState(0);
   const [ability, setAbility] = useState(null);
 
+  const { character, handleRefresh } = props;
+  const { id, name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha } = character;
+  const level = utils.getLevel(character);
+
   const handleClick = field => {
     switch(field) {
-      case "class_1_level":
-        return setEditLevel(true);
       case "hp":
         return setEditHP(true);
       case "armor_class":
@@ -53,39 +55,92 @@ export const CharacterStats = props => {
     };
   };
 
-  const handleBlur = field => {
-    // handle saving
-    console.log(field)
-    // turn off edit mode
+  const handleBlur = (event, field) => {
+    const { currentTarget } = event;
+
     switch(field) {
-      case "class_1_level":
-        return setEditLevel(false);
       case "hp":
-        return setEditHP(false);
+        Character.update(id, {hp: currentTarget.value})
+          .then(() => {
+              setEditHP(false);
+            }).then(() => {
+              handleRefresh();
+            });
+        break;
       case "armor_class":
-        return setEditAC(false);
+        Character.update(id, {armor_class: currentTarget.value})
+          .then(() => {
+              setEditAC(false);
+            }).then(() => {
+              handleRefresh()
+            });
+        break;
       case "initiative":
-        return setEditInitiative(false);
+        Character.update(id, {initiative: currentTarget.value})
+          .then(() => {
+            setEditInitiative(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "speed":
-        return setEditSpeed(false);
+        Character.update(id, {speed: currentTarget.value})
+          .then(() => {
+            setEditSpeed(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "str":
-        return setEditStr(false);
+        Character.update(id, {str: currentTarget.value})
+          .then(() => {
+            setEditStr(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "dex":
-        return setEditDex(false);
+        Character.update(id, {dex: currentTarget.value})
+          .then(() => {
+            setEditDex(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "con":
-        return setEditCon(false);
+        Character.update(id, {con: currentTarget.value})
+          .then(() => {
+            setEditCon(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "int":
-        return setEditInt(false);
+        Character.update(id, {int: currentTarget.value})
+          .then(() => {
+            setEditInt(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "wis":
-        return setEditWis(false);
+        Character.update(id, {wis: currentTarget.value})
+          .then(() => {
+            setEditWis(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
       case "cha":
-        return setEditCha(false);
+        Character.update(id, {cha: currentTarget.value})
+          .then(() => {
+            setEditCha(false);
+          }).then(() => {
+            handleRefresh();
+          });
+        break;
     };
   };
-  
-  const { character } = props;
-  const { name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha } = character;
-  const level = utils.getLevel(character);
 
   const checkBaseMod = stat => {
     const mod = utils.getBaseMod(stat);
@@ -141,23 +196,13 @@ export const CharacterStats = props => {
         <Card className="stats">
         <h6 className="header">Level</h6>
           <div className="stat-header"> 
-          {editLevel && (
-            <InputEdit 
-              onHandleBlur={handleBlur} 
-              field="class_1_level"
-              step="1"
-              defaultValue={level}
-            />
-          )}
-          {!editLevel && (
-            <h2 onClick={() => handleClick("class_1_level")} className=" main-stats">{level}</h2>
-          )}
+            <h2 className=" main-stats">{level}</h2>
           </div>
 
           <h6 className="header">Hit Points</h6>
           <div className="stat-header">
           {editHP && (
-            <InputEdit 
+            <InputEditStats 
               onHandleBlur={handleBlur}
               field="hp" 
               step="1"
@@ -171,7 +216,7 @@ export const CharacterStats = props => {
           <h6 className="header">Armor Class</h6>
           <div className="stat-header">
           {editAC && (
-            <InputEdit 
+            <InputEditStats 
               onHandleBlur={handleBlur} 
               field="armor_class"
               step="1"
@@ -188,7 +233,7 @@ export const CharacterStats = props => {
         <h6 className="header">Speed</h6>
           <div className="stat-header"> 
           {editSpeed && (
-            <InputEdit 
+            <InputEditStats 
               onHandleBlur={handleBlur} 
               field="speed"
               step="1"
@@ -210,7 +255,7 @@ export const CharacterStats = props => {
           />
           <div className="stat-header"> 
             {editInitiative && (
-              <InputEdit 
+              <InputEditStats 
                 onHandleBlur={handleBlur} 
                 field="initiative"
                 step="1"
@@ -244,7 +289,7 @@ export const CharacterStats = props => {
                 className="str"
               >
                 {editStr && (
-                  <InputEdit 
+                  <InputEditStats 
                     onHandleBlur={handleBlur} 
                     field="str"
                     step="1"
@@ -311,7 +356,7 @@ export const CharacterStats = props => {
                 className="dex"
               >
               {editDex && (
-                <InputEdit 
+                <InputEditStats 
                   onHandleBlur={handleBlur} 
                   field="dex"
                   step="1"
@@ -405,8 +450,8 @@ export const CharacterStats = props => {
                 className="con"
               >
               {editCon && (
-                <InputEdit 
-                  onHandleBlur={() => handleBlur("con")} 
+                <InputEditStats 
+                  onHandleBlur={handleBlur} 
                   field="con"
                   step="1"
                   min="0"
@@ -457,8 +502,8 @@ export const CharacterStats = props => {
                 className="int"
               >
               {editInt && (
-                <InputEdit 
-                  onHandleBlur={() => handleBlur("int")} 
+                <InputEditStats 
+                  onHandleBlur={handleBlur} 
                   field="int"
                   step="1"
                   min="0"
@@ -580,8 +625,8 @@ export const CharacterStats = props => {
                 className="wis"
               >
               {editWis && (
-                <InputEdit 
-                  onHandleBlur={() => handleBlur("wis")} 
+                <InputEditStats 
+                  onHandleBlur={handleBlur} 
                   field="wis"
                   step="1"
                   min="0"
@@ -703,8 +748,8 @@ export const CharacterStats = props => {
                 className="cha"
               >
               {editCha && (
-                <InputEdit 
-                  onHandleBlur={() => handleBlur("cha")} 
+                <InputEditStats 
+                  onHandleBlur={handleBlur} 
                   field="cha"
                   step="1"
                   min="0"

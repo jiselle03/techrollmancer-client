@@ -16,7 +16,6 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
 
     def update
-
         if @character.update character_params
             render json: { id: @character.id }
         else

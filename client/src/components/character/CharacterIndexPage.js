@@ -55,7 +55,7 @@ export const CharacterIndexPage = props => {
                                 >
                                     <CardStyle
                                         image={character.photo_url}
-                                        imageSize="100%"
+                                        imageSize="cover"
                                     >
                                         <Card>
                                             <CardContent style={CardContentStyle.content}>

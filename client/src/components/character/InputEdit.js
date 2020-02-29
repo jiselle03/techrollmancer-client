@@ -1,26 +1,23 @@
 import React from 'react';
 
-export const InputEdit = props => {
-    const { handleSubmit, type, field, 
-            defaultValue, min, max, step } = props;
+export const InputEditStats = props => {
+    const { type, field, defaultValue, min, max, step } = props;
 
-    const handleBlur = field => {
-        return props.onHandleBlur(field);
+    const handleBlur = (event, field) => {
+        return props.onHandleBlur(event, field);
     };
 
     return(
-        <form onSubmit={() => handleSubmit}>
-            <input 
-                onBlur={() => handleBlur(field)}
-                type={type || "number"}
-                field={field}
-                htmlFor={field}
-                name={field}
-                defaultValue={defaultValue}
-                min={min}
-                max={max}
-                step={step}
-            />
-        </form>
+        <input 
+            onBlur={event => handleBlur(event, field)}
+            type={type || "number"}
+            field={field}
+            name={field}
+            defaultValue={defaultValue}
+            min={min}
+            max={max}
+            step={step}
+            className="stats"
+        />
     );
 };
