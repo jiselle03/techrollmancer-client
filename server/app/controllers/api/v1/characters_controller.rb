@@ -1,7 +1,7 @@
 class Api::V1::CharactersController < Api::ApplicationController
     before_action :authenticate_user!
-    before_action :find_character, only: [:edit,:update,:show, :destroy]
-    before_action :authorize!
+    before_action :find_character, only: [:edit, :update,:show, :destroy]
+    before_action :authorize!, except: [:index, :create]
 
     def create
         character = Character.new character_params
@@ -28,7 +28,7 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
 
     def index
-        @characters = current_user.characters.order(:name)
+        @characters = Character.where(user_id: current_user.id)
         render json: @characters
     end
 

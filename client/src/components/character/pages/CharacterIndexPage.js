@@ -36,16 +36,13 @@ export const CharacterIndexPage = props => {
                 </h1>
 
                 {!characters && (
-                    <>
-                        <p>
-                            You have not created any characters.
-                        </p>
-                    </>
+                    <p>
+                        You have not created any characters.
+                    </p>
                 )}
 
                 {characters && (
                     <>
-                        <br />
                         <Grid container>
                         {characters.map(character => (
                             <div key={character.id}>
