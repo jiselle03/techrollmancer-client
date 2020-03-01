@@ -22,14 +22,13 @@ export const SignUpPage = props => {
             password: fd.get("password"),
             password_confirmation: fd.get("password_confirmation")
         };
-        debugger
         
         User.create(newUser).then(res => {
             if (res.id) {
                 if (typeof props.onSignUp === "function") {
                     props.onSignUp();
-                }
-                props.history.push("/characters");
+                };
+                props.history.push("/");
             };
         });
     };
