@@ -161,6 +161,14 @@ span.header {
   color: grey;
 }
 
+.nat20 {
+  color: green;
+}
+
+.nat1 {
+  color: maroon;
+}
+
 .card-text,
 label.photo {
   color: #fff;

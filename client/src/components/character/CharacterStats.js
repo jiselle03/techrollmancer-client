@@ -180,6 +180,16 @@ export const CharacterStats = props => {
     return bonus > 0 ? "+" + bonus : bonus;
   };
 
+  const checkRoll = (roll, modifier) => {
+    if (roll - modifier === 20) {
+      return "nat20 roll";
+    } else if (roll - modifier === 1) {
+      return "nat1 roll";
+    } else {
+      return "roll";
+    };
+  };
+
   const handleOpen = (modifier, ability) => {
     setOpen(true);
     setRoll(utils.roll(20) + modifier);
@@ -984,7 +994,7 @@ export const CharacterStats = props => {
               <Fade in={open}>
                   <FadeStyle>
                       <h2>{ability}</h2>
-                      <h1 className="roll">{roll}</h1>
+                      <h1 className={checkRoll(roll, modifier)}>{roll}</h1>
                       <h5>({modifier})</h5>
 
                       <button 
