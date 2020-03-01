@@ -147,7 +147,6 @@ export const CharacterStats = props => {
   const handleChange = event => {
     const { field } = event.target.parentNode.parentNode.dataset;
     const { checked } = event.target;
-    console.log(checked)
 
     return fetch(`${baseUrl}/characters/${id}/proficiencies/${proficiency.id}`, {
       credentials: "include",
@@ -443,7 +442,7 @@ export const CharacterStats = props => {
               <div className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "sleight of hand")}
-                  field={"sleight of hand"} 
+                  field={"sleight_of_hand"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
                   onHandleChange={handleChange} 
@@ -745,7 +744,7 @@ export const CharacterStats = props => {
               <div className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "animal handling")}
-                  field={"animal handling"} 
+                  field={"animal_handling"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
                   onHandleChange={handleChange} 
