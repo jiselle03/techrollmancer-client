@@ -1,6 +1,6 @@
 class Api::V1::GamesController < Api::ApplicationController
     before_action :authenticate_user!
-    before_action :find_character, only: [:update, :destroy]
+    before_action :find_game, only: [:update, :destroy]
     before_action :authorize!, except: [:index, :create]
 
     def create
