@@ -17,12 +17,13 @@ export const SignUpPage = props => {
         const { currentTarget: form } = event;
         const fd = new FormData(form);
         const newUser = {
-            first_name: fd.get("username"),
+            username: fd.get("username"),
             email: fd.get("email"),
             password: fd.get("password"),
             password_confirmation: fd.get("password_confirmation")
         };
-
+        debugger
+        
         User.create(newUser).then(res => {
             if (res.id) {
                 if (typeof props.onSignUp === "function") {
@@ -52,10 +53,12 @@ export const SignUpPage = props => {
                             Create an Account
                         </h3>
 
+                        <form onSubmit={handleSubmit}>
                         <FormControl style={FormContent.field}>
                             <InputLabel htmlFor="username">Username*</InputLabel>
                             <Input
                             id="username"
+                            name="username"
                             type="text"
                             startAdornment={
                                 <InputAdornment position="start">
@@ -71,6 +74,7 @@ export const SignUpPage = props => {
                             <InputLabel htmlFor="email">Email</InputLabel>
                             <Input
                             id="email"
+                            name="email"
                             type="email"
                             startAdornment={
                                 <InputAdornment position="start">
@@ -85,6 +89,7 @@ export const SignUpPage = props => {
                             <InputLabel htmlFor="password">Password*</InputLabel>
                             <Input
                             id="password"
+                            name="password"
                             type="password"
                             startAdornment={
                                 <InputAdornment position="start">
@@ -100,6 +105,7 @@ export const SignUpPage = props => {
                             <InputLabel htmlFor="password_confirmation">Password Confirmation*</InputLabel>
                             <Input
                             id="password_confirmation"
+                            name="password_confirmation"
                             type="password"
                             startAdornment={
                                 <InputAdornment position="start">
@@ -114,10 +120,11 @@ export const SignUpPage = props => {
                         <FlexBox
                             justifyContent="center"
                         >
-                            <Button variant="contained" style={ButtonStyle.formButton} onClick={handleSubmit}>
+                            <Button variant="contained" type="submit" style={ButtonStyle.formButton}>
                                 SIGN UP
                             </Button>
                         </FlexBox>
+                        </form>
 
                         <Divider variant="middle" />
 
