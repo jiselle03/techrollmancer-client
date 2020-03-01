@@ -31,14 +31,14 @@ export const CharacterIndexPage = props => {
             image={require('../../../assets/d20.png')}  
         >
             <MainStyle>
-                <h1 style={{marginLeft: "0.2em"}}>
+                <h1>
                     CHARACTERS
                 </h1>
 
-                {!characters && (
-                    <p>
+                {characters.length === 0 && (
+                    <h5>
                         You have not created any characters.
-                    </p>
+                    </h5>
                 )}
 
                 {characters && (
