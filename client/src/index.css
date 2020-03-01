@@ -166,6 +166,11 @@ label.photo {
   margin-top: 1.5em;
 }
 
+.game .name,
+.game .button {
+  display: inline-block;
+}
+
 .notes {
   margin-bottom: 0;
 }

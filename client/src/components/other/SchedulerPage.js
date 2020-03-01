@@ -63,6 +63,14 @@ export const SchedulerPage = props => {
         });
     };
 
+    const handleDelete = id => {
+        Game.destroy(id).then(() => {
+            Game.all().then(games => {
+                setGames(games);
+            });
+        });
+    };
+
     useEffect(() => {
         Game.all().then(games => {
             setGames(games);
@@ -89,8 +97,13 @@ export const SchedulerPage = props => {
                     <h2>Future Sessions</h2>
                     {games.map((game, index) => (
                         game.date >= currentDate && (
-                        <div key={index}>
-                            <h6 className="game">{game.name}</h6>
+                        <div key={index} className="game">
+                            <span className="name">
+                            <h6>{game.name}</h6>
+                            </span>
+                            <span className="button">
+                            <Button onClick={() => handleDelete(game.id)}>Cancel</Button>
+                            </span>
                             <p>{game.date} at {game.time}</p>
                             <p className="notes"><strong>Notes:</strong></p>
                             <p>{game.notes}</p>
@@ -176,7 +189,14 @@ export const SchedulerPage = props => {
                     {games.map((game, index) => (
                         game.date < currentDate && (
                         <div key={index}>
+                            <div className="game">
+                                <span className="name">
                             <h6>{game.name}</h6> 
+                            </span>
+                                <span className="button">
+                            <Button onClick={() => handleDelete(game.id)}>Delete</Button>
+                            </span>
+                            </div>
                             <p>{game.date} at {game.time}</p>
                         </div>
                     )))}
