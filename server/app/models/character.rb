@@ -16,6 +16,12 @@ class Character < ApplicationRecord
     before_save :titleize_name
     before_save :titleize_gender
 
+    after_create do
+        Proficiency.create(
+            character_id: self.id
+        )
+    end
+
     private
 
     def titleize_name

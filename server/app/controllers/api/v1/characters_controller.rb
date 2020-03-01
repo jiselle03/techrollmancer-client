@@ -5,8 +5,7 @@ class Api::V1::CharactersController < Api::ApplicationController
 
     def create
         character = Character.new character_params
-        character.proficiency = Proficiency.new
-
+        
         if character.save
             render json: { id: character.id }
         else
@@ -69,6 +68,36 @@ class Api::V1::CharactersController < Api::ApplicationController
             :str, :dex, :con, :int, :wis, :cha,
             :armor_class,
             :speed
+        )
+    end
+
+    def proficiency_params
+        params.require(:proficiency).permit(
+            :str_save,
+            :dex_save,
+            :con_save,
+            :int_save,
+            :wis_save,
+            :cha_save,
+            :acrobatics,
+            :animal_handling,
+            :arcana,
+            :athletics,
+            :deception,
+            :history,
+            :insight,
+            :intimidation,
+            :investigation,
+            :medicine,
+            :nature,
+            :performance,
+            :persuasion,
+            :perception,
+            :religion,
+            :sleight_of_hand,
+            :stealth,
+            :survival,
+            :character_id
         )
     end
 
