@@ -1,6 +1,6 @@
 class Api::V1::CharactersController < Api::ApplicationController
     before_action :authenticate_user!
-    before_action :find_character, only: [:edit, :update,:show, :destroy]
+    before_action :find_character, only: [:update, :show, :destroy]
     before_action :authorize!, except: [:index, :create]
 
     def create
@@ -11,7 +11,7 @@ class Api::V1::CharactersController < Api::ApplicationController
         else
             render(
                 json: { errors: character.errors },
-                status: 422 #unprocessable entity
+                status: 422 #Unprocessable Entity
             )
         end
     end
@@ -22,14 +22,14 @@ class Api::V1::CharactersController < Api::ApplicationController
         else
             render(
                 json: { errors: @character.errors },
-                status: 422 #unprocessable entity
+                status: 422 #Unprocessable Entity
             )
         end
     end
 
     def index
-        @characters = Character.where(user_id: current_user.id)
-        render json: @characters
+        characters = Character.where(user_id: current_user.id)
+        render json: characters
     end
 
     def show
@@ -105,7 +105,7 @@ class Api::V1::CharactersController < Api::ApplicationController
         unless can?(:crud, @character)
             render(
                 json: { status: 401 },
-                status: 401 #unauthorized
+                status: 401 #Not Authorized
             )
         end
     end

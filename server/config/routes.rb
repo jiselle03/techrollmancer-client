@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: { format: :json } do
     namespace :v1 do 
-      resources :characters do
+      resources :characters, except: [:new, :edit] do
         resources :proficiencies, only: [:update]
         resources :character_spells, only: [:create]
       end
       resources :users, only: [:create] do
+        resources :games, except: [:new, :edit]
         get :current, on: :collection
       end
       resource :session, only: [:create, :destroy]

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :characters, dependent: :destroy
+    has_many :games, dependent: :destroy
 
     validates :username, presence: true, uniqueness: true
     # Add format validation for username
