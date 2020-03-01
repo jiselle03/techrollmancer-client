@@ -39,5 +39,10 @@ export const FormContent = {
     stat: {
         margin: "0.5em 1em",
         width: "35%",
+    },
+    scheduler: {
+        padding: "0.5em",
+        margin: "0.5em 3.25em",
+        width: "85%"
     }
 };

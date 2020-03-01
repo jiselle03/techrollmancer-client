@@ -89,21 +89,23 @@ const App = () => {
           <Route path="/libraries/equipment/:slug" component={EquipmentShowPage} />
           <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
           <AuthRoute 
+            exact path="/characters"
             isAuthenticated={!!currentUser}
             render={routeProps => (
               <CharacterIndexPage {...routeProps} currentUser={currentUser} />
             )}
-            exact path="/characters"
           />
           <AuthRoute 
+            exact path="/characters/:id"
             isAuthenticated={!!currentUser}
             component={CharacterShowPage}
-            exact path="/characters/:id"
           />
           <AuthRoute 
-            isAuthenticated={!!currentUser}
-            component={SchedulerPage}
             path="/scheduler"
+            isAuthenticated={!!currentUser}
+            render={routeProps => (
+              <SchedulerPage {...routeProps} currentUser={currentUser} />
+            )}
           />
           <Route 
             path="/sign_in"

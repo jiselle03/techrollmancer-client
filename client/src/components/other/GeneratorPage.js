@@ -10,7 +10,7 @@ import { FadeStyle, Fade } from '../styles/FadeStyle';
 import { TableStyle } from '../styles/TableStyle';
 import { Center } from '../styles/Center';
 
-import { Backdrop, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from '@material-ui/core';
+import { Backdrop, Button, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from '@material-ui/core';
 import PropTypes from 'prop-types';
   
 Fade.propTypes = {
@@ -191,19 +191,19 @@ export const GeneratorPage = () => {
                     <FlexBox
                         justifyContent="center"
                     >
-                        <button 
+                        <Button 
                             onClick={quickRoll}
                             style={ButtonStyle.modalButton}
                         >
                             QUICK ROLL
-                        </button>
+                        </Button>
 
-                        <button 
+                        <Button 
                             onClick={d6Roll}
                             style={ButtonStyle.modalButton}
                         >
                             ROLL D6
-                        </button>
+                        </Button>
                     </FlexBox>
 
                     
@@ -250,12 +250,12 @@ export const GeneratorPage = () => {
                                         {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
                                     </h4>
 
-                                    <button 
+                                    <Button 
                                         onClick={handleCloseQR}
                                         style={ButtonStyle.modalButton}
                                     >
                                         EXIT
-                                    </button>
+                                    </Button>
                                 </FadeStyle>
                             </Fade>
                         </FlexBox>

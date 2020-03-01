@@ -162,6 +162,14 @@ label.photo {
                 1px  1px 0px #000;
 }
 
+.game {
+  margin-top: 1.5em;
+}
+
+.notes {
+  margin-bottom: 0;
+}
+
 /* Input */
 input.stats {
   background-color: var(--accent-color);
