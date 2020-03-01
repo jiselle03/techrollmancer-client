@@ -7,7 +7,6 @@ export const CharacterProficiencies = props => {
     const { field, onHandleChange, proficiencies, modifier } = props;
 
     const handleChange = event => {
-        // console.log(isChecked)
         setIsChecked(!isChecked);
         onHandleChange(event);
     };
@@ -16,7 +15,7 @@ export const CharacterProficiencies = props => {
         if (proficiencies[field]) {
             setIsChecked(true);
         };
-    }, [isChecked]);
+    }, [proficiencies[field]]);
 
     return(
         <FormControlLabel
