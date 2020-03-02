@@ -107,7 +107,7 @@ h3.title {
   border-bottom-right-radius: 50% 20%;
   padding: 0.5em;
   min-height: 2.25em;
-  box-shadow: 5px 0 5px -2px #888
+  box-shadow: 5px 0 5px -2px #888;
 }
 
 .main-stats {
@@ -432,6 +432,16 @@ div.MuiTabs-root.tabs {
 .tooltip-roll:hover .tooltiptext,
 .tooltip-edit:hover .tooltiptext {
   visibility: visible;
+}
+
+.datetime {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.datetime {
+  width: 85%;
+  margin: 1.5em 3.5em 0.5em 3.25em;
 }
 
 @media (min-width: 768px) {

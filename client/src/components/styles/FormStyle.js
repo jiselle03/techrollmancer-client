@@ -44,5 +44,9 @@ export const FormContent = {
         padding: "0.5em",
         margin: "0.5em 3.25em",
         width: "85%"
+    },
+    datetime: {
+        margin: "auto 0.25em",
+        width: "95%"
     }
 };

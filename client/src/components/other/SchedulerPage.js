@@ -109,7 +109,7 @@ export const SchedulerPage = props => {
                 <h2>Add Session</h2>
                 <form onSubmit={handleSubmit}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Grid container justify="space-around">
+                        <div className="datetime">
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="date-picker-dialog"
@@ -121,6 +121,7 @@ export const SchedulerPage = props => {
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
+                                style={FormContent.datetime}
                             />
                             <KeyboardTimePicker
                                 margin="normal"
@@ -132,8 +133,9 @@ export const SchedulerPage = props => {
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}
+                                style={FormContent.datetime}
                             />
-                        </Grid>
+                        </div>
                         <FormControl style={FormContent.scheduler}>
                             <InputLabel htmlFor="name">Name</InputLabel>
                             <Input
