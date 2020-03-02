@@ -241,10 +241,11 @@ input.profile.flex {
 }
 
 input.photo,
-input.traits {
+input.traits,
+textarea.traits {
   font-size: 1.3rem;
   border: none;
-  width: 75%;
+  width: 95%;
   border-bottom: 1px dotted #000;
 }
 

@@ -295,14 +295,13 @@ export const CharacterTraits = props => {
                         </p>
                     )}
                     {editPersonality && (
-                        <input 
-                            type="textarea"
+                        <textarea 
                             rows="5"
                             placeholder="Personality Traits"
                             defaultValue={personality_traits || ""}
                             onBlur={event => handleBlur(event, "personality_traits")}
                             className="traits"
-                        />
+                        ></textarea>
                     )}
 
                     <h6 className="header">Ideals</h6>
@@ -315,14 +314,13 @@ export const CharacterTraits = props => {
                         </p>
                     )}
                     {editIdeals && (
-                        <input 
-                            type="textarea"
+                        <textarea 
                             rows="5"
                             placeholder="Ideals"
                             defaultValue={ideals || ""}
                             onBlur={(event => handleBlur(event, "ideals"))}
                             className="traits"
-                        />
+                        ></textarea>
                     )}
 
                     <h6 className="header">Bonds</h6>
@@ -335,14 +333,13 @@ export const CharacterTraits = props => {
                         </p>
                     )}
                     {editBonds && (
-                        <input 
-                            type="textarea"
+                        <textarea 
                             rows="5"
                             placeholder="Bonds"
                             defaultValue={bonds || ""}
                             onBlur={(event => handleBlur(event, "bonds"))}
                             className="traits"
-                        />
+                        ></textarea>
                     )}
 
                     <h6 className="header">Flaws</h6>
@@ -355,14 +352,13 @@ export const CharacterTraits = props => {
                         </p>
                     )}
                     {editFlaws && (
-                        <input 
-                            type="textarea"
+                        <textarea 
                             rows="5"
                             placeholder="Flaws"
                             defaultValue={ideals || ""}
                             onBlur={(event => handleBlur(event, "flaws"))}
                             className="traits"
-                        />
+                        ></textarea>
                     )}
                 </Card>
 
@@ -379,19 +375,18 @@ export const CharacterTraits = props => {
                     )}
                     {editBackground && (
                         <div onBlur={(event => handleBlur(event, "background"))}>
-                            <input 
+                            <input
                                 type="text"
                                 placeholder="Type"
                                 defaultValue={background_type || ""}
                                 className="traits"
                                 />
-                            <input 
-                                type="textarea"
-                                rows="5"
+                            <textarea 
+                                rows="10"
                                 placeholder="Description"
                                 defaultValue={background_desc || ""}
                                 className="traits"
-                            />
+                            ></textarea>
                         </div>
                     )}
                 </Card>
@@ -407,14 +402,13 @@ export const CharacterTraits = props => {
                         </p>
                     )}
                     {editDescription && (
-                        <input 
-                            type="textarea"
+                        <textarea 
                             rows="5"
                             placeholder="Description"
                             defaultValue={description || ""}
                             onBlur={(event => handleBlur(event, "description"))}
                             className="traits"
-                        />
+                        ></textarea>
                     )}
                 </Card>
 
@@ -429,14 +423,13 @@ export const CharacterTraits = props => {
                         </p>
                     )}
                     {editBackstory && (
-                        <input 
-                            type="textarea"
-                            rows="5"
+                        <textarea 
+                            rows="10"
                             placeholder="Backstory"
                             defaultValue={backstory || ""}
                             onBlur={(event => handleBlur(event, "backstory"))}
                             className="traits"
-                        />
+                        ></textarea>
                     )}
                 </Card>
             </div>
