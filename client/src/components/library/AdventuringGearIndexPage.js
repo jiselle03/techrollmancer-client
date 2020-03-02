@@ -5,7 +5,7 @@ import axios from 'axios';
 import { MainStyle } from '../styles/MainStyle';
 import { BackgroundImage } from '../styles/BackgroundImage';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
+import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -38,11 +38,10 @@ export const AdventuringGearIndexPage = () => {
                     ADVENTURING GEAR
                 </h1>
 
-                <div className="list-container">
-                    <h2>
-                        Equipment Packs
-                    </h2>
-                    <List component="nav">
+                <h2>
+                    Equipment Packs
+                </h2>
+                <List component="nav" className="list">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Equipment Pack"
                     }).map(gear => (
@@ -54,122 +53,109 @@ export const AdventuringGearIndexPage = () => {
                             </Link>
                         </div>
                     ))}
-                    </List>
+                </List>
 
-                    <Divider />
-
-                    <h2>
-                        Standard Gear
-                    </h2>
-                    <List component="nav">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Standard Gear"
-                    }).map(gear => (
-                        <div key={gear.slug}>
-                            <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
-                                <ListItem button>
-                                    <ListItemText primary={gear.name} />
-                                </ListItem>
-                            </Link>
-                        </div>
-                    ))}
-                    </List>
-
-                    <Divider />
-
-                    <h2>
-                        Ammunition
-                    </h2>
-                    <List component="nav" aria-label="main mailbox folders">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Ammunition"
-                    }).map(gear => (
-                        <div key={gear.slug}>
+                <h2>
+                    Standard Gear
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Standard Gear"
+                }).map(gear => (
+                    <div key={gear.slug}>
                         <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
                             <ListItem button>
                                 <ListItemText primary={gear.name} />
                             </ListItem>
                         </Link>
-                        </div>
-                    ))}
-                    </List>
+                    </div>
+                ))}
+                </List>
 
-                    <Divider />
+                <h2>
+                    Ammunition
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Ammunition"
+                }).map(gear => (
+                    <div key={gear.slug}>
+                    <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={gear.name} />
+                        </ListItem>
+                    </Link>
+                    </div>
+                ))}
+                </List>
 
-                    <h2>
-                        Arcane Focus
-                    </h2>
-                    <List component="nav" aria-label="main mailbox folders">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Arcane focus"
-                    }).map(gear => (
-                        <div key={gear.slug}>
-                        <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={gear.name} />
-                            </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                    </List>
+                <h2>
+                    Arcane Focus
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Arcane focus"
+                }).map(gear => (
+                    <div key={gear.slug}>
+                    <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={gear.name} />
+                        </ListItem>
+                    </Link>
+                    </div>
+                ))}
+                </List>
 
-                    <Divider />
-
-                    <h2>
-                        Druidic Focus
-                    </h2>
-                    <List component="nav" aria-label="main mailbox folders">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Druidic focus"
-                    }).map(gear => (
-                        <div key={gear.slug}>
-                        <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={gear.name} />
-                            </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                    </List>
-
-                    <Divider />
-                    
-                    <h2>
-                        Holy Symbols
-                    </h2>
-                    <List component="nav">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Holy Symbol"
-                    }).map(gear => (
-                        <div key={gear.slug}>
-                        <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={gear.name} />
-                            </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                    </List>
-
-                    <Divider />
-                    
-                    <h2>
-                        Kits
-                    </h2>
-                    <List component="nav" aria-label="main mailbox folders">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Kit"
-                    }).map(gear => (
-                        <div key={gear.slug}>
-                        <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={gear.name} />
-                            </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                    </List>
-                </div>
+                <h2>
+                    Druidic Focus
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Druidic focus"
+                }).map(gear => (
+                    <div key={gear.slug}>
+                    <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={gear.name} />
+                        </ListItem>
+                    </Link>
+                    </div>
+                ))}
+                </List>
+                
+                <h2>
+                    Holy Symbols
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Holy Symbol"
+                }).map(gear => (
+                    <div key={gear.slug}>
+                    <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={gear.name} />
+                        </ListItem>
+                    </Link>
+                    </div>
+                ))}
+                </List>
+                
+                <h2>
+                    Kits
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Kit"
+                }).map(gear => (
+                    <div key={gear.slug}>
+                    <Link className="link" to={`/libraries/equipment/${gear.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={gear.name} />
+                        </ListItem>
+                    </Link>
+                    </div>
+                ))}
+                </List>
                 
             </MainStyle>
         </BackgroundImage>

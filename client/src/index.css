@@ -334,7 +334,7 @@ a {
   display: none;
 }
 
-div.list-container {
+nav.MuiList-root {
   max-width: 360px;
 }
 
@@ -437,6 +437,16 @@ div.MuiTabs-root.tabs {
   .character-sheet {
       display: grid;
       grid-template-columns: 1fr 1fr;
+  }
+
+  nav.MuiList-root.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2em;
+  }
+
+  nav.MuiList-root.list > div {
+    width: 40vw;
   }
 }
 

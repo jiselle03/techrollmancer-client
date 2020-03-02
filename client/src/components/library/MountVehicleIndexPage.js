@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 
-import { CircularProgress, Divider, List, ListItem, ListItemText } from '@material-ui/core';
+import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
 const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
@@ -38,62 +38,56 @@ export const MountVehicleIndexPage = () => {
                     MOUNTS AND VEHICLES
                 </h1>
 
-                <div className="list-container">
-                    <h2>
-                        Mounts and Other Animals
-                    </h2>
-                    <List component="nav">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Mounts and Other Animals"
-                    }).map(vehicle => (
-                        <div key={vehicle.slug}>
-                            <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
-                                <ListItem button>
-                                    <ListItemText primary={vehicle.name} />
-                                </ListItem>
-                            </Link>
-                        </div>
-                    ))}
-                    </List>
+                <h2>
+                    Mounts and Other Animals
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Mounts and Other Animals"
+                }).map(vehicle => (
+                    <div key={vehicle.slug}>
+                        <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
+                            <ListItem button>
+                                <ListItemText primary={vehicle.name} />
+                            </ListItem>
+                        </Link>
+                    </div>
+                ))}
+                </List>
 
-                    <Divider />
+                <h2>
+                    Tack, Harness, and Drawn Vehicles
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Tack, Harness, and Drawn Vehicles"
+                }).map(vehicle => (
+                    <div key={vehicle.slug}>
+                        <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
+                            <ListItem button>
+                                <ListItemText primary={vehicle.name} />
+                            </ListItem>
+                        </Link>
+                    </div>
+                ))}
+                </List>
 
-                    <h2>
-                        Tack, Harness, and Drawn Vehicles
-                    </h2>
-                    <List component="nav">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Tack, Harness, and Drawn Vehicles"
-                    }).map(vehicle => (
-                        <div key={vehicle.slug}>
-                            <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
-                                <ListItem button>
-                                    <ListItemText primary={vehicle.name} />
-                                </ListItem>
-                            </Link>
-                        </div>
-                    ))}
-                    </List>
-
-                    <Divider />
-
-                    <h2>
-                        Waterborne Vehicles
-                    </h2>
-                    <List component="nav">
-                    {equipments.filter(equipment => {
-                        return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Waterborne Vehicles"
-                    }).map(vehicle => (
-                        <div key={vehicle.slug}>
-                            <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
-                                <ListItem button>
-                                    <ListItemText primary={vehicle.name} />
-                                </ListItem>
-                            </Link>
-                        </div>
-                    ))}
-                    </List>
-                </div>
+                <h2>
+                    Waterborne Vehicles
+                </h2>
+                <List component="nav" className="list">
+                {equipments.filter(equipment => {
+                    return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === "Waterborne Vehicles"
+                }).map(vehicle => (
+                    <div key={vehicle.slug}>
+                        <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
+                            <ListItem button>
+                                <ListItemText primary={vehicle.name} />
+                            </ListItem>
+                        </Link>
+                    </div>
+                ))}
+                </List>
             </MainStyle>
         </BackgroundImage>
     );

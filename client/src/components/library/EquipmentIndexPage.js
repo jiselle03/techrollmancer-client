@@ -38,14 +38,14 @@ export const EquipmentIndexPage = () => {
                     EQUIPMENT
                 </h1>
 
-                <List component="nav">
+                <List component="nav" className="list">
                 {equipments.map(equipment => (
                     <div key={equipment.slug}>
-                            <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>
-                                <ListItem button>
-                                    <ListItemText primary={equipment.name} />
-                                </ListItem>
-                            </Link>
+                        <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>
+                            <ListItem button>
+                                <ListItemText primary={equipment.name} />
+                            </ListItem>
+                        </Link>
                     </div>
                 ))}
                 </List>
