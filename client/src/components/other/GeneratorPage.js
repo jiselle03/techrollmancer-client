@@ -71,9 +71,9 @@ export const GeneratorPage = () => {
     const checkMin = (rolls, roll) => {
         if (rolls[3] && Math.min(...rolls) === rolls[roll] && minCount < 2) {
             minCount++
-            return true
+            return true;
         } else {
-            return false
+            return false;
         };
     };
 
