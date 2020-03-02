@@ -41,7 +41,7 @@ export const WelcomePage = () => {
 
     useEffect(() => {
         Game.all().then(games => {
-            checkGames(games);
+            if (Array.isArray(games)) checkGames(games);
         }).then(() => {
             gamesToday.map(game => {
                 store.addNotification({
