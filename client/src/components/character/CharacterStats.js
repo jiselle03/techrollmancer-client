@@ -5,12 +5,11 @@ import { Character } from '../../api/character';
 import { CharacterProficiencies } from './CharacterProficiencies';
 import { utils } from '../js/utils';
 import { FlexBox } from '../styles/FlexBox';
-import { ButtonStyle } from '../styles/ButtonStyle';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
 
-import { Backdrop, Card, Modal } from '@material-ui/core';
+import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 
 export const CharacterStats = props => {
   const [editHP, setEditHP] = useState(false);
@@ -1001,12 +1000,14 @@ export const CharacterStats = props => {
                       <h1 className={checkRoll(roll, modifier)}>{roll}</h1>
                       <h5>({modifier})</h5>
 
-                      <button 
+                      <Button 
+                          variant="contained"
+                          color="secondary"
                           onClick={handleClose}
-                          style={ButtonStyle.modalButton}
+                          className="button"
                       >
                           EXIT
-                      </button>
+                      </Button>
                   </FadeStyle>
               </Fade>
           </FlexBox>

@@ -5,7 +5,6 @@ import { baseUrl } from '../../config';
 import { SpellListItem } from './SpellListItem';
 import { FormStyle } from '../styles/FormStyle';
 import { FlexBox } from '../styles/FlexBox';
-import { ButtonStyle } from '../styles/ButtonStyle';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
 import { Backdrop, Button, Fab, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
@@ -131,20 +130,23 @@ export const CharacterSpellsNew = props => {
                                         boxShadow: "0 5px 5px -2px #888",
                                     }}
                                 >
-                                    <h3>
+                                    <h3 className="title">
                                         Spell List
                                     </h3>
                                     <Button 
                                         variant="contained" 
+                                        color="secondary"
                                         type="submit" 
-                                        style={ButtonStyle.modalButton}
+                                        className="button"
                                     >
                                         SAVE
                                     </Button>
 
                                     <Button
+                                        variant="contained" 
+                                        color="secondary"
                                         onClick={handleClose}
-                                        style={ButtonStyle.modalButton}
+                                        className="button"
                                     >
                                         CANCEL
                                     </Button>

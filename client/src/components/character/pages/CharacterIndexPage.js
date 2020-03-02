@@ -72,7 +72,7 @@ export const CharacterIndexPage = props => {
                     </>
                 )}
 
-                <CharacterNew currentUser={props.currentUser} {...props} />
+                <CharacterNew currentUser={props.currentUser} welcome={false} {...props} />
 
             </MainStyle>
         </BackgroundImage>

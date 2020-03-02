@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { store } from 'react-notifications-component';
 
 import { utils } from '../js/utils.js';
 import { Game } from '../../api/game';
+import { CharacterNew } from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { CardStyle } from '../styles/CardStyle';
 import { FadeStyle } from '../styles/FadeStyle';
-import { ButtonStyle } from '../styles/ButtonStyle';
 import { FlexBox } from '../styles/FlexBox';
 
-import { Backdrop, Fade, Grid, Modal } from '@material-ui/core';
+import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
 
 export const WelcomePage = () => {
     const [open, setOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
-    const [games, setGames] = useState([]);
     
     const { formatDate } = utils;
 
@@ -163,16 +163,32 @@ export const WelcomePage = () => {
                                 <h3>You rolled:</h3>
                                 <h2>{rolls}</h2>
 
-                                <button 
+                                <Button 
+                                    variant="contained"
+                                    color="secondary"
                                     onClick={handleClose}
-                                    style={ButtonStyle.modalButton}
+                                    className="button"
                                 >
                                     EXIT
-                                </button>
+                                </Button>
                             </FadeStyle>
                         </Fade>
                     </FlexBox>
                 </Modal>
+
+                <h2>Get Started</h2>
+                <h6>Build a Character</h6>
+                <Link to="/generator">
+                <Button 
+                    variant="contained" 
+                    color="secondary"
+                    className="button"
+                >
+                    Guide Me
+                </Button>
+                </Link>
+                
+                <CharacterNew welcome />
 
             </MainStyle>
         </BackgroundImage>

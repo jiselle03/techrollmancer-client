@@ -5,7 +5,6 @@ import { User } from '../../api/user';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
-import { ButtonStyle } from '../styles/ButtonStyle';
 
 import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
@@ -119,7 +118,12 @@ export const SignUpPage = props => {
                         <FlexBox
                             justifyContent="center"
                         >
-                            <Button variant="contained" type="submit" style={ButtonStyle.formButton}>
+                            <Button 
+                                variant="contained" 
+                                color="secondary"
+                                type="submit" 
+                                className="button"
+                            >
                                 SIGN UP
                             </Button>
                         </FlexBox>

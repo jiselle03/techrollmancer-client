@@ -5,7 +5,6 @@ import { Session } from '../../api/session';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
-import { ButtonStyle } from '../styles/ButtonStyle';
 import { FlexBox } from '../styles/FlexBox';
 
 import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
@@ -101,7 +100,12 @@ export const SignInPage = props => {
                             <FlexBox
                                 justifyContent="center"
                             >
-                                <Button variant="contained" type="submit" style={ButtonStyle.formButton}>
+                                <Button 
+                                    variant="contained" 
+                                    color="secondary"
+                                    type="submit" 
+                                    className="button"
+                                >
                                     Sign In
                                 </Button>
 

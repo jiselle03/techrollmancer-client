@@ -5,7 +5,6 @@ import { utils } from '../js/utils';
 import { Game } from '../../api/game';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
-import { ButtonStyle } from '../styles/ButtonStyle';
 import { FlexBox } from '../styles/FlexBox';
 import { FormContent } from '../styles/FormStyle';
 
@@ -156,8 +155,10 @@ export const SchedulerPage = props => {
                         </FormControl>
                         <FlexBox justifyContent="center">
                             <Button 
+                                variant="contained"
+                                color="secondary"
                                 type="submit"
-                                style={ButtonStyle.modalButton}
+                                className="button"
                             >
                                 Schedule
                             </Button>

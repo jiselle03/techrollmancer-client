@@ -5,7 +5,6 @@ import { RandomCharacter } from '../js/generator.js';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { FlexBox } from '../styles/FlexBox';
-import { ButtonStyle } from '../styles/ButtonStyle';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 import { TableStyle } from '../styles/TableStyle';
 import { Center } from '../styles/Center';
@@ -186,21 +185,23 @@ export const GeneratorPage = () => {
                             Assign each score to one of the six ability scores, then make any changes to your ability scores as a result of your race choice.
                         </p>
 
-                    <Divider />
-
                     <FlexBox
                         justifyContent="center"
                     >
                         <Button 
+                            variant="contained"
+                            color="secondary"
                             onClick={quickRoll}
-                            style={ButtonStyle.modalButton}
+                            className="button"
                         >
                             QUICK ROLL
                         </Button>
 
                         <Button 
+                            variant="contained"
+                            color="secondary"
                             onClick={d6Roll}
-                            style={ButtonStyle.modalButton}
+                            className="button"
                         >
                             ROLL D6
                         </Button>
@@ -251,8 +252,10 @@ export const GeneratorPage = () => {
                                     </h4>
 
                                     <Button 
+                                        variant="contained"
+                                        color="secondary"
                                         onClick={handleCloseQR}
-                                        style={ButtonStyle.modalButton}
+                                        className="button"
                                     >
                                         EXIT
                                     </Button>
@@ -333,32 +336,40 @@ export const GeneratorPage = () => {
                                             justifyContent="center"
                                         >
                                             <div className={!rolls[3] ? null : "hidden"}>
-                                                    <button 
+                                                    <Button 
+                                                        variant="contained"
+                                                        color="secondary"
                                                         onClick={rollD6}
-                                                        style={ButtonStyle.modalButton}
+                                                        className="button"
                                                     >
                                                         ROLL D6
-                                                    </button>
-                                                    <button 
+                                                    </Button>
+                                                    <Button
+                                                        variant="contained"
+                                                        color="secondary"
                                                         onClick={handleCloseD6}
-                                                        style={ButtonStyle.modalButton}
+                                                        className="button"
                                                     >
                                                         EXIT
-                                                    </button>
+                                                    </Button>
                                             </div>
                                             <div className={rolls[3] ? null : "hidden"}>
-                                                <button 
+                                                <Button 
+                                                    variant="contained"
+                                                    color="secondary"
                                                     onClick={refreshD6}
-                                                    style={ButtonStyle.modalButton}
+                                                    className="button"
                                                 >
                                                     START OVER
-                                                </button>
-                                                <button 
+                                                </Button>
+                                                <Button 
+                                                    variant="contained"
+                                                    color="secondary"                   
                                                     onClick={handleCloseD6}
-                                                    style={ButtonStyle.modalButton}
+                                                    className="button"
                                                 >
                                                     EXIT
-                                                </button>
+                                                </Button>
                                             </div>
                                         </FlexBox>
                                     </FadeStyle>
