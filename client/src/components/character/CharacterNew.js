@@ -78,11 +78,7 @@ export const CharacterNew = props => {
                         height: "5em"
                     }}
                 >
-                    <AddIcon 
-                        style={{
-                            color: "#fff"
-                        }}
-                    />
+                    <AddIcon />
                 </Fab>
     
                 <Modal
