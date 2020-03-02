@@ -13,6 +13,8 @@ export const CharacterTraits = props => {
     const { id, name, gender, race, photo_url,
             class_1, class_2, class_3,
             class_1_level, class_2_level, class_3_level } = props.character;
+    const { description, backstory, personality_traits, ideals, bonds, flaws, 
+            background_type, background_desc } = props.character.trait;
 
     const handleClickProfile = () => {
         setEditProfile(true);
@@ -47,7 +49,7 @@ export const CharacterTraits = props => {
         const { currentTarget } = event;
 
         Character.update(id, {photo_url: currentTarget.value})
-            .then(data => {
+            .then(() => {
                 setEditPhoto(false);
             }).then(() => {
                 handleRefresh();
@@ -219,54 +221,32 @@ export const CharacterTraits = props => {
 
                 <Card className="traits">
                     <h6 className="header">Personality Traits</h6>
-                    {id === 1 && (
-                    <p className="trait">I am often distrustful, as I am used to being on my own and to the temporary nature of relationships. I will show loyalty and trust as long as it is reciprocated.</p>
-                    )}
-                    {id !== 1 && (
-                        <p className="trait"></p>
-                    )}
+                    <p className="trait">{personality_traits}</p>
 
                     <h6 className="header">Ideals</h6>
-                    {id === 1 && (
-                    <p className="trait">I am loyal to people, not ideals.</p>
-                    )}
-                    {id !== 1 && (
-                        <p className="trait"></p>
-                    )}
+                    <p className="trait">{ideals}</p>
 
                     <h6 className="header">Bonds</h6>
-                    {id === 1 && (
-                    <p className="trait">My allies are few and far between. I am able to cooperate with others to get the job done.</p>
-                    )}
-                    {id !== 1 && (
-                        <p className="trait"></p>
-                    )}
+                    <p className="trait">{bonds}</p>
 
                     <h6 className="header">Flaws</h6>
-                    {id === 1 && (
-                    <p className="trait">I am often petty, which can lead me to make brash decisions.</p>
-                    )}
-                    {id !== 1 && (
-                        <p className="trait"></p>
-                    )}
-
-
+                    <p className="trait">{flaws}</p>
                 </Card>
 
                 <Card className="traits">
                     <h6 className="header">Background</h6>
-                    {id === 1 && (
-                        <>
-                            <p className="trait">
-                            <strong>Hermit</strong><br />
+                    <p className="trait"><strong>{background_type}</strong><br />
+                    {background_desc}</p>
+                </Card>
 
-                            You lived in seclusion—either in a sheltered community such as a monastery, or entirely alone—for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.
-                            </p>
-                        </>
-                    )}
-                    {id !== 1 && (
-                        <p className="trait"></p>
-                    )}
+                <Card className="traits">
+                    <h6 className="header">Description</h6>
+                    <p className="trait">{description}</p>
+                </Card>
+
+                <Card className="traits">
+                    <h6 className="header">Backstory</h6>
+                    <p className="trait">{backstory}</p>
                 </Card>
             </div>
 

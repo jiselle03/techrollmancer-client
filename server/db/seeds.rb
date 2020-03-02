@@ -62,8 +62,7 @@ c = Character.create(
 )
 
 if c.valid?
-    p = Proficiency.where(character_id: 1)
-    p.update(
+    Proficiency.where(character_id: 1).update(
         str_save: true,
         dex_save: true,
         athletics: true,
@@ -71,15 +70,55 @@ if c.valid?
         history: true,
         medicine: true,
         religion: true,
-        stealth: true,
-        character_id: 1
+        stealth: true
+    )
+    Trait.where(character_id: 1).update(
+        personality_traits: "I am often distrustful, as I am used to being on my own and to the temporary nature of relationships. I will show loyalty and trust as long as it is reciprocated.",
+        ideals: "I am loyal to people, not ideals.",
+        bonds: "My allies are few and far between. I am able to cooperate with others to get the job done.",
+        flaws: "I am often petty, which can lead me to make brash decisions.",
+        background_type: "Hermit",
+        background_desc: "You lived in seclusion—either in a sheltered community such as a monastery, or entirely alone—for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.",
     )
     CharacterSpell.create(
         character_id: 1,
-        spell_id: 3
+        spell_id: 40
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 72
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 73
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 108
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 206
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 215
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 242
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 267
+    )
+    CharacterSpell.create(
+        character_id: 1,
+        spell_id: 273
     )
 end
 
 puts Cowsay.say("Generated #{Spell.count} spells.", :dragon)
 puts Cowsay.say("Generated #{User.count} users.", :tux)
 puts Cowsay.say("Generated #{Character.count} characters.", :frogs)
+puts Cowsay.say("Generated #{CharacterSpell.count} spells for character.", :frogs)

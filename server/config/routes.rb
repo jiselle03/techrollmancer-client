@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do 
       resources :characters, except: [:new, :edit] do
         resources :proficiencies, only: [:update]
+        resources :traits, only: [:update]
         resources :character_spells, only: [:create]
       end
       resources :users, only: [:create] do

@@ -2,6 +2,7 @@ class Character < ApplicationRecord
     belongs_to :user
 
     has_one :proficiency, dependent: :destroy
+    has_one :trait, dependent: :destroy
     has_many :character_spells, dependent: :destroy
     has_many :spells, through: :character_spells
 
@@ -18,6 +19,9 @@ class Character < ApplicationRecord
 
     after_create do
         Proficiency.create(
+            character_id: self.id
+        )
+        Trait.create(
             character_id: self.id
         )
     end
