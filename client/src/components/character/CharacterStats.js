@@ -54,15 +54,17 @@ export const CharacterStats = props => {
         return setEditWis(true);
       case "cha":
         return setEditCha(true);
+      default:
+        return;
     };
   };
 
   const handleBlur = (event, field) => {
-    const { currentTarget } = event;
+    const { value } = event.currentTarget;
 
     switch(field) {
       case "hp":
-        Character.update(id, {hp: currentTarget.value})
+        Character.update(id, {hp: value})
           .then(() => {
               setEditHP(false);
             }).then(() => {
@@ -70,7 +72,7 @@ export const CharacterStats = props => {
             });
         break;
       case "armor_class":
-        Character.update(id, {armor_class: currentTarget.value})
+        Character.update(id, {armor_class: value})
           .then(() => {
               setEditAC(false);
             }).then(() => {
@@ -78,7 +80,7 @@ export const CharacterStats = props => {
             });
         break;
       case "initiative":
-        Character.update(id, {initiative: currentTarget.value})
+        Character.update(id, {initiative: value})
           .then(() => {
             setEditInitiative(false);
           }).then(() => {
@@ -86,7 +88,7 @@ export const CharacterStats = props => {
           });
         break;
       case "speed":
-        Character.update(id, {speed: currentTarget.value})
+        Character.update(id, {speed: value})
           .then(() => {
             setEditSpeed(false);
           }).then(() => {
@@ -94,7 +96,7 @@ export const CharacterStats = props => {
           });
         break;
       case "str":
-        Character.update(id, {str: currentTarget.value})
+        Character.update(id, {str: value})
           .then(() => {
             setEditStr(false);
           }).then(() => {
@@ -102,7 +104,7 @@ export const CharacterStats = props => {
           });
         break;
       case "dex":
-        Character.update(id, {dex: currentTarget.value})
+        Character.update(id, {dex: value})
           .then(() => {
             setEditDex(false);
           }).then(() => {
@@ -110,7 +112,7 @@ export const CharacterStats = props => {
           });
         break;
       case "con":
-        Character.update(id, {con: currentTarget.value})
+        Character.update(id, {con: value})
           .then(() => {
             setEditCon(false);
           }).then(() => {
@@ -118,7 +120,7 @@ export const CharacterStats = props => {
           });
         break;
       case "int":
-        Character.update(id, {int: currentTarget.value})
+        Character.update(id, {int: value})
           .then(() => {
             setEditInt(false);
           }).then(() => {
@@ -126,7 +128,7 @@ export const CharacterStats = props => {
           });
         break;
       case "wis":
-        Character.update(id, {wis: currentTarget.value})
+        Character.update(id, {wis: value})
           .then(() => {
             setEditWis(false);
           }).then(() => {
@@ -134,13 +136,15 @@ export const CharacterStats = props => {
           });
         break;
       case "cha":
-        Character.update(id, {cha: currentTarget.value})
+        Character.update(id, {cha: value})
           .then(() => {
             setEditCha(false);
           }).then(() => {
             handleRefresh();
           });
         break;
+      default:
+        return;
     };
   };
 

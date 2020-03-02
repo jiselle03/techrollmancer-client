@@ -115,7 +115,9 @@ export const utils = {
             case "wis_save":
                 return character.proficiency.wis_save ? this.profAdd(character.wis, this.getProfBonus(level)) : Math.floor((character.wis - 10) / 2);
             case "cha_save":
-                return character.proficiency.cha_save ? this.profAdd(character.cha, this.getProfBonus(level)) : Math.floor((character.cha - 10) / 2);;
+                return character.proficiency.cha_save ? this.profAdd(character.cha, this.getProfBonus(level)) : Math.floor((character.cha - 10) / 2);
+            default:
+                return;
         }
     },
 
