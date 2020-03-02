@@ -67,6 +67,16 @@ export const GeneratorPage = () => {
         rollD6();
     };
 
+    let minCount = 0;
+    const checkMin = (rolls, roll) => {
+        if (rolls[3] && Math.min(...rolls) === rolls[roll] && minCount < 2) {
+            minCount++
+            return true
+        } else {
+            return false
+        };
+    };
+
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
@@ -287,37 +297,37 @@ export const GeneratorPage = () => {
                                         
                                         <div>
                                         <span className="roll">
-                                            <h5 className={rolls[3] && Math.min(...rolls) === rolls[0] ? "min" : null}>1ST: </h5>
+                                            <h5 className={checkMin(rolls, 0) ? "min" : null}>1ST: </h5>
                                         </span>
                                         <span className="roll">
-                                            <h4 className={rolls[3] && Math.min(...rolls) === rolls[0] ? "min" : null}>{rolls[0] ? rolls[0] : " "}</h4>
-                                        </span>
-                                        </div>
-
-                                        <div>
-                                        <span className="roll">
-                                            <h5 className={rolls[3] && Math.min(...rolls) === rolls[1] ? "min" : null}>2ND: </h5>
-                                        </span>
-                                        <span className="roll">
-                                            <h4 className={rolls[3] && Math.min(...rolls) === rolls[1] ? "min" : null}>{rolls[1] ? rolls[1] : " "}</h4>
+                                            <h4 className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</h4>
                                         </span>
                                         </div>
 
                                         <div>
                                         <span className="roll">
-                                            <h5 className={rolls[3] && Math.min(...rolls) === rolls[2] ? "min" : null}>3RD: </h5>
+                                            <h5 className={checkMin(rolls, 1) ? "min" : null}>2ND: </h5>
                                         </span>
                                         <span className="roll">
-                                            <h4 className={rolls[3] && Math.min(...rolls) === rolls[2] ? "min" : null}>{rolls[2] ? rolls[2] : " "}</h4>
+                                            <h4 className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</h4>
                                         </span>
                                         </div>
 
                                         <div>
                                         <span className="roll">
-                                            <h5 className={rolls[3] && Math.min(...rolls) === rolls[3] ? "min" : null}>4TH: </h5>
+                                            <h5 className={checkMin(rolls, 2) ? "min" : null}>3RD: </h5>
                                         </span>
                                         <span className="roll">
-                                            <h4 className={rolls[3] && Math.min(...rolls) === rolls[3] ? "min" : null}>{rolls[3]}</h4>
+                                            <h4 className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</h4>
+                                        </span>
+                                        </div>
+
+                                        <div>
+                                        <span className="roll">
+                                            <h5 className={checkMin(rolls, 3) ? "min" : null}>4TH: </h5>
+                                        </span>
+                                        <span className="roll">
+                                            <h4 className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</h4>
                                         </span>
                                         </div>
 

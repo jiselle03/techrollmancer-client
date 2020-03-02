@@ -274,6 +274,7 @@ label.traits {
   border-radius: 5px 20px 5px;
   padding: 0.5em;
   margin: 0.25vh 0.25vw;
+  min-height: 20vh;
 }
 
 .trait.large {
