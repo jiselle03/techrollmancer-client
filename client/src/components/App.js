@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { CircularProgress } from '@material-ui/core';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
+
 import { User } from '../api/user';
 import { Session } from '../api/session';
 import { NavBar } from './NavBar';
@@ -32,6 +35,8 @@ import { ConditionIndexPage } from './library/ConditionIndexPage';
 
 import { CharacterIndexPage } from './character/pages/CharacterIndexPage';
 import { CharacterShowPage } from './character/pages/CharacterShowPage';
+
+import { CircularProgress } from '@material-ui/core';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -71,6 +76,7 @@ const App = () => {
             onSignOut={destroySession} 
           />
         </header>
+        <ReactNotification />
         <Switch>
           <Route exact path="/" component={WelcomePage} />
           <Route exact path="/libraries" component={LibrariesIndexPage} />

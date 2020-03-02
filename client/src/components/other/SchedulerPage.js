@@ -1,6 +1,7 @@
 import 'date-fns';
 import React, { useState, useEffect } from 'react';
 
+import { utils } from '../js/utils';
 import { Game } from '../../api/game';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
@@ -21,21 +22,8 @@ export const SchedulerPage = props => {
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const { currentUser } = props;
+    const { formatDate } = utils;
     const laptop = useMediaQuery('(min-width:1280px)');
-
-    const formatDate = (date) => {
-        let d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-    
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-      
-        return [month, day, year].join('/');
-    };
 
     const currentDate = formatDate(new Date());
 

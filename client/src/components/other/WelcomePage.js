@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { store } from 'react-notifications-component';
 
 import { utils } from '../js/utils.js';
+import { Game } from '../../api/game';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { CardStyle } from '../styles/CardStyle';
@@ -13,6 +16,9 @@ import { Backdrop, Fade, Grid, Modal } from '@material-ui/core';
 export const WelcomePage = () => {
     const [open, setOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
+    const [games, setGames] = useState([]);
+    
+    const { formatDate } = utils;
 
     let currentRoll = 0;
     const handleOpen = sides => {
@@ -25,6 +31,37 @@ export const WelcomePage = () => {
         setRolls([]);
         setOpen(false);
     };
+
+    let gamesToday = [];
+    const checkGames = games => {
+        const currentDate = formatDate(new Date());
+        gamesToday = games.filter(game => game.date == currentDate);
+        return gamesToday;
+    };
+
+    useEffect(() => {
+        Game.all().then(games => {
+            checkGames(games);
+        }).then(() => {
+            gamesToday.map(game => {
+                store.addNotification({
+                    title: `You have a session today for ${game.name}`,
+                    message: `${game.notes}`,
+                    type: "danger",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animated", "fadeIn"],
+                    animationOut: ["animated", "fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true,
+                      pauseOnHover: true
+                    }
+                });
+            })
+        })
+        
+    }, []);
 
     return(
         <BackgroundImage
