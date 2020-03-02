@@ -97,8 +97,7 @@ export const CharacterShowPage = props => {
               height: "5em"
           }}
         >
-            <DeleteIcon 
-            />
+            <DeleteIcon />
         </Fab>
 
         <div
