@@ -32,35 +32,41 @@ export const WelcomePage = () => {
         setOpen(false);
     };
 
-    let gamesToday = [];
+    const gamesToday = [];
+    const currentDate = formatDate(new Date());
     const checkGames = games => {
-        const currentDate = formatDate(new Date());
-        gamesToday = games.filter(game => game.date == currentDate);
-        return gamesToday;
+        games.map(game => {
+            if (game.date == currentDate) {
+                gamesToday.push(game);
+            };
+        });
+    };
+
+    const handleNotifications = () => {
+        return gamesToday.map(game => {
+            store.addNotification({
+                title: `You have a session today for ${game.name}`,
+                message: `${game.notes}`,
+                type: "danger",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animated", "fadeIn"],
+                animationOut: ["animated", "fadeOut"],
+                dismiss: {
+                  duration: 5000,
+                  onScreen: true,
+                  pauseOnHover: true
+                },
+            });
+        });
     };
 
     useEffect(() => {
         Game.all().then(games => {
             if (Array.isArray(games)) checkGames(games);
         }).then(() => {
-            gamesToday.map(game => {
-                store.addNotification({
-                    title: `You have a session today for ${game.name}`,
-                    message: `${game.notes}`,
-                    type: "danger",
-                    insert: "top",
-                    container: "top-right",
-                    animationIn: ["animated", "fadeIn"],
-                    animationOut: ["animated", "fadeOut"],
-                    dismiss: {
-                      duration: 5000,
-                      onScreen: true,
-                      pauseOnHover: true
-                    }
-                });
-            })
-        })
-        
+            handleNotifications();
+        });
     }, []);
 
     return(

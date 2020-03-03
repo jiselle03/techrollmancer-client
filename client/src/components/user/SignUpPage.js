@@ -16,10 +16,12 @@ export const SignUpPage = props => {
         const { currentTarget: form } = event;
         const fd = new FormData(form);
         const newUser = {
-            username: fd.get("username"),
-            email: fd.get("email"),
-            password: fd.get("password"),
-            password_confirmation: fd.get("password_confirmation")
+            user:{
+                username: fd.get("username"),
+                email: fd.get("email"),
+                password: fd.get("password"),
+                password_confirmation: fd.get("password_confirmation")
+            }
         };
         
         User.create(newUser).then(res => {

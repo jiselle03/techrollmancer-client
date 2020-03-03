@@ -520,7 +520,7 @@ export const CharacterStats = props => {
               {!editCon && (
                 <>
                   <TooltipEdit field={con} />
-                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
+                  <h6 className="stat-mod">{checkBaseMod(con)}</h6>
                 </>
               )}
               </FlexBox>

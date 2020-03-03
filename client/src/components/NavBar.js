@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { NavBarDetails } from './NavBarDetails';
 import { NavBarStyle, NavContainer, Sidebar, sidebarText } from './styles/NavStyle.js';
@@ -12,19 +12,23 @@ function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
 };
 
-export const NavBar = ({ currentUser, onSignOut }) => {
+export const NavBar = ({ currentUser, onSignOut }, props) => {
     const [state, setState] = useState({
         left: false
-      });
+    });
+    const history = useHistory();
 
     const laptop = useMediaQuery('(min-width:1280px)');
 
     const toggleDrawer = (side, open) => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
-        }
-
+        };
         setState({ ...state, [side]: open });
+    };
+
+    const handleClick = () => {
+        history.push("/");
     };
 
     return (
@@ -33,7 +37,7 @@ export const NavBar = ({ currentUser, onSignOut }) => {
                 <NavBarStyle>
                     <Sidebar className="sidebar" currentUser={currentUser} >
                         <ListItemLink button
-                                href="/"
+                                onClick={handleClick}
                                 style={{
                                     fontFamily: "Bungee Inline",
                                     fontSize: "1.5em",

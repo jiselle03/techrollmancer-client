@@ -78,7 +78,7 @@ const App = () => {
         </header>
         <ReactNotification />
         <Switch>
-          <Route exact path="/" component={WelcomePage} />
+          <Route exact path="/" component={WelcomePage}/>
           <Route exact path="/libraries" component={LibrariesIndexPage} />
           <Route exact path="/libraries/races" component={RaceIndexPage} />
           <Route path="/libraries/races/:slug" component={RaceShowPage} />
