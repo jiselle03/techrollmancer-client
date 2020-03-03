@@ -92,11 +92,15 @@ export const CharacterTraits = props => {
                 setEditIdeals(false);
                 break;
             case "bonds":
-                return setEditBonds(false);
+                setEditBonds(false);
+                break;
             case "flaws":
                 setEditFlaws(false);
                 break;
-            case "background":
+            case "background_type":
+                setEditBackground(false);
+                break;
+            case "background_desc":
                 setEditBackground(false);
                 break;
             case "description":
@@ -355,7 +359,7 @@ export const CharacterTraits = props => {
                         <textarea 
                             rows="5"
                             placeholder="Flaws"
-                            defaultValue={ideals || ""}
+                            defaultValue={flaws || ""}
                             onBlur={(event => handleBlur(event, "flaws"))}
                             className="traits"
                         ></textarea>
@@ -365,26 +369,32 @@ export const CharacterTraits = props => {
                 <Card className="traits">
                     <h6 className="header">Background</h6>
                     {!editBackground && (
-                        <p 
-                            className="trait"
+                        <div 
                             onClick={() => handleClick("background")}
+                            className="trait"
                         >
-                            <strong>{background_type}</strong><br />
-                            {background_desc}
-                        </p>
+                            <p>
+                                <strong>{background_type}</strong>
+                            </p>
+                            <p>
+                                {background_desc}
+                            </p>
+                        </div>
                     )}
                     {editBackground && (
-                        <div onBlur={(event => handleBlur(event, "background"))}>
+                        <div>
                             <input
                                 type="text"
                                 placeholder="Type"
                                 defaultValue={background_type || ""}
+                                onBlur={(event => handleBlur(event, "background_type"))}
                                 className="traits"
                                 />
                             <textarea 
                                 rows="10"
                                 placeholder="Description"
                                 defaultValue={background_desc || ""}
+                                onBlur={(event => handleBlur(event, "background_desc"))}
                                 className="traits"
                             ></textarea>
                         </div>
