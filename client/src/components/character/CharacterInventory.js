@@ -1,15 +1,9 @@
 import React from 'react';
 
-import { FloatingActionButton } from './FloatingActionButton';
-
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 export const CharacterInventory = props => {
     const { name } = props.character;
-
-    const handleOpen = () => {
-        
-    };
 
     return (
         <>
