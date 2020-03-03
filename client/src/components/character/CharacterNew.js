@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
 import { Character } from '../../api/character';
+import { FloatingActionButton } from './FloatingActionButton';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 import { FlexBox } from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
-import { Backdrop, Button, Fab, FormControl, Input, InputLabel, Modal } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import { Backdrop, Button, FormControl, Input, InputLabel, Modal } from '@material-ui/core';
 
 import PropTypes from 'prop-types';
 
@@ -19,14 +19,14 @@ Fade.propTypes = {
 
 export const CharacterNew = props => {
     const [errors, setErrors] = useState([]);
-    const [openNew, setOpenNew] = useState(false);
+    const [open, setOpen] = useState(false);
     const { currentUser, welcome } = props;
 
-    const handleOpenNew = () => {
-        setOpenNew(true);
+    const handleOpen = () => {
+        setOpen(true);
     };
-    const handleCloseNew = () => {
-        setOpenNew(false);
+    const handleClose = () => {
+        setOpen(false);
     };
 
     const createCharacter = event => {
@@ -50,7 +50,7 @@ export const CharacterNew = props => {
         };
         Character.create(newCharacter).then(data => {
             if (!data.errors) {
-                handleCloseNew();
+                handleClose();
                 props.history.push(`/characters/${data.id}`);
                 
             } else {
@@ -64,22 +64,7 @@ export const CharacterNew = props => {
     return(
         <>
             {!welcome && (
-                <Fab 
-                    color="secondary" 
-                    size="large"
-                    aria-label="add"
-                    className="add-button"
-                    onClick={handleOpenNew}
-                    style={{
-                        position: "fixed",
-                        bottom: "40px",
-                        right: "40px",
-                        width: "5em",
-                        height: "5em"
-                    }}
-                >
-                    <AddIcon />
-                </Fab>
+                <FloatingActionButton icon="add" onHandleOpen={handleOpen} />
             )}
 
             {welcome && (
@@ -87,15 +72,15 @@ export const CharacterNew = props => {
                     variant="contained" 
                     color="secondary"
                     className="button"
-                    onClick={handleOpenNew}
+                    onClick={handleOpen}
                 >
                     Create
                 </Button>
             )}
     
             <Modal
-                open={openNew}
-                onClose={handleCloseNew}
+                open={open}
+                onClose={handleClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
@@ -107,7 +92,7 @@ export const CharacterNew = props => {
                     justifyContent="center"
                     margin="10vh 0"
                 >
-                    <Fade in={openNew}>
+                    <Fade in={open}>
                         <FadeStyle>
                             
                         <FormStyle
@@ -292,7 +277,7 @@ export const CharacterNew = props => {
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        onClick={handleCloseNew}
+                                        onClick={handleClose}
                                         className="button"
                                     >
                                         CANCEL

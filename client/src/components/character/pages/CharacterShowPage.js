@@ -9,8 +9,8 @@ import { CharacterTraits } from '../CharacterTraits';
 import { CharacterJournal } from '../CharacterJournal';
 import { BackgroundImage } from '../../styles/BackgroundImage';
 
-import { Box, CircularProgress, Fab, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
+import { FloatingActionButton } from '../FloatingActionButton';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -83,22 +83,8 @@ export const CharacterShowPage = props => {
         image={require('../../../assets/d20.png')} 
         light={true}
       >
-        <Fab 
-          color="secondary" 
-          size="large"
-          aria-label="add"
-          className="add-button"
-          onClick={() => handleDelete(character.id)}
-          style={{
-              position: "fixed",
-              bottom: "40px",
-              right: "40px",
-              width: "5em",
-              height: "5em"
-          }}
-        >
-            <DeleteIcon />
-        </Fab>
+
+        <FloatingActionButton icon="delete" character={character} onHandleDelete={handleDelete}/>
 
         <div
           style={{
