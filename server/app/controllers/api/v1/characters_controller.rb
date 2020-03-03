@@ -28,7 +28,7 @@ class Api::V1::CharactersController < Api::ApplicationController
     end
 
     def index
-        characters = Character.where(user_id: current_user.id)
+        characters = Character.where(user_id: current_user.id).order(:name)
         render json: characters
     end
 
