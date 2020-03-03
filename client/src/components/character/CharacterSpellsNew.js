@@ -3,12 +3,12 @@ import axios from 'axios';
 
 import { baseUrl } from '../../config';
 import { SpellListItem } from './SpellListItem';
+import { FloatingActionButton } from './FloatingActionButton';
 import { FormStyle } from '../styles/FormStyle';
 import { FlexBox } from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
-import { Backdrop, Button, Fab, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
 
 import PropTypes from 'prop-types';
 
@@ -78,26 +78,7 @@ export const CharacterSpellsNew = props => {
 
     return(
         <>
-            <Fab 
-                color="secondary" 
-                size="large"
-                aria-label="add"
-                className="add-button"
-                onClick={handleOpen}
-                style={{
-                    position: "fixed",
-                    bottom: "40px",
-                    right: "40px",
-                    width: "5em",
-                    height: "5em"
-                }}
-            >
-                <EditIcon 
-                    style={{
-                        color: "#fff"
-                    }}
-                />
-            </Fab>
+            <FloatingActionButton icon="edit" onHandleOpen={handleOpen} />
     
             <Modal
                 open={open}

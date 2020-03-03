@@ -141,6 +141,7 @@ export const CharacterTraits = props => {
                             backgroundImage: `url(${photo_url})`,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
+                            backgroundPositionX: "50%"
                             }}
                             onClick={() => handleClick("photo")}
                             className="trait large"

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Fab } from '@material-ui/core';
-import { Add, Delete } from '@material-ui/icons';
+import { Add, Delete, Edit } from '@material-ui/icons';
 
 export const FloatingActionButton = props => {
     const { icon, onHandleOpen, onHandleDelete, character } = props;
@@ -25,7 +25,9 @@ export const FloatingActionButton = props => {
                 height: "5em"
             }}
         >
-            {icon === "add" ? <Add /> : <Delete />}
+            {icon === "add" ? <Add /> : null}
+            {icon === "delete" ? <Delete /> : null}
+            {icon === "edit" ? <Edit /> : null}
         </Fab>
     );
 };
