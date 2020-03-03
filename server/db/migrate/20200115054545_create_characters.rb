@@ -22,7 +22,6 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.integer :armor_class
       t.integer :initiative, default: 0
       t.integer :speed
-      t.text :spells_known, array: true, default: []
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

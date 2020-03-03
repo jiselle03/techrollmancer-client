@@ -67,7 +67,8 @@ class Api::V1::CharactersController < Api::ApplicationController
             :photo_url,
             :str, :dex, :con, :int, :wis, :cha,
             :armor_class,
-            :speed
+            :speed,
+            :initiative
         )
     end
 
