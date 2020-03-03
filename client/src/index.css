@@ -361,7 +361,10 @@ div.MuiTabs-root.tabs {
 .stats,
 .spells,
 .traits,
-.traits-container {
+.traits-container,
+.features,
+.inventory,
+.journal {
   padding: 1em;
   margin: 0.5em;
 }
