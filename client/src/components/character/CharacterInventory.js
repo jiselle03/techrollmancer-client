@@ -18,8 +18,6 @@ export const CharacterInventory = props => {
             </h1>
 
             <div className="character-sheet">
-                <FloatingActionButton icon="add" onHandleOpen={handleOpen} />
-
                 <Card className="inventory">
                     <h2>
                         Coin Pouch

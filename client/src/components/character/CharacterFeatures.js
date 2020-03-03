@@ -18,7 +18,7 @@ export const CharacterFeatures = props => {
             </h1>
 
             <div className="character-sheet">
-                <FloatingActionButton action="add" handleAction={handleOpenNew} />
+                <FloatingActionButton icon="add" handleAction={handleOpenNew} />
                 
                 {id === 1 && (
                 <>

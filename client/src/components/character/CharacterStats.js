@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import { baseUrl } from '../../config';
 import { Character } from '../../api/character';
-import { CharacterProficiencies } from './CharacterProficiencies';
 import { utils } from '../js/utils';
+import { CharacterProficiencies } from './CharacterProficiencies';
+import { FloatingActionButton } from './FloatingActionButton';
 import { FlexBox } from '../styles/FlexBox';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
 import { InputEditStats } from './CharacterInputEdit';
@@ -164,6 +165,12 @@ export const CharacterStats = props => {
     });
   };
 
+  const handleDelete = id => {
+    Character.destroy(id).then(() => {
+      props.history.push("/characters");
+    });
+  };
+
   const checkBaseMod = stat => {
     const mod = utils.getBaseMod(stat);
     return mod > 0 ? "+" + mod : mod;
@@ -213,7 +220,7 @@ export const CharacterStats = props => {
         {name.toUpperCase()}
       </h1>
 
-      <div 
+      {/* <div 
         style={{
           position: "fixed",
           top: "60px",
@@ -222,9 +229,12 @@ export const CharacterStats = props => {
           height: "5em"
         }}
       >
-      </div>
+      </div> */}
 
       <div className="character-sheet">
+
+        <FloatingActionButton icon="delete" character={character} onHandleDelete={handleDelete}/>
+
         <Card className="stats">
         <h6 className="header">Level</h6>
           <div className="stat-header"> 

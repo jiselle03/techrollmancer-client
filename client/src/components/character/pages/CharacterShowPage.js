@@ -10,7 +10,6 @@ import { CharacterJournal } from '../CharacterJournal';
 import { BackgroundImage } from '../../styles/BackgroundImage';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
-import { FloatingActionButton } from '../FloatingActionButton';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -48,12 +47,6 @@ export const CharacterShowPage = props => {
             return "auto auto auto 15vw";
       };
     };
-
-    const handleDelete = id => {
-      Character.destroy(id).then(() => {
-        props.history.push("/characters");
-      });
-    };
   
     const handleRefresh = () => {
       Character.one(props.match.params.id).then(character => { 
@@ -84,8 +77,6 @@ export const CharacterShowPage = props => {
         light={true}
       >
 
-        <FloatingActionButton icon="delete" character={character} onHandleDelete={handleDelete}/>
-
         <div
           style={{
             margin: getScreenSize(),
@@ -110,7 +101,7 @@ export const CharacterShowPage = props => {
           </Tabs>
           <div style={{margin: "auto 2em"}}>
           <TabPanel value={value} index={0}>
-              <CharacterStats character={character} handleRefresh={handleRefresh} />
+              <CharacterStats character={character} handleRefresh={handleRefresh} {...props} />
           </TabPanel>
           <TabPanel value={value} index={1}>
               <CharacterSpells character={character} handleRefresh={handleRefresh} />
