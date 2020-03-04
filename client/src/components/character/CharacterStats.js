@@ -222,7 +222,7 @@ export const CharacterStats = props => {
 
   return (
     <>
-      <h1 style={{ marginBottom: "0.25em"}}>
+      <h1 style={{marginBottom: "0.25em"}}>
         {name.toUpperCase()}
       </h1>
 
