@@ -244,7 +244,7 @@ export const CharacterTraits = props => {
                                     min="1"
                                     max="20"
                                     name="class_1_level"
-                                    placeholder="Class 1 Level"
+                                    placeholder="Level"
                                     defaultValue={class_1_level}
                                     className="profile flex"
                                     required
@@ -262,7 +262,7 @@ export const CharacterTraits = props => {
                                     type="number"
                                     step="1"
                                     name="class_2_level"
-                                    placeholder="Class 2 Level"
+                                    placeholder="Level"
                                     defaultValue={class_2_level || ""}
                                     className="profile flex"
                                 />
