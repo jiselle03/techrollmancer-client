@@ -448,22 +448,25 @@ div.MuiTabs-root.tabs {
 }
 
 @media print {
+  @page {
+    margin: -0.3cm 0.25cm 0 -2.25cm;
+  }
+
   .character-sheet {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  header nav, footer {
-    display: none;
-  }
-
-  @page {
-    margin: 0.5cm;
+  header, 
+  .MuiTabs-root.tabs,
+  button, svg {
+    display: none !important;
   }
 
   h1 {
     font-size: 32pt;
     margin-bottom: 0.3em;
+    margin-left: 0.5em;
   }
 
   h2.main-stats {
@@ -487,6 +490,10 @@ div.MuiTabs-root.tabs {
 
   h6.header {
     margin: 0.25em;
+  }
+
+  h6.stat-mod {
+    margin: 0;
   }
 
   .stat-container {

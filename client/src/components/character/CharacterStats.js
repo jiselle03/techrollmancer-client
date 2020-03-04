@@ -10,7 +10,6 @@ import { FlexBox } from '../styles/FlexBox';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
-import { ComponentToPrint } from './ComponentToPrint';
 import { Print } from '@material-ui/icons';
 
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
@@ -217,7 +216,9 @@ export const CharacterStats = props => {
     setOpen(false);
   };
 
-  const componentRef = useRef();
+  const toPrint = () => {
+    window.print();
+  }; 
 
   return (
     <>
@@ -226,14 +227,7 @@ export const CharacterStats = props => {
       </h1>
 
       <div style={{textAlign: "right", marginRight: "1.5em"}}>
-      <ReactToPrint
-        trigger={() => <Button variant="contained"><Print /></Button>}
-        content={() => componentRef.current}
-      />
-      </div>
-
-      <div className="hidden">
-        <ComponentToPrint character={character} ref={componentRef} />
+        <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
       </div>
 
       <div className="character-sheet">
