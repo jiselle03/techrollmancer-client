@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import ReactToPrint from 'react-to-print';
 
 import { baseUrl } from '../../config';
 import { Character } from '../../api/character';
@@ -9,6 +10,8 @@ import { FlexBox } from '../styles/FlexBox';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
+import { ComponentToPrint } from './ComponentToPrint';
+import { Print } from '@material-ui/icons';
 
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 
@@ -214,22 +217,24 @@ export const CharacterStats = props => {
     setOpen(false);
   };
 
+  const componentRef = useRef();
+
   return (
     <>
-      <h1>
+      <h1 style={{ marginBottom: "0.25em"}}>
         {name.toUpperCase()}
       </h1>
 
-      {/* <div 
-        style={{
-          position: "fixed",
-          top: "60px",
-          right: "15px",
-          width: "5em",
-          height: "5em"
-        }}
-      >
-      </div> */}
+      <div style={{textAlign: "right", marginRight: "1.5em"}}>
+      <ReactToPrint
+        trigger={() => <Button variant="contained"><Print /></Button>}
+        content={() => componentRef.current}
+      />
+      </div>
+
+      <div className="hidden">
+        <ComponentToPrint character={character} ref={componentRef} />
+      </div>
 
       <div className="character-sheet">
 
@@ -238,7 +243,7 @@ export const CharacterStats = props => {
         <Card className="stats">
         <h6 className="header">Level</h6>
           <div className="stat-header"> 
-            <h2 className=" main-stats">{level}</h2>
+            <h2 className="main-stats">{level}</h2>
           </div>
 
           <h6 className="header">Hit Points</h6>

@@ -106,7 +106,6 @@ h3.title {
   border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;
   padding: 0.5em;
-  min-height: 2.25em;
   box-shadow: 5px 0 5px -2px #888;
 }
 
@@ -446,6 +445,68 @@ div.MuiTabs-root.tabs {
 .datetime {
   width: 85%;
   margin: 1.5em 3.5em 0.5em 3.25em;
+}
+
+@media print {
+  .character-sheet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  header nav, footer {
+    display: none;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  h1 {
+    font-size: 32pt;
+    margin-bottom: 0.3em;
+  }
+
+  h2.main-stats {
+    font-size: 16pt;
+    color: #000;
+  }
+
+  h6, p {
+    font-size: 9pt;
+    color: #000 !important;
+  }
+
+  div.stat-header {
+    height: 1.25em;
+    padding: 0.3em;
+    margin: 0;
+    background-color: #fff !important;
+    box-shadow: none !important;
+    border: 2px solid black;
+  }
+
+  h6.header {
+    margin: 0.25em;
+  }
+
+  .stat-container {
+    height: 1.5em;
+  }
+
+  div.stats {
+    width: 15em;
+    height: 18em;
+  }
+
+  span.stat {
+    margin: auto 0;
+  }
+
+  .stat.border.ability {
+    padding: 0 auto !important;
+    margin: 0.25em !important;
+    border: none;
+  }
 }
 
 @media (min-width: 768px) {
