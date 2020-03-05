@@ -32,32 +32,26 @@ export const PointBuyCalculator = () => {
 
         switch(field) {
             case "str":
-                // if (remainingPoints < 0 || remainingPoints > 27) return;
                 setPoints(stats.str, value);
                 setStats({...stats, str: value});
                 break;
             case "dex":
-                // if (remainingPoints < 0 || remainingPoints > 27) return;
                 setPoints(stats.dex, value);
                 setStats({...stats, dex: value});
                 break;
             case "con":
-                // if (remainingPoints < 0 || remainingPoints > 27) return;
                 setPoints(stats.con, value);
                 setStats({...stats, con: value});
                 break;
             case "int":
-                // if (remainingPoints < 0 || remainingPoints > 27) return;
                 setPoints(stats.int, value);
                 setStats({...stats, int: value});
                 break;
             case "wis":
-                // if (remainingPoints < 0 || remainingPoints > 27) return;
                 setPoints(stats.wis, value);
                 setStats({...stats, wis: value});
                 break;
             case "cha":
-                // if (remainingPoints < 0 || remainingPoints > 27) return;
                 setPoints(stats.cha, value);
                 setStats({...stats, cha: value});
                 break;
@@ -139,7 +133,7 @@ export const PointBuyCalculator = () => {
                 </Select>
             </FormControl>
 
-            Remaining Points: {remainingPoints}
+            <h6>Remaining Points: {remainingPoints}</h6>
         
             <TableContainer component={Paper}>
             <Table className="point-buy calculator" aria-label="point buy calculator">
