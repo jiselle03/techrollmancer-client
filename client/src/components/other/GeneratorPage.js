@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { utils } from '../js/utils.js';
 import { RandomCharacter } from '../js/generator.js';
+import { PointBuyCalculator } from './PointBuyCalculator';
 import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { FlexBox } from '../styles/FlexBox';
@@ -132,7 +133,9 @@ export const GeneratorPage = () => {
                             You cannot have a score lower than 8.
                         </p>
 
-                        <TableStyle>
+                        <PointBuyCalculator />
+
+                        {/* <TableStyle>
                             <TableContainer component={Paper}>
                             <Table className="point-buy table" aria-label="point buy table">
                                 <TableHead>
@@ -177,7 +180,7 @@ export const GeneratorPage = () => {
                                 </TableBody>
                             </Table>
                             </TableContainer>
-                        </TableStyle>
+                        </TableStyle> */}
                     </Card>
 
                     <Card 

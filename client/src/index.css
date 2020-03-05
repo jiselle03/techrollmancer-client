@@ -142,6 +142,10 @@ p.profile {
   color: #fff;
 }
 
+th.table-header {
+  font-size: 1em;
+}
+
 .stat-container p {
   margin-bottom: .2em;
 }
@@ -447,6 +451,14 @@ div.MuiTabs-root.tabs {
   margin: 1.5em 3.5em 0.5em 3.25em;
 }
 
+.race-option div {
+  width: 10em;
+}
+
+div.race-option {
+  margin-bottom: 2em;
+}
+
 @media print {
   @page {
     margin: -0.3cm 0.25cm 0 -2.25cm;
@@ -459,7 +471,7 @@ div.MuiTabs-root.tabs {
 
   header, 
   .MuiTabs-root.tabs,
-  button, svg {
+  button {
     display: none !important;
   }
 

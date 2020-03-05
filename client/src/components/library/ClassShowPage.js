@@ -171,7 +171,7 @@ export const ClassShowPage = props => {
                             <TableHead>
                             <TableRow>
                                 {getColNames(oneClass).map((col, index) => (
-                                    <TableCell key={index}>{col}</TableCell>
+                                    <TableCell key={index} className="table-header">{col}</TableCell>
                                 ))}
                             </TableRow>
                             </TableHead>

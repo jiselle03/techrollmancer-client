@@ -45,23 +45,17 @@ export class RandomCharacter {
     get charClass(){
       return this._charClass;
     };
-  
-    get roll1() {
-      return this._roll1;
-    };
-    get roll2() {
-      return this._roll2;
-    };
-    get roll3() {
-      return this._roll3;
-    };
-    get roll4() {
-      return this._roll4;
-    };
-    get roll5() {
-      return this._roll5;
-    };
-    get roll6() {
-      return this._roll6;
-    };
+};
+
+export const raceBonus = {
+  default: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
+  dragonborn: { str: 2, dex: 0, con: 0, int: 0, wis: 0, cha: 1 },
+  dwarf: { str: 0, dex: 0, con: 2, int: 0, wis: 0, cha: 0 },
+  elf: { str: 0, dex: 2, con: 0, int: 0, wis: 0, cha: 0 },
+  gnome: { str: 0, dex: 0, con: 0, int: 2, wis: 0, cha: 0 },
+  halfElf: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 2 },
+  halfOrc: { str: 2, dex: 0, con: 1, int: 0, wis: 0, cha: 0 },
+  halfling: { str: 0, dex: 2, con: 0, int: 0, wis: 0, cha: 0 },
+  human: { str: 1, dex: 1, con: 1, int: 1, wis: 1, cha: 1 },
+  tiefling: { str: 0, dex: 0, con: 0, int: 1, wis: 0, cha: 2 }
 };
