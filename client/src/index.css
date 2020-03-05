@@ -169,12 +169,44 @@ span.header {
   color: grey;
 }
 
+.fa-spin-roll {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear; 
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
+.dice-roll-container {
+  position: relative;
+}
+
+.dice-roll,
+.nat20,
+.nat1 {
+  position: absolute;
+  top: 45.5%;
+  left: 44.5%;
+}
+
+.dice-roll {
+  color: #fff;
+}
+
 .nat20 {
   color: green;
 }
 
 .nat1 {
-  color: maroon;
+  color: #f50057;
 }
 
 .card-text,

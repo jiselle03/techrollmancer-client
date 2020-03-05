@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import ReactToPrint from 'react-to-print';
+import React, { useState } from 'react';
 
 import { baseUrl } from '../../config';
 import { Character } from '../../api/character';
@@ -198,7 +197,7 @@ export const CharacterStats = props => {
     } else if (roll - modifier === 1) {
       return "nat1 roll";
     } else {
-      return "roll";
+      return "dice-roll";
     };
   };
 
@@ -1001,12 +1000,15 @@ export const CharacterStats = props => {
           <FlexBox
               alignItems="center"
               justifyContent="center"
-              margin="35vh 0"
+              margin="25vh 0"
           >
               <Fade in={open}>
                   <FadeStyle>
                       <h2>{ability}</h2>
-                      <h1 className={checkRoll(roll, modifier)}>{roll}</h1>
+                      <div className="dice-roll-container">
+                        <h5 className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</h5>
+                        <i className="fas fa-dice-d20 fa-10x fa-spin-roll"></i>
+                      </div>
                       <h5>({modifier})</h5>
 
                       <Button 
