@@ -1003,8 +1003,8 @@ export const CharacterStats = props => {
               margin="25vh 0"
           >
               <Fade in={open}>
-                  <FadeStyle>
-                      <h2>{ability}</h2>
+                  <FadeStyle width="50vw">
+                      <h2 className="ability">{ability}</h2>
                       <div className="dice-roll-container">
                         <h5 className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</h5>
                         <i className="fas fa-dice-d20 fa-10x fa-spin-roll"></i>

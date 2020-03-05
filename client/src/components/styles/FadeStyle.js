@@ -2,14 +2,15 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring/web.cjs';
 
 export const FadeStyle = props => {
-    const { children, align } = props;
+    const { children, align, width } = props;
 
     return(
         <div 
             style={{
                 backgroundColor: "rgba(255,255,255,0.9)",
                 padding: "2em 4em",
-                textAlign: align || "center"
+                textAlign: align || "center",
+                width: width,
             }}
         >
             {children}

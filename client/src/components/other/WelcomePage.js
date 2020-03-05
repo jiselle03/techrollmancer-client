@@ -167,8 +167,7 @@ export const WelcomePage = () => {
                         <Fade in={open}>
                             <FadeStyle>
                                 <h3>You rolled:</h3>
-                                <h2 className="dice-roll">{rolls}</h2>
-
+                                <h2>{rolls}</h2>
                                 <Button 
                                     variant="contained"
                                     color="secondary"

@@ -125,6 +125,10 @@ h6.ability {
   font-size: 3vw;
 }
 
+h2.ability {
+  font-size: 4vw;
+}
+
 p.profile,
 h6.profile {
   text-align: center;
@@ -199,8 +203,9 @@ span.header {
 .nat20,
 .nat1 {
   position: absolute;
-  top: 45.5%;
-  left: 44.5%;
+  font-size: 1.65rem;
+  top: 43.5%;
+  left: 47%;
 }
 
 .dice-roll {
@@ -453,18 +458,15 @@ div.MuiTabs-root.tabs {
 
 .tooltip .tooltiptext {
   width: 25vw;
-  padding: 0.5em;
+  padding: 0.25em 1em;
   overflow: scroll;
 }
 
-.tooltip-roll .tooltiptext {
-  width: 8.5vw;
-  height: 3.25vh;
-}
-
+.tooltip-roll .tooltiptext,
 .tooltip-edit .tooltiptext {
-  width: 8.5vw;
+  width: 6.5rem;
   height: 3.25vh;
+  padding: 0.25rem 1rem;
 }
 
 .tooltip-roll .tooltiptext p,
@@ -568,8 +570,8 @@ div.race-option {
 
 @media (min-width: 768px) {
   .character-sheet {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   nav.MuiList-root.list {
@@ -584,8 +586,9 @@ div.race-option {
 
   p.ability,
   h6.ability {
-  font-size: 2vw;
-}
+    font-size: 2vw;
+  }
+
 }
 
 @media (min-width: 960px) {
