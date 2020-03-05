@@ -7,10 +7,9 @@ import { BackgroundImage } from '../styles/BackgroundImage';
 import { MainStyle } from '../styles/MainStyle';
 import { FlexBox } from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
-import { TableStyle } from '../styles/TableStyle';
 import { Center } from '../styles/Center';
 
-import { Backdrop, Button, Card, Divider, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from '@material-ui/core';
+import { Backdrop, Button, Card, Divider, Modal, useMediaQuery } from '@material-ui/core';
 import PropTypes from 'prop-types';
   
 Fade.propTypes = {
@@ -128,59 +127,13 @@ export const GeneratorPage = () => {
                         </h2>
                         <p>
                             You have 27 points to spend on your character's ability scores. 
-                            The cost of each score is shown on the table below. 15 is the highest 
-                            ability score you can end up with before applying racial increases. 
+                            Each score from 9 to 13 costs 1 extra point, and 14 and 15 both cost 2 extra points. 
+                            15 is the highest ability score you can end up with before applying racial increases. 
                             You cannot have a score lower than 8.
                         </p>
 
                         <PointBuyCalculator />
 
-                        {/* <TableStyle>
-                            <TableContainer component={Paper}>
-                            <Table className="point-buy table" aria-label="point buy table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>SCORE</TableCell>
-                                        <TableCell>COST</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow key="8">
-                                        <TableCell>8</TableCell>
-                                        <TableCell>0</TableCell>
-                                    </TableRow>
-                                    <TableRow key="9">
-                                        <TableCell>9</TableCell>
-                                        <TableCell>1</TableCell>
-                                    </TableRow>
-                                    <TableRow key="10">
-                                        <TableCell>10</TableCell>
-                                        <TableCell>2</TableCell>
-                                    </TableRow>
-                                    <TableRow key="11">
-                                        <TableCell>11</TableCell>
-                                        <TableCell>3</TableCell>
-                                    </TableRow>
-                                    <TableRow key="12">
-                                        <TableCell>12</TableCell>
-                                        <TableCell>4</TableCell>
-                                    </TableRow>
-                                    <TableRow key="13">
-                                        <TableCell>13</TableCell>
-                                        <TableCell>5</TableCell>
-                                    </TableRow>
-                                    <TableRow key="14">
-                                        <TableCell>14</TableCell>
-                                        <TableCell>7</TableCell>
-                                    </TableRow>
-                                    <TableRow key="15">
-                                        <TableCell>15</TableCell>
-                                        <TableCell>9</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                            </TableContainer>
-                        </TableStyle> */}
                     </Card>
 
                     <Card 
