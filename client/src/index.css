@@ -205,7 +205,8 @@ span.header {
   position: absolute;
   font-size: 1.65rem;
   top: 43.5%;
-  left: 47%;
+  margin: 0 auto;
+  left: 46.75%;
 }
 
 .dice-roll {
@@ -527,7 +528,7 @@ div.race-option {
   }
 
   h6, p {
-    font-size: 9pt;
+    font-size: 9pt !important;
     color: #000 !important;
   }
 
