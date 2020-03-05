@@ -120,6 +120,11 @@ h6.header {
   margin-top: 1.75vh;
 }
 
+p.ability,
+h6.ability {
+  font-size: 3vw;
+}
+
 p.profile,
 h6.profile {
   text-align: center;
@@ -154,7 +159,8 @@ span.stat,
 span.roll,
 span.header {
   display: inline-block;
-  margin: 0 0.75vw;
+  margin-left: 0.75vw;
+  margin-right: 0.25vw;
 }
 
 .roll h4 {
@@ -318,7 +324,7 @@ label.traits {
 }
 
 div.stat.border.ability {
-  height: 42vh;
+  min-height: 42vh;
   width: 100%;
   margin-top: 2em;
   padding: 1.25em;
@@ -575,6 +581,11 @@ div.race-option {
   nav.MuiList-root.list > div {
     width: 40vw;
   }
+
+  p.ability,
+  h6.ability {
+  font-size: 2vw;
+}
 }
 
 @media (min-width: 960px) {

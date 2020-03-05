@@ -15,7 +15,7 @@ export const TooltipRoll = props => {
                 </h6>
             )}
             {!header && (
-                <p onClick={() => handleOpen(modifier, ability)}>
+                <p className="ability" onClick={() => handleOpen(modifier, ability)}>
                     {name}
                 </p>
             )}

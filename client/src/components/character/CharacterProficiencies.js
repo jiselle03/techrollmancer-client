@@ -23,7 +23,7 @@ export const CharacterProficiencies = props => {
             label={
                 <>
                     <span className="stat">
-                        <h6>{modifier}</h6>
+                        <h6 className="ability">{modifier}</h6>
                     </span>
                 </>
             }
