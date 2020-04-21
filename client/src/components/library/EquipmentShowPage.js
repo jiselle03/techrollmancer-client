@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { utils } from '../js/utils';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import Utils from '../js/utils';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ const getEquipment = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/equipment/${slug}`);
 };
 
-export const EquipmentShowPage = props => {
+const EquipmentShowPage = props => {
     const [equipment, setEquipment] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -41,7 +41,7 @@ export const EquipmentShowPage = props => {
                     <h1>
                         {equipment.name.toUpperCase()}
                     </h1>
-                    <p className="category"><em>{equipment.equipment_category}, {utils.getCategory(equipment)}</em></p>
+                    <p className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></p>
                 </div>
 
                 <div className={equipment.equipment_category === "Weapon" ? null : "hidden"}>
@@ -82,3 +82,5 @@ export const EquipmentShowPage = props => {
         </BackgroundImage>
     );
 };
+
+export default EquipmentShowPage;

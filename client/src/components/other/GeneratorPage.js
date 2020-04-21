@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { utils } from '../js/utils.js';
+import Utils from '../js/utils';
 import { RandomCharacter } from '../js/generator.js';
 import { PointBuyCalculator } from './PointBuyCalculator';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
-import { FlexBox } from '../styles/FlexBox';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
+import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 import { Center } from '../styles/Center';
 
@@ -19,7 +19,7 @@ Fade.propTypes = {
     onExited: PropTypes.func,
 };
 
-export const GeneratorPage = () => {
+const GeneratorPage = () => {
     const [openQR, setOpenQR] = useState(false);
     const [character, setCharacter] = useState({});
 
@@ -53,7 +53,7 @@ export const GeneratorPage = () => {
     let currentRoll = 0;
     const rollD6 = () => { 
         if (rolls.length < 4) {
-            currentRoll = utils.roll(6);
+            currentRoll = Utils.roll(6);
             setRolls([...rolls, currentRoll]);
         } else {
             return;
@@ -294,7 +294,7 @@ export const GeneratorPage = () => {
                                             <h3>STAT: </h3> 
                                         </span>
                                         <span className="roll">
-                                            <h3>{rolls[3] ? utils.rollAbility(rolls) : " "}</h3>
+                                            <h3>{rolls[3] ? Utils.rollAbility(rolls) : " "}</h3>
                                         </span>
                                         </div>
 
@@ -353,3 +353,5 @@ export const GeneratorPage = () => {
         </BackgroundImage>
     );
 };
+
+export default GeneratorPage;

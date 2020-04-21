@@ -2,7 +2,7 @@ import React from 'react';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-export const MainStyle = props => {
+const MainStyle = props => {
     const { children } = props;
 
     const laptop = useMediaQuery('(min-width:1280px)');
@@ -20,3 +20,5 @@ export const MainStyle = props => {
         </div>
     );
 };
+
+export default MainStyle;

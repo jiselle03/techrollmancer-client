@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { utils } from '../js/utils';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import Utils from '../js/utils';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -11,7 +11,7 @@ const getRace = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/races/${slug}`);
 };
 
-export const RaceShowPage = props => {
+const RaceShowPage = props => {
     const [race, setRace] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -127,13 +127,13 @@ export const RaceShowPage = props => {
 
                 <div className={vision ? null : "hidden"}>
                     <p dangerouslySetInnerHTML={{
-                        __html: utils.getBlurb(vision)
+                        __html: Utils.getBlurb(vision)
                     }}></p>
                 </div>
 
                 <div className={traits ? null : "hidden"}>
                     <p dangerouslySetInnerHTML={{
-                        __html: utils.getBlurb(traits)
+                        __html: Utils.getBlurb(traits)
                     }}></p>
                 </div>
                 
@@ -163,7 +163,7 @@ export const RaceShowPage = props => {
                             </p>
 
                             <span dangerouslySetInnerHTML={{
-                                __html: utils.getBlurb(subrace.traits)
+                                __html: Utils.getBlurb(subrace.traits)
                             }}></span>
                         </>
                     ))}
@@ -172,3 +172,5 @@ export const RaceShowPage = props => {
         </BackgroundImage>
     );
 };
+
+export default RaceShowPage;

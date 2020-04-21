@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { baseUrl } from '../../config';
-import { Character } from '../../api/character';
-import { utils } from '../js/utils';
-import { CharacterProficiencies } from './CharacterProficiencies';
-import { FloatingActionButton } from './FloatingActionButton';
-import { FlexBox } from '../styles/FlexBox';
+import baseUrl from '../../config';
+import Character from '../../api/character';
+import Utils from '../js/utils';
+import CharacterProficiencies from './CharacterProficiencies';
+import FloatingActionButton from './FloatingActionButton';
+import FlexBox from '../styles/FlexBox';
 import { Fade, FadeStyle } from '../styles/FadeStyle';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
@@ -13,7 +13,7 @@ import { Print } from '@material-ui/icons';
 
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 
-export const CharacterStats = props => {
+const CharacterStats = props => {
   const [editHP, setEditHP] = useState(false);
   const [editAC, setEditAC] = useState(false);
   const [editInitiative, setEditInitiative] = useState(false);
@@ -31,7 +31,7 @@ export const CharacterStats = props => {
 
   const { character, handleRefresh } = props;
   const { id, name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha, proficiency } = character;
-  const level = utils.getLevel(character);
+  const level = Utils.getLevel(character);
 
   const handleClick = field => {
     switch(field) {
@@ -173,12 +173,12 @@ export const CharacterStats = props => {
   };
 
   const checkBaseMod = stat => {
-    const mod = utils.getBaseMod(stat);
+    const mod = Utils.getBaseMod(stat);
     return mod > 0 ? "+" + mod : mod;
   };
 
   const checkAbilityMod = (character, level, ability) => {
-    const mod = utils.getAbilityMod(character, level, ability);
+    const mod = Utils.getAbilityMod(character, level, ability);
     return mod > 0 ? "+" + mod : mod;
   };
 
@@ -187,7 +187,7 @@ export const CharacterStats = props => {
   };
 
   const checkProfBonus = level => {
-    const bonus = utils.getProfBonus(level);
+    const bonus = Utils.getProfBonus(level);
     return bonus > 0 ? "+" + bonus : bonus;
   };
 
@@ -203,7 +203,7 @@ export const CharacterStats = props => {
 
   const handleOpen = (modifier, ability) => {
     setOpen(true);
-    setRoll(utils.roll(20) + modifier);
+    setRoll(Utils.roll(20) + modifier);
     setAbility(ability);
     setModifier(modifier > 0 ? "+" + modifier : modifier);
   };
@@ -316,7 +316,7 @@ export const CharacterStats = props => {
         <Card className="str stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
-              modifier={utils.getBaseMod(str)} 
+              modifier={Utils.getBaseMod(str)} 
               ability={"str"} 
               name={"Strength"} 
               header
@@ -358,7 +358,7 @@ export const CharacterStats = props => {
                 />
                 <span className="stat">
                   <TooltipRoll 
-                  modifier={utils.getAbilityMod(character, level, "str_save")}
+                  modifier={Utils.getAbilityMod(character, level, "str_save")}
                   ability={"Strength Save"}
                   name={"Saving Throw"}
                   header={false}
@@ -376,7 +376,7 @@ export const CharacterStats = props => {
                 />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "athletics")}
+                    modifier={Utils.getAbilityMod(character, level, "athletics")}
                     ability={"Athletics"}
                     name={"Athletics"}
                     header={false}
@@ -392,7 +392,7 @@ export const CharacterStats = props => {
         <Card className="dex stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
-              modifier={utils.getBaseMod(dex)}
+              modifier={Utils.getBaseMod(dex)}
               ability={"Dexterity"}
               name={"Dexterity"}
               header
@@ -434,7 +434,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "dex_save")}
+                    modifier={Utils.getAbilityMod(character, level, "dex_save")}
                     ability={"Dexterity Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -452,7 +452,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "acrobatics")}
+                    modifier={Utils.getAbilityMod(character, level, "acrobatics")}
                     ability={"Acrobatics"}
                     name={"Acrobatics"}
                     header={false}
@@ -470,7 +470,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "sleight of hand")}
+                    modifier={Utils.getAbilityMod(character, level, "sleight of hand")}
                     ability={"Sleight of Hand"}
                     name={"Sleight of Hand"}
                     header={false}
@@ -488,7 +488,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "stealth")}
+                    modifier={Utils.getAbilityMod(character, level, "stealth")}
                     ability={"Stealth"}
                     name={"Stealth"}
                     header={false}
@@ -504,7 +504,7 @@ export const CharacterStats = props => {
         <Card className="con stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
-              modifier={utils.getBaseMod(con)}
+              modifier={Utils.getBaseMod(con)}
               ability={"Constitution"}
               name={"Constitution"}
               header
@@ -546,7 +546,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "con_save")}
+                    modifier={Utils.getAbilityMod(character, level, "con_save")}
                     ability={"Constitution Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -562,7 +562,7 @@ export const CharacterStats = props => {
         <Card className="int stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
-              modifier={utils.getBaseMod(int)}
+              modifier={Utils.getBaseMod(int)}
               ability={"Intelligence"}
               name={"Intelligence"}
               header
@@ -605,7 +605,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "int_save")}
+                    modifier={Utils.getAbilityMod(character, level, "int_save")}
                     ability={"Intelligence Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -623,7 +623,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "arcana")}
+                    modifier={Utils.getAbilityMod(character, level, "arcana")}
                     ability={"Arcana"}
                     name={"Arcana"}
                     header={false}
@@ -641,7 +641,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "history")}
+                    modifier={Utils.getAbilityMod(character, level, "history")}
                     ability={"History"}
                     name={"History"}
                     header={false}
@@ -659,7 +659,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "investigation")}
+                    modifier={Utils.getAbilityMod(character, level, "investigation")}
                     ability={"Investigation"}
                     name={"Investigation"}
                     header={false}
@@ -677,7 +677,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "nature")}
+                    modifier={Utils.getAbilityMod(character, level, "nature")}
                     ability={"Nature"}
                     name={"Nature"}
                     header={false}
@@ -695,7 +695,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "religion")}
+                    modifier={Utils.getAbilityMod(character, level, "religion")}
                     ability={"Religion"}
                     name={"Religion"}
                     header={false}
@@ -711,7 +711,7 @@ export const CharacterStats = props => {
         <Card className="wis stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
-              modifier={utils.getBaseMod(wis)}
+              modifier={Utils.getBaseMod(wis)}
               ability={"Wisdom"}
               name={"Wisdom"}
               header
@@ -754,7 +754,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "wis_save")}
+                    modifier={Utils.getAbilityMod(character, level, "wis_save")}
                     ability={"Wisdom Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -772,7 +772,7 @@ export const CharacterStats = props => {
                 />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "animal handling")}
+                    modifier={Utils.getAbilityMod(character, level, "animal handling")}
                     ability={"Animal Handling"}
                     name={"Animal Handling"}
                     header={false}
@@ -790,7 +790,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "insight")}
+                    modifier={Utils.getAbilityMod(character, level, "insight")}
                     ability={"Insight"}
                     name={"Insight"}
                     header={false}
@@ -808,7 +808,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "medicine")}
+                    modifier={Utils.getAbilityMod(character, level, "medicine")}
                     ability={"Medicine"}
                     name={"Medicine"}
                     header={false}
@@ -826,7 +826,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "perception")}
+                    modifier={Utils.getAbilityMod(character, level, "perception")}
                     ability={"Perception"}
                     name={"Perception"}
                     header={false}
@@ -844,7 +844,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "survival")}
+                    modifier={Utils.getAbilityMod(character, level, "survival")}
                     ability={"Survival"}
                     name={"Survival"}
                     header={false}
@@ -860,7 +860,7 @@ export const CharacterStats = props => {
           <Card className="cha stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
-              modifier={utils.getBaseMod(cha)}
+              modifier={Utils.getBaseMod(cha)}
               ability={"Charisma"}
               name={"Charisma"}
               header
@@ -903,7 +903,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "cha_save")}
+                    modifier={Utils.getAbilityMod(character, level, "cha_save")}
                     ability={"Charisma Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -921,7 +921,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "deception")}
+                    modifier={Utils.getAbilityMod(character, level, "deception")}
                     ability={"Deception"}
                     name={"Deception"}
                     header={false}
@@ -939,7 +939,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "intimidation")}
+                    modifier={Utils.getAbilityMod(character, level, "intimidation")}
                     ability={"Intimidation"}
                     name={"Intimidation"}
                     header={false}
@@ -957,7 +957,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "performance")}
+                    modifier={Utils.getAbilityMod(character, level, "performance")}
                     ability={"Performance"}
                     name={"Performance"}
                     header={false}
@@ -975,7 +975,7 @@ export const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={utils.getAbilityMod(character, level, "persuasion")}
+                    modifier={Utils.getAbilityMod(character, level, "persuasion")}
                     ability={"Persuasion"}
                     name={"Persuasion"}
                     header={false}
@@ -1028,3 +1028,5 @@ export const CharacterStats = props => {
     </>
   );
 };
+
+export default CharacterStats;

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { User } from '../../api/user';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import User from '../../api/user';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 
 import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
-import { FlexBox } from '../styles/FlexBox';
+import FlexBox from '../styles/FlexBox';
 
-export const SignUpPage = props => {
+const SignUpPage = props => {
     const handleSubmit = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
@@ -137,7 +137,7 @@ export const SignUpPage = props => {
                             justifyContent="center"
                         >
                             <p>
-                                Don't have an account? <Link to="/sign_in" style={FormContent.link}>SIGN IN</Link>
+                                Already have an account? <Link to="/sign_in" style={FormContent.link}>SIGN IN</Link>
                             </p>
                         </FlexBox>
                     </Card>
@@ -146,3 +146,5 @@ export const SignUpPage = props => {
         </BackgroundImage>
     );
 };
+
+export default SignUpPage;

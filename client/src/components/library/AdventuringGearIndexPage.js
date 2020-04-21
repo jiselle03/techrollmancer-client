@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { MainStyle } from '../styles/MainStyle';
-import { BackgroundImage } from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -11,7 +11,7 @@ const getEquipments = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/equipment");
 };
 
-export const AdventuringGearIndexPage = () => {
+const AdventuringGearIndexPage = () => {
     const [equipments, setEquipments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -161,3 +161,5 @@ export const AdventuringGearIndexPage = () => {
         </BackgroundImage>
     );
 };
+
+export default AdventuringGearIndexPage;

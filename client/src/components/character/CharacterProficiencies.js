@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
-export const CharacterProficiencies = props => {
+const CharacterProficiencies = props => {
     const [isChecked, setIsChecked] = useState(false);
     const { field, onHandleChange, proficiencies, modifier } = props;
 
@@ -32,3 +32,4 @@ export const CharacterProficiencies = props => {
     );
 };
 
+export default CharacterProficiencies;

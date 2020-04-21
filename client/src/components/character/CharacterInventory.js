@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-export const CharacterInventory = props => {
+const CharacterInventory = props => {
     const { name } = props.character;
 
     return (
@@ -146,3 +146,5 @@ export const CharacterInventory = props => {
         </>
     );
 };
+
+export default CharacterInventory;

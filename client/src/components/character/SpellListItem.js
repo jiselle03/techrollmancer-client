@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
-export const SpellListItem = props => {
+const SpellListItem = props => {
     const [isChecked, setIsChecked] = useState(false);
 
     const handleChange = event => {
@@ -26,3 +26,4 @@ export const SpellListItem = props => {
     );
 };
 
+export default SpellListItem;

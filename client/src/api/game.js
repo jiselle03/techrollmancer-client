@@ -1,12 +1,12 @@
-import { baseUrl } from "../config";
-import { User } from './user';
+import baseUrl from '../config';
+import User from './user';
 
 let currentUser;
 User.current().then(user => {
   currentUser = user;
 });
 
-export const Game = {
+const Game = {
     // Fetch all games
     all() {
       return fetch(`${baseUrl}/users/${currentUser.id}/games`, {
@@ -49,4 +49,6 @@ export const Game = {
       }).then(res => res.json());
     }
   };
+
+  export default Game;
   

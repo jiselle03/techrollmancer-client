@@ -5,36 +5,36 @@ import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 
-import { User } from '../api/user';
-import { Session } from '../api/session';
-import { NavBar } from './NavBar';
-import { AuthRoute } from './AuthRoute';
-import { SignUpPage } from './user/SignUpPage';
-import { SignInPage } from './user/SignInPage';
+import User from '../api/user';
+import Session from '../api/session';
+import NavBar from './NavBar';
+import AuthRoute from './AuthRoute';
+import SignUpPage from './user/SignUpPage';
+import SignInPage from './user/SignInPage';
 
-import { WelcomePage } from './other/WelcomePage';
-import { GeneratorPage } from './other/GeneratorPage';
-import { SchedulerPage } from './other/SchedulerPage';
-import { NotFoundPage } from './other/NotFoundPage';
+import WelcomePage from './other/WelcomePage';
+import GeneratorPage from './other/GeneratorPage';
+import SchedulerPage from './other/SchedulerPage';
+import NotFoundPage from './other/NotFoundPage';
 
-import { LibrariesIndexPage } from './library/LibrariesIndexPage';
-import { RaceIndexPage } from './library/RaceIndexPage';
-import { RaceShowPage } from './library/RaceShowPage';
-import { ClassIndexPage } from './library/ClassIndexPage';
-import { ClassShowPage } from './library/ClassShowPage';
-import { SpellIndexPage } from './library/SpellIndexPage';
-import { SpellShowPage } from './library/SpellShowPage';
-import { EquipmentShowPage } from './library/EquipmentShowPage';
-import { EquipmentIndexPage } from './library/EquipmentIndexPage';
-import { AdventuringGearIndexPage } from './library/AdventuringGearIndexPage';
-import { MountVehicleIndexPage } from './library/MountVehicleIndexPage';
-import { ToolIndexPage } from './library/ToolIndexPage';
-import { WeaponIndexPage } from './library/WeaponIndexPage';
-import { ArmorIndexPage } from './library/ArmorIndexPage';
-import { ConditionIndexPage } from './library/ConditionIndexPage';
+import LibrariesIndexPage from './library/LibrariesIndexPage';
+import RaceIndexPage from './library/RaceIndexPage';
+import RaceShowPage from './library/RaceShowPage';
+import ClassIndexPage from './library/ClassIndexPage';
+import ClassShowPage from './library/ClassShowPage';
+import SpellIndexPage from './library/SpellIndexPage';
+import SpellShowPage from './library/SpellShowPage';
+import EquipmentShowPage from './library/EquipmentShowPage';
+import EquipmentIndexPage from './library/EquipmentIndexPage';
+import AdventuringGearIndexPage from './library/AdventuringGearIndexPage';
+import MountVehicleIndexPage from './library/MountVehicleIndexPage';
+import ToolIndexPage from './library/ToolIndexPage';
+import WeaponIndexPage from './library/WeaponIndexPage';
+import ArmorIndexPage from './library/ArmorIndexPage';
+import ConditionIndexPage from './library/ConditionIndexPage';
 
-import { CharacterIndexPage } from './character/pages/CharacterIndexPage';
-import { CharacterShowPage } from './character/pages/CharacterShowPage';
+import CharacterIndexPage from './character/pages/CharacterIndexPage';
+import CharacterShowPage from './character/pages/CharacterShowPage';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -44,23 +44,14 @@ const App = () => {
 
   const getUser = useCallback(() => {
     User.current().then(data => {
-      if (typeof data.id !== "number") {
-        setCurrentUser(null);
-        setIsLoading(false);
-      } else {
-        setCurrentUser(data);
-        setIsLoading(false);
-      };
+      typeof data.id !== "number" ? setCurrentUser(null) : setCurrentUser(data);
+      setIsLoading(false);
     });
   }, []);
 
-  const destroySession = () => {
-    Session.destroy().then(setCurrentUser(null));
-  };
+  const destroySession = () => Session.destroy().then(setCurrentUser(null));
 
-  useEffect(() => {
-    getUser();
-  }, [getUser]);
+  useEffect(() => getUser(), [getUser]);
   
   if(isLoading) {
     return(
@@ -112,7 +103,7 @@ const App = () => {
             render={routeProps => (
               <SchedulerPage {...routeProps} currentUser={currentUser} />
             )}
-          />
+        />
           <Route 
             path="/sign_in"
             render={routeProps => (

@@ -1,6 +1,6 @@
-import { baseUrl } from "../config";
+import baseUrl from "../config";
 
-export const Session = {
+const Session = {
     // Create session
     create(params) {
       return fetch(`${baseUrl}/session`, {
@@ -20,4 +20,6 @@ export const Session = {
       }).then(res => res.json());
     }
   };
+  
+  export default Session;
   

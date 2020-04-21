@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -11,7 +11,7 @@ const getSpells = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/spells");
 };
 
-export const SpellIndexPage = () => {
+const SpellIndexPage = () => {
     const [spells, setSpells] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -241,3 +241,5 @@ export const SpellIndexPage = () => {
         </BackgroundImage>
     );
 };
+
+export default SpellIndexPage;

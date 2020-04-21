@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { Character } from '../../api/character';
-import { FloatingActionButton } from './FloatingActionButton';
+import Character from '../../api/character';
+import FloatingActionButton from './FloatingActionButton';
 import { FormStyle, FormContent } from '../styles/FormStyle';
-import { FlexBox } from '../styles/FlexBox';
+import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
 import { Backdrop, Button, FormControl, Input, InputLabel, Modal } from '@material-ui/core';
@@ -17,7 +17,7 @@ Fade.propTypes = {
     onExited: PropTypes.func,
 };
 
-export const CharacterNew = props => {
+const CharacterNew = props => {
     const [errors, setErrors] = useState([]);
     const [open, setOpen] = useState(false);
     const { currentUser, welcome } = props;
@@ -295,3 +295,5 @@ export const CharacterNew = props => {
         
     );
 };
+
+export default CharacterNew;

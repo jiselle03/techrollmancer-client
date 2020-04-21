@@ -1,27 +1,23 @@
 import 'date-fns';
 import React, { useState, useEffect } from 'react';
 
-import { utils } from '../js/utils';
-import { Game } from '../../api/game';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
-import { FlexBox } from '../styles/FlexBox';
+import Utils from '../js/utils';
+import Game from '../../api/game';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
+import FlexBox from '../styles/FlexBox';
 import { FormContent } from '../styles/FormStyle';
 
 import { Button, Card, FormControl, Grid, Input, InputLabel, useMediaQuery } from '@material-ui/core';
+import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
 
-export const SchedulerPage = props => {
+const SchedulerPage = props => {
     const [games, setGames] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     const { currentUser } = props;
-    const { formatDate } = utils;
+    const { formatDate } = Utils;
     const laptop = useMediaQuery('(min-width:1280px)');
 
     const currentDate = formatDate(new Date());
@@ -197,3 +193,5 @@ export const SchedulerPage = props => {
         </BackgroundImage>
     );
 };
+
+export default SchedulerPage;

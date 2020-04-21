@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
     return (
         <BackgroundImage
             image={require('../../assets/d20.png')}
@@ -17,3 +17,5 @@ export const NotFoundPage = () => {
         </BackgroundImage>
     );
 };
+
+export default NotFoundPage;

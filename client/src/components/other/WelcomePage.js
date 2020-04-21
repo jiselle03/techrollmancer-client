@@ -3,27 +3,27 @@ import { Link } from 'react-router-dom';
 
 import { store } from 'react-notifications-component';
 
-import { utils } from '../js/utils.js';
-import { Game } from '../../api/game';
-import { CharacterNew } from '../character/CharacterNew';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import Utils from '../js/utils';
+import Game from '../../api/game';
+import CharacterNew from '../character/CharacterNew';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 import { CardStyle } from '../styles/CardStyle';
 import { FadeStyle } from '../styles/FadeStyle';
-import { FlexBox } from '../styles/FlexBox';
+import FlexBox from '../styles/FlexBox';
 
 import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
 
-export const WelcomePage = () => {
+const WelcomePage = () => {
     const [open, setOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
     
-    const { formatDate } = utils;
+    const { formatDate, roll } = Utils;
 
     let currentRoll = 0;
     const handleOpen = sides => {
         setOpen(true);
-        currentRoll = utils.roll(sides);
+        currentRoll = roll(sides);
         setRolls([...rolls, currentRoll]);
     };
 
@@ -200,3 +200,5 @@ export const WelcomePage = () => {
     );
     
 };
+
+export default WelcomePage;

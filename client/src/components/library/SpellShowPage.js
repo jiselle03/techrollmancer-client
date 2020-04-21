@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -10,7 +10,7 @@ const getSpell = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
 };
 
-export const SpellShowPage = props => {
+const SpellShowPage = props => {
     const [spell, setSpell] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -56,3 +56,5 @@ export const SpellShowPage = props => {
         </BackgroundImage>
     );
 };
+
+export default SpellShowPage;

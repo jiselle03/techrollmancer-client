@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const BackgroundImage = props => {
+const BackgroundImage = props => {
     const { children, image, size, position, light } = props;
 
     return(
@@ -22,3 +22,5 @@ export const BackgroundImage = props => {
         </div>
     );
 };
+
+export default BackgroundImage;

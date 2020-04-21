@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
 
-import { Character } from '../../../api/character';
-import { CharacterStats } from '../CharacterStats';
-import { CharacterSpells } from '../CharacterSpells';
-import { CharacterInventory } from '../CharacterInventory';
-import { CharacterFeatures } from '../CharacterFeatures';
-import { CharacterTraits } from '../CharacterTraits';
-import { CharacterJournal } from '../CharacterJournal';
-import { BackgroundImage } from '../../styles/BackgroundImage';
+import Character from '../../../api/character';
+import CharacterStats from '../CharacterStats';
+import CharacterSpells from '../CharacterSpells';
+import CharacterInventory from '../CharacterInventory';
+import CharacterFeatures from '../CharacterFeatures';
+import CharacterTraits from '../CharacterTraits';
+import CharacterJournal from '../CharacterJournal';
+import BackgroundImage from '../../styles/BackgroundImage';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <Typography
-        component="div"
-        role="tabpanel"
-        hidden={value !== index}
-        id={`wrapped-tabpanel-${index}`}
-        aria-labelledby={`wrapped-tab-${index}`}
-        {...other}
-      >
-        {value === index && <Box p={3}>{children}</Box>}
-      </Typography>
-    );
-  }
-  
+const TabPanel = props => {
+  const { children, value, index, ...other } = props;
 
-export const CharacterShowPage = props => {
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`wrapped-tabpanel-${index}`}
+      aria-labelledby={`wrapped-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box p={3}>{children}</Box>}
+    </Typography>
+  );
+};
+
+const CharacterShowPage = props => {
     const [value, setValue] = useState(0);
     const [character, setCharacter] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -123,3 +122,5 @@ export const CharacterShowPage = props => {
       </BackgroundImage>
     );
 };
+
+export default CharacterShowPage;

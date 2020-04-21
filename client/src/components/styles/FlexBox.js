@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FlexBox = props => {
+const FlexBox = props => {
     const { children, direction, justifyContent, alignItems, margin } = props;
 
     return(
@@ -17,3 +17,5 @@ export const FlexBox = props => {
         </div>
     );
 };
+
+export default FlexBox;

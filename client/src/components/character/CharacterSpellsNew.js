@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { baseUrl } from '../../config';
-import { SpellListItem } from './SpellListItem';
-import { FloatingActionButton } from './FloatingActionButton';
+import baseUrl from '../../config';
+import SpellListItem from './SpellListItem';
+import FloatingActionButton from './FloatingActionButton';
 import { FormStyle } from '../styles/FormStyle';
-import { FlexBox } from '../styles/FlexBox';
+import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
-
 import PropTypes from 'prop-types';
 
 Fade.propTypes = {
@@ -19,7 +18,7 @@ Fade.propTypes = {
     onExited: PropTypes.func,
 };
 
-export const CharacterSpellsNew = props => {
+const CharacterSpellsNew = props => {
     const [spells, setSpells] = useState([]);
     const [open, setOpen] = useState(false);
     const [newSpells, setNewSpells] = useState([]);
@@ -297,3 +296,5 @@ export const CharacterSpellsNew = props => {
         
     );
 };
+
+export default CharacterSpellsNew;

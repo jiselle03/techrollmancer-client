@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const TableStyle = props => {
+const TableStyle = props => {
     const { children, margin, width } = props;
 
     return(
@@ -14,3 +14,5 @@ export const TableStyle = props => {
         </div>
     );
 };
+
+export default TableStyle;

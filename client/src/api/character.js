@@ -1,6 +1,6 @@
-import { baseUrl } from "../config";
+import baseUrl from "../config";
 
-export const Character = {
+const Character = {
     // Fetch all characters
     all() {
       return fetch(`${baseUrl}/characters`, {
@@ -43,4 +43,6 @@ export const Character = {
       }).then(res => res.json());
     }
   };
+  
+  export default Character;
   

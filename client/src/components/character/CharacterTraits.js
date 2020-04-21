@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import { baseUrl } from '../../config';
-import { Character } from '../../api/character';
-import { FlexBox } from '../styles/FlexBox';
+import baseUrl from '../../config';
+import Character from '../../api/character';
+import FlexBox from '../styles/FlexBox';
 
-import Card from '@material-ui/core/Card';
+import { Card } from '@material-ui/core';
 
-export const CharacterTraits = props => {
+const CharacterTraits = props => {
     const [editProfile, setEditProfile] = useState(false);
     const [editPhoto, setEditPhoto] = useState(false);
     const [editPersonality, setEditPersonality] = useState(false);
@@ -448,3 +448,5 @@ export const CharacterTraits = props => {
         </>
     );
 };
+
+export default CharacterTraits;

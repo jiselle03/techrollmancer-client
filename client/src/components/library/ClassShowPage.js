@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import { utils } from '../js/utils';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
-import { TableStyle } from '../styles/TableStyle';
+import Utils from '../js/utils';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
+import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ const getClass = slug => {
     return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
 };
 
-export const ClassShowPage = props => {
+const ClassShowPage = props => {
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -152,14 +152,14 @@ export const ClassShowPage = props => {
                 </div>
                 
                 <p dangerouslySetInnerHTML={{
-                    __html: utils.getBlurb(desc)
+                    __html: Utils.getBlurb(desc)
                 }}></p>
                 
                 <h2>
                     Equipment
                 </h2>
                 <p dangerouslySetInnerHTML={{
-                    __html: utils.getBlurb(equipment)
+                    __html: Utils.getBlurb(equipment)
                 }}></p>
 
                 <h2>{name} Table</h2>
@@ -193,3 +193,5 @@ export const ClassShowPage = props => {
         </BackgroundImage>
     );
 };
+
+export default ClassShowPage;

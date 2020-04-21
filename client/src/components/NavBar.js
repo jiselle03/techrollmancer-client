@@ -1,35 +1,26 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { NavBarDetails } from './NavBarDetails';
+import NavBarDetails from './NavBarDetails';
 import { NavBarStyle, NavContainer, Sidebar, sidebarText } from './styles/NavStyle.js';
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Drawer from '@material-ui/core/Drawer';
-import ListItem from '@material-ui/core/ListItem';
+import { Drawer, ListItem, useMediaQuery } from '@material-ui/core';
 
-function ListItemLink(props) {
-    return <ListItem button component="a" {...props} />;
-};
+const ListItemLink = props => <ListItem button component="a" {...props} />;
 
-export const NavBar = ({ currentUser, onSignOut }, props) => {
-    const [state, setState] = useState({
-        left: false
-    });
+const NavBar = props => {
+    const { currentUser, onSignOut } = props;
+    const [open, setOpen] = useState(false);
     const history = useHistory();
 
     const laptop = useMediaQuery('(min-width:1280px)');
 
-    const toggleDrawer = (side, open) => event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        };
-        setState({ ...state, [side]: open });
+    const toggleDrawer = state => event => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
+        setOpen(state);
     };
 
-    const handleClick = () => {
-        history.push("/");
-    };
+    const handleClick = () => history.push("/");
 
     return (
         <NavContainer>
@@ -61,16 +52,16 @@ export const NavBar = ({ currentUser, onSignOut }, props) => {
                                     </span>    
                                 </div>
                         </ListItemLink>
-                        <Link to="#" onClick={toggleDrawer('left', true)} style={sidebarText}>MENU</Link>
+                        <Link to="#" onClick={toggleDrawer(true)} style={sidebarText}>MENU</Link>
                         {currentUser && (
                             <Link style={sidebarText} to="/characters">{currentUser.username.toUpperCase()}</Link>
                             )}
                     </Sidebar>
-                    <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
+                    <Drawer open={open} onClose={toggleDrawer(false)}>
                         <div
                             role="presentation"
-                            onClick={toggleDrawer('left', false)}
-                            onKeyDown={toggleDrawer('left', false)}
+                            onClick={toggleDrawer(false)}
+                            onKeyDown={toggleDrawer(false)}
                         >
                             <NavBarStyle>
                                 <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
@@ -88,3 +79,5 @@ export const NavBar = ({ currentUser, onSignOut }, props) => {
         </NavContainer>
     );
 };
+
+export default NavBar;

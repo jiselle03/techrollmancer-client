@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-import { MainStyle } from '../styles/MainStyle';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { TableStyle } from '../styles/TableStyle';
+import MainStyle from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
+import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-function createData(level, effect) {
-    return { level, effect };
-};
-
 const rows = [
-    createData(1, "Disadvantage on Ability Checks"),
-    createData(2, "Speed halved"),
-    createData(3, "Disadvantage on Attack rolls and Saving Throws"),
-    createData(4, "Hit point maximum halved"),
-    createData(5, "Speed reduced to 0"),
-    createData(6, "Death")
+    { level: 1, effect: "Disadvantage on Ability Checks" },
+    { level: 2, effect: "Speed halved"},
+    { level: 3, effect: "Disadvantage on Attack rolls and Saving Throws" },
+    { level: 4, effect: "Hit point maximum halved" },
+    { level: 5, effect: "Speed reduced to 0" },
+    { level: 6, effect: "Death" }
 ];
 
-
-export const ConditionIndexPage = () => {
+const ConditionIndexPage = () => {
     const [conditionIndex, setConditionIndex] = useState({
         isLoading: true
     });
@@ -249,3 +244,5 @@ export const ConditionIndexPage = () => {
         </BackgroundImage>
     );
 };
+
+export default ConditionIndexPage;

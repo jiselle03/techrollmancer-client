@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import { Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from '@material-ui/core';
 import { AccountCircle, Casino, Create, EventAvailable, ExitToApp, ExpandLess, ExpandMore, PersonAdd, Search } from '@material-ui/icons';
 
-function ListItemLink(props) {
+const ListItemLink = props => {
     return <ListItem button component="a" {...props} />;
 };
 
-export const NavBarDetails = ({ currentUser, onSignOut }) => {
+const NavBarDetails = ({ currentUser, onSignOut }) => {
     const handleSignOutClick = () => {
         if (typeof onSignOut === "function") {
             onSignOut();
@@ -248,3 +248,5 @@ export const NavBarDetails = ({ currentUser, onSignOut }) => {
         </>
     );
 };
+
+export default NavBarDetails;

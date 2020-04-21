@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
@@ -12,7 +12,7 @@ const getClasses = () => {
     return axios.get("http://localhost:3000/api/v1/libraries/classes");
 };
 
-export const ClassIndexPage = () => {
+const ClassIndexPage = () => {
     const [classes, setClasses] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -84,3 +84,5 @@ export const ClassIndexPage = () => {
         </BackgroundImage>
     );
 };
+
+export default ClassIndexPage;

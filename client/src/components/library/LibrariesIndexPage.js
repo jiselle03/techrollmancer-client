@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 
 import { List, ListItem, ListItemText } from '@material-ui/core';
 
-export const LibrariesIndexPage = () => {
+const LibrariesIndexPage = () => {
     return (
         <BackgroundImage 
             image={require('../../assets/d20.png')}
@@ -52,3 +52,5 @@ export const LibrariesIndexPage = () => {
         </BackgroundImage>
     );
 };
+
+export default LibrariesIndexPage;

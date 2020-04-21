@@ -1,6 +1,6 @@
-import { baseUrl } from "../config";
+import baseUrl from "../config";
 
-export const User = {
+const User = {
     current() {
         return fetch(`${baseUrl}/users/current`, {
             method: "GET",
@@ -18,3 +18,5 @@ export const User = {
         }).then(res => res.json());
     }
 };
+
+export default User;

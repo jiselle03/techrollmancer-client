@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-export const CharacterJournal = props => {
+const CharacterJournal = props => {
     const { name } = props.character;
 
     return (
@@ -217,3 +217,5 @@ export const CharacterJournal = props => {
         </>
     );
 };
+
+export default CharacterJournal;

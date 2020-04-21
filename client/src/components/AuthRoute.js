@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-export const AuthRoute = props => {
+const AuthRoute = props => {
     const { isAuthenticated, component: Component, ...routeProps } = props;
 
     if (!isAuthenticated) {
@@ -10,3 +10,5 @@ export const AuthRoute = props => {
         return <Route {...routeProps} component={Component} />;
     };
 };
+
+export default AuthRoute;

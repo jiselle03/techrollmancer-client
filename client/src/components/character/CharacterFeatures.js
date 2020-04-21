@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { FloatingActionButton } from './FloatingActionButton';
+import FloatingActionButton from './FloatingActionButton';
 
 import { Card } from '@material-ui/core';
 
-export const CharacterFeatures = props => {
+const CharacterFeatures = props => {
     const { id, name } = props.character;
 
     const handleOpenNew = () => {
@@ -114,3 +114,5 @@ export const CharacterFeatures = props => {
         </>
     );
 };
+
+export default CharacterFeatures;

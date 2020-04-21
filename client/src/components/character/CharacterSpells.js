@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { CharacterSpellsNew } from './CharacterSpellsNew';
-import { SpellDetails } from './SpellDetails';
+import CharacterSpellsNew from './CharacterSpellsNew';
+import SpellDetails from './SpellDetails';
 
 import { Card } from '@material-ui/core';
 
-export const CharacterSpells = props => {
+const CharacterSpells = props => {
     const { character, handleRefresh } = props;
     const { spells, name } = props.character;
 
@@ -149,3 +149,5 @@ export const CharacterSpells = props => {
         </>
     );
 };
+
+export default CharacterSpells;

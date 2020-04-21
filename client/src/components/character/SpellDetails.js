@@ -1,16 +1,16 @@
 import React from 'react';
 
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { ExpandMore } from '@material-ui/icons';
 
-export const SpellDetails = props => {
+const SpellDetails = props => {
     const { name, desc, higher_level, range, components, material,
             ritual, duration, concentration, casting_time, school } = props.spell;
 
     return(
         <ExpansionPanel>
             <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
+            expandIcon={<ExpandMore />}
             aria-controls="panel1a-content"
             id="panel1a-header"
             >
@@ -55,5 +55,6 @@ export const SpellDetails = props => {
             </ExpansionPanelDetails>
         </ExpansionPanel>
     );
-
 };
+
+export default SpellDetails;

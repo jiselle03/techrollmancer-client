@@ -1,4 +1,4 @@
-export const utils = {
+const Utils = {
     formatDate(date) {
         let d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -12,6 +12,7 @@ export const utils = {
       
         return [month, day, year].join('/');
     },
+    
     getBlurb(field) {
         let blurb = "";
         field.map(line => {
@@ -156,3 +157,5 @@ export const utils = {
         return abilityScore;
     }
 };
+
+export default Utils;

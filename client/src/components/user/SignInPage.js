@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Session } from '../../api/session';
-import { BackgroundImage } from '../styles/BackgroundImage';
-import { MainStyle } from '../styles/MainStyle';
+import Session from '../../api/session';
+import BackgroundImage from '../styles/BackgroundImage';
+import MainStyle from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
-import { FlexBox } from '../styles/FlexBox';
+import FlexBox from '../styles/FlexBox';
 
 import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Lock } from '@material-ui/icons';
 
-export const SignInPage = props => {
+const SignInPage = props => {
     const [errors, setErrors] = useState([]);
 
     const createSession = event => {
@@ -128,3 +128,5 @@ export const SignInPage = props => {
         </BackgroundImage>
     );
 };
+
+export default SignInPage;
