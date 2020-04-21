@@ -8,9 +8,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
-const getEquipment = slug => {
-    return axios.get(`http://localhost:3000/api/v1/libraries/equipment/${slug}`);
-};
+const getEquipment = slug => axios.get(`http://localhost:3000/api/v1/libraries/equipment/${slug}`);
 
 const EquipmentShowPage = props => {
     const [equipment, setEquipment] = useState(null);
@@ -23,11 +21,7 @@ const EquipmentShowPage = props => {
         })
     }, [props.match.params.slug]);
 
-    if (isLoading) {
-        return (
-            <CircularProgress variant="determinate" />
-        );
-    };
+    if (isLoading) return (<CircularProgress variant="determinate" />);
 
     const { armor_class, str_minimum, stealth_disadvantage, damage, speed, capacity, weight, cost, desc } = equipment;
 

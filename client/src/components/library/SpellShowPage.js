@@ -6,9 +6,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
-const getSpell = slug => {
-    return axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
-};
+const getSpell = slug => axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
 
 const SpellShowPage = props => {
     const [spell, setSpell] = useState(null);
@@ -22,11 +20,7 @@ const SpellShowPage = props => {
           });
     }, [props.match.params.slug]);
 
-    if (isLoading) {
-        return (
-            <CircularProgress variant="determinate" />
-        );
-    };
+    if (isLoading) return (<CircularProgress variant="determinate" />);
 
     return (
         <BackgroundImage

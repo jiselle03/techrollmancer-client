@@ -7,9 +7,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
-const getRace = slug => {
-    return axios.get(`http://localhost:3000/api/v1/libraries/races/${slug}`);
-};
+const getRace = slug => axios.get(`http://localhost:3000/api/v1/libraries/races/${slug}`);
 
 const RaceShowPage = props => {
     const [race, setRace] = useState(null);
@@ -41,11 +39,7 @@ const RaceShowPage = props => {
         })
     }, [props.match.params.slug]);
 
-    if (isLoading) {
-        return (
-            <CircularProgress variant="determinate" />
-        );
-    };
+    if (isLoading) return (<CircularProgress variant="determinate" />);
 
     const { slug, name, desc, asi_desc, age, alignment, 
             size, speed_desc, languages, vision, traits,

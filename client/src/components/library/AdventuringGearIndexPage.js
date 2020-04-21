@@ -7,9 +7,7 @@ import BackgroundImage from '../styles/BackgroundImage';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
-const getEquipments = () => {
-    return axios.get("http://localhost:3000/api/v1/libraries/equipment");
-};
+const getEquipments = () => axios.get("http://localhost:3000/api/v1/libraries/equipment");
 
 const AdventuringGearIndexPage = () => {
     const [equipments, setEquipments] = useState([]);
@@ -22,11 +20,7 @@ const AdventuringGearIndexPage = () => {
           });
     }, []);
 
-    if(isLoading) {
-        return(
-            <CircularProgress variant="determinate" />
-        );
-    };
+    if(isLoading) return (<CircularProgress variant="determinate" />);
 
     return (
         <BackgroundImage 

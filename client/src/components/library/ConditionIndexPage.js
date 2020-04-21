@@ -16,19 +16,11 @@ const rows = [
 ];
 
 const ConditionIndexPage = () => {
-    const [conditionIndex, setConditionIndex] = useState({
-        isLoading: true
-    });
+    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        setConditionIndex({ isLoading: false });
-    }, []);
+    useEffect(() => setIsLoading(false), []);
 
-    if(conditionIndex.isLoading) {
-        return(
-            <CircularProgress variant="determinate" />
-        );
-    };
+    if (isLoading) return (<CircularProgress variant="determinate" />);
 
     return (
         <BackgroundImage 

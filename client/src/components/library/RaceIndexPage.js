@@ -8,9 +8,7 @@ import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
 
-const getRaces = () => {
-    return axios.get("http://localhost:3000/api/v1/libraries/races");
-};
+const getRaces = () => axios.get("http://localhost:3000/api/v1/libraries/races");
 
 const RaceIndexPage = () => {
     const [races, setRaces] = useState([]);
@@ -42,11 +40,7 @@ const RaceIndexPage = () => {
           });
     }, []);
 
-    if (isLoading) {
-        return(
-        <CircularProgress variant="determinate" />
-        );
-    };
+    if (isLoading) return (<CircularProgress variant="determinate" />);
 
     return (
         <BackgroundImage 

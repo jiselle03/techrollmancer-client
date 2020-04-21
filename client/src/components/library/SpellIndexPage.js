@@ -7,9 +7,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
-const getSpells = () => {
-    return axios.get("http://localhost:3000/api/v1/libraries/spells");
-};
+const getSpells = () => axios.get("http://localhost:3000/api/v1/libraries/spells");
 
 const SpellIndexPage = () => {
     const [spells, setSpells] = useState([]);
@@ -22,11 +20,7 @@ const SpellIndexPage = () => {
           });
     }, []);
 
-    if (isLoading) {
-        return(
-            <CircularProgress variant="determinate" />
-        );
-    };
+    if (isLoading) return (<CircularProgress variant="determinate" />);
 
     return (
         <BackgroundImage 
