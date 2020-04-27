@@ -23,7 +23,7 @@ const CharacterSpellsNew = props => {
     const [open, setOpen] = useState(false);
     const [newSpells, setNewSpells] = useState([]);
 
-    const { character } = props;
+    const { character, levels } = props;
     const ids = character.spells.map(spell => spell.id);
     
     const getSpells = () => {
@@ -89,15 +89,9 @@ const CharacterSpellsNew = props => {
                 }}
                 style={{overflow:"scroll"}}
             >
-                <FlexBox
-                    alignItems="center"
-                    justifyContent="center"
-                >
+                <FlexBox alignItems="center" justifyContent="center">
                     <Fade in={open}>
-                        <FormStyle
-                            padding="0.5em"
-                        >
-
+                        <FormStyle padding="0.5em">
                             <form onSubmit={handleSubmit}>
                                 <div 
                                     style={{
@@ -131,162 +125,33 @@ const CharacterSpellsNew = props => {
                                         CANCEL
                                     </Button>
                                 </div>
-                                <FadeStyle
-                            align="left"
-                        > 
-                            <div>
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">Cantrips</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 0 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">1st Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 1 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">2nd Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 2 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">3rd Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 3 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">4th Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 4 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">5th Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 5 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">6th Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 6 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">7th Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 7 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">8th Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 8 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            <br />
-                            <FormControl component="fieldset">
-                                <FormLabel component="legend">9th Level</FormLabel>
-                                <FormGroup>
-                                {spells && (
-                                    spells.map(spell => (
-                                        spell.level_int === 9 && (
-                                            <div key={spell.id} data-id={spell.id}>
-                                                <SpellListItem onHandleChange={handleChange} characterSpells={newSpells} spell={spell} />
-                                            </div>
-                                        )
-                                    ))
-                                )}
-                                </FormGroup>
-                            </FormControl>
-                            </div>
-                                        
-                            </FadeStyle>
+                                <FadeStyle align="left"> 
+                                    <div>
+                                        {levels.map((level, index) => (
+                                            <>
+                                                <FormControl component="fieldset" key={index}>
+                                                    <FormLabel component="legend">{level}</FormLabel>
+                                                    <FormGroup>
+                                                    {spells && (
+                                                        spells.map(spell => (
+                                                            spell.level_int === index && (
+                                                                <div key={spell.id} data-id={spell.id}>
+                                                                    <SpellListItem 
+                                                                        onHandleChange={handleChange} 
+                                                                        characterSpells={newSpells} 
+                                                                        spell={spell} 
+                                                                    />
+                                                                </div>
+                                                            )
+                                                        ))
+                                                    )}
+                                                    </FormGroup>
+                                                </FormControl>
+                                                <br />
+                                            </>
+                                        ))}
+                                    </div>      
+                                </FadeStyle>
                             </form>
                         </FormStyle>
                     </Fade>

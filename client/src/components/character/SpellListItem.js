@@ -20,7 +20,12 @@ const SpellListItem = props => {
 
     return(
         <FormControlLabel
-            control={<Checkbox checked={isChecked}  onChange={handleChange} value={spell.slug} data-id={spell.id} />}
+            control={<Checkbox 
+                checked={isChecked}  
+                onChange={handleChange} 
+                value={spell.slug} 
+                data-id={spell.id} 
+            />}
             label={spell.name}
         />
     );

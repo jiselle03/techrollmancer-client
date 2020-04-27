@@ -7,7 +7,8 @@ import { Card } from '@material-ui/core';
 
 const CharacterSpells = props => {
     const { character, handleRefresh } = props;
-    const { spells, name } = props.character;
+    const { spells, name } = character;
+    const levels = ["Cantrips", "1st Level", "2nd Level", "3rd Level", "4th Level", "5th Level", "6th Level", "7th Level", "8th Level", "9th Level"];
 
     return (
         <>
@@ -15,137 +16,24 @@ const CharacterSpells = props => {
                 {name.toUpperCase()}
             </h1>
 
-            <Card className="spells">
-                <h3>Cantrips</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 0 && (
-                            <div key={index}>
+            {levels.map((level, index) => (
+                <Card className="spells">
+                    <h3>{level}</h3>
+                    {spells && spells.map((spell, i) => (
+                        spell.level_int === index && (
+                            <div key={i}>
                                 <SpellDetails spell={spell} />
                             </div>
                         )
-                    ))
-                )}
-            </Card>
+                    ))}
+                </Card>
+            ))}
 
-            <Card className="spells">
-                <h3>1st Level</h3>
-                {spells && (
-                    spells.map((spell,index) => (
-                        spell.level_int === 1 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>2nd Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 2 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>3rd Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 3 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>4th Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 4 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>5th Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 5 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>6th Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 6 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>7th Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 7 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>8th Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 8 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <Card className="spells">
-                <h3>9th Level</h3>
-                {spells && (
-                    spells.map((spell, index) => (
-                        spell.level_int === 9 && (
-                            <div key={index}>
-                                <SpellDetails spell={spell} />
-                            </div>
-                        )
-                    ))
-                )}
-            </Card>
-
-            <CharacterSpellsNew character={character} handleRefresh={handleRefresh}/>
+            <CharacterSpellsNew 
+                character={character} 
+                handleRefresh={handleRefresh}
+                levels={levels}
+            />
         </>
     );
 };

@@ -3,9 +3,9 @@ import React from 'react';
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 
-const SpellDetails = props => {
+const SpellDetails = ({ spell }) => {
     const { name, desc, higher_level, range, components, material,
-            ritual, duration, concentration, casting_time, school } = props.spell;
+            ritual, duration, concentration, casting_time, school } = spell;
 
     return(
         <ExpansionPanel>
