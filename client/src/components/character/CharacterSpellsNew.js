@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import baseUrl from '../../config';
+import Spell from '../../api/spell';
 import SpellListItem from './SpellListItem';
 import FloatingActionButton from './FloatingActionButton';
-import { FormStyle } from '../styles/FormStyle';
 import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
+import { FormStyle } from '../styles/FormStyle';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
 import PropTypes from 'prop-types';
-
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};
 
 const CharacterSpellsNew = props => {
     const [spells, setSpells] = useState([]);
@@ -26,17 +19,13 @@ const CharacterSpellsNew = props => {
     const { character, levels } = props;
     const ids = character.spells.map(spell => spell.id);
     
-    const getSpells = () => {
-        return axios.get("http://localhost:3000/api/v1/libraries/spells");
-    };
+    const getSpells = () => axios.get("http://localhost:3000/api/v1/libraries/spells");
     
     const handleOpen = () => {
         setNewSpells(ids);
         setOpen(true);
     };
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const handleClose = () => setOpen(false);
 
     const handleChange =  event => {
         event.preventDefault();
@@ -48,22 +37,14 @@ const CharacterSpellsNew = props => {
         } else {
             const filteredSpells = newSpells.filter(spellId => spellId !== parseInt(id));
             setNewSpells(filteredSpells);
-        } 
+        };
     };
 
     const handleSubmit = event => {
         event.preventDefault();
-        return fetch(`${baseUrl}/characters/${character.id}/character_spells`, {
-            credentials: "include",
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({spells: newSpells})
-        }).then(res => res.json())
+        Spell.update(character.id, newSpells)
         .then(() => {
             props.handleRefresh();
-        }).then(() => {
             setOpen(false);
         });
     };
@@ -163,3 +144,10 @@ const CharacterSpellsNew = props => {
 };
 
 export default CharacterSpellsNew;
+
+Fade.propTypes = {
+    children: PropTypes.element,
+    in: PropTypes.bool.isRequired,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
+};

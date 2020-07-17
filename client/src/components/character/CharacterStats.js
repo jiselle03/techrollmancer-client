@@ -14,16 +14,10 @@ import { Print } from '@material-ui/icons';
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 
 const CharacterStats = props => {
-  const [editHP, setEditHP] = useState(false);
-  const [editAC, setEditAC] = useState(false);
-  const [editInitiative, setEditInitiative] = useState(false);
-  const [editSpeed, setEditSpeed] = useState(false);
-  const [editStr, setEditStr] = useState(false);
-  const [editDex, setEditDex] = useState(false);
-  const [editCon, setEditCon] = useState(false);
-  const [editInt, setEditInt] = useState(false);
-  const [editWis, setEditWis] = useState(false);
-  const [editCha, setEditCha] = useState(false);
+  const [edit, setEdit] = useState({
+    hp: false, armor_class: false, initiative: false, speed: false, 
+    str: false, dex: false, con: false, int: false, wis: false, cha: false
+  });
   const [open, setOpen] = useState(false);
   const [roll, setRoll] = useState(0);
   const [modifier, setModifier] = useState(0);
@@ -34,30 +28,7 @@ const CharacterStats = props => {
   const level = Utils.getLevel(character);
 
   const handleClick = field => {
-    switch(field) {
-      case "hp":
-        return setEditHP(true);
-      case "armor_class":
-        return setEditAC(true);
-      case "initiative":
-        return setEditInitiative(true);
-      case "speed":
-        return setEditSpeed(true);
-      case "str":
-        return setEditStr(true);
-      case "dex":
-        return setEditDex(true);
-      case "con":
-        return setEditCon(true);
-      case "int":
-        return setEditInt(true);
-      case "wis":
-        return setEditWis(true);
-      case "cha":
-        return setEditCha(true);
-      default:
-        return;
-    };
+    return setEdit({...edit, [field]: true});
   };
 
   const handleBlur = (event, field) => {
@@ -67,7 +38,7 @@ const CharacterStats = props => {
       case "hp":
         Character.update(id, {hp: value})
           .then(() => {
-              setEditHP(false);
+              setEdit({...edit, hp: false});
             }).then(() => {
               handleRefresh();
             });
@@ -75,7 +46,7 @@ const CharacterStats = props => {
       case "armor_class":
         Character.update(id, {armor_class: value})
           .then(() => {
-              setEditAC(false);
+              setEdit({...edit, armor_class: false});
             }).then(() => {
               handleRefresh()
             });
@@ -83,7 +54,7 @@ const CharacterStats = props => {
       case "initiative":
         Character.update(id, {initiative: value})
           .then(() => {
-            setEditInitiative(false);
+            setEdit({...edit, initiative: false});
           }).then(() => {
             handleRefresh();
           });
@@ -91,7 +62,7 @@ const CharacterStats = props => {
       case "speed":
         Character.update(id, {speed: value})
           .then(() => {
-            setEditSpeed(false);
+            setEdit({...edit, speed: false});
           }).then(() => {
             handleRefresh();
           });
@@ -99,7 +70,7 @@ const CharacterStats = props => {
       case "str":
         Character.update(id, {str: value})
           .then(() => {
-            setEditStr(false);
+            setEdit({...edit, str: false});
           }).then(() => {
             handleRefresh();
           });
@@ -107,7 +78,7 @@ const CharacterStats = props => {
       case "dex":
         Character.update(id, {dex: value})
           .then(() => {
-            setEditDex(false);
+            setEdit({...edit, dex: false});
           }).then(() => {
             handleRefresh();
           });
@@ -115,7 +86,7 @@ const CharacterStats = props => {
       case "con":
         Character.update(id, {con: value})
           .then(() => {
-            setEditCon(false);
+            setEdit({...edit, con: false});
           }).then(() => {
             handleRefresh();
           });
@@ -123,7 +94,7 @@ const CharacterStats = props => {
       case "int":
         Character.update(id, {int: value})
           .then(() => {
-            setEditInt(false);
+            setEdit({...edit, int: false});
           }).then(() => {
             handleRefresh();
           });
@@ -131,7 +102,7 @@ const CharacterStats = props => {
       case "wis":
         Character.update(id, {wis: value})
           .then(() => {
-            setEditWis(false);
+            setEdit({...edit, wis: false});
           }).then(() => {
             handleRefresh();
           });
@@ -139,7 +110,7 @@ const CharacterStats = props => {
       case "cha":
         Character.update(id, {cha: value})
           .then(() => {
-            setEditCha(false);
+            setEdit({...edit, cha: false});
           }).then(() => {
             handleRefresh();
           });
@@ -241,21 +212,21 @@ const CharacterStats = props => {
 
           <h6 className="header">Hit Points</h6>
           <div onClick={() => handleClick("hp")} className="stat-header">
-          {editHP && (
+          {edit.hp && (
             <InputEditStats 
               onHandleBlur={handleBlur}
               field="hp" 
               step="1"
               defaultValue={hp} />
           )}
-          {!editHP && (
+          {!edit.hp && (
             <TooltipEdit field={hp} />
           )}
           </div>
 
           <h6 className="header">Armor Class</h6>
           <div onClick={() => handleClick("armor_class")} className="stat-header">
-          {editAC && (
+          {edit.armor_class && (
             <InputEditStats 
               onHandleBlur={handleBlur} 
               field="armor_class"
@@ -263,7 +234,7 @@ const CharacterStats = props => {
               defaultValue={armor_class}
             />
           )}
-          {!editAC && (
+          {!edit.armor_class && (
             <TooltipEdit field={armor_class} />
           )}
           </div>
@@ -272,7 +243,7 @@ const CharacterStats = props => {
         <Card className="stats">
         <h6 className="header">Speed</h6>
           <div onClick={() => handleClick("speed")} className="stat-header"> 
-          {editSpeed && (
+          {edit.speed && (
             <InputEditStats 
               onHandleBlur={handleBlur} 
               field="speed"
@@ -281,7 +252,7 @@ const CharacterStats = props => {
               defaultValue={speed}
             />
           )}
-          {!editSpeed && (
+          {!edit.speed && (
             <TooltipEdit field={speed} />
           )}
           </div>
@@ -294,7 +265,7 @@ const CharacterStats = props => {
             onHandleOpen={handleOpen} 
           />
           <div onClick={() => handleClick("initiative")} className="stat-header"> 
-            {editInitiative && (
+            {edit.initiative && (
               <InputEditStats 
                 onHandleBlur={handleBlur} 
                 field="initiative"
@@ -302,7 +273,7 @@ const CharacterStats = props => {
                 defaultValue={initiative}
               />
             )}
-            {!editInitiative && (
+            {!edit.initiative && (
               <TooltipEdit field={checkInitiative(initiative)} />
             )}
           </div>
@@ -328,7 +299,7 @@ const CharacterStats = props => {
                 alignItems="center"
                 className="str"
               >
-                {editStr && (
+                {edit.str && (
                   <InputEditStats 
                     onHandleBlur={handleBlur} 
                     field="str"
@@ -338,7 +309,7 @@ const CharacterStats = props => {
                     defaultValue={str} 
                   />
                 )}
-                {!editStr && (
+                {!edit.str && (
                   <>
                     <TooltipEdit field={str} />
                     <h6 className="stat-mod">{checkBaseMod(str)}</h6>
@@ -404,7 +375,7 @@ const CharacterStats = props => {
                 alignItems="center"
                 className="dex"
               >
-              {editDex && (
+              {edit.dex && (
                 <InputEditStats 
                   onHandleBlur={handleBlur} 
                   field="dex"
@@ -413,7 +384,7 @@ const CharacterStats = props => {
                   max="20"
                   defaultValue={dex} />
               )}
-              {!editDex && (
+              {!edit.dex && (
                 <>
                   <TooltipEdit field={dex} />
                   <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
@@ -516,7 +487,7 @@ const CharacterStats = props => {
                 alignItems="center"
                 className="con"
               >
-              {editCon && (
+              {edit.con && (
                 <InputEditStats 
                   onHandleBlur={handleBlur} 
                   field="con"
@@ -525,7 +496,7 @@ const CharacterStats = props => {
                   max="20"
                   defaultValue={con} />
               )}
-              {!editCon && (
+              {!edit.con && (
                 <>
                   <TooltipEdit field={con} />
                   <h6 className="stat-mod">{checkBaseMod(con)}</h6>
@@ -574,7 +545,7 @@ const CharacterStats = props => {
                 alignItems="center"
                 className="int"
               >
-              {editInt && (
+              {edit.int && (
                 <InputEditStats 
                   onHandleBlur={handleBlur} 
                   field="int"
@@ -584,7 +555,7 @@ const CharacterStats = props => {
                   defaultValue={int} 
                 />
               )}
-              {!editInt && (
+              {!edit.int && (
                 <>
                   <TooltipEdit field={int} />
                   <h6 className="stat-mod">{checkBaseMod(int)}</h6>
@@ -723,7 +694,7 @@ const CharacterStats = props => {
                 alignItems="center"
                 className="wis"
               >
-              {editWis && (
+              {edit.wis && (
                 <InputEditStats 
                   onHandleBlur={handleBlur} 
                   field="wis"
@@ -733,7 +704,7 @@ const CharacterStats = props => {
                   defaultValue={wis} 
                 />
               )}
-              {!editWis && (
+              {!edit.wis && (
                 <>
                   <TooltipEdit field={wis} />
                   <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
@@ -872,7 +843,7 @@ const CharacterStats = props => {
                 alignItems="center"
                 className="cha"
               >
-              {editCha && (
+              {edit.cha && (
                 <InputEditStats 
                   onHandleBlur={handleBlur} 
                   field="cha"
@@ -882,7 +853,7 @@ const CharacterStats = props => {
                   defaultValue={cha} 
                 />
               )}
-              {!editCha && (
+              {!edit.cha && (
                 < >
                   <TooltipEdit field={cha} />
                   <h6 className="stat-mod">{checkBaseMod(cha)}</h6>

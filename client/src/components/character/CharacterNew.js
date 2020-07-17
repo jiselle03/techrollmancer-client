@@ -52,7 +52,6 @@ const CharacterNew = props => {
             if (!data.errors) {
                 handleClose();
                 props.history.push(`/characters/${data.id}`);
-                
             } else {
                 setErrors(data.errors);
             };
