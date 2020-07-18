@@ -7,15 +7,11 @@ import FlexBox from '../styles/FlexBox';
 import { Card } from '@material-ui/core';
 
 const CharacterTraits = props => {
-    const [editProfile, setEditProfile] = useState(false);
-    const [editPhoto, setEditPhoto] = useState(false);
-    const [editPersonality, setEditPersonality] = useState(false);
-    const [editIdeals, setEditIdeals] = useState(false);
-    const [editBonds, setEditBonds] = useState(false);
-    const [editFlaws, setEditFlaws] = useState(false);
-    const [editBackground, setEditBackground] = useState(false);
-    const [editDescription, setEditDescription] = useState(false);
-    const [editBackstory, setEditBackstory] = useState(false);
+    const [edit, setEdit] = useState({
+        profile: false, photo: false, personality_traits: false, 
+        ideals: false, bonds: false, flaws: false, 
+        background: false, description: false, backstory: false
+    });
 
     const { handleRefresh } = props;
     const { id, name, gender, race, photo_url,
@@ -25,28 +21,7 @@ const CharacterTraits = props => {
             background_type, background_desc } = props.character.trait;
 
     const handleClick = field => {
-        switch(field) {
-            case "photo":
-                return setEditPhoto(true);
-            case "profile":
-                return setEditProfile(true);
-            case "personality_traits":
-                return setEditPersonality(true);
-            case "ideals":
-                return setEditIdeals(true);
-            case "bonds":
-                return setEditBonds(true);
-            case "flaws":
-                return setEditFlaws(true);
-            case "background":
-                return setEditBackground(true);
-            case "description":
-                return setEditDescription(true);
-            case "backstory":
-                return setEditBackstory(true);
-            default:
-                return;
-        };
+        return setEdit({...edit, [field]: true});
     }; 
 
     const handleBlurProfile = event => {
@@ -64,7 +39,7 @@ const CharacterTraits = props => {
             class_3: fd.get("class_3"),
             class_3_level: fd.get("class_3_level")
         }).then(data => {
-            setEditProfile(false);
+            setEdit({...edit, profile: false});
         }).then(() => {
             handleRefresh();
         });
@@ -75,7 +50,7 @@ const CharacterTraits = props => {
 
         Character.update(id, {photo_url: currentTarget.value})
             .then(() => {
-                setEditPhoto(false);
+                setEdit({...edit, photo: false});
             }).then(() => {
                 handleRefresh();
             });
@@ -83,47 +58,25 @@ const CharacterTraits = props => {
 
     const handleBlur = (event, field) => {
         const { value } = event.currentTarget;
-
-        switch(field) {
-            case "personality_traits":
-                setEditPersonality(false);
-                break;
-            case "ideals":
-                setEditIdeals(false);
-                break;
-            case "bonds":
-                setEditBonds(false);
-                break;
-            case "flaws":
-                setEditFlaws(false);
-                break;
-            case "background_type":
-                setEditBackground(false);
-                break;
-            case "background_desc":
-                setEditBackground(false);
-                break;
-            case "description":
-                setEditDescription(false);
-                break;
-            case "backstory":
-                setEditBackstory(false);
-                break;
-            default:
-                return;
-        };
-
+        
         fetch(`${baseUrl}/characters/${id}/traits/${trait.id}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-              body: JSON.stringify({[field]: value})
-            }).then(res => res.json())
-            .then(() => {
-              props.handleRefresh();
+            body: JSON.stringify({[field]: value})
+        }).then(res => res.json())
+        .then(() => {
+            props.handleRefresh();
         });
+
+        if (field === "background_desc" || field === "background_type") {
+            return setEdit({...edit, background: false});
+        } else {
+            return setEdit({...edit, [field]: false});
+        };
+            
     };
 
     return (
@@ -135,7 +88,7 @@ const CharacterTraits = props => {
             <div className="character-sheet">
                 <Card className="traits-container">
                     <h6 className="header">Photo</h6>
-                    {!editPhoto && (
+                    {!edit.photo && (
                         <div
                             style={{
                             backgroundImage: `url(${photo_url})`,
@@ -148,7 +101,7 @@ const CharacterTraits = props => {
                         >
                         </div>
                     )}
-                    {editPhoto && (
+                    {edit.photo && (
                         <div className="photo-edit">
                             <label htmlFor="photo_url" className="photo">Photo URL</label>
                             <input 
@@ -166,7 +119,7 @@ const CharacterTraits = props => {
                 <Card className="traits-container">
                     <h6 className="header">Profile</h6>
                     <div className="trait large" onClick={() => handleClick("profile")}>
-                        {!editProfile && (
+                        {!edit.profile && (
                             <>
                                 <p className="profile">Name</p>
                                 <h6 className="profile">{name}</h6>
@@ -200,7 +153,7 @@ const CharacterTraits = props => {
                             </>
                         )}
 
-                        {editProfile && (
+                        {edit.profile && (
                             <form onBlur={event => handleBlurProfile(event)}>
                                 <label htmlFor="name" className="traits">Name</label>
                                 <input 
@@ -291,7 +244,7 @@ const CharacterTraits = props => {
 
                 <Card className="traits">
                     <h6 className="header">Personality Traits</h6>
-                    {!editPersonality && (
+                    {!edit.personality_traits && (
                         <p 
                             className="trait"
                             onClick={() => handleClick("personality_traits")}
@@ -299,7 +252,7 @@ const CharacterTraits = props => {
                             {personality_traits}
                         </p>
                     )}
-                    {editPersonality && (
+                    {edit.personality_traits && (
                         <textarea 
                             rows="5"
                             placeholder="Personality Traits"
@@ -310,7 +263,7 @@ const CharacterTraits = props => {
                     )}
 
                     <h6 className="header">Ideals</h6>
-                    {!editIdeals && (
+                    {!edit.ideals && (
                         <p 
                             onClick={() => handleClick("ideals")}
                             className="trait"
@@ -318,7 +271,7 @@ const CharacterTraits = props => {
                             {ideals}
                         </p>
                     )}
-                    {editIdeals && (
+                    {edit.ideals && (
                         <textarea 
                             rows="5"
                             placeholder="Ideals"
@@ -329,7 +282,7 @@ const CharacterTraits = props => {
                     )}
 
                     <h6 className="header">Bonds</h6>
-                    {!editBonds && (
+                    {!edit.bonds && (
                         <p 
                             onClick={() => handleClick("bonds")}
                             className="trait"
@@ -337,7 +290,7 @@ const CharacterTraits = props => {
                            {bonds}
                         </p>
                     )}
-                    {editBonds && (
+                    {edit.bonds && (
                         <textarea 
                             rows="5"
                             placeholder="Bonds"
@@ -348,7 +301,7 @@ const CharacterTraits = props => {
                     )}
 
                     <h6 className="header">Flaws</h6>
-                    {!editFlaws && (
+                    {!edit.flaws && (
                         <p 
                             onClick={() => handleClick("flaws")}
                             className="trait"
@@ -356,7 +309,7 @@ const CharacterTraits = props => {
                                 {flaws}
                         </p>
                     )}
-                    {editFlaws && (
+                    {edit.flaws && (
                         <textarea 
                             rows="5"
                             placeholder="Flaws"
@@ -369,7 +322,7 @@ const CharacterTraits = props => {
 
                 <Card className="traits">
                     <h6 className="header">Background</h6>
-                    {!editBackground && (
+                    {!edit.background && (
                         <div 
                             onClick={() => handleClick("background")}
                             className="trait"
@@ -382,7 +335,7 @@ const CharacterTraits = props => {
                             </p>
                         </div>
                     )}
-                    {editBackground && (
+                    {edit.background && (
                         <div>
                             <input
                                 type="text"
@@ -404,7 +357,7 @@ const CharacterTraits = props => {
 
                 <Card className="traits">
                     <h6 className="header">Description</h6>
-                    {!editDescription && (
+                    {!edit.description && (
                         <p 
                             onClick={() => handleClick("description")}
                             className="trait"
@@ -412,7 +365,7 @@ const CharacterTraits = props => {
                             {description}
                         </p>
                     )}
-                    {editDescription && (
+                    {edit.description && (
                         <textarea 
                             rows="5"
                             placeholder="Description"
@@ -425,7 +378,7 @@ const CharacterTraits = props => {
 
                 <Card className="traits">
                     <h6 className="header">Backstory</h6>
-                    {!editBackstory && (
+                    {!edit.backstory && (
                         <p 
                             onClick={() => handleClick("backstory")}
                             className="trait"
@@ -433,7 +386,7 @@ const CharacterTraits = props => {
                             {backstory}
                         </p>
                     )}
-                    {editBackstory && (
+                    {edit.backstory && (
                         <textarea 
                             rows="10"
                             placeholder="Backstory"
