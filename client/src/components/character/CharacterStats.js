@@ -24,7 +24,7 @@ const CharacterStats = props => {
   const [ability, setAbility] = useState(null);
 
   const { character, handleRefresh } = props;
-  const { id, name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha, proficiency } = character;
+  const { id, name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha, proficiency } = props.character;
   const level = Utils.getLevel(character);
 
   const handleClick = field => {
