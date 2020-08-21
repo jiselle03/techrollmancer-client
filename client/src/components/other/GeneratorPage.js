@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 import Utils from '../js/utils';
 import { RandomCharacter } from '../js/generator.js';
-import { PointBuyCalculator } from './PointBuyCalculator';
+import PointBuyCalculator from './PointBuyCalculator';
+import CharacterNew from '../character/CharacterNew';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 import FlexBox from '../styles/FlexBox';
@@ -22,33 +23,29 @@ Fade.propTypes = {
 const GeneratorPage = () => {
     const [openQR, setOpenQR] = useState(false);
     const [character, setCharacter] = useState({});
+    const [save, setSave] = useState(false);
 
     const laptop = useMediaQuery('(min-width:1280px)');
 
-    const handleOpenQR = () => {
-        setOpenQR(true);
+    const quickRoll = () => {
+        handleOpenQR();
+        setCharacter(new RandomCharacter());
     };
+    const handleOpenQR = () => setOpenQR(true);
     const handleCloseQR = () => {
         setCharacter({});
         setOpenQR(false);
     };
-    const generate = () => {
-        setCharacter(new RandomCharacter());
-    };
-    const quickRoll = () => {
-        handleOpenQR();
-        generate();
+    const handleSaveQR = () => {
+        setOpenQR(false);
+        setSave(true);
     };
 
     const [openD6, setOpenD6] = useState(false);
     const [rolls, setRolls] = useState([]);
 
-    const handleOpenD6 = () => {
-        setOpenD6(true);
-    };
-    const handleCloseD6 = () => {
-        setOpenD6(false);
-    };
+    const handleOpenD6 = () => setOpenD6(true);
+    const handleCloseD6 = () => setOpenD6(false);
     
     let currentRoll = 0;
     const rollD6 = () => { 
@@ -173,7 +170,7 @@ const GeneratorPage = () => {
                         </Button>
                     </FlexBox>
 
-                    
+                    {!save && (
                     <Modal
                         open={openQR}
                         onClose={handleCloseQR}
@@ -213,22 +210,36 @@ const GeneratorPage = () => {
                                         ABILITY SCORES
                                     </h3>
                                     
-                                    <h4>
-                                        {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
-                                    </h4>
+                                        <h4>
+                                            {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
+                                        </h4>
 
-                                    <Button 
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleCloseQR}
-                                        className="button"
-                                    >
-                                        EXIT
-                                    </Button>
-                                </FadeStyle>
-                            </Fade>
-                        </FlexBox>
-                    </Modal>
+                                        <Button 
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleSaveQR}
+                                            className="button"
+                                        >
+                                            SAVE
+                                        </Button>
+
+                                        <Button 
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleCloseQR}
+                                            className="button"
+                                        >
+                                            EXIT
+                                        </Button>
+                                    </FadeStyle>
+                                </Fade>
+                            </FlexBox>
+                        </Modal>
+                    )}
+
+                    {save && (
+                        <CharacterNew open stats={character} />
+                    )}
 
                         <Modal
                             open={openD6}
@@ -342,7 +353,7 @@ const GeneratorPage = () => {
                                 </Fade>
                             </FlexBox>    
                         </Modal>
-                </Card>
+                    </Card>
                 </Center>
 
                 <p>
