@@ -16,7 +16,8 @@ export const CardStyle = props => {
                 backgroundRepeat: "no-repeat",
                 backgroundImage: `url(${image})`,
                 backgroundSize: imageSize || "100%",
-                backgroundPositionX: imagePosition
+                backgroundPositionX: imagePosition,
+                cursor: "pointer"
             }}
         >
             {children}
