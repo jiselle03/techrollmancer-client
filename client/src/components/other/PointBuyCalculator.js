@@ -13,10 +13,7 @@ const PointBuyCalculator = () => {
     const [stats, setStats] = useState({ str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8 });
     let [remainingPoints, setRemainingPoints] = useState(27);
 
-    const handleChange = event => {
-        console.log(event.target.value)
-        setRace(event.target.value);
-    };
+    const handleChange = event => setRace(event.target.value);
 
     const handleInputChange = (event, field) => {
         const value = parseInt(event.target.value);
@@ -109,8 +106,6 @@ const PointBuyCalculator = () => {
     };
 
     useEffect(() => {
-        console.log("race", race)
-        console.log(raceBonus[race])
         setBonus(raceBonus[race]);
     }, [race, remainingPoints]);
 
