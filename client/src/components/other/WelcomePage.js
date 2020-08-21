@@ -15,22 +15,25 @@ import FlexBox from '../styles/FlexBox';
 import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
 
 const WelcomePage = () => {
-    const [open, setOpen] = useState(false);
+    const [rollOpen, setRollOpen] = useState(false);
+    const [newOpen, setNewOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
     
     const { formatDate, roll } = Utils;
 
     let currentRoll = 0;
-    const handleOpen = sides => {
-        setOpen(true);
+    const handleRollOpen = sides => {
+        setRollOpen(true);
         currentRoll = roll(sides);
         setRolls([...rolls, currentRoll]);
     };
-
-    const handleClose = () => {
+    const handleRollClose = () => {
         setRolls([]);
-        setOpen(false);
+        setRollOpen(false);
     };
+
+    const handleNewOpen = () => setNewOpen(true);
+    const handleNewClose = () => setNewOpen(false);
 
     const gamesToday = [];
     const currentDate = formatDate(new Date());
@@ -79,7 +82,7 @@ const WelcomePage = () => {
 
                 <h2>Quick Rolls</h2>
                 <Grid container>
-                    <div onClick={() => handleOpen(4)}>
+                    <div onClick={() => handleRollOpen(4)}>
                         <CardStyle
                             image={require(`../../assets/dice/d4.png`)}
                             imagePosition="50%"
@@ -90,7 +93,7 @@ const WelcomePage = () => {
                         </CardStyle>
                     </div>
 
-                    <div onClick={() => handleOpen(4)}>
+                    <div onClick={() => handleRollOpen(4)}>
                         <CardStyle
                             image={require(`../../assets/dice/d6.png`)}
                             imagePosition="50%"
@@ -105,7 +108,7 @@ const WelcomePage = () => {
                         </CardStyle>
                     </div>
 
-                    <div onClick={() => handleOpen(8)}>
+                    <div onClick={() => handleRollOpen(8)}>
                         <CardStyle
                             image={require(`../../assets/dice/d8.png`)}
                             imagePosition="50%"
@@ -116,7 +119,7 @@ const WelcomePage = () => {
                         </CardStyle>
                     </div>
 
-                    <div onClick={() => handleOpen(10)}>
+                    <div onClick={() => handleRollOpen(10)}>
                         <CardStyle
                             image={require(`../../assets/dice/d10.png`)}
                             imagePosition="50%"
@@ -127,7 +130,7 @@ const WelcomePage = () => {
                         </CardStyle>
                     </div>
 
-                    <div onClick={() => handleOpen(12)}>
+                    <div onClick={() => handleRollOpen(12)}>
                         <CardStyle
                             image={require(`../../assets/dice/d12.png`)}
                             imagePosition="50%"
@@ -138,7 +141,7 @@ const WelcomePage = () => {
                         </CardStyle>
                     </div>
 
-                    <div onClick={() => handleOpen(20)}>
+                    <div onClick={() => handleRollOpen(20)}>
                         <CardStyle
                             image={require(`../../assets/dice/d20.png`)}
                             imagePosition="50%"
@@ -151,8 +154,8 @@ const WelcomePage = () => {
                 </Grid>
 
                 <Modal
-                    open={open}
-                    onClose={handleClose}
+                    open={rollOpen}
+                    onClose={handleRollClose}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
                     BackdropProps={{
@@ -164,14 +167,14 @@ const WelcomePage = () => {
                         justifyContent="center"
                         margin="20vh 0"
                     >
-                        <Fade in={open}>
+                        <Fade in={rollOpen}>
                             <FadeStyle>
                                 <h3>You rolled:</h3>
                                 <h2>{rolls}</h2>
                                 <Button 
                                     variant="contained"
                                     color="secondary"
-                                    onClick={handleClose}
+                                    onClick={handleRollClose}
                                     className="button"
                                 >
                                     EXIT
@@ -184,16 +187,16 @@ const WelcomePage = () => {
                 <h2>Get Started</h2>
                 <h6>Build a Character</h6>
                 <Link to="/generator">
-                <Button 
-                    variant="contained" 
-                    color="secondary"
-                    className="button"
-                >
-                    Guide Me
-                </Button>
+                    <Button 
+                        variant="contained" 
+                        color="secondary"
+                        className="button"
+                    >
+                        Guide Me
+                    </Button>
                 </Link>
-                
-                <CharacterNew welcome />
+
+                <CharacterNew type="welcome" />
 
             </MainStyle>
         </BackgroundImage>
