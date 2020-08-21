@@ -6,7 +6,7 @@ import TableStyle from '../styles/TableStyle';
 
 import { FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
-export const PointBuyCalculator = () => {
+const PointBuyCalculator = () => {
     const { getBaseMod } = Utils;
     const [race, setRace] = useState("default");
     const [bonus, setBonus] = useState(raceBonus.default);
@@ -263,3 +263,5 @@ export const PointBuyCalculator = () => {
         </TableStyle>
     );
 };
+
+export default PointBuyCalculator;
