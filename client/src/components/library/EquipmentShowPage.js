@@ -8,7 +8,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
-const getEquipment = slug => axios.get(`http://localhost:3000/api/v1/libraries/equipment/${slug}`);
+const getEquipment = slug => axios.get(`http://techrollmancer-server.herokuapp.com/api/v1/libraries/equipment/${slug}`);
 
 const EquipmentShowPage = props => {
     const [equipment, setEquipment] = useState(null);

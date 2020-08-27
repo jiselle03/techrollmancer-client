@@ -9,7 +9,7 @@ import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
 
-const getRaces = () => axios.get("http://localhost:3000/api/v1/libraries/races");
+const getRaces = () => axios.get("http://techrollmancer-server.herokuapp.com/api/v1/libraries/races");
 
 const RaceIndexPage = () => {
     const [races, setRaces] = useState([]);

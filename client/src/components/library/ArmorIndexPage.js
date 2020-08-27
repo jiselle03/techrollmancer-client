@@ -7,7 +7,7 @@ import BackgroundImage from '../styles/BackgroundImage';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
-const getEquipments = () => axios.get("http://localhost:3000/api/v1/libraries/equipment");
+const getEquipments = () => axios.get("http://techrollmancer-server.herokuapp.com/api/v1/libraries/equipment");
 
 const ArmorIndexPage = () => {
     const [equipments, setEquipments] = useState([]);

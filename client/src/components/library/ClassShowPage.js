@@ -9,7 +9,7 @@ import TableStyle from '../styles/TableStyle';
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const getClass = slug => {
-    return axios.get(`http://localhost:3000/api/v1/libraries/classes/${slug}`);
+    return axios.get(`http://techrollmancer-server.herokuapp.com/api/v1/libraries/classes/${slug}`);
 };
 
 const ClassShowPage = props => {
@@ -81,7 +81,7 @@ const ClassShowPage = props => {
         let slug = "";
         nodes.forEach((node) => {
             slug = node.innerText.split(" ").join("-");
-            axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`).then(spell => {
+            axios.get(`http://techrollmancer-server.herokuapp.com/api/v1/libraries/spells/${slug}`).then(spell => {
                 return node.outerHTML=`
                     <div class="tooltip">${spell.data.name}
                         <span class="tooltiptext">

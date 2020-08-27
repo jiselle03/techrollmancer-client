@@ -6,7 +6,7 @@ import { FormStyle, FormContent } from '../styles/FormStyle';
 import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
-import { Backdrop, Button, FormControl, Input, InputLabel, Modal, TextField } from '@material-ui/core';
+import { Backdrop, Button, FormControl, Modal, TextField } from '@material-ui/core';
 
 import PropTypes from 'prop-types';
 
@@ -27,7 +27,7 @@ const CharacterNew = props => {
 
     useEffect(() => {
         props.open ? setOpen(true) : setOpen(false);
-    }, [])
+    }, []);
 
     const createCharacter = event => {
         event.preventDefault();

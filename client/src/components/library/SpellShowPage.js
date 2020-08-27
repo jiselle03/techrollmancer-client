@@ -6,7 +6,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
-const getSpell = slug => axios.get(`http://localhost:3000/api/v1/libraries/spells/${slug}`);
+const getSpell = slug => axios.get(`http://techrollmancer-server.herokuapp.com/api/v1/libraries/spells/${slug}`);
 
 const SpellShowPage = props => {
     const [spell, setSpell] = useState(null);
