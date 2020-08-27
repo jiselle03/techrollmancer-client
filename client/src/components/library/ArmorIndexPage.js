@@ -24,7 +24,7 @@ const ArmorIndexPage = () => {
 
     return (
         <BackgroundImage 
-            image={require('../../assets/d20.png')}
+            image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
             <MainStyle>

@@ -115,7 +115,7 @@ const ClassShowPage = props => {
 
     return (
         <BackgroundImage
-            image={require(`../../assets/classes/${slug}.png`)}
+            image={Utils.getClassImage(slug)}
             size={getSize(slug)}
             light={false}
         >

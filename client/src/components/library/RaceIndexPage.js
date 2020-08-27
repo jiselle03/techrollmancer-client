@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+import Utils from '../js/utils';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
@@ -44,7 +45,7 @@ const RaceIndexPage = () => {
 
     return (
         <BackgroundImage 
-            image={require('../../assets/d20.png')}
+            image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
             <MainStyle>
@@ -59,7 +60,7 @@ const RaceIndexPage = () => {
                             to={`/libraries/races/${race.slug}`} 
                         >
                             <CardStyle 
-                                image={require(`../../assets/races/${race.slug}.png`)}
+                                image={Utils.getRaceImage(race.slug)}
                                 imageSize={getImageSize(race.slug)}
                                 imagePosition="50%"
                             >

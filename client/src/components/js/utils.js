@@ -12,6 +12,62 @@ const Utils = {
       
         return [month, day, year].join('/');
     },
+
+    getRaceImage(slug) {
+        switch(slug) {
+            case "dragonborn":
+                return "https://i.ibb.co/v10qr8N/dragonborn.png";
+            case "dwarf":
+                return "https://i.ibb.co/MMd9Kkb/dwarf.png";
+            case "elf":
+                return "https://i.ibb.co/jrjgQCF/elf.png";
+            case "gnome":
+                return "https://i.ibb.co/3mpSbj1/gnome.png";
+            case "half-elf":
+                return "https://i.ibb.co/x2zBdnD/half-elf.png";
+            case "half-orc":
+                return "https://i.ibb.co/JxZCm8k/half-orc.png";
+            case "halfling":
+                return "https://i.ibb.co/JQnLsvV/halfling.png";
+            case "human":
+                return "https://i.ibb.co/zX508wC/human.png";
+            case "tiefling":
+                return "https://i.ibb.co/LY2Bcj6/tiefling.png";
+            default:
+                return;
+        }
+    },
+
+    getClassImage(slug) {
+        switch(slug) {
+            case "barbarian":
+                return "https://i.ibb.co/pdpMrsM/barbarian.png";
+            case "bard":
+                return "https://i.ibb.co/Nm93jkX/bard.png";
+            case "cleric":
+                return "https://i.ibb.co/TMc1sw1/cleric.png";
+            case "druid":
+                return "https://i.ibb.co/pP3h8y3/druid.png";
+            case "fighter":
+                return "https://i.ibb.co/bBV17bM/fighter.png";
+            case "monk":
+                return "https://i.ibb.co/mJZfJB1/monk.png";
+            case "paladin":
+                return "https://i.ibb.co/4KtqKCW/paladin.png";
+            case "ranger":
+                return "https://i.ibb.co/t3xTrqP/ranger.png";
+            case "rogue":
+                return "https://i.ibb.co/VQ7yTdB/rogue.png";
+            case "sorcerer":
+                return "https://i.ibb.co/5298ZWb/sorcerer.png";
+            case "warlock":
+                return "https://i.ibb.co/JHpS2p2/warlock.png";
+            case "wizard":
+                return "https://i.ibb.co/nzxQR9Q/wizard.png";
+            default:
+                return;
+        };
+    },
     
     getBlurb(field) {
         let blurb = "";

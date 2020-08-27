@@ -9,7 +9,7 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 const LibrariesIndexPage = () => {
     return (
         <BackgroundImage 
-            image={require('../../assets/d20.png')}
+            image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
             <MainStyle>

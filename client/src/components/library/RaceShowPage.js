@@ -47,7 +47,7 @@ const RaceShowPage = props => {
 
     return (
         <BackgroundImage
-            image={require(`../../assets/races/${slug}.png`)}
+            image={Utils.getRaceImage(slug)}
             size={getSize(slug)}
             light={false}
         >
