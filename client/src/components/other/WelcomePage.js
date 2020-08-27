@@ -5,7 +5,6 @@ import { store } from 'react-notifications-component';
 
 import Utils from '../js/utils';
 import Game from '../../api/game';
-import CharacterNew from '../character/CharacterNew';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 import { CardStyle } from '../styles/CardStyle';
@@ -195,8 +194,6 @@ const WelcomePage = () => {
                         Guide Me
                     </Button>
                 </Link>
-
-                <CharacterNew type="welcome" />
 
             </MainStyle>
         </BackgroundImage>
