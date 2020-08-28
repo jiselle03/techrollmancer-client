@@ -41,10 +41,12 @@ module Techrollmancer
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'https://techrollmancer.herokuapp.com', 'http://techrollmancer.herokuapp.com', 'https://cors-anywhere.herokuapp.com'
-        resource '/api/*',
-        headers: ["origin", "content-type"],
-        credentials: true,
-        methods: [:get, :post, :delete, :patch, :put, :head, :options]
+        resource(
+          '/api/*',
+          headers: :any,
+          credentials: true,
+          methods: [:get, :post, :put, :patch, :delete, :options]
+        )
       end
     end
     
