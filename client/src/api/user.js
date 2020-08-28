@@ -2,13 +2,13 @@ import baseUrl from "../config";
 
 const User = {
     current() {
-        return fetch(`${baseUrl}/users/current`, {
+        return fetch(`https://cors-anywhere.herokuapp.com/${baseUrl}/users/current`, {
             method: "GET",
             credentials: "include"
         }).then(res => res.json());
     },
     create(params) {
-        return fetch (`${baseUrl}/users`, {
+        return fetch (`https://cors-anywhere.herokuapp.com/${baseUrl}/users`, {
             method: "POST",
             credentials: "include",
             headers: {
