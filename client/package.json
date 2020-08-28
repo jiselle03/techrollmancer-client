@@ -19,14 +19,17 @@
     "react-notifications-component": "^2.3.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.3",
-    "react-spring": "^8.0.27"
+    "react-spring": "^8.0.27",
+    "serve": "^11.3.2"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "publishheroku": "cd ../ && git subtree push --prefix client techrollmancer master || true"
+    "publishheroku": "cd ../ && git subtree push --prefix client techrollmancer master || true",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
