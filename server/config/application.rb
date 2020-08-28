@@ -40,7 +40,7 @@ module Techrollmancer
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "localhost:5500", "127.0.0.1:5500", "127.0.0.1"
+        origins "localhost:5500", "127.0.0.1:5500", "127.0.0.1", "techrollmancer.herokuapp.com"
         resource '/api/*',
         headers: :any,
         credentials: true,
