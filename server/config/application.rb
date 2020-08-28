@@ -40,7 +40,7 @@ module Techrollmancer
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "techrollmancer.herokuapp.com",
+        origins '*'
         resource '/api/*',
         headers: :any,
         credentials: true,
