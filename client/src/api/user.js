@@ -4,7 +4,10 @@ const User = {
     current() {
         return fetch(`https://cors-anywhere.herokuapp.com/${baseUrl}/users/current`, {
             method: "GET",
-            credentials: "include"
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            }
         }).then(res => res.json());
     },
     create(params) {
