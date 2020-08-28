@@ -15,7 +15,6 @@ import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
 
 const WelcomePage = () => {
     const [rollOpen, setRollOpen] = useState(false);
-    const [newOpen, setNewOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
     
     const { formatDate, roll } = Utils;
@@ -30,9 +29,6 @@ const WelcomePage = () => {
         setRolls([]);
         setRollOpen(false);
     };
-
-    const handleNewOpen = () => setNewOpen(true);
-    const handleNewClose = () => setNewOpen(false);
 
     const gamesToday = [];
     const currentDate = formatDate(new Date());
