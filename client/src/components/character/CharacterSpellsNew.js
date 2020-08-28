@@ -19,7 +19,7 @@ const CharacterSpellsNew = props => {
     const { character, levels } = props;
     const ids = character.spells.map(spell => spell.id);
     
-    const getSpells = () => axios.get("http://techrollmancer-server.herokuapp.com/api/v1/libraries/spells");
+    const getSpells = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/spells");
     
     const handleOpen = () => {
         setNewSpells(ids);

@@ -7,7 +7,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
-const getEquipments = () => axios.get("http://techrollmancer-server.herokuapp.com/api/v1/libraries/equipment");
+const getEquipments = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/equipment");
 
 const EquipmentIndexPage = () => {
     const [equipments, setEquipments] = useState([]);

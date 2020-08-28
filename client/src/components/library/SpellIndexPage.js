@@ -7,7 +7,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
-const getSpells = () => axios.get("http://techrollmancer-server.herokuapp.com/api/v1/libraries/spells");
+const getSpells = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/spells");
 
 const SpellIndexPage = () => {
     const [spells, setSpells] = useState([]);

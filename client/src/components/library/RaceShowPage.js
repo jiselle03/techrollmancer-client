@@ -7,7 +7,7 @@ import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
 
-const getRace = slug => axios.get(`http://techrollmancer-server.herokuapp.com/api/v1/libraries/races/${slug}`);
+const getRace = slug => axios.get(`https://techrollmancer-server.herokuapp.com/api/v1/libraries/races/${slug}`);
 
 const RaceShowPage = props => {
     const [race, setRace] = useState(null);
