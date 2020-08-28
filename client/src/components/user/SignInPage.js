@@ -26,13 +26,13 @@ const SignInPage = props => {
             if (data.status === 404) {
                 setErrors([...errors, { message: "Wrong username or password"}]);
             } else {
-                props.history.push("/");
                 if (typeof props.onSignIn === "function") {
                     props.onSignIn();
                 };
+                props.history.push("/");
             };
         });
-    }
+    };
 
     return (
         <BackgroundImage
