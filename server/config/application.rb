@@ -42,7 +42,7 @@ module Techrollmancer
       allow do
         origins 'https://techrollmancer.herokuapp.com', 'http://techrollmancer.herokuapp.com', 'https://cors-anywhere.herokuapp.com'
         resource '/api/*',
-        headers: :any,
+        headers: :origin, :content_type,
         credentials: true,
         methods: [:get, :post, :delete, :patch, :put, :head, :options]
       end
