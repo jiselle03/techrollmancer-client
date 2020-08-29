@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import Utils from '../js/utils';
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
-
-const getRace = slug => axios.get(`https://techrollmancer-server.herokuapp.com/api/v1/libraries/races/${slug}`);
 
 const RaceShowPage = props => {
     const [race, setRace] = useState(null);
@@ -33,8 +31,8 @@ const RaceShowPage = props => {
     };
 
     useEffect(() => {
-        getRace(props.match.params.slug).then(race => {
-            setRace(race.data);
+        Library.oneRace(props.match.params.slug).then(race => {
+            setRace(race);
             setIsLoading(false);
         })
     }, [props.match.params.slug]);

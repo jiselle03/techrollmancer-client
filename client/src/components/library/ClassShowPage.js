@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import Utils from '../js/utils';
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-
-const getClass = slug => {
-    return axios.get(`https://techrollmancer-server.herokuapp.com/api/v1/libraries/classes/${slug}`);
-};
 
 const ClassShowPage = props => {
     const [oneClass, setOneClass] = useState(null);
@@ -81,12 +77,12 @@ const ClassShowPage = props => {
         let slug = "";
         nodes.forEach((node) => {
             slug = node.innerText.split(" ").join("-");
-            axios.get(`https://techrollmancer-server.herokuapp.com/api/v1/libraries/spells/${slug}`).then(spell => {
+            Library.oneSpell(slug).then(spell => {
                 return node.outerHTML=`
-                    <div class="tooltip">${spell.data.name}
+                    <div class="tooltip">${spell.name}
                         <span class="tooltiptext">
-                            <p><strong>${spell.data.name}</strong> | <em>${spell.data.school}</em></p>
-                            <p>${spell.data.desc}</p>
+                            <p><strong>${spell.name}</strong> | <em>${spell.school}</em></p>
+                            <p>${spell.desc}</p>
                         </span>
                     </div>
                 `    
@@ -95,8 +91,8 @@ const ClassShowPage = props => {
     };
 
     useEffect(() => {
-        getClass(props.match.params.slug).then(oneClass => {
-            setOneClass(oneClass.data);
+        Library.oneClass(props.match.params.slug).then(oneClass => {
+            setOneClass(oneClass);
             setIsLoading(false);
         }).then(data => {
             findNodes();

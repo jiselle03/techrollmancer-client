@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
-
-const getEquipments = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/equipment");
 
 const ToolIndexPage = () => {
     const [equipments, setEquipments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getEquipments().then(equipments => { 
-            setEquipments(equipments.data);
+        Library.allEquipments().then(equipments => { 
+            setEquipments(equipments);
             setIsLoading(false);
           });
     }, []);

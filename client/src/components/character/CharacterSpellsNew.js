@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
+import Library from '../../api/library';
 import Spell from '../../api/spell';
 import SpellListItem from './SpellListItem';
 import FloatingActionButton from './FloatingActionButton';
@@ -18,9 +18,7 @@ const CharacterSpellsNew = props => {
 
     const { character, levels } = props;
     const ids = character.spells.map(spell => spell.id);
-    
-    const getSpells = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/spells");
-    
+      
     const handleOpen = () => {
         setNewSpells(ids);
         setOpen(true);
@@ -50,8 +48,8 @@ const CharacterSpellsNew = props => {
     };
 
     useEffect(() => { 
-        getSpells().then(spells => {
-            setSpells(spells.data);
+        Library.allSpells().then(spells => {
+            setSpells(spells);
             setNewSpells(ids);
         });
     }, [open]);

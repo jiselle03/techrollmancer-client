@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import Utils from '../js/utils';
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
-
-const getEquipment = slug => axios.get(`https://techrollmancer-server.herokuapp.com/api/v1/libraries/equipment/${slug}`);
 
 const EquipmentShowPage = props => {
     const [equipment, setEquipment] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getEquipment(props.match.params.slug).then(equipment => {
-            setEquipment(equipment.data);
+        Library.oneEquipment(props.match.params.slug).then(equipment => {
+            setEquipment(equipment);
             setIsLoading(false);
         })
     }, [props.match.params.slug]);

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import Utils from '../js/utils';
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 
 import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
-
-const getRaces = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/races");
 
 const RaceIndexPage = () => {
     const [races, setRaces] = useState([]);
@@ -35,8 +33,8 @@ const RaceIndexPage = () => {
     };
 
     useEffect(() => {
-        getRaces().then(races => { 
-            setRaces(races.data);
+        Library.allRaces().then(races => { 
+            setRaces(races);
             setIsLoading(false);
           });
     }, []);

@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
-
-const getSpells = () => axios.get("https://techrollmancer-server.herokuapp.com/api/v1/libraries/spells");
 
 const SpellIndexPage = () => {
     const [spells, setSpells] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getSpells().then(spells => { 
-            setSpells(spells.data);
+        Library.allSpells().then(spells => { 
+            setSpells(spells);
             setIsLoading(false);
           });
     }, []);

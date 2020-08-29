@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
+import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
-
-const getSpell = slug => axios.get(`https://techrollmancer-server.herokuapp.com/api/v1/libraries/spells/${slug}`);
 
 const SpellShowPage = props => {
     const [spell, setSpell] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getSpell(props.match.params.slug).then(spell => { 
-            console.log(spell.data)
-            setSpell(spell.data);
+        Library.oneSpell(props.match.params.slug).then(spell => { 
+            setSpell(spell);
             setIsLoading(false);
           });
     }, [props.match.params.slug]);
