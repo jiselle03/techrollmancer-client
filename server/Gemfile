@@ -38,9 +38,6 @@ gem 'active_model_serializers'
 # Rack CORS
 gem 'rack-cors'
 
-# Secure Headers
-gem 'secure_headers'
-
 # JSON
 gem 'json'
 
