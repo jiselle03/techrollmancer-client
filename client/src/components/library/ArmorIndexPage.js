@@ -12,7 +12,7 @@ const ArmorIndexPage = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        Library.getEquipments().then(equipments => { 
+        Library.allEquipments().then(equipments => { 
             setEquipments(equipments);
             setIsLoading(false);
           });
