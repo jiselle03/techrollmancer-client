@@ -95,10 +95,6 @@ const WelcomePage = () => {
                             height="7em"
                             width="7em"
                             color="#fff"
-                            onClick={() => {
-                                console.log(currentRoll);
-
-                            }}
                         >
                         </CardStyle>
                     </div>
