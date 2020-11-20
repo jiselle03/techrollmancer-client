@@ -80,10 +80,7 @@ const WelcomePage = () => {
                     <div onClick={() => handleRollOpen(4)}>
                         <CardStyle
                             image="https://i.ibb.co/sKz0qKn/d4.png"
-                            imagePosition="50%"
-                            height="7em"
-                            width="7em"
-                            color="#fff"
+                            dice
                             >
                         </CardStyle>
                     </div>
@@ -91,10 +88,7 @@ const WelcomePage = () => {
                     <div onClick={() => handleRollOpen(4)}>
                         <CardStyle
                             image="https://i.ibb.co/L6tzd3y/d6.png"
-                            imagePosition="50%"
-                            height="7em"
-                            width="7em"
-                            color="#fff"
+                            dice
                         >
                         </CardStyle>
                     </div>
@@ -102,10 +96,7 @@ const WelcomePage = () => {
                     <div onClick={() => handleRollOpen(8)}>
                         <CardStyle
                             image="https://i.ibb.co/hsWLqpV/d8.png"
-                            imagePosition="50%"
-                            height="7em"
-                            width="7em"
-                            color="#fff"
+                            dice
                         >
                         </CardStyle>
                     </div>
@@ -113,10 +104,7 @@ const WelcomePage = () => {
                     <div onClick={() => handleRollOpen(10)}>
                         <CardStyle
                             image="https://i.ibb.co/dMJgGTX/d10.png"
-                            imagePosition="50%"
-                            height="7em"
-                            width="7em"
-                            color="#fff"
+                            dice
                         >
                         </CardStyle>
                     </div>
@@ -124,10 +112,7 @@ const WelcomePage = () => {
                     <div onClick={() => handleRollOpen(12)}>
                         <CardStyle
                             image="https://i.ibb.co/vB5P3Tt/d12.png"
-                            imagePosition="50%"
-                            height="7em"
-                            width="7em"
-                            color="#fff"
+                            dice
                         >
                         </CardStyle>
                     </div>
@@ -135,10 +120,7 @@ const WelcomePage = () => {
                     <div onClick={() => handleRollOpen(20)}>
                         <CardStyle
                             image="https://i.ibb.co/qJs7Mcf/d20.png"
-                            imagePosition="50%"
-                            height="7em"
-                            width="7em"
-                            color="#fff"
+                            dice
                         >
                         </CardStyle>
                     </div>

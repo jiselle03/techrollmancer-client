@@ -59,7 +59,6 @@ const ClassIndexPage = () => {
                             <CardStyle
                                 image={Utils.getClassImage(charClass.slug)}
                                 imageSize={getImageSize(charClass.slug)}
-                                imagePosition="50%"
                             >
                                 <Card>
                                     <CardContent style={CardContentStyle.content}>

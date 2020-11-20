@@ -60,7 +60,6 @@ const RaceIndexPage = () => {
                             <CardStyle 
                                 image={Utils.getRaceImage(race.slug)}
                                 imageSize={getImageSize(race.slug)}
-                                imagePosition="50%"
                             >
                                 <Card>
                                     <CardContent style={CardContentStyle.content}>

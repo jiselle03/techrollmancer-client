@@ -53,7 +53,6 @@ const CharacterIndexPage = props => {
                                     <CardStyle
                                         image={character.photo_url}
                                         imageSize="cover"
-                                        imagePosition="center"
                                     >
                                         <Card>
                                             <CardContent style={CardContentStyle.content}>
