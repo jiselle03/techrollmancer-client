@@ -12,10 +12,13 @@ import { FadeStyle } from '../styles/FadeStyle';
 import FlexBox from '../styles/FlexBox';
 
 import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
 
 const WelcomePage = () => {
     const [rollOpen, setRollOpen] = useState(false);
+    const [rolls, setRolls] = useState([]);
     const [currentRoll, setCurrentRoll] = useState(null);
+    const [rollState, setRollState] = useState("regular");
     
     const dSides = [
         {
@@ -45,13 +48,19 @@ const WelcomePage = () => {
     
     const { formatDate, roll } = Utils;
 
+    let chosenRoll;
     const handleRollOpen = sides => {
         setRollOpen(true);
-        setCurrentRoll(roll(sides));
+        
+        if (sides !== 20) return setRolls([roll(sides)]);
+        
+        return rollState === "regular" ? setRolls([roll(20)]) : setRolls([roll(20), roll(20)]);
     };
     const handleRollClose = () => {
         setCurrentRoll(null);
+        setRolls([]);
         setRollOpen(false);
+        chosenRoll = null;
     };
 
     const gamesToday = [];
@@ -83,6 +92,8 @@ const WelcomePage = () => {
         });
     };
 
+    const handleRollState = (event, newState) => setRollState(newState);
+
     useEffect(() => {
         Game.all().then(games => {
             if (Array.isArray(games)) checkGames(games);
@@ -99,7 +110,26 @@ const WelcomePage = () => {
             <MainStyle>
                 <h1> Welcome to Techrollmancer</h1>
 
-                <h2>Quick Rolls</h2>
+                <FlexBox justifyContent="space-between">
+                    <h2>Quick Rolls</h2>
+                    <ToggleButtonGroup
+                        value={rollState}
+                        exclusive
+                        onChange={handleRollState}
+                        aria-label="roll state"
+                        >
+                        <ToggleButton value="disadvantage" aria-label="disadvantage">
+                            Disadvantage
+                        </ToggleButton>
+                        <ToggleButton value="regular" aria-label="regular">
+                            Regular
+                        </ToggleButton>
+                        <ToggleButton value="advantage" aria-label="advantage">
+                            Advantage
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </FlexBox>
+
                 <Grid container>
                     {dSides.map(side => (
                         <div key={side.num} onClick={() => handleRollOpen(side.num)}>
@@ -130,7 +160,14 @@ const WelcomePage = () => {
                         <Fade in={rollOpen}>
                             <FadeStyle>
                                 <h3>You rolled:</h3>
-                                <h2>{currentRoll}</h2>
+                                {rolls.length === 1 && (<h2>{rolls[0]}</h2>)}
+                                {rolls.length === 2 && rollState == "regular" && (<h2>{rolls[0]}</h2>)}
+                                {rolls.length === 2 && rollState === "disadvantage" &&(
+                                    <h2><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</h2>
+                                )}
+                                {rolls.length === 2 && rollState === "advantage" &&(
+                                    <h2><span style={{color: "lightgrey"}}>{Math.min(...rolls)}</span> {Math.max(...rolls)}</h2>
+                                )}
                                 <Button 
                                     variant="contained"
                                     color="secondary"
