@@ -102,7 +102,7 @@ const WelcomePage = () => {
                 <h2>Quick Rolls</h2>
                 <Grid container>
                     {dSides.map(side => (
-                        <div key={side} onClick={() => handleRollOpen(side.num)}>
+                        <div key={side.num} onClick={() => handleRollOpen(side.num)}>
                             <CardStyle
                                 image={`https://i.ibb.co/${side.img}`}
                                 dice
