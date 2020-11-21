@@ -17,7 +17,6 @@ import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
 const WelcomePage = () => {
     const [rollOpen, setRollOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
-    const [currentRoll, setCurrentRoll] = useState(null);
     const [rollState, setRollState] = useState("regular");
     
     const dSides = [
@@ -57,7 +56,6 @@ const WelcomePage = () => {
         return rollState === "regular" ? setRolls([roll(20)]) : setRolls([roll(20), roll(20)]);
     };
     const handleRollClose = () => {
-        setCurrentRoll(null);
         setRolls([]);
         setRollOpen(false);
         chosenRoll = null;
