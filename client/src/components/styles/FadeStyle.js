@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { useSpring, animated } from 'react-spring/web.cjs';
 
 export const FadeStyle = props => {
@@ -18,7 +18,7 @@ export const FadeStyle = props => {
     );
 };
 
-export const Fade = React.forwardRef(function Fade(props, ref) {
+export const Fade = forwardRef(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
     const style = useSpring({
       from: { opacity: 0 },
