@@ -15,18 +15,42 @@ import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
 
 const WelcomePage = () => {
     const [rollOpen, setRollOpen] = useState(false);
-    const [rolls, setRolls] = useState([]);
+    const [currentRoll, setCurrentRoll] = useState(null);
+    
+    const dSides = [
+        {
+            num: 4, 
+            img: "sKz0qKn/d4.png"
+        }, 
+        {
+            num: 6, 
+            img: "L6tzd3y/d6.png"
+        }, 
+        {
+            num: 8,
+            img: "hsWLqpV/d8.png"
+        }, {
+            num: 10,
+            img: "dMJgGTX/d10.png"
+        }, 
+        {
+            num: 12,
+            img: "vB5P3Tt/d12.png"
+        }, 
+        {
+            num: 20,
+            img: "qJs7Mcf/d20.png"
+        }
+    ];
     
     const { formatDate, roll } = Utils;
 
-    let currentRoll = 0;
     const handleRollOpen = sides => {
         setRollOpen(true);
-        currentRoll = roll(sides);
-        setRolls([...rolls, currentRoll]);
+        setCurrentRoll(roll(sides));
     };
     const handleRollClose = () => {
-        setRolls([]);
+        setCurrentRoll(null);
         setRollOpen(false);
     };
 
@@ -77,53 +101,16 @@ const WelcomePage = () => {
 
                 <h2>Quick Rolls</h2>
                 <Grid container>
-                    <div onClick={() => handleRollOpen(4)}>
-                        <CardStyle
-                            image="https://i.ibb.co/sKz0qKn/d4.png"
-                            dice
-                            >
-                        </CardStyle>
-                    </div>
-
-                    <div onClick={() => handleRollOpen(4)}>
-                        <CardStyle
-                            image="https://i.ibb.co/L6tzd3y/d6.png"
-                            dice
-                        >
-                        </CardStyle>
-                    </div>
-
-                    <div onClick={() => handleRollOpen(8)}>
-                        <CardStyle
-                            image="https://i.ibb.co/hsWLqpV/d8.png"
-                            dice
-                        >
-                        </CardStyle>
-                    </div>
-
-                    <div onClick={() => handleRollOpen(10)}>
-                        <CardStyle
-                            image="https://i.ibb.co/dMJgGTX/d10.png"
-                            dice
-                        >
-                        </CardStyle>
-                    </div>
-
-                    <div onClick={() => handleRollOpen(12)}>
-                        <CardStyle
-                            image="https://i.ibb.co/vB5P3Tt/d12.png"
-                            dice
-                        >
-                        </CardStyle>
-                    </div>
-
-                    <div onClick={() => handleRollOpen(20)}>
-                        <CardStyle
-                            image="https://i.ibb.co/qJs7Mcf/d20.png"
-                            dice
-                        >
-                        </CardStyle>
-                    </div>
+                    {dSides.map(side => (
+                        <div key={side} onClick={() => handleRollOpen(side.num)}>
+                            <CardStyle
+                                image={`https://i.ibb.co/${side.img}`}
+                                dice
+                                >
+                            </CardStyle>
+                        </div>
+                    ))}
+                    
                 </Grid>
 
                 <Modal
@@ -143,7 +130,7 @@ const WelcomePage = () => {
                         <Fade in={rollOpen}>
                             <FadeStyle>
                                 <h3>You rolled:</h3>
-                                <h2>{rolls}</h2>
+                                <h2>{currentRoll}</h2>
                                 <Button 
                                     variant="contained"
                                     color="secondary"
