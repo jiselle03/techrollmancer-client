@@ -53,21 +53,19 @@ const SpellDetails = props => {
     return(
         <ExpansionPanel>
             <ExpansionPanelSummary
-            expandIcon={<ExpandMore />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
+                expandIcon={<ExpandMore />}
+                aria-controls="spell-content"
+                id="spell-header"
             >
                 <h5>{name}</h5>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-                <div style={{display: "block"}}>
-                    {details.map(category => (
-                        <div key={category.name} className={category.content ? null : "hidden"}>
-                            <h6>{category.name}</h6>
-                            <p>{category.content}</p>
-                        </div>
-                    ))}
-                </div>
+                {details.map(category => (
+                    <div key={category.name} className={category.content ? null : "hidden"}>
+                        <h6>{category.name}</h6>
+                        <p>{category.content}</p>
+                    </div>
+                ))}
             </ExpansionPanelDetails>
         </ExpansionPanel>
     );
