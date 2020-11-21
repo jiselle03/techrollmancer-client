@@ -3,9 +3,52 @@ import React from 'react';
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 
-const SpellDetails = ({ spell }) => {
+const SpellDetails = props => {
     const { name, desc, higher_level, range, components, material,
-            ritual, duration, concentration, casting_time, school } = spell;
+            ritual, duration, concentration, casting_time, school } = props.spell;
+
+    const details = [
+        {
+            name: "Description",
+            content: desc
+        },
+        {
+            name: "Higher Level",
+            content: higher_level
+        },
+        {
+            name: "Range",
+            content: range
+        },
+        {
+            name: "Components",
+            content: components
+        },
+        {
+            name: "Material",
+            content: material
+        },
+        {
+            name: "Ritual",
+            content: ritual
+        }, 
+        {
+            name: "Duration",
+            content: duration
+        }, 
+        {
+            name: "Concentration",
+            content: concentration
+        }, 
+        {
+            name: "Casting Time",
+            content: casting_time
+        }, 
+        {
+            name: "School",
+            content: school
+        }
+    ];
 
     return(
         <ExpansionPanel>
@@ -18,39 +61,12 @@ const SpellDetails = ({ spell }) => {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
                 <div style={{display: "block"}}>
-                    <h6>Description</h6>
-                    <p>{desc}</p>
-
-                    <div className={higher_level ? null : "hidden"}>
-                        <h6>Higher Level</h6>
-                        <p>{higher_level}</p>
-                    </div>
-
-                    <h6>Range</h6>
-                    <p>{range}</p>
-
-                    <h6>Components</h6>
-                    <p>{components}</p>
-
-                    <div className={material ? null : "hidden"}>
-                    <h6>Material</h6>
-                    <p>{material}</p>
-                    </div>
-
-                    <h6>Ritual</h6>
-                    <p>{ritual}</p>
-
-                    <h6>Duration</h6>
-                    <p>{duration}</p>
-
-                    <h6>Concentration</h6>
-                    <p>{concentration}</p>
-
-                    <h6>Casting Time</h6>
-                    <p>{casting_time}</p>
-
-                    <h6>School</h6>
-                    <p>{school}</p>
+                    {details.map(category => (
+                        <div key={category.name} className={category.content ? null : "hidden"}>
+                            <h6>{category.name}</h6>
+                            <p>{category.content}</p>
+                        </div>
+                    ))}
                 </div>
             </ExpansionPanelDetails>
         </ExpansionPanel>
