@@ -59,7 +59,7 @@ const SpellDetails = props => {
             >
                 <h5>{name}</h5>
             </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
+            <ExpansionPanelDetails style={{display: "block"}}>
                 {details.map(category => (
                     <div key={category.name} className={category.content ? null : "hidden"}>
                         <h6>{category.name}</h6>
