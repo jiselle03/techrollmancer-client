@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import Utils from '../js/utils';
-import { raceBonus } from '../js/generator';
+import Utils from '../../js/utils';
+import { raceBonus } from '../../js/generator';
 import TableStyle from '../styles/TableStyle';
 
 import { FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';

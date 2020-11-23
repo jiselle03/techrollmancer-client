@@ -1,7 +1,7 @@
 import 'date-fns';
 import React, { useState, useEffect } from 'react';
 
-import Utils from '../js/utils';
+import Utils from '../../js/utils';
 import Game from '../../api/game';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';

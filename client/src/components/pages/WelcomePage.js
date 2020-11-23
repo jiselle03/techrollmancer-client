@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { store } from 'react-notifications-component';
 
-import Utils from '../js/utils';
+import Utils from '../../js/utils';
 import Game from '../../api/game';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';

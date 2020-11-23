@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Utils from '../js/utils';
+import Utils from '../../js/utils';
 import Library from '../../api/library';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import baseUrl from '../../config';
 import Character from '../../api/character';
-import Utils from '../js/utils';
+import Utils from '../../js/utils';
 import CharacterProficiencies from './CharacterProficiencies';
 import FloatingActionButton from './FloatingActionButton';
 import FlexBox from '../styles/FlexBox';

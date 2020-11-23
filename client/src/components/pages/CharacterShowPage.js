@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import Character from '../../../api/character';
-import CharacterStats from '../CharacterStats';
-import CharacterSpells from '../CharacterSpells';
-import CharacterInventory from '../CharacterInventory';
-import CharacterFeatures from '../CharacterFeatures';
-import CharacterTraits from '../CharacterTraits';
-import CharacterJournal from '../CharacterJournal';
-import BackgroundImage from '../../styles/BackgroundImage';
+import Character from '../../api/character';
+import CharacterStats from '../character/CharacterStats';
+import CharacterSpells from '../character/CharacterSpells';
+import CharacterInventory from '../character/CharacterInventory';
+import CharacterFeatures from '../character/CharacterFeatures';
+import CharacterTraits from '../character/CharacterTraits';
+import CharacterJournal from '../character/CharacterJournal';
+import BackgroundImage from '../styles/BackgroundImage';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 

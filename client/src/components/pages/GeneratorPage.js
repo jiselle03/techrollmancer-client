@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Utils from '../js/utils';
-import { RandomCharacter } from '../js/generator.js';
-import PointBuyCalculator from './PointBuyCalculator';
+import Utils from '../../js/utils';
+import { RandomCharacter } from '../../js/generator.js';
+import PointBuyCalculator from '../other/PointBuyCalculator';
 import CharacterNew from '../character/CharacterNew';
 import BackgroundImage from '../styles/BackgroundImage';
 import MainStyle from '../styles/MainStyle';

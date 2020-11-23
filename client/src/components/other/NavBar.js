@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import NavBarDetails from './NavBarDetails';
-import { NavBarStyle, NavContainer, Sidebar, sidebarText } from './styles/NavStyle.js';
+import { NavBarStyle, NavContainer, Sidebar, sidebarText } from '../styles/NavStyle.js';
 
 import { Drawer, ListItem, useMediaQuery } from '@material-ui/core';
 
