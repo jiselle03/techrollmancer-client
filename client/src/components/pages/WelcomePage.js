@@ -19,6 +19,7 @@ const WelcomePage = () => {
     const [rolls, setRolls] = useState([]);
     const [rollState, setRollState] = useState("regular");
     
+    const states = ["disadvantage", "regular", "advantage"];
     const dSides = [
         {
             num: 4, 
@@ -116,15 +117,11 @@ const WelcomePage = () => {
                         onChange={handleRollState}
                         aria-label="roll state"
                         >
-                        <ToggleButton value="disadvantage" aria-label="disadvantage">
-                            Disadvantage
-                        </ToggleButton>
-                        <ToggleButton value="regular" aria-label="regular">
-                            Regular
-                        </ToggleButton>
-                        <ToggleButton value="advantage" aria-label="advantage">
-                            Advantage
-                        </ToggleButton>
+                            {states.map(state => (
+                                <ToggleButton key={state} value={state} aria-label={state}>
+                                    {state}
+                                </ToggleButton>
+                            ))}
                     </ToggleButtonGroup>
                 </FlexBox>
 
