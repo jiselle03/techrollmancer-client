@@ -115,7 +115,7 @@ const Utils = {
         };
     },
 
-    getSize(race) {
+    getRaceSize(race) {
         switch(race) {
             case "gnome":
                 return "85vh";
@@ -131,6 +131,50 @@ const Utils = {
                 return "80vh";
             default:
                 return "70vh";
+        };
+    },
+
+    getClassSize(charClass) {
+        switch(charClass) {
+            case "barbarian":
+                return "50vh";
+            case "bard":
+                return "50vh";
+            case "druid":
+                return "60vh";
+            case "fighter":
+                return "80vh";
+            case "monk":
+                return "60vh";
+            case "paladin":
+                return "75vh";
+            case "ranger":
+                return "90vh";
+            default:
+                return "70vh";
+        };
+    },
+
+    getCols(oneClass) {
+        switch(oneClass.slug) {
+            case "barbarian":
+                return 5;
+            case "bard":
+                return 14;
+            case "fighter":
+                return 3;
+            case "monk":
+                return 6;
+            case "paladin" || "warlock":
+                return 8;
+            case "ranger":
+                return 9;
+            case "rogue":
+                return 4;
+            case "sorcerer":
+                return 15;
+            default:
+                return 13;
         };
     },
 
