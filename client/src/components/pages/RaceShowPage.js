@@ -34,7 +34,7 @@ const RaceShowPage = props => {
         Library.oneRace(props.match.params.slug).then(race => {
             setRace(race);
             setIsLoading(false);
-        })
+        });
     }, [props.match.params.slug]);
 
     if (isLoading) return (<CircularProgress variant="determinate" />);
@@ -42,6 +42,48 @@ const RaceShowPage = props => {
     const { slug, name, desc, asi_desc, age, alignment, 
             size, speed_desc, languages, vision, traits,
             subraces } = race;
+
+    const categories = [
+        {
+            name: `${name} Traits`,
+            content: desc
+        },
+        {
+            name: "Ability Score Increase",
+            content: asi_desc
+        },
+        {
+            name: "Age",
+            content: age
+        },
+        {
+            name: "Alignment",
+            content: alignment
+        },
+        {
+            name: "Size",
+            content: size
+        },
+        {
+            name: "Speed",
+            content: speed_desc
+        },
+        {
+            name: "Languages",
+            content: languages
+        }
+    ];
+
+    const categories2 = [
+        {
+            name: "Vision",
+            content: vision
+        },
+        {
+            name: "Traits",
+            content: traits
+        }
+    ];
 
     return (
         <BackgroundImage
@@ -54,81 +96,21 @@ const RaceShowPage = props => {
                     {name.toUpperCase()}
                 </h1>
 
-                <div className={desc ? null : "hidden"}>
-                    <h2>
-                        {name} Traits
-                    </h2>
-                    <p>
-                        {desc}
-                    </p>
-                </div>
+                {categories.map(category => (
+                    <div key={category.name} className={category.content ? null : "hidden"}>
+                        <h2>{category.name}</h2>
+                        <p>{category.content}</p>
+                    </div>
+                ))}
 
-                <div className={asi_desc ? null : "hidden"}>
-                    <h2>
-                        Ability Score Increase
-                    </h2>
-                    <p>
-                        {asi_desc}
-                    </p>
-                </div>
-                
-                <div className={age ? null : "hidden"}>
-                    <h2>
-                        Age
-                    </h2>
-                    <p>
-                        {age}
-                    </p>
-                </div>
+                {categories2.map(category => (
+                    <div key={category.name} className={category.content ? null : "hidden"}>
+                        <p dangerouslySetInnerHTML={{
+                            __html: Utils.getBlurb(category.content)
+                        }}></p>
+                    </div>
+                ))}
 
-                <div className={alignment ? null : "hidden"}>
-                    <h2>
-                        Alignment
-                    </h2>
-                    <p>
-                        {alignment}
-                    </p>
-                </div>
-
-                <div className={size ? null : "hidden"}>
-                    <h2>
-                        Size
-                    </h2>
-                    <p>
-                        {size}
-                    </p>
-                </div>
-
-                <div className={speed_desc ? null : "hidden"}>
-                    <h2>
-                        Speed
-                    </h2>
-                    <p>
-                        {speed_desc}
-                    </p>
-                </div>
-
-                <div className={languages ? null : "hidden"}>
-                    <h2>
-                        Languages
-                    </h2>
-                    <p>
-                        {languages}
-                    </p>
-                </div>
-
-                <div className={vision ? null : "hidden"}>
-                    <p dangerouslySetInnerHTML={{
-                        __html: Utils.getBlurb(vision)
-                    }}></p>
-                </div>
-
-                <div className={traits ? null : "hidden"}>
-                    <p dangerouslySetInnerHTML={{
-                        __html: Utils.getBlurb(traits)
-                    }}></p>
-                </div>
-                
                 <div className={subraces ? null : "hidden"}>
                     <h3>
                         Subraces
