@@ -11,24 +11,7 @@ const RaceShowPage = props => {
     const [race, setRace] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const getSize = race => {
-        switch(race) {
-            case "gnome":
-                return "85vh";
-            case "half-elf":
-                return "60vh";
-            case "half-orc":
-                return "90vh";
-            case "halfling":
-                return "80vh";
-            case "human":
-                return "60vh";
-            case "tiefling":
-                return "80vh";
-            default:
-                return "70vh";
-        };
-    };
+    const { getSize, getRaceImage, getBlurb } = Utils;
 
     useEffect(() => {
         Library.oneRace(props.match.params.slug).then(race => {
@@ -87,7 +70,7 @@ const RaceShowPage = props => {
 
     return (
         <BackgroundImage
-            image={Utils.getRaceImage(slug)}
+            image={getRaceImage(slug)}
             size={getSize(slug)}
             light={false}
         >
@@ -106,12 +89,12 @@ const RaceShowPage = props => {
                 {categories2.map(category => (
                     <div key={category.name} className={category.content ? null : "hidden"}>
                         <p dangerouslySetInnerHTML={{
-                            __html: Utils.getBlurb(category.content)
+                            __html: getBlurb(category.content)
                         }}></p>
                     </div>
                 ))}
 
-                <div className={subraces ? null : "hidden"}>
+                <div className={subraces.length > 0 ? null : "hidden"}>
                     <h3>
                         Subraces
                     </h3>
@@ -137,7 +120,7 @@ const RaceShowPage = props => {
                             </p>
 
                             <span dangerouslySetInnerHTML={{
-                                __html: Utils.getBlurb(subrace.traits)
+                                __html: getBlurb(subrace.traits)
                             }}></span>
                         </>
                     ))}

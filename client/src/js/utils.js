@@ -115,6 +115,25 @@ const Utils = {
         };
     },
 
+    getSize(race) {
+        switch(race) {
+            case "gnome":
+                return "85vh";
+            case "half-elf":
+                return "60vh";
+            case "half-orc":
+                return "90vh";
+            case "halfling":
+                return "80vh";
+            case "human":
+                return "60vh";
+            case "tiefling":
+                return "80vh";
+            default:
+                return "70vh";
+        };
+    },
+
     getBaseMod(stat) {
         return Math.floor((stat - 10) / 2);
     },
