@@ -11,7 +11,7 @@ const RaceShowPage = props => {
     const [race, setRace] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { getSize, getRaceImage, getBlurb } = Utils;
+    const { getRaceSize, getRaceImage, getBlurb } = Utils;
 
     useEffect(() => {
         Library.oneRace(props.match.params.slug).then(race => {
@@ -71,7 +71,7 @@ const RaceShowPage = props => {
     return (
         <BackgroundImage
             image={getRaceImage(slug)}
-            size={getSize(slug)}
+            size={getRaceSize(slug)}
             light={false}
         >
             <MainStyle>
