@@ -67,7 +67,6 @@ const ClassShowPage = props => {
         <BackgroundImage
             image={getClassImage(slug)}
             size={getClassSize(slug)}
-            // light={false}
         >
             <MainStyle>
                 <h1>
