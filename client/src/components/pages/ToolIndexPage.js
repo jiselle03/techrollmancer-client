@@ -11,6 +11,8 @@ const ToolIndexPage = () => {
     const [equipments, setEquipments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const types = ["Artisan's Tools", "Gaming Sets", "Musical Instruments", "Other Tools"];
+
     useEffect(() => {
         Library.allEquipments().then(equipments => { 
             setEquipments(equipments);
@@ -30,73 +32,25 @@ const ToolIndexPage = () => {
                     TOOLS
                 </h1>
                 
-                <h2>
-                    Artisan's Tools
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Tools" && equipment.tool_category === "Artisan's Tools"
-                }).map(tool => (
-                    <div key={tool.slug}>
-                        <Link className="link" to={`/libraries/equipment/${tool.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={tool.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
-                ))}
-                </List>
+                {types.map(type => (
+                    <div key={type}>
+                        <h2>{type}</h2>
 
-                <h2>
-                    Gaming Sets
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Tools" && equipment.tool_category === "Gaming Sets"
-                }).map(tool => (
-                    <div key={tool.slug}>
-                        <Link className="link" to={`/libraries/equipment/${tool.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={tool.name} />
-                            </ListItem>
-                        </Link>
+                        <List component="nav" className="list">
+                            {equipments.filter(equipment => {
+                                return equipment.equipment_category === "Tools" && equipment.tool_category === type
+                            }).map(tool => (
+                                <div key={tool.slug}>
+                                    <Link className="link" to={`/libraries/equipment/${tool.slug}`}>
+                                        <ListItem button>
+                                            <ListItemText primary={tool.name} />
+                                        </ListItem>
+                                    </Link>
+                                </div>
+                            ))}
+                        </List>
                     </div>
                 ))}
-                </List>
-
-                <h2>
-                    Musical Instruments
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Tools" && equipment.tool_category === "Musical Instrument"
-                }).map(tool => (
-                    <div key={tool.slug}>
-                        <Link className="link" to={`/libraries/equipment/${tool.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={tool.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
-                ))}
-                </List>
-
-                <h2>
-                    Other Tools
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Tools" && equipment.tool_category === "Other Tools"
-                }).map(tool => (
-                    <div key={tool.slug}>
-                        <Link className="link" to={`/libraries/equipment/${tool.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={tool.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
-                ))}
-                </List>
             </MainStyle>
         </BackgroundImage>
     );
