@@ -11,6 +11,49 @@ const SpellIndexPage = () => {
     const [spells, setSpells] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const types = [
+        {
+            int: 0,
+            name: "Cantrips"
+        },
+        {
+            int: 1,
+            name: "1st Level"
+        },
+        {
+            int: 2,
+            name: "2nd Level"
+        },
+        {
+            int: 3,
+            name: "3rd Level"
+        },
+        {
+            int: 4,
+            name: "4th Level"
+        },
+        {
+            int: 5,
+            name: "5th Level"
+        },
+        {
+            int: 6,
+            name: "6th Level"
+        },
+        {
+            int: 7,
+            name: "7th Level"
+        },
+        {
+            int: 8,
+            name: "8th Level"
+        },
+        {
+            int: 9,
+            name: "9th Level"
+        }
+    ];
+
     useEffect(() => {
         Library.allSpells().then(spells => { 
             setSpells(spells);
@@ -30,205 +73,28 @@ const SpellIndexPage = () => {
                     SPELLS
                 </h1>
 
-                <h2>
-                    Cantrips
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 0
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
+                {types.map(type => (
+                    <div key={type.name}>
+                        <h2>{type.name}</h2>
 
-                <h2>
-                    1st Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 1
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    Second Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 2
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    Third Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 3
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    4th Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 4
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    5th Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 5
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    6th Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 6
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    7th Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 7
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    8th Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 8
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
-
-                <h2>
-                    9th Level
-                </h2>
-                <List component="nav" className="list"> 
-                    {spells.filter(spell => {
-                        return spell.level_int === 9
-                    }).map(spell => (
-                        <div key={spell.slug}>
-                        <Link 
-                            to={`/libraries/spells/${spell.slug}`} 
-                            className="link"
-                        >
-                            <ListItem button>
-                                    <ListItemText primary={spell.name} />
-                                </ListItem>
-                        </Link>
-                        </div>
-                    ))}
-                </List>
+                        <List component="nav" className="list"> 
+                            {spells.filter(spell => {
+                                return spell.level_int === type.int
+                            }).map(spell => (
+                                <div key={spell.slug}>
+                                <Link 
+                                    to={`/libraries/spells/${spell.slug}`} 
+                                    className="link"
+                                >
+                                    <ListItem button>
+                                            <ListItemText primary={spell.name} />
+                                        </ListItem>
+                                </Link>
+                                </div>
+                            ))}
+                        </List>
+                    </div>
+                ))}
             </MainStyle>
         </BackgroundImage>
     );
