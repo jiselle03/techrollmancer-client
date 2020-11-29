@@ -7,10 +7,33 @@ import MainStyle from '../styles/MainStyle';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 
 const LibrariesIndexPage = () => {
+    const categories = [
+        {
+            name: "Races",
+            link: "races"
+        },
+        {
+            name: "Classes",
+            link: "classes"
+        },
+        {
+            name: "Spells",
+            link: "spells"
+        },
+        {
+            name: "Equipment",
+            link: "equipment"
+        },
+        {
+            name: "Conditions",
+            link: "conditions"
+        }
+    ];
+
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <MainStyle>
                 <h1>
@@ -18,35 +41,13 @@ const LibrariesIndexPage = () => {
                 </h1>
 
                 <List component="nav">
-                    <Link className="link" exact to="/libraries/races">
-                        <ListItem button>
-                            <ListItemText primary="Races" />
-                        </ListItem>
-                    </Link>
-
-                    <Link className="link" exact to="/libraries/classes">
-                        <ListItem button>
-                            <ListItemText primary="Classes" />
-                        </ListItem>
-                    </Link>
-                    
-                    <Link className="link" exact to="/libraries/spells">
-                        <ListItem button>
-                            <ListItemText primary="Spells" />
-                        </ListItem>
-                    </Link>
-                    
-                    <Link className="link" exact to="/libraries/equipment">
-                        <ListItem button>
-                            <ListItemText primary="Equipment" />
-                        </ListItem>
-                    </Link>
-                    
-                    <Link className="link" exact to="/libraries/conditions">
-                        <ListItem button>
-                            <ListItemText primary="Conditions" />
-                        </ListItem>
-                    </Link>
+                    {categories.map(category => (
+                        <Link key={category} className="link" exact to={`/libraries/${category.link}`}>
+                            <ListItem button>
+                                <ListItemText primary={category.name} />
+                            </ListItem>
+                        </Link>
+                    ))}
                 </List>
             </MainStyle>
         </BackgroundImage>
