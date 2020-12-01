@@ -11,6 +11,8 @@ const WeaponIndexPage = () => {
     const [equipments, setEquipments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const types = ["Simple Melee", "Simple Ranged", "Martial Melee", "Martial Ranged"];
+
     useEffect(() => {
         Library.allEquipments().then(equipments => { 
             setEquipments(equipments);
@@ -30,73 +32,25 @@ const WeaponIndexPage = () => {
                     WEAPONS
                 </h1>
 
-                <h2>
-                    Simple Melee
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Weapon" && equipment.category_range === "Simple Melee"
-                }).map(weapon => (
-                    <div key={weapon.slug}>
-                        <Link className="link" to={`/libraries/equipment/${weapon.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={weapon.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
-                ))}
-                </List>
+                {types.map(type => (
+                    <div key={type}>
+                        <h2>{type}</h2>
 
-                <h2>
-                    Simple Ranged
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Weapon" && equipment.category_range === "Simple Ranged"
-                }).map(weapon => (
-                    <div key={weapon.slug}>
-                        <Link className="link" to={`/libraries/equipment/${weapon.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={weapon.name} />
-                            </ListItem>
-                        </Link>
+                        <List component="nav" className="list">
+                            {equipments.filter(equipment => {
+                                return equipment.equipment_category === "Weapon" && equipment.category_range === type
+                            }).map(weapon => (
+                                <div key={weapon.slug}>
+                                    <Link className="link" to={`/libraries/equipment/${weapon.slug}`}>
+                                        <ListItem button>
+                                            <ListItemText primary={weapon.name} />
+                                        </ListItem>
+                                    </Link>
+                                </div>
+                            ))}
+                        </List>
                     </div>
                 ))}
-                </List>
-
-                <h2>
-                    Martial Melee
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Weapon" && equipment.category_range === "Martial Melee"
-                }).map(weapon => (
-                    <div key={weapon.slug}>
-                        <Link className="link" to={`/libraries/equipment/${weapon.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={weapon.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
-                ))}
-                </List>
-
-                <h2>
-                    Martial Ranged
-                </h2>
-                <List component="nav" className="list">
-                {equipments.filter(equipment => {
-                    return equipment.equipment_category === "Weapon" && equipment.category_range === "Martial Ranged"
-                }).map(weapon => (
-                    <div key={weapon.slug}>
-                        <Link className="link" to={`/libraries/equipment/${weapon.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={weapon.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
-                ))}
-                </List>
             </MainStyle>
         </BackgroundImage>
     );
