@@ -13,6 +13,21 @@ import { AccountCircle, Lock } from '@material-ui/icons';
 const SignInPage = props => {
     const [errors, setErrors] = useState([]);
 
+    const fields = [
+        {
+            label: "Username",
+            name: "username",
+            type: "text",
+            icon: "account"
+        },
+        {
+            label: "Password",
+            name: "password",
+            type: "password",
+            icon: "lock"
+        }
+    ];
+
     const createSession = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
@@ -56,46 +71,35 @@ const SignInPage = props => {
                         </h3>
 
                         <form onSubmit={createSession}>
-                        { errors.length > 0 ? (
-                            <div>
-                                <div className="header">
-                                    Failed to sign in: { errors.map(error => error.message).join(", ") }
+                            { errors.length > 0 ? (
+                                <div>
+                                    <div className="header">
+                                        Failed to sign in: { errors.map(error => error.message).join(", ") }
+                                    </div>
                                 </div>
-                            </div>
-                        ): "" }
-                            <FormControl style={FormContent.field}>
-                                <InputLabel htmlFor="username">Username*</InputLabel>
-                                <Input
-                                id="username"
-                                type="text"
-                                name="username"
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                        <AccountCircle style={FormContent.icon} />
-                                    </InputAdornment>
-                                }
-                                placeholder="Username"
-                                required
-                                />
-                            </FormControl>
-                            
-                            <br />
+                            ): "" }
 
-                            <FormControl style={FormContent.field}>
-                                <InputLabel htmlFor="password">Password*</InputLabel>
-                                <Input
-                                id="password"
-                                type="password"
-                                name="password"
-                                startAdornment={
-                                    <InputAdornment position="start">
-                                        <Lock style={FormContent.icon} />
-                                    </InputAdornment>
-                                }
-                                placeholder="Password"
-                                required
-                                />
-                            </FormControl>
+                            {fields.map(field => (
+                                <FormControl key={field.name} style={FormContent.field}>
+                                    <InputLabel htmlFor={field.name}>{field.label}*</InputLabel>
+                                    <Input
+                                        type={field.type}
+                                        name={field.name}
+                                        startAdornment={
+                                            <InputAdornment position="start">
+                                                {field.icon === "account" && (
+                                                    <AccountCircle style={FormContent.icon} />
+                                                )}
+                                                {field.icon === "lock" && (
+                                                    <Lock style={FormContent.icon} />
+                                                )}
+                                            </InputAdornment>
+                                        }
+                                        placeholder={field.label}
+                                        required
+                                    />
+                                </FormControl>
+                            ))}
 
                             <FlexBox
                                 justifyContent="center"
