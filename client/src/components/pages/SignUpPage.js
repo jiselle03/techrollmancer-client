@@ -11,6 +11,33 @@ import { AccountCircle, Email, Lock } from '@material-ui/icons';
 import FlexBox from '../styles/FlexBox';
 
 const SignUpPage = props => {
+    const fields = [
+        {
+            label: "Username",
+            name: "username",
+            type: "text",
+            icon: "account"
+        },
+        {
+            label: "Email",
+            name: "email",
+            type: "email",
+            icon: "email"
+        },
+        {
+            label: "Password",
+            name: "password",
+            type: "password",
+            icon: "lock"
+        },
+        {
+            label: "Password Confirmation",
+            name: "password_confirmation",
+            type: "password",
+            icon: "lock"
+        }
+    ];
+
     const handleSubmit = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
@@ -54,81 +81,43 @@ const SignUpPage = props => {
                         </h3>
 
                         <form onSubmit={handleSubmit}>
-                        <FormControl style={FormContent.field}>
-                            <InputLabel htmlFor="username">Username*</InputLabel>
-                            <Input
-                            id="username"
-                            name="username"
-                            type="text"
-                            startAdornment={
-                                <InputAdornment position="start">
-                                    <AccountCircle style={FormContent.icon} />
-                                </InputAdornment>
-                            }
-                            placeholder="Username"
-                            required
-                            />
-                        </FormControl>
+                            {fields.map(field => (
+                                <FormControl key={field.name} style={FormContent.field}>
+                                    <InputLabel htmlFor={field.name}>{field.label}*</InputLabel>
+                                    <Input
+                                        name={field.name}
+                                        type="text"
+                                        startAdornment={
+                                            <InputAdornment position="start">
+                                                {field.icon === "account" && (
+                                                    <AccountCircle style={FormContent.icon} />
+                                                )}
+                                                {field.icon === "email" && (
+                                                    <Email style={FormContent.icon} />
+                                                )}
+                                                {field.icon === "lock" && (
+                                                    <Lock style={FormContent.icon} />
+                                                )}
+                                            </InputAdornment>
+                                        }
+                                        placeholder={field.label}
+                                        required
+                                    />
+                                </FormControl>
+                            ))}
 
-                        <FormControl style={FormContent.field}>
-                            <InputLabel htmlFor="email">Email</InputLabel>
-                            <Input
-                            id="email"
-                            name="email"
-                            type="email"
-                            startAdornment={
-                                <InputAdornment position="start">
-                                    <Email style={FormContent.icon} />
-                                </InputAdornment>
-                            }
-                            placeholder="Email Address"
-                            />
-                        </FormControl>
-
-                        <FormControl style={FormContent.field}>
-                            <InputLabel htmlFor="password">Password*</InputLabel>
-                            <Input
-                            id="password"
-                            name="password"
-                            type="password"
-                            startAdornment={
-                                <InputAdornment position="start">
-                                    <Lock style={FormContent.icon} />
-                                </InputAdornment>
-                            }
-                            placeholder="Password"
-                            required
-                            />
-                        </FormControl>
-
-                        <FormControl style={FormContent.field}>
-                            <InputLabel htmlFor="password_confirmation">Password Confirmation*</InputLabel>
-                            <Input
-                            id="password_confirmation"
-                            name="password_confirmation"
-                            type="password"
-                            startAdornment={
-                                <InputAdornment position="start">
-                                    <Lock style={FormContent.icon} />
-                                </InputAdornment>
-                            }
-                            placeholder="Password Confirmation"
-                            required
-                            />
-                        </FormControl>
-
-                        <FlexBox
-                            justifyContent="center"
-                        >
-                            <Button 
-                                variant="contained" 
-                                color="secondary"
-                                type="submit" 
-                                className="button"
+                            <FlexBox
+                                justifyContent="center"
                             >
-                                SIGN UP
-                            </Button>
-                        </FlexBox>
+                                <Button 
+                                    variant="contained" 
+                                    color="secondary"
+                                    type="submit" 
+                                    className="button"
+                                >
+                                    SIGN UP
+                                </Button>
+                            </FlexBox>
                         </form>
 
                         <Divider variant="middle" />
