@@ -63,6 +63,51 @@ const ClassShowPage = props => {
         prof_armor, prof_weapons, prof_tools, prof_skills, 
         desc, equipment, spellcasting_ability } = oneClass;
 
+        const hp_cat = [
+            {
+                name: "Hit Dice",
+                content: `${hit_dice} per ${name} level`
+            },
+            {
+                name: "HP at 1st Level",
+                content: hp_at_1st_level
+            },
+            {
+                name: "HP at Higher Levels",
+                content: hp_at_higher_levels
+            }
+        ];
+
+        const prof_cat = [
+            {
+                name: "Armor",
+                content: prof_armor
+            },
+            {
+                name: "Weapons",
+                content: prof_weapons
+            },
+            {
+                name: "Tools",
+                content: prof_tools
+            },
+            {
+                name: "Skills",
+                content: prof_skills
+            }
+        ];
+
+        const categories = [
+            {
+                name: "Hit Points",
+                content: hp_cat
+            },
+            {
+                name: "Proficiencies",
+                content: prof_cat
+            }
+        ];
+
     return (
         <BackgroundImage
             image={getClassImage(slug)}
@@ -77,22 +122,15 @@ const ClassShowPage = props => {
                     As a {name}, you gain the following class features:
                 </p>
                 
-                <h2>
-                    Hit Points
-                </h2>
-                <strong>Hit Dice:</strong> {hit_dice} per {name} level<br />
-                <strong>HP at 1st Level:</strong> {hp_at_1st_level}<br />
-                <strong>HP at Higher Levels:</strong> {hp_at_higher_levels}<br />
-                
-                <h2>
-                    Proficiencies
-                </h2>
-                <p>
-                    <strong>Armor:</strong> {prof_armor}<br />
-                    <strong>Weapons:</strong> {prof_weapons}<br />
-                    <strong>Tools:</strong> {prof_tools}<br />
-                    <strong>Skills:</strong> {prof_skills}
-                </p>
+                {categories.map(category => (
+                    <div key={category.name}>
+                        <h2>{category.name}</h2>
+
+                        {category.content.map(cat => (
+                            <p key={cat.name}><strong>{cat.name}: </strong>{cat.content}</p>
+                        ))}
+                    </div>
+                ))}
 
                 <div className={spellcasting_ability ? null : "hidden"}>
                     <p>
