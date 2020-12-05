@@ -23,10 +23,61 @@ const EquipmentShowPage = props => {
 
     const { armor_class, str_minimum, stealth_disadvantage, damage, speed, capacity, weight, cost, desc } = equipment;
 
+    const weapon_cat = [
+        {
+            name: "Damage Dice",
+            content: damage && damage.damage_dice
+        },
+        {
+            name: "Damage Bonus",
+            content: damage && damage.damage_bonus ? damage.damage_bonus: "No"
+        },
+        {
+            name: "Damage Type",
+            content: damage && damage.damage_type_name
+        }
+    ];
+
+    const armor_cat = [
+        {
+            name: "Armor Class",
+            content: armor_class ? armor_class.base : null
+        },
+        {
+            name: "Dexterity Bonus",
+            content: armor_class && armor_class.dex_bonus ? "Yes" : "No"
+        },
+        {
+            name: "Maximum Bonus",
+            content: armor_class && armor_class.max_bonus ? "Yes" : "No"
+        },
+        {
+            name: "Strength Minimum",
+            content: armor_class && str_minimum ? str_minimum : "No"
+        },
+        {
+            name: "Stealth Disadvantage",
+            content: armor_class && stealth_disadvantage ? "Yes" : "No"
+        }
+    ];
+
+    const mv_cat = [
+        {
+            name: "Speed",
+            content: `${speed ? speed.quantity: null} ${speed ? speed.unit : null}`
+        },
+        {
+            name: "Capacity",
+            content: capacity
+        }
+    ];
+
+    const cats = [{name: "Weapon", content: weapon_cat}, {name: "Armor", content: armor_cat}, {name: "Mounts and Vehicles", content: mv_cat}];
+
     return (
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <MainStyle>
                 <div className="equipment-name">
@@ -36,29 +87,21 @@ const EquipmentShowPage = props => {
                     <p className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></p>
                 </div>
 
-                <div className={equipment.equipment_category === "Weapon" ? null : "hidden"}>
-                    <p><strong>Damage Dice:</strong> {damage && damage.damage_dice}</p>
-                    <p><strong>Damage Bonus:</strong> {damage && damage.damage_bonus ? damage.damage_bonus : "No"}</p>
-                    <p><strong>Damage Type:</strong> {damage && damage.damage_type.name}</p>
-                </div>
-
-                <div className={equipment.equipment_category === "Armor" ? null : "hidden"}>
-                    <p><strong>Armor Class:</strong> {armor_class ? armor_class.base : null}</p>
-                    <p><strong>Dexterity Bonus:</strong> {armor_class && armor_class.dex_bonus ? "Yes" : "No"} </p>
-                    <p><strong>Maximum Bonus:</strong> {armor_class && armor_class.max_bonus ? "Yes" : "No"} </p>
-                    <p><strong>Strength Minimum:</strong> {armor_class && str_minimum ? str_minimum : "No"}</p>
-                    <p><strong>Stealth Disadvantage:</strong> {armor_class && stealth_disadvantage ? "Yes" : "No"}</p>
-                </div>
-
-                <div className={equipment.equipment_category === "Mounts and Vehicles" ? null : "hidden"}>
-                    <p><strong>Speed:</strong> {speed ? speed.quantity : null} {speed ? speed.unit : null}</p>
-                    <p><strong>Capacity:</strong> {capacity && capacity}</p>
-                </div>
+                {cats.map(category => (
+                    <div 
+                        key={category.name} 
+                        className={equipment.equipment_category === category.name ? null : "hidden"}
+                    >
+                        {category.content.map(cat => (
+                            <p key={cat.name}><strong>{cat.name}:</strong> {cat.content}</p>
+                        ))}
+                    </div>
+                ))}
 
                 <div className={equipment.gear_category === "Equipment Pack" ? null : "hidden"}>
                     <h3>Contents:</h3>
                     {equipment.contents ? equipment.contents.map(item => (
-                        <div class='list-item'>• <Link to={`/libraries/equipment/${item.slug}`}>{item.name}</Link></div>
+                        <div key={item.slug} className="list-item">• <Link to={`/libraries/equipment/${item.slug}`}>{item.name}</Link></div>
                     )) : null}
                 </div>
 
@@ -69,7 +112,6 @@ const EquipmentShowPage = props => {
                     <h3>Description</h3>
                     <p>{desc}</p>
                 </div>
-
             </MainStyle>
         </BackgroundImage>
     );
