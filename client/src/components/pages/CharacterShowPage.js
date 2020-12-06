@@ -36,6 +36,8 @@ const CharacterShowPage = props => {
     const ipad = useMediaQuery('(min-width: 768px)');
     const laptop = useMediaQuery('(min-width:1280px)');
 
+    const tabs = ["STATS", "SPELLS", "INVENTORY", "FEATURES", "TRAITS", "JOURNAL"];
+
     const getScreenSize = () => {
       switch(true) {
         case laptop:
@@ -60,15 +62,9 @@ const CharacterShowPage = props => {
         });
     }, [props.match.params.id]);
   
-    if (isLoading) {
-      return(
-          <CircularProgress variant="determinate" />
-      );
-    };
+    if (isLoading) return(<CircularProgress variant="determinate" />);
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    const handleChange = (event, newValue) => setValue(newValue);
     
     return (
       <BackgroundImage
@@ -91,32 +87,28 @@ const CharacterShowPage = props => {
               variant={!laptop ? "scrollable" : null}
               scrollButtons={!laptop ? "auto" : null}
           >
-              <Tab label="STATS" value={0} />
-              <Tab label="SPELLS" value={1} />
-              <Tab label="INVENTORY" value={2} />
-              <Tab label="FEATURES" value={3} />
-              <Tab label="TRAITS" value={4} />
-              <Tab label="JOURNAL" value={5} />
+              {tabs.map((tab, i) => (<Tab key={i} label={tab} value={i} />))}
           </Tabs>
+
           <div style={{margin: "auto 2em"}}>
-          <TabPanel value={value} index={0}>
-              <CharacterStats character={character} handleRefresh={handleRefresh} {...props} />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-              <CharacterSpells character={character} handleRefresh={handleRefresh} />
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-              <CharacterInventory character={character} handleRefresh={handleRefresh} />
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-              <CharacterFeatures character={character} handleRefresh={handleRefresh} />
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-              <CharacterTraits character={character} handleRefresh={handleRefresh} />
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-              <CharacterJournal character={character} handleRefresh={handleRefresh} />
-          </TabPanel>
+            <TabPanel value={value} index={0}>
+                <CharacterStats character={character} handleRefresh={handleRefresh} {...props} />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <CharacterSpells character={character} handleRefresh={handleRefresh} />
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <CharacterInventory character={character} handleRefresh={handleRefresh} />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+                <CharacterFeatures character={character} handleRefresh={handleRefresh} />
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+                <CharacterTraits character={character} handleRefresh={handleRefresh} />
+            </TabPanel>
+            <TabPanel value={value} index={5}>
+                <CharacterJournal character={character} handleRefresh={handleRefresh} />
+            </TabPanel>
           </div>
         </div>
       </BackgroundImage>
