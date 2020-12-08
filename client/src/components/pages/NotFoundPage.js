@@ -7,7 +7,7 @@ const NotFoundPage = () => {
     return (
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <MainStyle>
                 <h1 style={{color: "maroon"}}>
