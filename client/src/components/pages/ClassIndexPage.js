@@ -5,9 +5,9 @@ import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
-import { CardStyle, CardContentStyle } from '../styles/CardStyle';
+import { Card, CardContent } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
+import { CircularProgress, Grid } from '@material-ui/core';
 
 const ClassIndexPage = () => {
     const [classes, setClasses] = useState([]);
@@ -56,18 +56,16 @@ const ClassIndexPage = () => {
                             to={`/libraries/classes/${charClass.slug}`} 
                             href=""
                         >
-                            <CardStyle
+                            <Card
                                 image={Utils.getClassImage(charClass.slug)}
                                 imageSize={getImageSize(charClass.slug)}
                             >
-                                <Card>
-                                    <CardContent style={CardContentStyle.content}>
-                                        <h5 className="card-text">
-                                            {charClass.name}
-                                        </h5>
-                                    </CardContent>
-                                </Card>
-                            </CardStyle>
+                                <CardContent>
+                                    <h5 className="card-text">
+                                        {charClass.name}
+                                    </h5>
+                                </CardContent>
+                            </Card>
                         </Link>
                     </div>
                 ))}

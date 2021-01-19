@@ -5,9 +5,9 @@ import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
-import { CardStyle, CardContentStyle } from '../styles/CardStyle';
+import { Card, CardContent } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
+import { CircularProgress, Grid } from '@material-ui/core';
 
 const RaceIndexPage = () => {
     const [races, setRaces] = useState([]);
@@ -57,18 +57,16 @@ const RaceIndexPage = () => {
                         <Link 
                             to={`/libraries/races/${race.slug}`} 
                         >
-                            <CardStyle 
+                            <Card
                                 image={Utils.getRaceImage(race.slug)}
                                 imageSize={getImageSize(race.slug)}
                             >
-                                <Card>
-                                    <CardContent style={CardContentStyle.content}>
-                                        <h5 className="card-text">
-                                            {race.name}
-                                        </h5>
-                                    </CardContent>
-                                </Card>
-                            </CardStyle>
+                                <CardContent>
+                                    <h5 className="card-text">
+                                        {race.name}
+                                    </h5>
+                                </CardContent>
+                            </Card>
                         </Link>
                     </div>
                 ))}

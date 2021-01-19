@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardStyle = styled.div`
+export const Card = styled.div`
     width: 12em;
     height: 20em;
     margin: 1em;
@@ -18,10 +18,9 @@ export const CardStyle = styled.div`
     }
 `;
 
-export const CardContentStyle = {
-    content: {
-        position: "absolute",
-        bottom: "0",
-        right: "0",
-    }
-};
+export const CardContent = styled.div`
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 4%;
+`;

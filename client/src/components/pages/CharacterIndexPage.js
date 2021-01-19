@@ -5,9 +5,9 @@ import Character from '../../api/character';
 import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
-import { CardStyle, CardContentStyle } from '../styles/CardStyle';
+import { Card, CardContent } from '../styles/CardStyle';
 
-import { Card, CardContent, CircularProgress, Grid } from '@material-ui/core';
+import { CircularProgress, Grid } from '@material-ui/core';
 
 const CharacterIndexPage = props => {
     const [characters, setCharacters] = useState([]);
@@ -50,21 +50,19 @@ const CharacterIndexPage = props => {
                                     to={`/characters/${character.id}`} 
                                     className="link" 
                                 >
-                                    <CardStyle
+                                    <Card
                                         image={character.photo_url}
                                         imageSize="cover"
                                     >
-                                        <Card>
-                                            <CardContent style={CardContentStyle.content}>
-                                                <h6 className="card-text">
-                                                    {character.name}
-                                                </h6>
-                                                <p className="card-text">
-                                                    {character.gender} {character.race}
-                                                </p>
-                                            </CardContent>
-                                        </Card>
-                                    </CardStyle>
+                                        <CardContent>
+                                            <h6 className="card-text">
+                                                {character.name}
+                                            </h6>
+                                            <p className="card-text">
+                                                {character.gender} {character.race}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
                                 </Link>
                             </div>
                         ))}
