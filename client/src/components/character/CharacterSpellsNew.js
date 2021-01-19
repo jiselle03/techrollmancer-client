@@ -5,11 +5,10 @@ import Spell from '../../api/spell';
 import SpellListItem from './SpellListItem';
 import FloatingActionButton from './FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
-import { FadeStyle, Fade } from '../styles/FadeStyle';
+import { FadeContent, Fade } from '../styles/Fade';
 import { FormContainer, Form } from '../styles/Form';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
-import PropTypes from 'prop-types';
 
 const CharacterSpellsNew = props => {
     const [spells, setSpells] = useState([]);
@@ -104,7 +103,7 @@ const CharacterSpellsNew = props => {
                                         CANCEL
                                     </Button>
                                 </div>
-                                <FadeStyle align="left"> 
+                                <FadeContent align="left"> 
                                     <div>
                                         {levels.map((level, index) => (
                                             <>
@@ -130,7 +129,7 @@ const CharacterSpellsNew = props => {
                                             </>
                                         ))}
                                     </div>      
-                                </FadeStyle>
+                                </FadeContent>
                             </Form>
                         </FormContainer>
                     </Fade>
@@ -142,10 +141,3 @@ const CharacterSpellsNew = props => {
 };
 
 export default CharacterSpellsNew;
-
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};

@@ -8,10 +8,10 @@ import Game from '../../api/game';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
 import { Image } from '../styles/Image';
-import { FadeStyle } from '../styles/FadeStyle';
+import { Fade, FadeContent } from '../styles/Fade';
 import FlexBox from '../styles/FlexBox';
 
-import { Backdrop, Button, Fade, Modal } from '@material-ui/core';
+import { Backdrop, Button, Modal } from '@material-ui/core';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
 
 const WelcomePage = () => {
@@ -150,7 +150,7 @@ const WelcomePage = () => {
                         margin="20vh 0"
                     >
                         <Fade in={rollOpen}>
-                            <FadeStyle>
+                            <FadeContent>
                                 <h3>You rolled:</h3>
                                 {rolls.length === 1 && (<h2>{rolls[0]}</h2>)}
                                 {rolls.length === 2 && rollState == "regular" && (<h2>{rolls[0]}</h2>)}
@@ -168,7 +168,7 @@ const WelcomePage = () => {
                                 >
                                     EXIT
                                 </Button>
-                            </FadeStyle>
+                            </FadeContent>
                         </Fade>
                     </FlexBox>
                 </Modal>

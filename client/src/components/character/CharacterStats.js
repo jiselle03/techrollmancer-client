@@ -6,7 +6,7 @@ import Utils from '../../js/utils';
 import CharacterProficiencies from './CharacterProficiencies';
 import FloatingActionButton from './FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
-import { Fade, FadeStyle } from '../styles/FadeStyle';
+import { Fade, FadeContent } from '../styles/Fade';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
 import { Print } from '@material-ui/icons';
@@ -974,7 +974,7 @@ const CharacterStats = props => {
               margin="25vh 0"
           >
               <Fade in={open}>
-                  <FadeStyle width="50vw">
+                  <FadeContent width="50vw">
                       <h2 className="ability">{ability}</h2>
                       <div className="dice-roll-container">
                         <h5 className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</h5>
@@ -990,7 +990,7 @@ const CharacterStats = props => {
                       >
                           EXIT
                       </Button>
-                  </FadeStyle>
+                  </FadeContent>
               </Fade>
           </FlexBox>
         </Modal>

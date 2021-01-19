@@ -7,18 +7,10 @@ import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
-import { FadeStyle, Fade } from '../styles/FadeStyle';
+import { FadeContent, Fade } from '../styles/Fade';
 import { Center } from '../styles/Center';
 
 import { Backdrop, Button, Card, Divider, Modal, useMediaQuery } from '@material-ui/core';
-import PropTypes from 'prop-types';
-  
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};
 
 const GeneratorPage = () => {
     const [openQR, setOpenQR] = useState(false);
@@ -186,7 +178,7 @@ const GeneratorPage = () => {
                             margin="10vh 0"
                         >
                             <Fade in={openQR}>
-                                <FadeStyle>
+                                <FadeContent>
                                     <h3>CHARACTER STATS</h3>
 
                                     <div>
@@ -231,7 +223,7 @@ const GeneratorPage = () => {
                                         >
                                             EXIT
                                         </Button>
-                                    </FadeStyle>
+                                    </FadeContent>
                                 </Fade>
                             </FlexBox>
                         </Modal>
@@ -257,7 +249,7 @@ const GeneratorPage = () => {
                                 margin="8vh 0"
                             >
                                 <Fade in={openD6}>
-                                    <FadeStyle>
+                                    <FadeContent>
                                         <h3>
                                             ROLLS
                                         </h3>
@@ -349,7 +341,7 @@ const GeneratorPage = () => {
                                                 </Button>
                                             </div>
                                         </FlexBox>
-                                    </FadeStyle>
+                                    </FadeContent>
                                 </Fade>
                             </FlexBox>    
                         </Modal>

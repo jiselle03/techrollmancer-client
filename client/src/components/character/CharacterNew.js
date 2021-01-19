@@ -4,18 +4,9 @@ import Character from '../../api/character';
 import FloatingActionButton from './FloatingActionButton';
 import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
-import { FadeStyle, Fade } from '../styles/FadeStyle';
+import { FadeContent, Fade } from '../styles/Fade';
 
 import { Backdrop, Button, FormControl, Modal, TextField } from '@material-ui/core';
-
-import PropTypes from 'prop-types';
-
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};
 
 const CharacterNew = props => {
     const [errors, setErrors] = useState([]);
@@ -93,7 +84,7 @@ const CharacterNew = props => {
                     margin="10vh 0"
                 >
                     <Fade in={open}>
-                        <FadeStyle>
+                        <FadeContent>
                             <FormContainer
                                 padding="0.5em"
                             >
@@ -294,7 +285,7 @@ const CharacterNew = props => {
                                 </Form>
                                     
                             </FormContainer>
-                        </FadeStyle>
+                        </FadeContent>
                     </Fade>
                 </FlexBox>
             </Modal>

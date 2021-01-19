@@ -1,22 +1,14 @@
 import React, { forwardRef } from 'react';
 import { useSpring, animated } from 'react-spring/web.cjs';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-export const FadeStyle = props => {
-    const { children, align, width } = props;
-
-    return(
-        <div 
-            style={{
-                backgroundColor: "rgba(255,255,255,0.9)",
-                padding: "2em 4em",
-                textAlign: align || "center",
-                width: width,
-            }}
-        >
-            {children}
-        </div>
-    );
-};
+export const FadeContent = styled.div`
+  background-color: rgba(255,255,255,0.9);
+  padding: 2em 4em;
+  text-align: ${({ align }) => align || "center"};
+  width: ${({ width }) => width};
+`;
 
 export const Fade = forwardRef(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
@@ -24,14 +16,10 @@ export const Fade = forwardRef(function Fade(props, ref) {
       from: { opacity: 0 },
       to: { opacity: open ? 1 : 0 },
       onStart: () => {
-        if (open && onEnter) {
-          onEnter();
-        }
+        if (open && onEnter) onEnter();
       },
       onRest: () => {
-        if (!open && onExited) {
-          onExited();
-        }
+        if (!open && onExited) onExited();
       },
     });
   
@@ -41,3 +29,10 @@ export const Fade = forwardRef(function Fade(props, ref) {
       </animated.div>
     );
 });
+
+Fade.propTypes = {
+  children: PropTypes.element,
+  in: PropTypes.bool.isRequired,
+  onEnter: PropTypes.func,
+  onExited: PropTypes.func,
+};
