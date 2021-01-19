@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import Game from '../../api/game';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 import FlexBox from '../styles/FlexBox';
 import { FormContent } from '../styles/FormStyle';

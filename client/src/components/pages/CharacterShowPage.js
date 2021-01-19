@@ -7,7 +7,7 @@ import CharacterInventory from '../character/CharacterInventory';
 import CharacterFeatures from '../character/CharacterFeatures';
 import CharacterTraits from '../character/CharacterTraits';
 import CharacterJournal from '../character/CharacterJournal';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 

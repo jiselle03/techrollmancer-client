@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
 import MainStyle from '../styles/MainStyle';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 

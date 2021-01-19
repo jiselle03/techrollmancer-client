@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Character from '../../api/character';
 import CharacterNew from '../character/CharacterNew';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 import { CardStyle, CardContentStyle } from '../styles/CardStyle';
 

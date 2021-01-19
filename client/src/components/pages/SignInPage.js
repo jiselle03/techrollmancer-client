@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Session from '../../api/session';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 import FlexBox from '../styles/FlexBox';

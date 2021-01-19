@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 
 const NotFoundPage = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import MainStyle from '../styles/MainStyle';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';

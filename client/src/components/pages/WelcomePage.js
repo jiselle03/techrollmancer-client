@@ -5,9 +5,9 @@ import { store } from 'react-notifications-component';
 
 import Utils from '../../js/utils';
 import Game from '../../api/game';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
-import { CardStyle } from '../styles/CardStyle';
+import { Image } from '../styles/Image';
 import { FadeStyle } from '../styles/FadeStyle';
 import FlexBox from '../styles/FlexBox';
 
@@ -128,11 +128,7 @@ const WelcomePage = () => {
                 <Grid container>
                     {dSides.map(side => (
                         <div key={side.num} onClick={() => handleRollOpen(side.num)}>
-                            <CardStyle
-                                image={`https://i.ibb.co/${side.img}`}
-                                dice
-                                >
-                            </CardStyle>
+                            <Image src={`https://i.ibb.co/${side.img}`} />
                         </div>
                     ))}
                     

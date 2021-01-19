@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Library from '../../api/library';
-import BackgroundImage from '../styles/BackgroundImage';
+import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 
 import { CircularProgress } from '@material-ui/core';
