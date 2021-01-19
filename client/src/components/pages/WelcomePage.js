@@ -11,7 +11,7 @@ import { Image } from '../styles/Image';
 import { FadeStyle } from '../styles/FadeStyle';
 import FlexBox from '../styles/FlexBox';
 
-import { Backdrop, Button, Fade, Grid, Modal } from '@material-ui/core';
+import { Backdrop, Button, Fade, Modal } from '@material-ui/core';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
 
 const WelcomePage = () => {
@@ -104,7 +104,7 @@ const WelcomePage = () => {
     return(
         <BackgroundImage
             image={require('../../assets/d20.png')}
-            light={true}
+            light
         >
             <MainStyle>
                 <h1> Welcome to Techrollmancer</h1>
@@ -125,7 +125,7 @@ const WelcomePage = () => {
                     </ToggleButtonGroup>
                 </FlexBox>
 
-                <Grid container>
+                <FlexBox>
                     {dSides.map(side => (
                         <Image 
                             key={side.num} 
@@ -133,8 +133,7 @@ const WelcomePage = () => {
                             onClick={() => handleRollOpen(side.num)}
                         />
                     ))}
-                    
-                </Grid>
+                </FlexBox>
 
                 <Modal
                     open={rollOpen}
