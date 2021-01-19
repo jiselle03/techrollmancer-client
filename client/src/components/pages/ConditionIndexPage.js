@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Container from '../styles/Container';
 import { BackgroundImage } from '../styles/Image';
+import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -24,46 +25,46 @@ const ConditionIndexPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1>
+                <Heading>
                     CONDITIONS
-                </h1>
+                </Heading>
                 
-                <h2>
+                <Heading as="h2">
                     Blinded
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A blinded creature can't see and automatically fails any ability check that requires sight.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Charmed
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A charmed creature can’t Attack the charmer or target the charmer with harmful Abilities or magical Effects.
-                </p>
-                <p>
+                </Text>
+                <Text>
                 The charmer has advantage on any ability check to interact socially with the creature.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Deafened
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A deafened creature can’t hear and automatically fails any ability check that requires hearing.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Fatigued (Exhaustion)
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     Some Special Abilities and environmental Hazards, such as starvation and the long-­term Effects of freezing or scorching temperatures, can lead to a Special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect’s description.
-                </p>
+                </Text>
                 
                 <TableContainer component={Paper}>
                     <Table className="table" aria-label="simple table">
@@ -86,148 +87,148 @@ const ConditionIndexPage = () => {
                     </Table>
                 </TableContainer>
 
-                <h2>
+                <Heading as="h2">
                     Frightened
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A frightened creature has disadvantage on Ability Checks and Attack rolls while the source of its fear is within line of sight.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature can’t willingly move closer to the source of its fear.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Grappled
-                </h2>
-                <p>           
+                </Heading>
+                <Text>           
                     A grappled creature’s speed becomes 0, and it can’t benefit from any bonus to its speed.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The condition ends if the Grappler is incapacitated (see the condition).
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The condition also ends if an effect removes the grappled creature from the reach of the Grappler or Grappling effect, such as when a creature is hurled away by the Thunderwave spell.
-                </p>
+                </Text>
             
-                <h2>
+                <Heading as="h2">
                     Incapacitated
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     An incapacitated creature can’t take Actions or reactions.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Invisible
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     An invisible creature is impossible to see without the aid of magic or a Special sense. For the purpose of Hiding, the creature is heavily obscured. The creature’s location can be detected by any noise it makes or any tracks it leaves.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have disadvantage, and the creature’s Attack rolls have advantage.
-                </p>
+                </Text>
         
-                <h2>
+                <Heading as="h2">
                     Paralyzed
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A paralyzed creature is incapacitated (see the condition) and can’t move or speak.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature automatically fails Strength and Dexterity Saving Throws.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have advantage.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Any Attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Petrified
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases aging.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature is incapacitated (see the condition), can’t move or speak, and is unaware of its surroundings.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have advantage.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature automatically fails Strength and Dexterity Saving Throws.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature has Resistance to all damage.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature is immune to poison and disease, although a poison or disease already in its system is suspended, not neutralized.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Poisoned
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A poisoned creature has disadvantage on Attack rolls and Ability Checks.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Prone
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A prone creature’s only Movement option is to crawl, unless it stands up and thereby ends the condition.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature has disadvantage on Attack rolls.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     An Attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the Attack roll has disadvantage.
-                </p>
+                </Text>
 
-                <h2>
+                <Heading as="h2">
                     Restrained
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A restrained creature’s speed becomes 0, and it can’t benefit from any bonus to its speed.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have advantage, and the creature’s Attack rolls have disadvantage.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature has disadvantage on Dexterity Saving Throws.
-                </p>
+                </Text>
                 
-                <h2>
+                <Heading as="h2">
                     Stunned
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     A stunned creature is incapacitated (see the condition), can’t move, and can speak only falteringly.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature automatically fails Strength and Dexterity Saving Throws.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have advantage.
-                </p>
+                </Text>
                 
-                <h2>
+                <Heading as="h2">
                     Unconscious
-                </h2>
-                <p>
+                </Heading>
+                <Text>
                     An unconscious creature is incapacitated (see the condition), can’t move or speak, and is unaware of its surroundings
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature drops whatever it’s holding and falls prone.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     The creature automatically fails Strength and Dexterity Saving Throws.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Attack rolls against the creature have advantage.
-                </p>
-                <p>
+                </Text>
+                <Text>
                     Any Attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.
-                </p>
+                </Text>
 
             </Container>
         </BackgroundImage>
