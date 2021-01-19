@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Utils from '../../js/utils';
 import Game from '../../api/game';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { FormContent } from '../styles/FormStyle';
 
@@ -65,7 +65,7 @@ const SchedulerPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     Scheduler
                 </h1>
@@ -189,7 +189,7 @@ const SchedulerPage = props => {
                     )))}
                 </Card>
 
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

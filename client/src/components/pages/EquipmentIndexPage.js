@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -25,7 +25,7 @@ const EquipmentIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     EQUIPMENT
                 </h1>
@@ -41,7 +41,7 @@ const EquipmentIndexPage = () => {
                     </div>
                 ))}
                 </List>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

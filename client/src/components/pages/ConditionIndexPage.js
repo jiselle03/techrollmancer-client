@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import { BackgroundImage } from '../styles/Image';
 import TableStyle from '../styles/TableStyle';
 
@@ -27,7 +27,7 @@ const ConditionIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     CONDITIONS
                 </h1>
@@ -232,7 +232,7 @@ const ConditionIndexPage = () => {
                     Any Attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.
                 </p>
 
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

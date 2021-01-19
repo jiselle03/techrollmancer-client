@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -68,7 +68,7 @@ const SpellIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     SPELLS
                 </h1>
@@ -95,7 +95,7 @@ const SpellIndexPage = () => {
                         </List>
                     </div>
                 ))}
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

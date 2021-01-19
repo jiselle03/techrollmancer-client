@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import { Card, CardContent } from '../styles/Card';
 import { Heading } from '../styles/Typography';
 
@@ -47,7 +47,7 @@ const RaceIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1 style={{marginLeft: "0.2em"}}>
                     RACES
                 </h1>
@@ -70,7 +70,7 @@ const RaceIndexPage = () => {
                     </div>
                 ))}
                 </Grid>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

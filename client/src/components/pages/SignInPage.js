@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Session from '../../api/session';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 import FlexBox from '../styles/FlexBox';
 
@@ -53,7 +53,7 @@ const SignInPage = props => {
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
-            <MainStyle
+            <Container
                 style={{overflow: "hidden"}}
             >
                 <FormStyle
@@ -128,7 +128,7 @@ const SignInPage = props => {
                     </Card>
                 </FormStyle>
 
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

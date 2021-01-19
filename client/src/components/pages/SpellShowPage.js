@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -24,7 +24,7 @@ const SpellShowPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     {spell.name.toUpperCase()}
                 </h1>
@@ -43,7 +43,7 @@ const SpellShowPage = props => {
                 <p><strong>Level:</strong> {spell.level}</p>
                 <p><strong>School:</strong> {spell.school}</p>
                 <p><strong>Class:</strong> {spell.dnd_class}</p>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

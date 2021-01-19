@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -74,7 +74,7 @@ const RaceShowPage = props => {
             size={getRaceSize(slug)}
             light={false}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     {name.toUpperCase()}
                 </h1>
@@ -125,7 +125,7 @@ const RaceShowPage = props => {
                         </>
                     ))}
                 </div>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

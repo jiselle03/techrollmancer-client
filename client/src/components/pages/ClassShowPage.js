@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
@@ -113,7 +113,7 @@ const ClassShowPage = props => {
             image={getClassImage(slug)}
             size={getClassSize(slug)}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     {name.toUpperCase()}
                 </h1>
@@ -176,7 +176,7 @@ const ClassShowPage = props => {
                         </Table>
                     </TableContainer>
                 </TableStyle>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

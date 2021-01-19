@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import User from '../../api/user';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import { FormStyle, FormContent } from '../styles/FormStyle';
 
 import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
@@ -65,7 +65,7 @@ const SignUpPage = props => {
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
-            <MainStyle>
+            <Container>
                 <FormStyle
                     height="85vh"
                     padding="1em"
@@ -131,7 +131,7 @@ const SignUpPage = props => {
                         </FlexBox>
                     </Card>
                 </FormStyle>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

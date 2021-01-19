@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 import { BackgroundImage } from '../styles/Image';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
@@ -25,7 +25,7 @@ const ArmorIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light={true}
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     ARMOR
                 </h1>
@@ -97,7 +97,7 @@ const ArmorIndexPage = () => {
                     </div>
                 ))}
                 </List>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

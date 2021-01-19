@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -79,7 +79,7 @@ const EquipmentShowPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <MainStyle>
+            <Container>
                 <div className="equipment-name">
                     <h1>
                         {equipment.name.toUpperCase()}
@@ -112,7 +112,7 @@ const EquipmentShowPage = props => {
                     <h3>Description</h3>
                     <p>{desc}</p>
                 </div>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };

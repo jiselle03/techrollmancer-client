@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { BackgroundImage } from '../styles/Image';
-import MainStyle from '../styles/MainStyle';
+import Container from '../styles/Container';
 
 import { List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -35,7 +35,7 @@ const LibrariesIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <MainStyle>
+            <Container>
                 <h1>
                     Libraries
                 </h1>
@@ -49,7 +49,7 @@ const LibrariesIndexPage = () => {
                         </Link>
                     ))}
                 </List>
-            </MainStyle>
+            </Container>
         </BackgroundImage>
     );
 };
