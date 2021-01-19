@@ -53,8 +53,14 @@ const GlobalStyles = createGlobalStyle`
     margin-bottom: 0.2em;
   }
   
-  h6, p {
+  h6 {
     font-size: 1.3rem;
+    margin-bottom: 0.2em;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
   a {

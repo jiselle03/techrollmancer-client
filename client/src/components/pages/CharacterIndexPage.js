@@ -6,6 +6,7 @@ import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 import { Card, CardContent } from '../styles/Card';
+import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress, Grid } from '@material-ui/core';
 
@@ -55,12 +56,10 @@ const CharacterIndexPage = props => {
                                         imageSize="cover"
                                     >
                                         <CardContent>
-                                            <h6 className="card-text">
-                                                {character.name}
-                                            </h6>
-                                            <p className="card-text">
+                                            <Heading as="h6" alt>{character.name}</Heading>
+                                            <Text alt>
                                                 {character.gender} {character.race}
-                                            </p>
+                                            </Text>
                                         </CardContent>
                                     </Card>
                                 </Link>
