@@ -5,7 +5,7 @@ import Character from '../../api/character';
 import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
-import { Card, CardContent } from '../styles/CardStyle';
+import { Card, CardContent } from '../styles/Card';
 
 import { CircularProgress, Grid } from '@material-ui/core';
 
