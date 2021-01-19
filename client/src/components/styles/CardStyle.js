@@ -4,9 +4,8 @@ export const CardStyle = styled.div`
     width: 12em;
     height: 20em;
     margin: 1em;
-    border: 1px solid #f3f3f3;
     border-radius: 5px;
-    position: "relative";
+    position: relative;
     background-color: rgba(45,99,127,1);
     background-repeat: no-repeat;
     background-image: url(${({image}) => image});
