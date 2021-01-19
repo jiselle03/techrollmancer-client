@@ -33,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.accent};
     line-height: 1em;
     margin-bottom: 0.2em;
+    margin-top: 0.5em;
   }
   
   h3 {
