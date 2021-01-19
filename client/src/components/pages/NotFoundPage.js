@@ -2,6 +2,7 @@ import React from 'react';
 
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading } from '../styles/Typography';
 
 const NotFoundPage = () => {
     return (
@@ -10,9 +11,7 @@ const NotFoundPage = () => {
             light
         >
             <Container>
-                <h1 style={{color: "maroon"}}>
-                    404 Not Found
-                </h1>
+                <Heading>404 Not Found</Heading>
             </Container>
         </BackgroundImage>
     );
