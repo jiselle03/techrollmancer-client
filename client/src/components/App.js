@@ -38,6 +38,10 @@ import CharacterShowPage from './pages/CharacterShowPage';
 
 import { CircularProgress } from '@material-ui/core';
 
+import { ThemeProvider } from 'styled-components';
+import theme from './styles/Theme';
+import GlobalStyles from './styles/Global';
+
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,69 +64,72 @@ const App = () => {
   };
       
   return (
-    <BrowserRouter>
-        <header>
-          <NavBar 
-            currentUser={currentUser} 
-            onSignOut={destroySession} 
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+          <GlobalStyles />
+          <header>
+            <NavBar 
+              currentUser={currentUser} 
+              onSignOut={destroySession} 
+            />
+          </header>
+          <ReactNotification />
+          <Switch>
+            <Route exact path="/" component={WelcomePage}/>
+            <Route exact path="/libraries" component={LibrariesIndexPage} />
+            <Route exact path="/libraries/races" component={RaceIndexPage} />
+            <Route path="/libraries/races/:slug" component={RaceShowPage} />
+            <Route exact path="/libraries/classes" component={ClassIndexPage} />
+            <Route path="/libraries/classes/:slug" component={ClassShowPage} />
+            <Route exact path="/libraries/spells" component={SpellIndexPage} />
+            <Route path="/libraries/spells/:slug" component={SpellShowPage} />
+            <Route exact path="/libraries/equipment/adventuring-gear" component={AdventuringGearIndexPage} />
+            <Route exact path="/libraries/equipment/mounts-and-vehicles" component={MountVehicleIndexPage} />
+            <Route exact path="/libraries/equipment/tools" component={ToolIndexPage} />
+            <Route exact path="/libraries/equipment/weapons" component={WeaponIndexPage} />
+            <Route exact path="/libraries/equipment/armor" component={ArmorIndexPage} />
+            <Route exact path="/libraries/equipment" component={EquipmentIndexPage} />
+            <Route path="/libraries/equipment/:slug" component={EquipmentShowPage} />
+            <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
+            <AuthRoute 
+              exact path="/characters"
+              isAuthenticated={!!currentUser}
+              render={routeProps => (
+                <CharacterIndexPage {...routeProps} currentUser={currentUser} />
+              )}
+            />
+            <AuthRoute 
+              exact path="/characters/:id"
+              isAuthenticated={!!currentUser}
+              component={CharacterShowPage}
+            />
+            <AuthRoute 
+              path="/scheduler"
+              isAuthenticated={!!currentUser}
+              render={routeProps => (
+                <SchedulerPage {...routeProps} currentUser={currentUser} />
+              )}
           />
-        </header>
-        <ReactNotification />
-        <Switch>
-          <Route exact path="/" component={WelcomePage}/>
-          <Route exact path="/libraries" component={LibrariesIndexPage} />
-          <Route exact path="/libraries/races" component={RaceIndexPage} />
-          <Route path="/libraries/races/:slug" component={RaceShowPage} />
-          <Route exact path="/libraries/classes" component={ClassIndexPage} />
-          <Route path="/libraries/classes/:slug" component={ClassShowPage} />
-          <Route exact path="/libraries/spells" component={SpellIndexPage} />
-          <Route path="/libraries/spells/:slug" component={SpellShowPage} />
-          <Route exact path="/libraries/equipment/adventuring-gear" component={AdventuringGearIndexPage} />
-          <Route exact path="/libraries/equipment/mounts-and-vehicles" component={MountVehicleIndexPage} />
-          <Route exact path="/libraries/equipment/tools" component={ToolIndexPage} />
-          <Route exact path="/libraries/equipment/weapons" component={WeaponIndexPage} />
-          <Route exact path="/libraries/equipment/armor" component={ArmorIndexPage} />
-          <Route exact path="/libraries/equipment" component={EquipmentIndexPage} />
-          <Route path="/libraries/equipment/:slug" component={EquipmentShowPage} />
-          <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
-          <AuthRoute 
-            exact path="/characters"
-            isAuthenticated={!!currentUser}
-            render={routeProps => (
-              <CharacterIndexPage {...routeProps} currentUser={currentUser} />
-            )}
-          />
-          <AuthRoute 
-            exact path="/characters/:id"
-            isAuthenticated={!!currentUser}
-            component={CharacterShowPage}
-          />
-          <AuthRoute 
-            path="/scheduler"
-            isAuthenticated={!!currentUser}
-            render={routeProps => (
-              <SchedulerPage {...routeProps} currentUser={currentUser} />
-            )}
-        />
-          <Route 
-            path="/sign_in"
-            render={routeProps => (
-              <SignInPage {...routeProps} onSignIn={getUser} />
-            )}  
-          />
-          <Route 
-            path="/sign_up"
-            render={routeProps => (
-              <SignUpPage {...routeProps} onSignUp={getUser} />
-            )}  
-          />
-          <Route 
-            path="/generator"
-            component={GeneratorPage}  
-          />
-          <Route component={NotFoundPage} />
-        </Switch>
-    </BrowserRouter>
+            <Route 
+              path="/sign_in"
+              render={routeProps => (
+                <SignInPage {...routeProps} onSignIn={getUser} />
+              )}  
+            />
+            <Route 
+              path="/sign_up"
+              render={routeProps => (
+                <SignUpPage {...routeProps} onSignUp={getUser} />
+              )}  
+            />
+            <Route 
+              path="/generator"
+              component={GeneratorPage}  
+            />
+            <Route component={NotFoundPage} />
+          </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
   

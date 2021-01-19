@@ -6,6 +6,7 @@ import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import MainStyle from '../styles/MainStyle';
 import { Card, CardContent } from '../styles/Card';
+import { Heading } from '../styles/Typography';
 
 import { CircularProgress, Grid } from '@material-ui/core';
 
@@ -62,9 +63,7 @@ const RaceIndexPage = () => {
                                 imageSize={getImageSize(race.slug)}
                             >
                                 <CardContent>
-                                    <h5 className="card-text">
-                                        {race.name}
-                                    </h5>
+                                    <Heading as="h5" alt>{race.name}</Heading>
                                 </CardContent>
                             </Card>
                         </Link>
