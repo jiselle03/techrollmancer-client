@@ -1,22 +1,15 @@
-import React from 'react';
+import styled from 'styled-components';
 
-export const FormStyle = props => {
-    const { children, height, padding, margin } = props;
+export const FormContainer = styled.div`
+    border-radius: 5px;
+    padding: ${({ padding }) => padding};
+    width: 25em;
+    height: ${({ height }) => height};
+    margin: ${({ margin }) => margin};
+`;
 
-    return(
-        <div 
-            style={{
-                borderRadius: "5px",
-                padding: padding,
-                width: "25em",
-                height: height,
-                margin: margin
-            }}
-        >
-            {children}
-        </div>
-    );
-};
+export const Form = styled.form`
+`;
 
 export const FormContent = {
     icon: {

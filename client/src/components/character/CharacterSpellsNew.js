@@ -6,7 +6,7 @@ import SpellListItem from './SpellListItem';
 import FloatingActionButton from './FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
-import { FormStyle } from '../styles/FormStyle';
+import { FormContainer, Form } from '../styles/Form';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -70,8 +70,8 @@ const CharacterSpellsNew = props => {
             >
                 <FlexBox alignItems="center" justifyContent="center">
                     <Fade in={open}>
-                        <FormStyle padding="0.5em">
-                            <form onSubmit={handleSubmit}>
+                        <FormContainer padding="0.5em">
+                            <Form onSubmit={handleSubmit}>
                                 <div 
                                     style={{
                                         position: "sticky", 
@@ -131,8 +131,8 @@ const CharacterSpellsNew = props => {
                                         ))}
                                     </div>      
                                 </FadeStyle>
-                            </form>
-                        </FormStyle>
+                            </Form>
+                        </FormContainer>
                     </Fade>
                 </FlexBox>
             </Modal>

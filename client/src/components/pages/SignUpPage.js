@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import User from '../../api/user';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
-import { FormStyle, FormContent } from '../styles/FormStyle';
+import { Form, FormContainer, FormContent } from '../styles/Form';
 
 import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
@@ -66,7 +66,7 @@ const SignUpPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
             <Container>
-                <FormStyle
+                <FormContainer
                     height="85vh"
                     padding="1em"
                     margin="auto"
@@ -80,7 +80,7 @@ const SignUpPage = props => {
                             Create an Account
                         </h3>
 
-                        <form onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}>
                             {fields.map(field => (
                                 <FormControl key={field.name} style={FormContent.field}>
                                     <InputLabel htmlFor={field.name}>{field.label}*</InputLabel>
@@ -118,7 +118,7 @@ const SignUpPage = props => {
                                     SIGN UP
                                 </Button>
                             </FlexBox>
-                        </form>
+                        </Form>
 
                         <Divider variant="middle" />
 
@@ -130,7 +130,7 @@ const SignUpPage = props => {
                             </p>
                         </FlexBox>
                     </Card>
-                </FormStyle>
+                </FormContainer>
             </Container>
         </BackgroundImage>
     );

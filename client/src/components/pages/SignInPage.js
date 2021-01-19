@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Session from '../../api/session';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
-import { FormStyle, FormContent } from '../styles/FormStyle';
+import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
 
 import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
@@ -56,7 +56,7 @@ const SignInPage = props => {
             <Container
                 style={{overflow: "hidden"}}
             >
-                <FormStyle
+                <FormContainer
                     height="55vh"
                     padding="1em"
                     margin="10vh auto"
@@ -70,7 +70,7 @@ const SignInPage = props => {
                             Sign In
                         </h3>
 
-                        <form onSubmit={createSession}>
+                        <Form onSubmit={createSession}>
                             { errors.length > 0 ? (
                                 <div>
                                     <div className="header">
@@ -114,7 +114,7 @@ const SignInPage = props => {
                                 </Button>
 
                             </FlexBox>
-                        </form>
+                        </Form>
 
                         <Divider variant="middle" />
                         
@@ -126,7 +126,7 @@ const SignInPage = props => {
                             </p>
                         </FlexBox>
                     </Card>
-                </FormStyle>
+                </FormContainer>
 
             </Container>
         </BackgroundImage>

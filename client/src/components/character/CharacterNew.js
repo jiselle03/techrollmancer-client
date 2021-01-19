@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Character from '../../api/character';
 import FloatingActionButton from './FloatingActionButton';
-import { FormStyle, FormContent } from '../styles/FormStyle';
+import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
 import { FadeStyle, Fade } from '../styles/FadeStyle';
 
@@ -94,14 +94,14 @@ const CharacterNew = props => {
                 >
                     <Fade in={open}>
                         <FadeStyle>
-                            <FormStyle
+                            <FormContainer
                                 padding="0.5em"
                             >
                                 <h3>
                                     New Character
                                 </h3>
 
-                                <form onSubmit={createCharacter}>
+                                <Form onSubmit={createCharacter}>
                                 { errors.length > 0 ? (
                                     <div>
                                         <div className="header">
@@ -291,9 +291,9 @@ const CharacterNew = props => {
                                         </Button>
 
                                     </FlexBox>
-                                </form>
+                                </Form>
                                     
-                            </FormStyle>
+                            </FormContainer>
                         </FadeStyle>
                     </Fade>
                 </FlexBox>
