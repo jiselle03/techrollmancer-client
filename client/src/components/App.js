@@ -67,12 +67,10 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
           <GlobalStyles />
-          <header>
-            <NavBar 
-              currentUser={currentUser} 
-              onSignOut={destroySession} 
-            />
-          </header>
+          <NavBar 
+            currentUser={currentUser} 
+            onSignOut={destroySession} 
+          />
           <ReactNotification />
           <Switch>
             <Route exact path="/" component={WelcomePage}/>

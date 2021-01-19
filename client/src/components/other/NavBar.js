@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import NavBarDetails from './NavBarDetails';
-import { NavBarStyle, NavContainer, Sidebar, sidebarText } from '../styles/NavStyle.js';
+import { NavBarStyle, NavContainer, Sidebar, sidebarText } from '../styles/Navigation';
 
 import { Drawer, ListItem, useMediaQuery } from '@material-ui/core';
 
@@ -26,7 +26,7 @@ const NavBar = props => {
         <NavContainer>
             {!laptop && (
                 <NavBarStyle>
-                    <Sidebar className="sidebar" currentUser={currentUser} >
+                    <Sidebar currentUser={currentUser} >
                         <ListItemLink button
                                 onClick={handleClick}
                                 style={{
