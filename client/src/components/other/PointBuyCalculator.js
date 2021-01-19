@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import { raceBonus } from '../../js/generator';
-import TableStyle from '../styles/TableStyle';
 
 import { FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -110,7 +109,7 @@ const PointBuyCalculator = () => {
     }, [race, remainingPoints]);
 
     return(
-        <TableStyle>
+        <>
             <FormControl className="race-option">
                 <InputLabel>Race</InputLabel>
                 <Select
@@ -132,130 +131,130 @@ const PointBuyCalculator = () => {
             <h6>Remaining Points: {remainingPoints}</h6>
         
             <TableContainer component={Paper}>
-            <Table className="point-buy calculator" aria-label="point buy calculator">
-                <TableHead>
-                    <TableRow>
-                        <TableCell className="table-header">Attribute</TableCell>
-                        <TableCell className="table-header">Ability Score</TableCell>
-                        <TableCell className="table-header">Racial Bonus</TableCell>
-                        <TableCell className="table-header">Total Score</TableCell>
-                        <TableCell className="table-header">Modifier</TableCell>
-                        <TableCell className="table-header">Cost</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    <TableRow key="8">
-                        <TableCell>Strength</TableCell>
-                        <TableCell>
-                            <input 
-                                type="number" 
-                                value={stats.str}
-                                step="1" 
-                                min="8"
-                                max={remainingPoints === 0 ? stats.str : "15"}
-                                onChange={event => handleInputChange(event, "str")}
-                                onKeyDown={event => event.preventDefault()}
-                            />
-                        </TableCell>
-                        <TableCell>{bonus.str}</TableCell>
-                        <TableCell>{getTotal(stats.str, "str")}</TableCell>
-                        <TableCell>{checkBaseMod(getTotal(stats.str, "str"))}</TableCell>
-                        <TableCell>{getPointCost(stats.str) || 0}</TableCell>
-                    </TableRow>
-                    <TableRow key="9">
-                        <TableCell>Dexterity</TableCell>
-                        <TableCell>
-                            <input 
-                                type="number" 
-                                value={stats.dex}
-                                step="1" 
-                                min="8"
-                                max={remainingPoints === 0 ? stats.dex : "15"}
-                                onChange={event => handleInputChange(event, "dex")}
-                                onKeyDown={event => event.preventDefault()}
-                            />
-                        </TableCell>
-                        <TableCell>{bonus.dex}</TableCell>
-                        <TableCell>{getTotal(stats.dex, "dex")}</TableCell>
-                        <TableCell>{checkBaseMod(getTotal(stats.dex, "dex"))}</TableCell>
-                        <TableCell>{getPointCost(stats.dex)}</TableCell>
-                    </TableRow>
-                    <TableRow key="10">
-                        <TableCell>Constitution</TableCell>
-                        <TableCell>
-                            <input 
-                                type="number" 
-                                value={stats.con}
-                                step="1" 
-                                min="8"
-                                max={remainingPoints === 0 ? stats.con : "15"}
-                                onChange={event => handleInputChange(event, "con")}
-                                onKeyDown={event => event.preventDefault()}
-                            />
-                        </TableCell>
-                        <TableCell>{bonus.con}</TableCell>
-                        <TableCell>{getTotal(stats.con, "con")}</TableCell>
-                        <TableCell>{checkBaseMod(getTotal(stats.con, "con"))}</TableCell>
-                        <TableCell>{getPointCost(stats.con)}</TableCell>
-                    </TableRow>
-                    <TableRow key="11">
-                        <TableCell>Intelligence</TableCell>
-                        <TableCell>
-                            <input 
-                                type="number" 
-                                value={stats.int}
-                                step="1" 
-                                min="8"
-                                max={remainingPoints === 0 ? stats.int : "15"}
-                                onChange={event => handleInputChange(event, "int")}
-                                onKeyDown={event => event.preventDefault()}
-                            />
-                        </TableCell>
-                        <TableCell>{bonus.int}</TableCell>
-                        <TableCell>{getTotal(stats.int, "int")}</TableCell>
-                        <TableCell>{checkBaseMod(getTotal(stats.int, "int"))}</TableCell>
-                        <TableCell>{getPointCost(stats.int)}</TableCell>
-                    </TableRow>
-                    <TableRow key="12">
-                        <TableCell>Wisdom</TableCell>
-                        <TableCell>
-                            <input 
-                                type="number" 
-                                value={stats.wis}
-                                step="1" 
-                                min="8"
-                                max={remainingPoints === 0 ? stats.wis : "15"}
-                                onChange={event => handleInputChange(event, "wis")}
-                                onKeyDown={event => event.preventDefault()}
-                            />
-                        </TableCell>
-                        <TableCell>{bonus.wis}</TableCell>
-                        <TableCell>{getTotal(stats.wis, "wis")}</TableCell>
-                        <TableCell>{checkBaseMod(getTotal(stats.wis, "wis"))}</TableCell>
-                        <TableCell>{getPointCost(stats.wis)}</TableCell>
-                    </TableRow>
-                    <TableRow key="13">
-                        <TableCell>Charisma</TableCell>
-                        <TableCell>
-                            <input 
-                                type="number" 
-                                value={stats.cha}
-                                step="1" 
-                                min="8"
-                                max={remainingPoints === 0 ? stats.cha : "15"}
-                                onChange={event => handleInputChange(event, "cha")}
-                                onKeyDown={event => event.preventDefault()}
-                            />
-                        </TableCell>
-                        <TableCell>{bonus.cha}</TableCell>
-                        <TableCell>{getTotal(stats.cha, "cha")}</TableCell>
-                        <TableCell>{checkBaseMod(getTotal(stats.cha, "cha"))}</TableCell>
-                        <TableCell>{getPointCost(stats.cha)}</TableCell>
-                    </TableRow>
-                </TableBody>
-            </Table>
+                <Table aria-label="point buy calculator">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell className="table-header">Attribute</TableCell>
+                            <TableCell className="table-header">Ability Score</TableCell>
+                            <TableCell className="table-header">Racial Bonus</TableCell>
+                            <TableCell className="table-header">Total Score</TableCell>
+                            <TableCell className="table-header">Modifier</TableCell>
+                            <TableCell className="table-header">Cost</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow key="8">
+                            <TableCell>Strength</TableCell>
+                            <TableCell>
+                                <input 
+                                    type="number" 
+                                    value={stats.str}
+                                    step="1" 
+                                    min="8"
+                                    max={remainingPoints === 0 ? stats.str : "15"}
+                                    onChange={event => handleInputChange(event, "str")}
+                                    onKeyDown={event => event.preventDefault()}
+                                />
+                            </TableCell>
+                            <TableCell>{bonus.str}</TableCell>
+                            <TableCell>{getTotal(stats.str, "str")}</TableCell>
+                            <TableCell>{checkBaseMod(getTotal(stats.str, "str"))}</TableCell>
+                            <TableCell>{getPointCost(stats.str) || 0}</TableCell>
+                        </TableRow>
+                        <TableRow key="9">
+                            <TableCell>Dexterity</TableCell>
+                            <TableCell>
+                                <input 
+                                    type="number" 
+                                    value={stats.dex}
+                                    step="1" 
+                                    min="8"
+                                    max={remainingPoints === 0 ? stats.dex : "15"}
+                                    onChange={event => handleInputChange(event, "dex")}
+                                    onKeyDown={event => event.preventDefault()}
+                                />
+                            </TableCell>
+                            <TableCell>{bonus.dex}</TableCell>
+                            <TableCell>{getTotal(stats.dex, "dex")}</TableCell>
+                            <TableCell>{checkBaseMod(getTotal(stats.dex, "dex"))}</TableCell>
+                            <TableCell>{getPointCost(stats.dex)}</TableCell>
+                        </TableRow>
+                        <TableRow key="10">
+                            <TableCell>Constitution</TableCell>
+                            <TableCell>
+                                <input 
+                                    type="number" 
+                                    value={stats.con}
+                                    step="1" 
+                                    min="8"
+                                    max={remainingPoints === 0 ? stats.con : "15"}
+                                    onChange={event => handleInputChange(event, "con")}
+                                    onKeyDown={event => event.preventDefault()}
+                                />
+                            </TableCell>
+                            <TableCell>{bonus.con}</TableCell>
+                            <TableCell>{getTotal(stats.con, "con")}</TableCell>
+                            <TableCell>{checkBaseMod(getTotal(stats.con, "con"))}</TableCell>
+                            <TableCell>{getPointCost(stats.con)}</TableCell>
+                        </TableRow>
+                        <TableRow key="11">
+                            <TableCell>Intelligence</TableCell>
+                            <TableCell>
+                                <input 
+                                    type="number" 
+                                    value={stats.int}
+                                    step="1" 
+                                    min="8"
+                                    max={remainingPoints === 0 ? stats.int : "15"}
+                                    onChange={event => handleInputChange(event, "int")}
+                                    onKeyDown={event => event.preventDefault()}
+                                />
+                            </TableCell>
+                            <TableCell>{bonus.int}</TableCell>
+                            <TableCell>{getTotal(stats.int, "int")}</TableCell>
+                            <TableCell>{checkBaseMod(getTotal(stats.int, "int"))}</TableCell>
+                            <TableCell>{getPointCost(stats.int)}</TableCell>
+                        </TableRow>
+                        <TableRow key="12">
+                            <TableCell>Wisdom</TableCell>
+                            <TableCell>
+                                <input 
+                                    type="number" 
+                                    value={stats.wis}
+                                    step="1" 
+                                    min="8"
+                                    max={remainingPoints === 0 ? stats.wis : "15"}
+                                    onChange={event => handleInputChange(event, "wis")}
+                                    onKeyDown={event => event.preventDefault()}
+                                />
+                            </TableCell>
+                            <TableCell>{bonus.wis}</TableCell>
+                            <TableCell>{getTotal(stats.wis, "wis")}</TableCell>
+                            <TableCell>{checkBaseMod(getTotal(stats.wis, "wis"))}</TableCell>
+                            <TableCell>{getPointCost(stats.wis)}</TableCell>
+                        </TableRow>
+                        <TableRow key="13">
+                            <TableCell>Charisma</TableCell>
+                            <TableCell>
+                                <input 
+                                    type="number" 
+                                    value={stats.cha}
+                                    step="1" 
+                                    min="8"
+                                    max={remainingPoints === 0 ? stats.cha : "15"}
+                                    onChange={event => handleInputChange(event, "cha")}
+                                    onKeyDown={event => event.preventDefault()}
+                                />
+                            </TableCell>
+                            <TableCell>{bonus.cha}</TableCell>
+                            <TableCell>{getTotal(stats.cha, "cha")}</TableCell>
+                            <TableCell>{checkBaseMod(getTotal(stats.cha, "cha"))}</TableCell>
+                            <TableCell>{getPointCost(stats.cha)}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
             </TableContainer>
-        </TableStyle>
+        </>
     );
 };
 

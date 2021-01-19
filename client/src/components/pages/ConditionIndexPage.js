@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import Container from '../styles/Container';
 import { BackgroundImage } from '../styles/Image';
-import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -66,28 +65,26 @@ const ConditionIndexPage = () => {
                     Some Special Abilities and environmental Hazards, such as starvation and the long-­term Effects of freezing or scorching temperatures, can lead to a Special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect’s description.
                 </p>
                 
-                <TableStyle>
-                    <TableContainer component={Paper}>
-                        <Table className="table" aria-label="simple table">
-                            <TableHead>
-                            <TableRow>
-                                <TableCell>Level</TableCell>
-                                <TableCell>Effect</TableCell>
+                <TableContainer component={Paper}>
+                    <Table className="table" aria-label="simple table">
+                        <TableHead>
+                        <TableRow>
+                            <TableCell>Level</TableCell>
+                            <TableCell>Effect</TableCell>
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                        {rows.map(row => (
+                            <TableRow key={row.name}>
+                            <TableCell component="th" scope="row">
+                                {row.level}
+                            </TableCell>
+                            <TableCell>{row.effect}</TableCell>
                             </TableRow>
-                            </TableHead>
-                            <TableBody>
-                            {rows.map(row => (
-                                <TableRow key={row.name}>
-                                <TableCell component="th" scope="row">
-                                    {row.level}
-                                </TableCell>
-                                <TableCell>{row.effect}</TableCell>
-                                </TableRow>
-                            ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </TableStyle>
+                        ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
 
                 <h2>
                     Frightened

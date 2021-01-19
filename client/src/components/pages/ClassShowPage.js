@@ -4,7 +4,6 @@ import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
-import TableStyle from '../styles/TableStyle';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -150,32 +149,28 @@ const ClassShowPage = props => {
                 }}></p>
 
                 <h2>{name} Table</h2>
-                <TableStyle
-                    width = "100%"
-                >
-                    <TableContainer component={Paper}>
-                        <Table className="table" aria-label="simple table">
-                            <TableHead>
-                            <TableRow>
-                                {oneClass && getColNames(oneClass).map((col, i) => (
-                                    <TableCell key={i} className="table-header">{col}</TableCell>
-                                ))}
-                            </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {Array.from({length: 21}, (x,i) => i).map(i => (
-                                    <TableRow key={i + 1}>
-                                        {oneClass && getRow(i + 1, oneClass).map((row, index) => (
-                                            <TableCell component="th" scope="row" key={index}>
-                                                {row}
-                                            </TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                </TableStyle>
+                <TableContainer component={Paper}>
+                    <Table className="table" aria-label="simple table">
+                        <TableHead>
+                        <TableRow>
+                            {oneClass && getColNames(oneClass).map((col, i) => (
+                                <TableCell key={i} className="table-header">{col}</TableCell>
+                            ))}
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {Array.from({length: 21}, (x,i) => i).map(i => (
+                                <TableRow key={i + 1}>
+                                    {oneClass && getRow(i + 1, oneClass).map((row, index) => (
+                                        <TableCell component="th" scope="row" key={index}>
+                                            {row}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </Container>
         </BackgroundImage>
     );
