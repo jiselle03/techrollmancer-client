@@ -127,9 +127,11 @@ const WelcomePage = () => {
 
                 <Grid container>
                     {dSides.map(side => (
-                        <div key={side.num} onClick={() => handleRollOpen(side.num)}>
-                            <Image src={`https://i.ibb.co/${side.img}`} />
-                        </div>
+                        <Image 
+                            key={side.num} 
+                            src={`https://i.ibb.co/${side.img}`} 
+                            onClick={() => handleRollOpen(side.num)}
+                        />
                     ))}
                     
                 </Grid>
