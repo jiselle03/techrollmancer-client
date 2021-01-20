@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { object, func } from 'prop-types';
 
 import NavBarDetails from './NavBarDetails';
 import { NavBarStyle, NavContainer, Sidebar, sidebarText } from '../styles/Navigation';
@@ -81,3 +82,8 @@ const NavBar = props => {
 };
 
 export default NavBar;
+
+NavBar.propTypes = {
+    currentUser: object,
+    onSignOut: func.isRequired,
+};
