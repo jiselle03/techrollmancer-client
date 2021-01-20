@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { bool } from 'prop-types';
 
 const AuthRoute = props => {
     const { isAuthenticated, component: Component, ...routeProps } = props;
@@ -12,3 +13,7 @@ const AuthRoute = props => {
 };
 
 export default AuthRoute;
+
+AuthRoute.propType = {
+    isAuthenticated: bool,
+};
