@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import { useSpring, animated } from 'react-spring/web.cjs';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import { string, element, bool, func } from 'prop-types';
 
 export const FadeContent = styled.div`
   background-color: rgba(255,255,255,0.9);
@@ -9,6 +9,11 @@ export const FadeContent = styled.div`
   text-align: ${({ align }) => align || "center"};
   width: ${({ width }) => width};
 `;
+
+FadeContent.propTypes = {
+  align: string,
+  width: string,
+};
 
 export const Fade = forwardRef(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
@@ -31,8 +36,8 @@ export const Fade = forwardRef(function Fade(props, ref) {
 });
 
 Fade.propTypes = {
-  children: PropTypes.element,
-  in: PropTypes.bool.isRequired,
-  onEnter: PropTypes.func,
-  onExited: PropTypes.func,
+  children: element,
+  in: bool.isRequired,
+  onEnter: func,
+  onExited: func,
 };
