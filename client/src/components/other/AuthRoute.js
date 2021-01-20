@@ -14,6 +14,6 @@ const AuthRoute = props => {
 
 export default AuthRoute;
 
-AuthRoute.propType = {
+AuthRoute.propTypes = {
     isAuthenticated: bool,
 };

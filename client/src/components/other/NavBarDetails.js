@@ -7,18 +7,16 @@ const ListItemLink = props => {
     return <ListItem button component="a" {...props} />;
 };
 
+NavBarDetails.propType
 const NavBarDetails = ({ currentUser, onSignOut }) => {
     const handleSignOutClick = () => {
-        if (typeof onSignOut === "function") {
-            onSignOut();
-        }
+        if (typeof onSignOut === "function") onSignOut();
     };
 
     const [librariesOpen, setLibrariesOpen] = useState(false);
     const [equipmentOpen, setEquipmentOpen] = useState(false);
 
     const laptop = useMediaQuery('(min-width:1280px)');
-
 
     const handleClick = tab => {
         if (tab === "libraries") {
