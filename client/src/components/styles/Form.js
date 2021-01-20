@@ -1,4 +1,6 @@
+import { string } from 'prop-types';
 import styled from 'styled-components';
+import { string } from 'prop-types';
 
 export const FormContainer = styled.div`
     border-radius: 5px;
@@ -7,6 +9,12 @@ export const FormContainer = styled.div`
     height: ${({ height }) => height};
     margin: ${({ margin }) => margin};
 `;
+
+FormContainer.propTypes = {
+    padding: string,
+    height: string,
+    margin: string,
+  };
 
 export const Form = styled.form`
 `;
