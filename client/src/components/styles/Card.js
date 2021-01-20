@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { string } from 'prop-types';
 
 export const Card = styled.div`
     width: 12em;
@@ -17,6 +18,11 @@ export const Card = styled.div`
         filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .4));
     }
 `;
+
+Card.propTypes = {
+    image: string,
+    imageSize: string,
+  };
 
 export const CardContent = styled.div`
     position: absolute;
