@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 
 import { Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from '@material-ui/core';
 import { AccountCircle, Casino, Create, EventAvailable, ExitToApp, ExpandLess, ExpandMore, PersonAdd, Search } from '@material-ui/icons';
+import { func, object } from 'prop-types';
 
 const ListItemLink = props => {
     return <ListItem button component="a" {...props} />;
 };
 
-NavBarDetails.propType
-const NavBarDetails = ({ currentUser, onSignOut }) => {
+const NavBarDetails = props => {
+    const { currentUser, onSignOut } = props;
+
     const handleSignOutClick = () => {
         if (typeof onSignOut === "function") onSignOut();
     };
@@ -248,3 +250,8 @@ const NavBarDetails = ({ currentUser, onSignOut }) => {
 };
 
 export default NavBarDetails;
+
+NavBarDetails.propTypes = {
+    currentUser: object,
+    onSignOut: func.isRequired,
+};
