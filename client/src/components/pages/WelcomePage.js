@@ -116,12 +116,13 @@ const WelcomePage = () => {
                         exclusive
                         onChange={handleRollState}
                         aria-label="roll state"
-                        >
-                            {states.map(state => (
-                                <ToggleButton key={state} value={state} aria-label={state}>
-                                    {state}
-                                </ToggleButton>
-                            ))}
+                        style={{backgroundColor: "transparent"}}
+                    >
+                        {states.map(state => (
+                            <ToggleButton key={state} value={state} aria-label={state}>
+                                {state}
+                            </ToggleButton>
+                        ))}
                     </ToggleButtonGroup>
                 </FlexBox>
 
