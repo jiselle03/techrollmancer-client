@@ -32,13 +32,13 @@ export const FormContent = {
         margin: "1em 2em",
         width: "85%",
     },
-    character: {
-        margin: "0.5em",
-        width: "85%",
+    full: {
+        margin: "0.5em 0em",
+        width: "80%",
     },
-    stat: {
-        margin: "0.5em 1em",
-        width: "35%",
+    half: {
+        margin: "0.5em",
+        width: "calc(40% - 0.5em)",
     },
     scheduler: {
         padding: "0.5em",

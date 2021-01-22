@@ -185,11 +185,9 @@ const WelcomePage = () => {
                         Guide Me
                     </Button>
                 </Link>
-
             </Container>
         </BackgroundImage>
     );
-    
 };
 
 export default WelcomePage;
