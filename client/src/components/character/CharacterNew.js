@@ -5,6 +5,7 @@ import FloatingActionButton from './FloatingActionButton';
 import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
+import { Heading } from '../styles/Typography';
 
 import { Backdrop, Button, FormControl, Modal, TextField } from '@material-ui/core';
 
@@ -88,9 +89,7 @@ const CharacterNew = props => {
                             <FormContainer
                                 padding="0.5em"
                             >
-                                <h3>
-                                    New Character
-                                </h3>
+                                <Heading as="h3">New Character</Heading>
 
                                 <Form onSubmit={createCharacter}>
                                 { errors.length > 0 ? (
