@@ -1,6 +1,7 @@
 import React from 'react';
 
 import FloatingActionButton from './FloatingActionButton';
+import { Heading } from '../styles/Typography';
 
 import { Card } from '@material-ui/core';
 
@@ -13,9 +14,7 @@ const CharacterFeatures = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name.toUpperCase()}</Heading>
 
             <div className="character-sheet">
                 <FloatingActionButton icon="add" handleAction={handleOpenNew} />
