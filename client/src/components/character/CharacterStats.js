@@ -204,12 +204,12 @@ const CharacterStats = props => {
         <FloatingActionButton icon="delete" character={character} onHandleDelete={handleDelete}/>
 
         <Card className="stats">
-        <h6 className="header">Level</h6>
+        <Heading as="h6" className="header">Level</Heading>
           <div className="stat-header"> 
             <h2 className="main-stats">{level}</h2>
           </div>
 
-          <h6 className="header">Hit Points</h6>
+          <Heading as="h6" className="header">Hit Points</Heading>
           <div onClick={() => handleClick("hp")} className="stat-header">
           {edit.hp && (
             <InputEditStats 
@@ -223,7 +223,7 @@ const CharacterStats = props => {
           )}
           </div>
 
-          <h6 className="header">Armor Class</h6>
+          <Heading as="h6" className="header">Armor Class</Heading>
           <div onClick={() => handleClick("armor_class")} className="stat-header">
           {edit.armor_class && (
             <InputEditStats 
@@ -240,7 +240,7 @@ const CharacterStats = props => {
         </Card>
 
         <Card className="stats">
-        <h6 className="header">Speed</h6>
+        <Heading as="h6" className="header">Speed</Heading>
           <div onClick={() => handleClick("speed")} className="stat-header"> 
           {edit.speed && (
             <InputEditStats 
@@ -386,7 +386,7 @@ const CharacterStats = props => {
               {!edit.dex && (
                 <>
                   <TooltipEdit field={dex} />
-                  <h6 className="stat-mod">{checkBaseMod(dex)}</h6>
+                  <Heading as="h6" className="stat-mod">{checkBaseMod(dex)}</Heading>
                 </>
               )}
               </FlexBox>
