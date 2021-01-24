@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Heading } from '../styles/Typography';
+
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const CharacterJournal = props => {
@@ -7,9 +9,7 @@ const CharacterJournal = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name.toUpperCase()}</Heading>
 
             <div className="character-sheet">
                 <Card className="journal">
