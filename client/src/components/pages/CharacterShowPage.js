@@ -8,6 +8,7 @@ import CharacterFeatures from '../character/CharacterFeatures';
 import CharacterTraits from '../character/CharacterTraits';
 import CharacterJournal from '../character/CharacterJournal';
 import { BackgroundImage } from '../styles/Image';
+import { Heading } from '../styles/Typography';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 
@@ -69,15 +70,14 @@ const CharacterShowPage = props => {
     return (
       <BackgroundImage
         image="https://i.ibb.co/cctCwgk/d20.png" 
-        light={true}
+        light
       >
-
         <div
           style={{
             margin: getScreenSize(),
             width: laptop ? "75vw" : "92.5vw",
           }}
-        >
+          >
           <Tabs
               className="tabs"
               value={value}
