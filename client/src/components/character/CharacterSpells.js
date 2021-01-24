@@ -2,6 +2,7 @@ import React from 'react';
 
 import CharacterSpellsNew from './CharacterSpellsNew';
 import SpellDetails from './SpellDetails';
+import { Heading } from '../styles/Typography';
 
 import { Card } from '@material-ui/core';
 
@@ -12,9 +13,7 @@ const CharacterSpells = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name.toUpperCase()}</Heading>
 
             {levels.map((level, index) => (
                 <Card className="spells">
