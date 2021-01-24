@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Heading } from '../styles/Typography';
+
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const CharacterInventory = props => {
