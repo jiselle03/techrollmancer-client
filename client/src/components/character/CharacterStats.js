@@ -9,9 +9,10 @@ import FlexBox from '../styles/FlexBox';
 import { Fade, FadeContent } from '../styles/Fade';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
-import { Print } from '@material-ui/icons';
+import { Heading } from '../styles/Typography';
 
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
+import { Print } from '@material-ui/icons';
 
 const CharacterStats = props => {
   const [edit, setEdit] = useState({
@@ -192,9 +193,7 @@ const CharacterStats = props => {
 
   return (
     <>
-      <h1 style={{marginBottom: "0.25em"}}>
-        {name.toUpperCase()}
-      </h1>
+      <Heading style={{marginBottom: "0.25em"}}>{name.toUpperCase()}</Heading>
 
       <div style={{textAlign: "right", marginRight: "1.5em"}}>
         <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
