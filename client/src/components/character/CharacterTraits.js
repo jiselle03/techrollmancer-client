@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import baseUrl from '../../config';
 import Character from '../../api/character';
 import FlexBox from '../styles/FlexBox';
+import { Heading } from '../styles/Typography';
 
 import { Card } from '@material-ui/core';
 
@@ -81,9 +82,7 @@ const CharacterTraits = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name.toUpperCase()}</Heading>
 
             <div className="character-sheet">
                 <Card className="traits-container">
