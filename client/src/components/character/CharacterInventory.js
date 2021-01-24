@@ -7,9 +7,7 @@ const CharacterInventory = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name.toUpperCase()}</Heading>
 
             <div className="character-sheet">
                 <Card className="inventory">
