@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Heading, Text } from '../styles/Typography';
+
 export const TooltipRoll = props => {
     const { modifier, ability, name, header } = props;
 
@@ -10,17 +12,17 @@ export const TooltipRoll = props => {
     return(
         <div className="tooltip-roll">
             {header && (
-                <h6 className="header" onClick={() => handleOpen(modifier, ability)}>
+                <Heading as="h6" className="header" onClick={() => handleOpen(modifier, ability)}>
                     {name}
-                </h6>
+                </Heading>
             )}
             {!header && (
-                <p className="ability" onClick={() => handleOpen(modifier, ability)}>
+                <Text className="ability" onClick={() => handleOpen(modifier, ability)}>
                     {name}
-                </p>
+                </Text>
             )}
             <span className="tooltiptext">
-                <p>Click to roll!</p>
+                <Text>Click to roll!</Text>
             </span>
         </div>
     );
@@ -32,9 +34,9 @@ export const TooltipEdit = props => {
 
     return(
         <div className="tooltip-edit">
-            <h2 className="main-stats">{field}</h2>
+            <Heading as="h2" className="main-stats">{field}</Heading>
             <span className="tooltiptext">
-                <p>Click to edit!</p>
+                <Text>Click to edit!</Text>
             </span>
         </div>
     );

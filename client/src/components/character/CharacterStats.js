@@ -206,7 +206,7 @@ const CharacterStats = props => {
         <Card className="stats">
         <Heading as="h6" className="header">Level</Heading>
           <div className="stat-header"> 
-            <h2 className="main-stats">{level}</h2>
+            <Heading as="h2" className="main-stats">{level}</Heading>
           </div>
 
           <Heading as="h6" className="header">Hit Points</Heading>
@@ -277,9 +277,9 @@ const CharacterStats = props => {
             )}
           </div>
 
-          <h6 className="header">Proficiency Bonus</h6>
+          <Heading as="h6" className="header">Proficiency Bonus</Heading>
             <div className="stat-header" onClick={() => handleClick("bonus")} >
-              <h2 className="main-stats">{checkProfBonus(level)}</h2>
+              <Heading as="h2" className="main-stats">{checkProfBonus(level)}</Heading>
             </div>
         </Card>
 
@@ -311,7 +311,7 @@ const CharacterStats = props => {
                 {!edit.str && (
                   <>
                     <TooltipEdit field={str} />
-                    <h6 className="stat-mod">{checkBaseMod(str)}</h6>
+                    <Heading as="h6" className="stat-mod">{checkBaseMod(str)}</Heading>
                   </>
                 )}
               </FlexBox>
@@ -498,7 +498,7 @@ const CharacterStats = props => {
               {!edit.con && (
                 <>
                   <TooltipEdit field={con} />
-                  <h6 className="stat-mod">{checkBaseMod(con)}</h6>
+                  <Heading as="h6" className="stat-mod">{checkBaseMod(con)}</Heading>
                 </>
               )}
               </FlexBox>
@@ -557,7 +557,7 @@ const CharacterStats = props => {
               {!edit.int && (
                 <>
                   <TooltipEdit field={int} />
-                  <h6 className="stat-mod">{checkBaseMod(int)}</h6>
+                  <Heading as="h6" className="stat-mod">{checkBaseMod(int)}</Heading>
                 </>
               )}
               </FlexBox>
@@ -706,7 +706,7 @@ const CharacterStats = props => {
               {!edit.wis && (
                 <>
                   <TooltipEdit field={wis} />
-                  <h6 className="stat-mod">{checkBaseMod(wis)}</h6>
+                  <Heading as="h6" className="stat-mod">{checkBaseMod(wis)}</Heading>
                 </>
               )}
               </FlexBox>
@@ -853,9 +853,9 @@ const CharacterStats = props => {
                 />
               )}
               {!edit.cha && (
-                < >
+                <>
                   <TooltipEdit field={cha} />
-                  <h6 className="stat-mod">{checkBaseMod(cha)}</h6>
+                  <Heading as="h6" className="stat-mod">{checkBaseMod(cha)}</Heading>
                 </>
               )}
               </FlexBox>
@@ -974,12 +974,12 @@ const CharacterStats = props => {
           >
               <Fade in={open}>
                   <FadeContent width="50vw">
-                      <h2 className="ability">{ability}</h2>
+                      <Heading as="h2" className="ability">{ability}</Heading>
                       <div className="dice-roll-container">
-                        <h5 className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</h5>
+                        <Heading as="h5" className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</Heading>
                         <i className="fas fa-dice-d20 fa-10x fa-spin-roll"></i>
                       </div>
-                      <h5>({modifier})</h5>
+                      <Heading as="h5">({modifier})</Heading>
 
                       <Button 
                           variant="contained"
