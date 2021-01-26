@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading } from '../styles/Typography';
 
 import { List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -36,9 +37,7 @@ const LibrariesIndexPage = () => {
             light
         >
             <Container>
-                <h1>
-                    Libraries
-                </h1>
+                <Heading>Libraries</Heading>
 
                 <List component="nav">
                     {categories.map(category => (
