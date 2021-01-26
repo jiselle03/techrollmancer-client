@@ -9,6 +9,7 @@ import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
 import { Center } from '../styles/Center';
+import { Heading, Text } from '../styles/Typography';
 
 import { Backdrop, Button, Card, Divider, Modal, useMediaQuery } from '@material-ui/core';
 
@@ -72,18 +73,16 @@ const GeneratorPage = () => {
             light={true}
         >
             <Container>
-                <h1>
-                    CHARACTER GENERATOR
-                </h1>
+                <Heading>CHARACTER GENERATOR</Heading>
 
-                <p>
+                <Text>
                     Much of what your character does in the game depends on their scores for the following six abilities: 
                     <strong> Strength, Dexterity, Constitution, Intelligence, Wisdom, and Charisma.</strong>
-                </p>
+                </Text>
                 
-                <p>
+                <Text>
                     You can create a character in 3 ways:
-                </p>
+                </Text>
                 <Center>
                     <Card 
                         style={{
