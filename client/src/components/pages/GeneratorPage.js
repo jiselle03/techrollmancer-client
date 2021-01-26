@@ -91,16 +91,16 @@ const GeneratorPage = () => {
                             margin: "1em 0",
                         }}
                     >
-                        <h2>
+                        <Heading as="h2">
                             Standard Array
-                        </h2>
-                        <p>
+                        </Heading>
+                        <Text>
                             Assign each of the following numbers to the one of the six abilities: 
                             <strong> 15, 14, 13, 12, 10, 8</strong>.
-                        </p>
-                        <p>
+                        </Text>
+                        <Text>
                             Then make any changes to your ability scores as a result of your race choice.
-                        </p>
+                        </Text>
                     </Card>
 
                     <Card 
@@ -110,15 +110,15 @@ const GeneratorPage = () => {
                             margin: "1em 0",
                         }}
                     >
-                        <h2>
+                        <Heading as="h2">
                             Point Buy
-                        </h2>
-                        <p>
+                        </Heading>
+                        <Text>
                             You have 27 points to spend on your character's ability scores. 
                             Each score from 9 to 13 costs 1 extra point, and 14 and 15 both cost 2 extra points. 
                             15 is the highest ability score you can end up with before applying racial increases. 
                             You cannot have a score lower than 8.
-                        </p>
+                        </Text>
 
                         <PointBuyCalculator />
 
@@ -131,13 +131,13 @@ const GeneratorPage = () => {
                             margin: "1em 0",
                         }}
                     >
-                        <h2>
+                        <Heading as="h2">
                             Rolling Stats
-                        </h2>
-                        <p>
+                        </Heading>
+                        <Text>
                             Roll <strong>4d6</strong> and record the cumulative total of the highest three results six times.
                             Assign each score to one of the six ability scores, then make any changes to your ability scores as a result of your race choice.
-                        </p>
+                        </Text>
 
                     <FlexBox
                         justifyContent="center"
@@ -178,32 +178,30 @@ const GeneratorPage = () => {
                         >
                             <Fade in={openQR}>
                                 <FadeContent>
-                                    <h3>CHARACTER STATS</h3>
+                                    <Heading as="h3">CHARACTER STATS</Heading>
 
                                     <div>
                                     <span className="roll">
-                                        <h5>Race: </h5> 
+                                        <Heading as="h5">Race: </Heading> 
                                     </span>
                                     <span className="roll">
-                                        <h4>{character._charRace}</h4>
+                                        <Heading as="h4">{character._charRace}</Heading>
                                     </span>
                                     </div>
                                     <div>
                                     <span className="roll">
-                                        <h5>Class: </h5>
+                                        <Heading as="h5">Class: </Heading>
                                     </span>
                                     <span className="roll">
-                                        <h4>{character._charClass}</h4>
+                                        <Heading as="h4">{character._charClass}</Heading>
                                     </span>
                                     </div>
                                     
-                                    <h3>
-                                        ABILITY SCORES
-                                    </h3>
+                                    <Heading as="h3">ABILITY SCORES</Heading>
                                     
-                                        <h4>
+                                        <Heading as="h4">
                                             {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
-                                        </h4>
+                                        </Heading>
 
                                         <Button 
                                             variant="contained"
@@ -249,43 +247,41 @@ const GeneratorPage = () => {
                             >
                                 <Fade in={openD6}>
                                     <FadeContent>
-                                        <h3>
-                                            ROLLS
-                                        </h3>
+                                        <Heading as="h3">ROLLS</Heading>
                                         
                                         <div>
                                         <span className="roll">
-                                            <h5 className={checkMin(rolls, 0) ? "min" : null}>1ST: </h5>
+                                            <Heading as="h5" className={checkMin(rolls, 0) ? "min" : null}>1ST: </Heading>
                                         </span>
                                         <span className="roll">
-                                            <h4 className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</h4>
-                                        </span>
-                                        </div>
-
-                                        <div>
-                                        <span className="roll">
-                                            <h5 className={checkMin(rolls, 1) ? "min" : null}>2ND: </h5>
-                                        </span>
-                                        <span className="roll">
-                                            <h4 className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</h4>
+                                            <Heading as="h4" className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</Heading>
                                         </span>
                                         </div>
 
                                         <div>
                                         <span className="roll">
-                                            <h5 className={checkMin(rolls, 2) ? "min" : null}>3RD: </h5>
+                                            <Heading as="h5" className={checkMin(rolls, 1) ? "min" : null}>2ND: </Heading>
                                         </span>
                                         <span className="roll">
-                                            <h4 className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</h4>
+                                            <Heading as="h4" className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</Heading>
                                         </span>
                                         </div>
 
                                         <div>
                                         <span className="roll">
-                                            <h5 className={checkMin(rolls, 3) ? "min" : null}>4TH: </h5>
+                                            <Heading as="h5" className={checkMin(rolls, 2) ? "min" : null}>3RD: </Heading>
                                         </span>
                                         <span className="roll">
-                                            <h4 className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</h4>
+                                            <Heading as="h4" className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</Heading>
+                                        </span>
+                                        </div>
+
+                                        <div>
+                                        <span className="roll">
+                                            <Heading as="h5" className={checkMin(rolls, 3) ? "min" : null}>4TH: </Heading>
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4" className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</Heading>
                                         </span>
                                         </div>
 
@@ -293,16 +289,14 @@ const GeneratorPage = () => {
 
                                         <div>
                                         <span className="roll">
-                                            <h3>STAT: </h3> 
+                                            <Heading as="h3">STAT: </Heading> 
                                         </span>
                                         <span className="roll">
-                                            <h3>{rolls[3] ? Utils.rollAbility(rolls) : " "}</h3>
+                                            <Heading as="h3">{rolls[3] ? Utils.rollAbility(rolls) : " "}</Heading>
                                         </span>
                                         </div>
 
-                                        <FlexBox
-                                            justifyContent="center"
-                                        >
+                                        <FlexBox justifyContent="center">
                                             <div className={!rolls[3] ? null : "hidden"}>
                                                     <Button 
                                                         variant="contained"
@@ -347,10 +341,10 @@ const GeneratorPage = () => {
                     </Card>
                 </Center>
 
-                <p>
+                <Text>
                     After assigning your ability scores, you can determine your ability modifiers by  
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
-                </p>
+                </Text>
             </Container>
         </BackgroundImage>
     );
