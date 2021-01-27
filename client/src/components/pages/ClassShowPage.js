@@ -4,6 +4,7 @@ import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -113,42 +114,40 @@ const ClassShowPage = props => {
             size={getClassSize(slug)}
         >
             <Container>
-                <h1>
-                    {name.toUpperCase()}
-                </h1>
+                <Heading>{name.toUpperCase()}</Heading>
 
-                <p>
+                <Text>
                     As a {name}, you gain the following class features:
-                </p>
+                </Text>
                 
                 {categories.map(category => (
                     <div key={category.name}>
-                        <h2>{category.name}</h2>
+                        <Heading as="h2">{category.name}</Heading>
 
                         {category.content.map(cat => (
-                            <p key={cat.name}><strong>{cat.name}: </strong>{cat.content}</p>
+                            <Text key={cat.name}><strong>{cat.name}: </strong>{cat.content}</Text>
                         ))}
                     </div>
                 ))}
 
                 <div className={spellcasting_ability ? null : "hidden"}>
-                    <p>
+                    <Text>
                         <strong>Spellcasting Ability:</strong> {spellcasting_ability}<br />
-                    </p>
+                    </Text>
                 </div>
                 
-                <p dangerouslySetInnerHTML={{
+                <Text dangerouslySetInnerHTML={{
                     __html: getBlurb(desc)
-                }}></p>
+                }}></Text>
                 
-                <h2>
+                <Heading as="h2">
                     Equipment
-                </h2>
-                <p dangerouslySetInnerHTML={{
+                </Heading>
+                <Text dangerouslySetInnerHTML={{
                     __html: getBlurb(equipment)
-                }}></p>
+                }}></Text>
 
-                <h2>{name} Table</h2>
+                <Heading as="h2">{name} Table</Heading>
                 <TableContainer component={Paper}>
                     <Table className="table" aria-label="simple table">
                         <TableHead>
