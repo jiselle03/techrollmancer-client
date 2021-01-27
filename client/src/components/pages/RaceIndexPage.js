@@ -48,9 +48,9 @@ const RaceIndexPage = () => {
             light={true}
         >
             <Container>
-                <h1 style={{marginLeft: "0.2em"}}>
+                <Heading style={{marginLeft: "0.2em"}}>
                     RACES
-                </h1>
+                </Heading>
 
                 <Grid container>
                 {races.map(race => (
