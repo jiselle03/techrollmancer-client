@@ -4,6 +4,7 @@ import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -75,49 +76,45 @@ const RaceShowPage = props => {
             light={false}
         >
             <Container>
-                <h1>
-                    {name.toUpperCase()}
-                </h1>
+                <Heading>{name.toUpperCase()}</Heading>
 
                 {categories.map(category => (
                     <div key={category.name} className={category.content ? null : "hidden"}>
-                        <h2>{category.name}</h2>
-                        <p>{category.content}</p>
+                        <Heading as="h2">{category.name}</Heading>
+                        <Text>{category.content}</Text>
                     </div>
                 ))}
 
                 {categories2.map(category => (
                     <div key={category.name} className={category.content ? null : "hidden"}>
-                        <p dangerouslySetInnerHTML={{
+                        <Text dangerouslySetInnerHTML={{
                             __html: getBlurb(category.content)
-                        }}></p>
+                        }}></Text>
                     </div>
                 ))}
 
                 <div className={subraces.length > 0 ? null : "hidden"}>
-                    <h3>
-                        Subraces
-                    </h3>
+                    <Heading>Subraces</Heading>
 
                     {subraces.map(subrace => (
                         <>
-                            <h4>
+                            <Heading as="h4">
                                 {subrace.name}
-                            </h4>
+                            </Heading>
 
-                            <h5>
+                            <Heading as="h5">
                                 Description
-                            </h5>
-                            <p>
+                            </Heading>
+                            <Text>
                                 {subrace.desc}
-                            </p>
+                            </Text>
 
-                            <h5>
+                            <Heading as="h5">
                                 Ability Score Improvement
-                            </h5>
-                            <p>
+                            </Heading>
+                            <Text>
                                 {subrace.asi_desc}
-                            </p>
+                            </Text>
 
                             <span dangerouslySetInnerHTML={{
                                 __html: getBlurb(subrace.traits)
