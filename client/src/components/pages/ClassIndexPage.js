@@ -43,12 +43,12 @@ const ClassIndexPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1 style={{marginLeft: "0.2em"}}>
+                <Heading style={{marginLeft: "0.2em"}}>
                     CLASSES
-                </h1>
+                </Heading>
                 
                 <Grid container>
                 {classes.map(charClass => (
