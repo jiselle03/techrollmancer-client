@@ -81,14 +81,14 @@ const SchedulerPage = props => {
                         game.date >= currentDate && (
                         <div key={index} className="game">
                             <span className="name">
-                            <h6>{game.name}</h6>
+                            <Heading as="h6">{game.name}</Heading>
                             </span>
                             <span className="button">
                             <Button onClick={() => handleDelete(game.id)}>Cancel</Button>
                             </span>
-                            <p>{game.date} at {game.time}</p>
-                            <p className="notes"><strong>Notes:</strong></p>
-                            <p>{game.notes}</p>
+                            <Text>{game.date} at {game.time}</Text>
+                            <Text className="notes"><strong>Notes:</strong></Text>
+                            <Text>{game.notes}</Text>
                             <hr />
                         </div>
                     )))}
