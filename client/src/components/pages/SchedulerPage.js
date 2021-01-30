@@ -7,6 +7,7 @@ import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { FormContent } from '../styles/Form';
+import { Heading, Text } from '../styles/Typography';
 
 import { Button, Card, FormControl, Input, InputLabel, useMediaQuery } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
@@ -66,9 +67,7 @@ const SchedulerPage = props => {
             light={true}
         >
             <Container>
-                <h1>
-                    Scheduler
-                </h1>
+                <Heading>Scheduler</Heading>
 
                 <Card
                     style={{
@@ -77,7 +76,7 @@ const SchedulerPage = props => {
                         margin: "1em 0",
                     }}
                 >
-                    <h2>Future Sessions</h2>
+                    <Heading as="h2">Future Sessions</Heading>
                     {games.map((game, index) => (
                         game.date >= currentDate && (
                         <div key={index} className="game">
@@ -102,7 +101,7 @@ const SchedulerPage = props => {
                         margin: "1em 0",
                     }}
                 >
-                <h2>Add Session</h2>
+                <Heading as="h2">Add Session</Heading>
                 <form onSubmit={handleSubmit}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <div className="datetime">
@@ -172,19 +171,19 @@ const SchedulerPage = props => {
                         margin: "1em 0",
                     }}
                 >
-                    <h2>Past Sessions</h2>
+                    <Heading as="h2">Past Sessions</Heading>
                     {games.map((game, index) => (
                         game.date < currentDate && (
                         <div key={index}>
                             <div className="game">
                                 <span className="name">
-                            <h6>{game.name}</h6> 
+                            <Heading as="h6">{game.name}</Heading> 
                             </span>
                                 <span className="button">
                             <Button onClick={() => handleDelete(game.id)}>Delete</Button>
                             </span>
                             </div>
-                            <p>{game.date} at {game.time}</p>
+                            <Text>{game.date} at {game.time}</Text>
                         </div>
                     )))}
                 </Card>
