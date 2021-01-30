@@ -6,7 +6,7 @@ import Game from '../../api/game';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
-import { FormContent } from '../styles/Form';
+import { Form, FormContent } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
 
 import { Button, Card, FormControl, Input, InputLabel, useMediaQuery } from '@material-ui/core';
@@ -64,7 +64,7 @@ const SchedulerPage = props => {
     return(
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
                 <Heading>Scheduler</Heading>
@@ -102,7 +102,7 @@ const SchedulerPage = props => {
                     }}
                 >
                 <Heading as="h2">Add Session</Heading>
-                <form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <div className="datetime">
                             <KeyboardDatePicker
@@ -161,7 +161,7 @@ const SchedulerPage = props => {
                             </Button>
                         </FlexBox>
                     </MuiPickersUtilsProvider>
-                    </form>
+                    </Form>
                 </Card>
 
                 <Card
