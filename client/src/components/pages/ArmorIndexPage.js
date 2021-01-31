@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Library from '../../api/library';
 import Container from '../styles/Container';
 import { BackgroundImage } from '../styles/Image';
+import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -23,16 +24,12 @@ const ArmorIndexPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1>
-                    ARMOR
-                </h1>
+                <Heading>ARMOR</Heading>
 
-                <h2>
-                    Light
-                </h2>
+                <Heading as="h2">Light</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Light"
@@ -47,9 +44,7 @@ const ArmorIndexPage = () => {
                 ))}
                 </List>
 
-                <h2>
-                    Medium
-                </h2>
+                <Heading as="h2">Medium</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Medium"
@@ -64,9 +59,7 @@ const ArmorIndexPage = () => {
                 ))}
                 </List>
 
-                <h2>
-                    Heavy
-                </h2>
+                <Heading as="h2">Heavy</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Heavy"
@@ -81,9 +74,7 @@ const ArmorIndexPage = () => {
                 ))}
                 </List>
 
-                <h2>
-                    Shield
-                </h2>
+                <Heading as="h2">Shield</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Shield"
