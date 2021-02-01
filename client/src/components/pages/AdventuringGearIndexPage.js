@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Library from '../../api/library';
 import Container from '../styles/Container';
 import { BackgroundImage } from '../styles/Image';
+import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -23,16 +24,12 @@ const AdventuringGearIndexPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1>
-                    ADVENTURING GEAR
-                </h1>
+                <Heading>ADVENTURING GEAR</Heading>
 
-                <h2>
-                    Equipment Packs
-                </h2>
+                <Heading as="h2">Equipment Packs</Heading>
                 <List component="nav" className="list">
                     {equipments.filter(equipment => {
                         return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Equipment Pack"
@@ -47,9 +44,7 @@ const AdventuringGearIndexPage = () => {
                     ))}
                 </List>
 
-                <h2>
-                    Standard Gear
-                </h2>
+                <Heading as="h2">Standard Gear</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Standard Gear"
@@ -64,9 +59,7 @@ const AdventuringGearIndexPage = () => {
                 ))}
                 </List>
 
-                <h2>
-                    Ammunition
-                </h2>
+                <Heading as="h2">Ammunition</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Ammunition"
@@ -81,9 +74,7 @@ const AdventuringGearIndexPage = () => {
                 ))}
                 </List>
 
-                <h2>
-                    Arcane Focus
-                </h2>
+                <Heading as="h2">Arcane Focus</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Arcane focus"
@@ -98,9 +89,7 @@ const AdventuringGearIndexPage = () => {
                 ))}
                 </List>
 
-                <h2>
-                    Druidic Focus
-                </h2>
+                <Heading as="h2">Druidic Focus</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Druidic focus"
@@ -115,9 +104,7 @@ const AdventuringGearIndexPage = () => {
                 ))}
                 </List>
                 
-                <h2>
-                    Holy Symbols
-                </h2>
+                <Heading as="h2">Holy Symbols</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Holy Symbol"
@@ -132,9 +119,7 @@ const AdventuringGearIndexPage = () => {
                 ))}
                 </List>
                 
-                <h2>
-                    Kits
-                </h2>
+                <Heading as="h2">Kits</Heading>
                 <List component="nav" className="list">
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Adventuring Gear" && equipment.gear_category === "Kit"
