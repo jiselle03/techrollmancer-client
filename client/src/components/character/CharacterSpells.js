@@ -17,7 +17,7 @@ const CharacterSpells = props => {
 
             {levels.map((level, index) => (
                 <Card className="spells">
-                    <h3>{level}</h3>
+                    <Heading as="h3">{level}</Heading>
                     {spells && spells.map(spell => (
                         spell.level_int === index && (
                             <div key={spell.slug}>
