@@ -13,15 +13,11 @@ const CharacterJournal = props => {
 
             <div className="character-sheet">
                 <Card className="journal">
-                    <h2>
-                        Notes
-                    </h2>
+                    <Heading as="h2">Notes</Heading>
                 </Card>
 
                 <Card className="journal">
-                    <h2>
-                        Experience
-                    </h2>
+                    <Heading as="h2">Experience</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
