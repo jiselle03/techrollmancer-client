@@ -13,9 +13,7 @@ const CharacterInventory = props => {
 
             <div className="character-sheet">
                 <Card className="inventory">
-                    <h2>
-                        Coin Pouch
-                    </h2>
+                    <Heading as="h2">Coin Pouch</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
@@ -52,9 +50,7 @@ const CharacterInventory = props => {
                 </Card>
 
                 <Card className="inventory">
-                    <h2>
-                        Equipment
-                    </h2>
+                    <Heading as="h2">Equipment</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
@@ -95,9 +91,7 @@ const CharacterInventory = props => {
                 </Card>
 
                 <Card className="inventory">
-                    <h2>
-                        Carried
-                    </h2>
+                    <Heading as="h2">Carried</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
