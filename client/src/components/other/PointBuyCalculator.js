@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import { raceBonus } from '../../js/generator';
+import { Heading } from '../styles/Typography';
 
 import { FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -128,7 +129,7 @@ const PointBuyCalculator = () => {
                 </Select>
             </FormControl>
 
-            <h6>Remaining Points: {remainingPoints}</h6>
+            <Heading as="h6">Remaining Points: {remainingPoints}</Heading>
         
             <TableContainer component={Paper}>
                 <Table aria-label="point buy calculator">
