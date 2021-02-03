@@ -5,6 +5,8 @@ export const Heading = styled.h1`
     color: ${({ theme, alt }) => alt ? theme.secondary : null};
     margin-top: ${({ top }) => top};
     margin-bottom: ${({ bottom }) => bottom};
+    margin-left: ${({ left }) => left};
+    margin-right: ${({ right }) => right};
     text-shadow: ${({ alt }) => alt ? `-1px -1px 0px #000,
                                         0px -1px 0px #000,
                                         1px -1px 0px #000,
