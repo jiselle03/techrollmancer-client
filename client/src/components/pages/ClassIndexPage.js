@@ -46,9 +46,7 @@ const ClassIndexPage = () => {
             light
         >
             <Container>
-                <Heading style={{marginLeft: "0.2em"}}>
-                    CLASSES
-                </Heading>
+                <Heading left="0.2em">CLASSES</Heading>
                 
                 <Grid container>
                 {classes.map(charClass => (
