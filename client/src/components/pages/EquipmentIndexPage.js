@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -23,12 +24,10 @@ const EquipmentIndexPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1>
-                    EQUIPMENT
-                </h1>
+                <Heading>EQUIPMENT</Heading>
 
                 <List component="nav" className="list">
                 {equipments.map(equipment => (
