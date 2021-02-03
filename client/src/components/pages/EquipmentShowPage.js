@@ -5,6 +5,7 @@ import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -81,10 +82,8 @@ const EquipmentShowPage = props => {
         >
             <Container>
                 <div className="equipment-name">
-                    <h1>
-                        {equipment.name.toUpperCase()}
-                    </h1>
-                    <p className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></p>
+                    <Heading>{equipment.name.toUpperCase()}</Heading>
+                    <Text className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></Text>
                 </div>
 
                 {cats.map(category => (
@@ -93,24 +92,24 @@ const EquipmentShowPage = props => {
                         className={equipment.equipment_category === category.name ? null : "hidden"}
                     >
                         {category.content.map(cat => (
-                            <p key={cat.name}><strong>{cat.name}:</strong> {cat.content}</p>
+                            <Text key={cat.name}><strong>{cat.name}:</strong> {cat.content}</Text>
                         ))}
                     </div>
                 ))}
 
                 <div className={equipment.gear_category === "Equipment Pack" ? null : "hidden"}>
-                    <h3>Contents:</h3>
+                    <Heading as="h3">Contents:</Heading>
                     {equipment.contents ? equipment.contents.map(item => (
                         <div key={item.slug} className="list-item">• <Link to={`/libraries/equipment/${item.slug}`}>{item.name}</Link></div>
                     )) : null}
                 </div>
 
-                    <p><strong>Weight:</strong> {weight} lb.</p>
-                    <p><strong>Cost:</strong> {cost.quantity} {cost.unit}</p>
+                    <Text><strong>Weight:</strong> {weight} lb.</Text>
+                    <Text><strong>Cost:</strong> {cost.quantity} {cost.unit}</Text>
 
                 <div className={equipment.desc ? null : "hidden"}>
-                    <h3>Description</h3>
-                    <p>{desc}</p>
+                    <Heading as="h3">Description</Heading>
+                    <Text>{desc}</Text>
                 </div>
             </Container>
         </BackgroundImage>
