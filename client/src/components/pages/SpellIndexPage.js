@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
@@ -66,16 +67,14 @@ const SpellIndexPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1>
-                    SPELLS
-                </h1>
+                <Heading>SPELLS</Heading>
 
                 {types.map(type => (
                     <div key={type.name}>
-                        <h2>{type.name}</h2>
+                        <Heading as="h2">{type.name}</Heading>
 
                         <List component="nav" className="list"> 
                             {spells.filter(spell => {
