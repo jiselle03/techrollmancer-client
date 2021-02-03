@@ -10,6 +10,7 @@ import Container from '../styles/Container';
 import { Image } from '../styles/Image';
 import { Fade, FadeContent } from '../styles/Fade';
 import FlexBox from '../styles/FlexBox';
+import { Heading } from '../styles/Typography';
 
 import { Backdrop, Button, Modal } from '@material-ui/core';
 import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'
@@ -107,10 +108,10 @@ const WelcomePage = () => {
             light
         >
             <Container>
-                <h1> Welcome to Techrollmancer</h1>
+                <Heading> Welcome to Techrollmancer</Heading>
 
                 <FlexBox justifyContent="space-between">
-                    <h2>Quick Rolls</h2>
+                    <Heading as="h2">Quick Rolls</Heading>
                     <ToggleButtonGroup
                         value={rollState}
                         exclusive
@@ -152,14 +153,14 @@ const WelcomePage = () => {
                     >
                         <Fade in={rollOpen}>
                             <FadeContent>
-                                <h3>You rolled:</h3>
+                                <Heading as="h3">You rolled:</Heading>
                                 {rolls.length === 1 && (<h2>{rolls[0]}</h2>)}
-                                {rolls.length === 2 && rollState == "regular" && (<h2>{rolls[0]}</h2>)}
+                                {rolls.length === 2 && rollState == "regular" && (<Heading as="h2">{rolls[0]}</Heading>)}
                                 {rolls.length === 2 && rollState === "disadvantage" &&(
-                                    <h2><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</h2>
+                                    <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</Heading>
                                 )}
                                 {rolls.length === 2 && rollState === "advantage" &&(
-                                    <h2><span style={{color: "lightgrey"}}>{Math.min(...rolls)}</span> {Math.max(...rolls)}</h2>
+                                    <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.min(...rolls)}</span> {Math.max(...rolls)}</Heading>
                                 )}
                                 <Button 
                                     variant="contained"
@@ -174,8 +175,8 @@ const WelcomePage = () => {
                     </FlexBox>
                 </Modal>
 
-                <h2>Get Started</h2>
-                <h6>Build a Character</h6>
+                <Heading as="h2">Get Started</Heading>
+                <Heading as="h6">Build a Character</Heading>
                 <Link to="/generator">
                     <Button 
                         variant="contained" 
