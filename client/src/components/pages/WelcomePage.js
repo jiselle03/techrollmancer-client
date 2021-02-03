@@ -154,7 +154,7 @@ const WelcomePage = () => {
                         <Fade in={rollOpen}>
                             <FadeContent>
                                 <Heading as="h3">You rolled:</Heading>
-                                {rolls.length === 1 && (<h2>{rolls[0]}</h2>)}
+                                {rolls.length === 1 && (<Heading as="h2">{rolls[0]}</Heading>)}
                                 {rolls.length === 2 && rollState == "regular" && (<Heading as="h2">{rolls[0]}</Heading>)}
                                 {rolls.length === 2 && rollState === "disadvantage" &&(
                                     <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</Heading>
