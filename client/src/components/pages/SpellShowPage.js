@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
+import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
 
@@ -22,27 +23,25 @@ const SpellShowPage = props => {
     return (
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
-                <h1>
-                    {spell.name.toUpperCase()}
-                </h1>
+                <Heading>{spell.name.toUpperCase()}</Heading>
 
-                <h5>Description</h5>
-                <p>{(spell.desc)}</p>
-                <h5>Higher Level</h5>
-                <p>{spell.higher_level}</p>
-                <p><strong>Range:</strong> {spell.range}</p>
-                <p><strong>Components:</strong> {spell.components}</p>
-                <p><strong>Material:</strong> {spell.material}</p>
-                <p><strong>Ritual:</strong> {spell.ritual}</p>
-                <p><strong>Duration:</strong> {spell.duration}</p>
-                <p><strong>Concentration:</strong> {spell.concentration}</p>
-                <p><strong>Casting Time:</strong> {spell.casting_time}</p>
-                <p><strong>Level:</strong> {spell.level}</p>
-                <p><strong>School:</strong> {spell.school}</p>
-                <p><strong>Class:</strong> {spell.dnd_class}</p>
+                <Heading as="h5">Description</Heading>
+                <Text>{(spell.desc)}</Text>
+                <Heading as="h5">Higher Level</Heading>
+                <Text>{spell.higher_level}</Text>
+                <Text><strong>Range:</strong> {spell.range}</Text>
+                <Text><strong>Components:</strong> {spell.components}</Text>
+                <Text><strong>Material:</strong> {spell.material}</Text>
+                <Text><strong>Ritual:</strong> {spell.ritual}</Text>
+                <Text><strong>Duration:</strong> {spell.duration}</Text>
+                <Text><strong>Concentration:</strong> {spell.concentration}</Text>
+                <Text><strong>Casting Time:</strong> {spell.casting_time}</Text>
+                <Text><strong>Level:</strong> {spell.level}</Text>
+                <Text><strong>School:</strong> {spell.school}</Text>
+                <Text><strong>Class:</strong> {spell.dnd_class}</Text>
             </Container>
         </BackgroundImage>
     );
