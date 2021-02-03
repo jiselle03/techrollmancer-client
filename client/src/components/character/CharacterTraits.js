@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import baseUrl from '../../config';
 import Character from '../../api/character';
 import FlexBox from '../styles/FlexBox';
+import { Form } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
 
 import { Card } from '@material-ui/core';
@@ -153,7 +154,7 @@ const CharacterTraits = props => {
                         )}
 
                         {edit.profile && (
-                            <form onBlur={event => handleBlurProfile(event)}>
+                            <Form onBlur={event => handleBlurProfile(event)}>
                                 <label htmlFor="name" className="traits">Name</label>
                                 <input 
                                     type="text"
@@ -236,7 +237,7 @@ const CharacterTraits = props => {
                                     className="profile flex"
                                 />
                                 </FlexBox>
-                            </form>
+                            </Form>
                         )}
                     </div>
                 </Card>
