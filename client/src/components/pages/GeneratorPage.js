@@ -7,11 +7,12 @@ import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
+import { Card } from '../styles/Card';
 import { FadeContent, Fade } from '../styles/Fade';
 import { Center } from '../styles/Center';
 import { Heading, Text } from '../styles/Typography';
 
-import { Backdrop, Button, Card, Divider, Modal, useMediaQuery } from '@material-ui/core';
+import { Backdrop, Button, Divider, Modal, useMediaQuery } from '@material-ui/core';
 
 const GeneratorPage = () => {
     const [openQR, setOpenQR] = useState(false);
@@ -85,11 +86,9 @@ const GeneratorPage = () => {
                 </Text>
                 <Center>
                     <Card 
-                        style={{
-                            width: laptop ? "60vw" : "70vw",
-                            padding: "2em",
-                            margin: "1em 0",
-                        }}
+                        secondary
+                        margin="1em 0"
+                        padding="2em"
                     >
                         <Heading as="h2">
                             Standard Array
@@ -104,11 +103,9 @@ const GeneratorPage = () => {
                     </Card>
 
                     <Card 
-                        style={{
-                            width: laptop ? "60vw" : "70vw",
-                            padding: "2em",
-                            margin: "1em 0",
-                        }}
+                        secondary
+                        margin="1em 0"
+                        padding="2em"
                     >
                         <Heading as="h2">
                             Point Buy
@@ -125,11 +122,9 @@ const GeneratorPage = () => {
                     </Card>
 
                     <Card 
-                        style={{
-                            width: laptop ? "60vw" : "70vw",
-                            padding: "2em",
-                            margin: "1em 0",
-                        }}
+                        secondary
+                        margin="1em 0"
+                        padding="2em"
                     >
                         <Heading as="h2">
                             Rolling Stats
