@@ -32,14 +32,12 @@ const CharacterIndexPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png" 
         >
             <Container>
-                <h1>
-                    CHARACTERS
-                </h1>
+                <Heading> CHARACTERS</Heading>
 
                 {characters.length === 0 && (
-                    <h5>
+                    <Heading as="h5">
                         You have not created any characters.
-                    </h5>
+                    </Heading>
                 )}
 
                 {characters && (
