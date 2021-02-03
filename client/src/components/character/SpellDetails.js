@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Heading, Text } from '../styles/Typography';
+
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 
@@ -57,13 +59,13 @@ const SpellDetails = props => {
                 aria-controls="spell-content"
                 id="spell-header"
             >
-                <h5>{name}</h5>
+                <Heading as="h5">{name}</Heading>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails style={{display: "block"}}>
                 {details.map(category => (
                     <div key={category.name} className={category.content ? null : "hidden"}>
-                        <h6>{category.name}</h6>
-                        <p>{category.content}</p>
+                        <Heading as="h6">{category.name}</Heading>
+                        <Text>{category.content}</Text>
                     </div>
                 ))}
             </ExpansionPanelDetails>
