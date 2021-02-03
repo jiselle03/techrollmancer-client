@@ -5,6 +5,7 @@ import User from '../../api/user';
 import { BackgroundImage } from '../styles/Image';
 import Container from '../styles/Container';
 import { Form, FormContainer, FormContent } from '../styles/Form';
+import { Heading, Text } from '../styles/Typography';
 
 import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
 import { AccountCircle, Email, Lock } from '@material-ui/icons';
@@ -76,9 +77,9 @@ const SignUpPage = props => {
                             padding: "1em 0"
                         }}
                     >
-                        <h3 style={{paddingLeft: "0.75em"}}>
+                        <Heading as="h3" style={{paddingLeft: "0.75em"}}>
                             Create an Account
-                        </h3>
+                        </Heading>
 
                         <Form onSubmit={handleSubmit}>
                             {fields.map(field => (
@@ -125,9 +126,9 @@ const SignUpPage = props => {
                         <FlexBox
                             justifyContent="center"
                         >
-                            <p>
+                            <Text>
                                 Already have an account? <Link to="/sign_in" style={FormContent.link}>SIGN IN</Link>
-                            </p>
+                            </Text>
                         </FlexBox>
                     </Card>
                 </FormContainer>
