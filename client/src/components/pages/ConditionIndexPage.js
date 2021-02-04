@@ -28,9 +28,7 @@ const ConditionIndexPage = () => {
             light
         >
             <Container>
-                <Heading>
-                    CONDITIONS
-                </Heading>
+                <Heading>Conditions</Heading>
                 
                 <Heading as="h2">
                     Blinded
