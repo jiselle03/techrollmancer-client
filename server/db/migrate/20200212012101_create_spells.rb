@@ -12,8 +12,10 @@ class CreateSpells < ActiveRecord::Migration[6.0]
       t.string :duration
       t.string :concentration
       t.string :casting_time
+      t.string :level
       t.integer :level_int
       t.string :school
+      t.string :dnd_class
 
       t.timestamps
     end

@@ -24,8 +24,10 @@ spell_data.map do |spell|
         duration: spell["duration"],
         concentration: spell["concentration"],
         casting_time: spell["casting_time"],
+        level: spell["level"],
         level_int: spell["level_int"],
-        school: spell["school"]
+        school: spell["school"],
+        dnd_class: spell["dnd_class"]
     )
 end
 

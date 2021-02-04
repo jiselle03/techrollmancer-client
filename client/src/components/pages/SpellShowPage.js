@@ -17,8 +17,53 @@ const SpellShowPage = props => {
             setIsLoading(false);
           });
     }, [props.match.params.slug]);
-
+    
     if (isLoading) return (<CircularProgress variant="determinate" />);
+
+    const { range, components, material, ritual, duration, concentration, casting_time, level, school, dnd_class } = spell;
+    
+    const info = [
+        {
+            name: "Range",
+            content: range
+        },
+        {
+            name: "Components",
+            content: spell.components ? components : "none"
+        },
+        {
+            name: "Material",
+            content: spell.material ? material : "none"
+        },
+        {
+            name: "Ritual",
+            content: ritual
+        },
+        {
+            name: "Duration",
+            content: duration
+        },
+        {
+            name: "Concentration",
+            content: concentration
+        },
+        {
+            name: "Casting Time",
+            content: casting_time
+        },
+        {
+            name: "Level", 
+            content: level
+        },
+        {
+            name: "School",
+            content: school
+        },
+        {
+            name: "Class",
+            content: dnd_class
+        }
+    ];
 
     return (
         <BackgroundImage
@@ -32,16 +77,9 @@ const SpellShowPage = props => {
                 <Text>{(spell.desc)}</Text>
                 <Heading as="h5">Higher Level</Heading>
                 <Text>{spell.higher_level}</Text>
-                <Text><strong>Range:</strong> {spell.range}</Text>
-                <Text><strong>Components:</strong> {spell.components}</Text>
-                <Text><strong>Material:</strong> {spell.material}</Text>
-                <Text><strong>Ritual:</strong> {spell.ritual}</Text>
-                <Text><strong>Duration:</strong> {spell.duration}</Text>
-                <Text><strong>Concentration:</strong> {spell.concentration}</Text>
-                <Text><strong>Casting Time:</strong> {spell.casting_time}</Text>
-                <Text><strong>Level:</strong> {spell.level}</Text>
-                <Text><strong>School:</strong> {spell.school}</Text>
-                <Text><strong>Class:</strong> {spell.dnd_class}</Text>
+                {info.map(line => (
+                    <Text key={line.name}><strong>{line.name}:</strong> {line.content}{console.log(line.content)}</Text>
+                ))}
             </Container>
         </BackgroundImage>
     );

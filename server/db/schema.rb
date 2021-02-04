@@ -106,8 +106,10 @@ ActiveRecord::Schema.define(version: 2020_03_02_014021) do
     t.string "duration"
     t.string "concentration"
     t.string "casting_time"
+    t.string "level"
     t.integer "level_int"
     t.string "school"
+    t.string "dnd_class"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
