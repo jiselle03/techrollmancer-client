@@ -29,7 +29,7 @@ const WeaponIndexPage = () => {
             light
         >
             <Container>
-                <Heading>WEAPONS</Heading>
+                <Heading>Weapons</Heading>
 
                 {types.map(type => (
                     <div key={type}>

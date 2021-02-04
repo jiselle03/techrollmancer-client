@@ -29,7 +29,7 @@ const ToolIndexPage = () => {
             light
         >
             <Container>
-                <Heading>TOOLS</Heading>
+                <Heading>Tools</Heading>
                 
                 {types.map(type => (
                     <div key={type}>

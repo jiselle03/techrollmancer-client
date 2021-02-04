@@ -29,7 +29,7 @@ const MountVehicleIndexPage = () => {
             light
         >
             <Container>
-                <Heading>MOUNTS AND VEHICLES</Heading>
+                <Heading>Mounts and Vehicles</Heading>
 
                 {types.map(type => (
                     <div key={type}>

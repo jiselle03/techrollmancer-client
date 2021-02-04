@@ -27,7 +27,7 @@ const ArmorIndexPage = () => {
             light
         >
             <Container>
-                <Heading>ARMOR</Heading>
+                <Heading>Armor</Heading>
 
                 <Heading as="h2">Light</Heading>
                 <List component="nav" className="list">

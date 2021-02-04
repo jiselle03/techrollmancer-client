@@ -27,7 +27,7 @@ const AdventuringGearIndexPage = () => {
             light
         >
             <Container>
-                <Heading>ADVENTURING GEAR</Heading>
+                <Heading>Adventuring Gear</Heading>
 
                 <Heading as="h2">Equipment Packs</Heading>
                 <List component="nav" className="list">
