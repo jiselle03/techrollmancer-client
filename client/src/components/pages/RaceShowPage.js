@@ -73,7 +73,6 @@ const RaceShowPage = props => {
         <BackgroundImage
             image={getRaceImage(slug)}
             size={getRaceSize(slug)}
-            light={false}
         >
             <Container>
                 <Heading>{name.toUpperCase()}</Heading>
