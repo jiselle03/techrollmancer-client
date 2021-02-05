@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CharacterSpellsNew from './CharacterSpellsNew';
-import SpellDetails from './SpellDetails';
+import SpellDetails from '../other/SpellDetails';
 import { Heading } from '../styles/Typography';
 
 import { Card } from '@material-ui/core';

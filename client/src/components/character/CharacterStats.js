@@ -4,7 +4,7 @@ import baseUrl from '../../config';
 import Character from '../../api/character';
 import Utils from '../../js/utils';
 import CharacterProficiencies from './CharacterProficiencies';
-import FloatingActionButton from './FloatingActionButton';
+import FloatingActionButton from '../other/FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
 import { Fade, FadeContent } from '../styles/Fade';
 import { InputEditStats } from './CharacterInputEdit';

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import Library from '../../api/library';
 import Spell from '../../api/spell';
-import SpellListItem from './SpellListItem';
-import FloatingActionButton from './FloatingActionButton';
+import SpellListItem from '../other/SpellListItem';
+import FloatingActionButton from '../other/FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
 import { FormContainer, Form } from '../styles/Form';

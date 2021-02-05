@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Character from '../../api/character';
-import FloatingActionButton from './FloatingActionButton';
+import FloatingActionButton from '../other/FloatingActionButton';
 import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FloatingActionButton from './FloatingActionButton';
+import FloatingActionButton from '../other/FloatingActionButton';
 import { Heading, Text } from '../styles/Typography';
 
 import { Card } from '@material-ui/core';
