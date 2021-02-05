@@ -32,7 +32,7 @@ const CharacterIndexPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png" 
         >
             <Container>
-                <Heading> CHARACTERS</Heading>
+                <Heading>Characters</Heading>
 
                 {characters.length === 0 && (
                     <Heading as="h5">
