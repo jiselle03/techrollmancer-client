@@ -71,7 +71,7 @@ const GeneratorPage = () => {
     return (
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png"
-            light={true}
+            light
         >
             <Container>
                 <Heading>CHARACTER GENERATOR</Heading>
