@@ -9,7 +9,7 @@ const CharacterJournal = props => {
 
     return (
         <>
-            <Heading>{name.toUpperCase()}</Heading>
+            <Heading>{name}</Heading>
 
             <div className="character-sheet">
                 <Card className="journal">

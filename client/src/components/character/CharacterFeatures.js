@@ -14,7 +14,7 @@ const CharacterFeatures = props => {
 
     return (
         <>
-            <Heading>{name.toUpperCase()}</Heading>
+            <Heading>{name}</Heading>
 
             <div className="character-sheet">
                 <FloatingActionButton icon="add" handleAction={handleOpenNew} />

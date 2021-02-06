@@ -83,7 +83,7 @@ const CharacterTraits = props => {
 
     return (
         <>
-            <Heading>{name.toUpperCase()}</Heading>
+            <Heading>{name}</Heading>
 
             <div className="character-sheet">
                 <Card className="traits-container">

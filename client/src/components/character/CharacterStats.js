@@ -193,7 +193,7 @@ const CharacterStats = props => {
 
   return (
     <>
-      <Heading bottom="0.25em">{name.toUpperCase()}</Heading>
+      <Heading bottom="0.25em">{name}</Heading>
 
       <div style={{textAlign: "right", marginRight: "1.5em"}}>
         <Button variant="contained" onClick={() => toPrint()}><Print /></Button>

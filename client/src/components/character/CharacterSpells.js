@@ -13,7 +13,7 @@ const CharacterSpells = props => {
 
     return (
         <>
-            <Heading>{name.toUpperCase()}</Heading>
+            <Heading>{name}</Heading>
 
             {levels.map((level, index) => (
                 <Card className="spells">
