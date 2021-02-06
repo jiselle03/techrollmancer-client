@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Bungee';
+    font-family: ${({ theme }) => theme.title};
   }
 
   h1 {
@@ -63,6 +63,7 @@ const GlobalStyles = createGlobalStyle`
   p {
     font-size: 1rem;
     margin-bottom: 1rem;
+    line-height: 1.3em;
   }
 
   a {

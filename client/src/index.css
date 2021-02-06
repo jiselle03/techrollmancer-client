@@ -31,65 +31,8 @@ body {
 
 /* Text */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bungee';
-}
-
-h1 {
-  font-size: 3.5rem;
-  color: #000;
-  margin-bottom: 1em;
-}
-
 h1.roll {
   margin-bottom: 0.5em;
-}
-
-h2 {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  line-height: 1em;
-  margin-bottom: 0.2em;
-}
-
-h3 {
-  font-size: 2.5rem;
-  color: #000;
-  margin-bottom: 1em;
-}
-
-h4 {
-  font-size: 2rem;
-  color: var(--accent-color);
-  margin-bottom: 1em;
-}
-
-h5 {
-  font-size: 1.5rem;
-  color: var(--accent-color);
-  margin-bottom: 0.2em;
-}
-
-h6, p {
-  font-size: 1.3rem;
-}
-
-h6 {
-  margin-bottom: 0.2em;
-}
-
-p {
-  line-height: 1.3em;
-  margin-bottom: 1em;
-}
-
-strong {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-em {
-  font-style: italic;
 }
 
 h3.title {
