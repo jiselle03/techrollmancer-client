@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
   body, #root, main {
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primary};
-    font-family: Roboto, Helvetica, sans-serif;
+    font-family: ${({ theme }) => theme.text}, sans-serif;
     min-height: 100vh;
     width: 100vw;
     text-rendering: optimizeLegibility;
@@ -65,7 +65,7 @@ const GlobalStyles = createGlobalStyle`
   p {
     font-size: 1rem;
     margin-bottom: 1rem;
-    line-height: 1.3em;
+    line-height: 2em;
   }
 
   a {
