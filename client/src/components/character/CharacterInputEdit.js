@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Input } from '../styles/Form';
+
 export const InputEditStats = props => {
     const { type, field, defaultValue, min, max, step } = props;
 
@@ -8,7 +10,7 @@ export const InputEditStats = props => {
     };
 
     return(
-        <input 
+        <Input 
             onBlur={event => handleBlur(event, field)}
             type={type || "number"}
             field={field}

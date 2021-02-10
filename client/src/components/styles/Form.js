@@ -13,9 +13,12 @@ FormContainer.propTypes = {
     padding: string,
     height: string,
     margin: string,
-  };
+};
 
 export const Form = styled.form`
+`;
+
+export const Input = styled.input`
 `;
 
 export const FormContent = {
