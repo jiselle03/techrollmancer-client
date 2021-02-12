@@ -10,6 +10,7 @@ import { Fade, FadeContent } from '../styles/Fade';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
 import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 import { Print } from '@material-ui/icons';
@@ -195,22 +196,22 @@ const CharacterStats = props => {
     <>
       <Heading bottom="0.25em">{name}</Heading>
 
-      <div style={{textAlign: "right", marginRight: "1.5em"}}>
+      <Container style={{textAlign: "right", marginRight: "1.5em"}}>
         <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
-      </div>
+      </Container>
 
-      <div className="character-sheet">
+      <Container className="character-sheet">
 
         <FloatingActionButton icon="delete" character={character} onHandleDelete={handleDelete}/>
 
         <Card className="stats">
         <Heading as="h6" className="header">Level</Heading>
-          <div className="stat-header"> 
+          <Container className="stat-header"> 
             <Heading as="h2" className="main-stats">{level}</Heading>
-          </div>
+          </Container>
 
           <Heading as="h6" className="header">Hit Points</Heading>
-          <div onClick={() => handleClick("hp")} className="stat-header">
+          <Container onClick={() => handleClick("hp")} className="stat-header">
           {edit.hp && (
             <InputEditStats 
               onHandleBlur={handleBlur}
@@ -221,10 +222,10 @@ const CharacterStats = props => {
           {!edit.hp && (
             <TooltipEdit field={hp} />
           )}
-          </div>
+          </Container>
 
           <Heading as="h6" className="header">Armor Class</Heading>
-          <div onClick={() => handleClick("armor_class")} className="stat-header">
+          <Container onClick={() => handleClick("armor_class")} className="stat-header">
           {edit.armor_class && (
             <InputEditStats 
               onHandleBlur={handleBlur} 
@@ -236,12 +237,12 @@ const CharacterStats = props => {
           {!edit.armor_class && (
             <TooltipEdit field={armor_class} />
           )}
-          </div>
+          </Container>
         </Card>
 
         <Card className="stats">
         <Heading as="h6" className="header">Speed</Heading>
-          <div onClick={() => handleClick("speed")} className="stat-header"> 
+          <Container onClick={() => handleClick("speed")} className="stat-header"> 
           {edit.speed && (
             <InputEditStats 
               onHandleBlur={handleBlur} 
@@ -254,7 +255,7 @@ const CharacterStats = props => {
           {!edit.speed && (
             <TooltipEdit field={speed} />
           )}
-          </div>
+          </Container>
 
           <TooltipRoll 
             modifier={initiative} 
@@ -263,7 +264,7 @@ const CharacterStats = props => {
             header
             onHandleOpen={handleOpen} 
           />
-          <div onClick={() => handleClick("initiative")} className="stat-header"> 
+          <Container onClick={() => handleClick("initiative")} className="stat-header"> 
             {edit.initiative && (
               <InputEditStats 
                 onHandleBlur={handleBlur} 
@@ -275,12 +276,12 @@ const CharacterStats = props => {
             {!edit.initiative && (
               <TooltipEdit field={checkInitiative(initiative)} />
             )}
-          </div>
+          </Container>
 
           <Heading as="h6" className="header">Proficiency Bonus</Heading>
-            <div className="stat-header" onClick={() => handleClick("bonus")} >
+            <Container className="stat-header" onClick={() => handleClick("bonus")} >
               <Heading as="h2" className="main-stats">{checkProfBonus(level)}</Heading>
-            </div>
+            </Container>
         </Card>
 
         <Card className="str stats">
@@ -292,7 +293,7 @@ const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div onClick={() => handleClick("str")} className="stat-header">
+            <Container onClick={() => handleClick("str")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -315,11 +316,11 @@ const CharacterStats = props => {
                   </>
                 )}
               </FlexBox>
-            </div>
+            </Container>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <div className="stat border ability">
-              <div className="stat-container">
+            <Container className="stat border ability">
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "str_save")}
                   field={"str_save"} 
@@ -335,8 +336,8 @@ const CharacterStats = props => {
                   onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "athletics")}
                   field={"athletics"} 
@@ -353,8 +354,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              </div>
+              </Container>
+              </Container>
             </FlexBox>
           </FlexBox>
         </Card>
@@ -368,7 +369,7 @@ const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div onClick={() => handleClick("dex")} className="stat-header">
+            <Container onClick={() => handleClick("dex")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -390,11 +391,11 @@ const CharacterStats = props => {
                 </>
               )}
               </FlexBox>
-            </div>
+            </Container>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <div className="stat border ability">
-              <div className="stat-container">
+            <Container className="stat border ability">
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "dex_save")}
                   field={"dex_save"} 
@@ -411,8 +412,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "acrobatics")}
                   field={"acrobatics"} 
@@ -429,8 +430,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "sleight of hand")}
                   field={"sleight_of_hand"} 
@@ -447,8 +448,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "stealth")}
                   field={"stealth"} 
@@ -465,8 +466,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              </div>
+              </Container>
+              </Container>
             </FlexBox>
           </FlexBox>
         </Card>
@@ -480,7 +481,7 @@ const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div onClick={() => handleClick("con")} className="stat-header">
+            <Container onClick={() => handleClick("con")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -502,11 +503,11 @@ const CharacterStats = props => {
                 </>
               )}
               </FlexBox>
-            </div>
+            </Container>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <div className="stat border ability">
-              <div className="stat-container">
+            <Container className="stat border ability">
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "con_save")}
                   field={"con_save"} 
@@ -523,8 +524,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-            </div>
+              </Container>
+            </Container>
             </FlexBox>
           </FlexBox>
         </Card>
@@ -538,7 +539,7 @@ const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div onClick={() => handleClick("int")} className="stat-header">
+            <Container onClick={() => handleClick("int")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -561,11 +562,11 @@ const CharacterStats = props => {
                 </>
               )}
               </FlexBox>
-            </div>
+            </Container>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <div className="stat border ability">
-              <div className="stat-container">
+            <Container className="stat border ability">
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "int_save")}
                   field={"int_save"} 
@@ -582,8 +583,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "arcana")}
                   field={"arcana"} 
@@ -600,8 +601,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "history")}
                   field={"history"} 
@@ -618,8 +619,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "investigation")}
                   field={"investigation"} 
@@ -636,8 +637,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "nature")}
                   field={"nature"} 
@@ -654,8 +655,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "religion")}
                   field={"religion"} 
@@ -672,8 +673,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-            </div>
+              </Container>
+            </Container>
             </FlexBox>
           </FlexBox>
         </Card>
@@ -687,7 +688,7 @@ const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div onClick={() => handleClick("wis")} className="stat-header">
+            <Container onClick={() => handleClick("wis")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -710,11 +711,11 @@ const CharacterStats = props => {
                 </>
               )}
               </FlexBox>
-            </div>
+            </Container>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <div className="stat border ability">
-              <div className="stat-container">
+            <Container className="stat border ability">
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "wis_save")}
                   field={"wis_save"} 
@@ -731,8 +732,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "animal handling")}
                   field={"animal_handling"} 
@@ -749,8 +750,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "insight")}
                   field={"insight"} 
@@ -767,8 +768,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "medicine")}
                   field={"medicine"} 
@@ -785,8 +786,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "perception")}
                   field={"perception"} 
@@ -803,8 +804,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "survival")}
                   field={"survival"} 
@@ -821,8 +822,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-            </div>
+              </Container>
+            </Container>
             </FlexBox>
           </FlexBox>
         </Card>
@@ -836,7 +837,7 @@ const CharacterStats = props => {
               header
               onHandleOpen={handleOpen} 
             />
-            <div onClick={() => handleClick("cha")} className="stat-header">
+            <Container onClick={() => handleClick("cha")} className="stat-header">
               <FlexBox 
                 direction="column" 
                 alignItems="center"
@@ -859,11 +860,11 @@ const CharacterStats = props => {
                 </>
               )}
               </FlexBox>
-            </div>
+            </Container>
               
             <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <div className="stat border ability">
-              <div className="stat-container">
+            <Container className="stat border ability">
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "cha_save")}
                   field={"cha_save"} 
@@ -880,8 +881,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "deception")}
                   field={"deception"} 
@@ -898,8 +899,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "intimidation")}
                   field={"intimidation"} 
@@ -916,8 +917,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "performance")}
                   field={"performance"} 
@@ -934,8 +935,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-              <div className="stat-container">
+              </Container>
+              <Container className="stat-container">
                 <CharacterProficiencies 
                   modifier={checkAbilityMod(character, level, "persuasion")}
                   field={"persuasion"} 
@@ -952,8 +953,8 @@ const CharacterStats = props => {
                     onHandleOpen={handleOpen} 
                   />
                 </span>
-              </div>
-            </div>
+              </Container>
+            </Container>
             </FlexBox>
           </FlexBox>
         </Card>
@@ -994,7 +995,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Modal>
 
-      </div>
+      </Container>
     </>
   );
 };

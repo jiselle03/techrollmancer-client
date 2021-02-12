@@ -27,7 +27,7 @@ const ConditionIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Conditions</Heading>
                 
                 <Heading as="h2">

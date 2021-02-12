@@ -69,8 +69,8 @@ const SpellIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
-                <Heading>SPELLS</Heading>
+            <Container as="main" page>
+                <Heading>Spells</Heading>
 
                 {types.map(type => (
                     <div key={type.name}>

@@ -45,7 +45,7 @@ const ClassIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading left="0.2em">CLASSES</Heading>
                 
                 <Grid container>

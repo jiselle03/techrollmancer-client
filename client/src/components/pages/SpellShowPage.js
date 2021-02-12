@@ -70,8 +70,8 @@ const SpellShowPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
-                <Heading>{spell.name.toUpperCase()}</Heading>
+            <Container as="main" page>
+                <Heading>{spell.name}</Heading>
 
                 <Heading as="h5">Description</Heading>
                 <Text>{(spell.desc)}</Text>

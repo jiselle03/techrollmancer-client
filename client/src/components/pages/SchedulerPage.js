@@ -66,7 +66,7 @@ const SchedulerPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Scheduler</Heading>
 
                 <Card

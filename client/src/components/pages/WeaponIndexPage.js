@@ -28,7 +28,7 @@ const WeaponIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Weapons</Heading>
 
                 {types.map(type => (

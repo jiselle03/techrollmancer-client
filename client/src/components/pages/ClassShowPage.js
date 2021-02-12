@@ -113,7 +113,7 @@ const ClassShowPage = props => {
             image={getClassImage(slug)}
             size={getClassSize(slug)}
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>{name.toUpperCase()}</Heading>
 
                 <Text>

@@ -66,7 +66,7 @@ const SignUpPage = props => {
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
-            <Container>
+            <Container as="main" page>
                 <FormContainer
                     height="85vh"
                     padding="1em"

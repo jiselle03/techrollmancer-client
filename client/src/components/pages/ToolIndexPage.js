@@ -28,7 +28,7 @@ const ToolIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Tools</Heading>
                 
                 {types.map(type => (

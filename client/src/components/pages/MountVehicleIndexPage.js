@@ -28,7 +28,7 @@ const MountVehicleIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Mounts and Vehicles</Heading>
 
                 {types.map(type => (

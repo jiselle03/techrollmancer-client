@@ -31,7 +31,7 @@ const CharacterIndexPage = props => {
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png" 
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Characters</Heading>
 
                 {characters.length === 0 && (

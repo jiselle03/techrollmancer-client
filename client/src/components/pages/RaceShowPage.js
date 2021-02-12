@@ -74,8 +74,8 @@ const RaceShowPage = props => {
             image={getRaceImage(slug)}
             size={getRaceSize(slug)}
         >
-            <Container>
-                <Heading>{name.toUpperCase()}</Heading>
+            <Container as="main" page>
+                <Heading>{name}</Heading>
 
                 {categories.map(category => (
                     <div key={category.name} className={category.content ? null : "hidden"}>

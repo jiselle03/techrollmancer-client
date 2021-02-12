@@ -47,7 +47,7 @@ const RaceIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading left="0.2em">RACES</Heading>
 
                 <Grid container>

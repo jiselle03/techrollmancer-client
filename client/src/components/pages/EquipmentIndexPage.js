@@ -26,7 +26,7 @@ const EquipmentIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>EQUIPMENT</Heading>
 
                 <List component="nav" className="list">

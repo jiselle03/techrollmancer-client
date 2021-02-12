@@ -107,7 +107,7 @@ const WelcomePage = () => {
             image={require('../../assets/d20.png')}
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading> Welcome to Techrollmancer</Heading>
 
                 <FlexBox justifyContent="space-between">

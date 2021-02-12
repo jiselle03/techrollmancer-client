@@ -80,7 +80,7 @@ const EquipmentShowPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <div className="equipment-name">
                     <Heading>{equipment.name.toUpperCase()}</Heading>
                     <Text className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></Text>

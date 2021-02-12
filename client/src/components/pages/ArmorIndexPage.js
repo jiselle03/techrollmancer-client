@@ -26,7 +26,7 @@ const ArmorIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container>
+            <Container as="main" page>
                 <Heading>Armor</Heading>
 
                 <Heading as="h2">Light</Heading>
