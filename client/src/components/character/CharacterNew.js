@@ -6,6 +6,7 @@ import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
 import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Backdrop, Button, FormControl, Modal, TextField } from '@material-ui/core';
 
@@ -91,11 +92,11 @@ const CharacterNew = props => {
 
                                 <Form onSubmit={createCharacter}>
                                 { errors.length > 0 ? (
-                                    <div>
-                                        <div className="header">
+                                    <Container>
+                                        <Container className="header">
                                             Creation failed: { errors.map(error => error.message).join(", ") }
-                                        </div>
-                                    </div>
+                                        </Container>
+                                    </Container>
                                 ): "" }
                                     <FormControl style={FormContent.full}>
                                         <TextField
@@ -108,7 +109,7 @@ const CharacterNew = props => {
                                         />
                                      </FormControl>
 
-                                    <div>
+                                    <Container>
                                         <FormControl style={FormContent.half}>
                                             <TextField
                                                 id="gender"
@@ -157,9 +158,9 @@ const CharacterNew = props => {
                                                 required
                                             />
                                         </FormControl>
-                                    </div>
+                                    </Container>
 
-                                    <div>
+                                    <Container>
                                         <FormControl style={FormContent.half}>
                                             <TextField
                                                 id="str"
@@ -249,7 +250,7 @@ const CharacterNew = props => {
                                                 required
                                             />
                                         </FormControl>
-                                    </div>
+                                    </Container>
 
                                     <br />
 
