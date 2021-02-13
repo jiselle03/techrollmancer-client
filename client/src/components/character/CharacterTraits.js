@@ -5,6 +5,7 @@ import Character from '../../api/character';
 import FlexBox from '../styles/FlexBox';
 import { Form } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
@@ -85,11 +86,11 @@ const CharacterTraits = props => {
         <>
             <Heading>{name}</Heading>
 
-            <div className="character-sheet">
+            <Container className="character-sheet">
                 <Card className="traits-container">
                     <Heading as="h6" className="header">Photo</Heading>
                     {!edit.photo && (
-                        <div
+                        <Container
                             style={{
                             backgroundImage: `url(${photo_url})`,
                             backgroundRepeat: "no-repeat",
@@ -99,10 +100,10 @@ const CharacterTraits = props => {
                             onClick={() => handleClick("photo")}
                             className="trait large"
                         >
-                        </div>
+                        </Container>
                     )}
                     {edit.photo && (
-                        <div className="photo-edit">
+                        <Container className="photo-edit">
                             <label htmlFor="photo_url" className="photo">Photo URL</label>
                             <input 
                                 type="text"
@@ -112,13 +113,13 @@ const CharacterTraits = props => {
                                 className="photo"
                                 onBlur={event => handleBlurPhoto(event)}
                             />
-                        </div>
+                        </Container>
                     )}
                 </Card>
 
                 <Card className="traits-container">
                     <Heading as="h6" className="header">Profile</Heading>
-                    <div className="trait large" onClick={() => handleClick("profile")}>
+                    <Container className="trait large" onClick={() => handleClick("profile")}>
                         {!edit.profile && (
                             <>
                                 <Text className="profile">Name</Text>
@@ -239,7 +240,7 @@ const CharacterTraits = props => {
                                 </FlexBox>
                             </Form>
                         )}
-                    </div>
+                    </Container>
                 </Card>
 
                 <Card className="traits">
@@ -323,7 +324,7 @@ const CharacterTraits = props => {
                 <Card className="traits">
                     <Heading as="h6" className="header">Background</Heading>
                     {!edit.background && (
-                        <div 
+                        <Container 
                             onClick={() => handleClick("background")}
                             className="trait"
                         >
@@ -333,10 +334,10 @@ const CharacterTraits = props => {
                             <Text>
                                 {background_desc}
                             </Text>
-                        </div>
+                        </Container>
                     )}
                     {edit.background && (
-                        <div>
+                        <Container>
                             <input
                                 type="text"
                                 placeholder="Type"
@@ -351,7 +352,7 @@ const CharacterTraits = props => {
                                 onBlur={(event => handleBlur(event, "background_desc"))}
                                 className="traits"
                             ></textarea>
-                        </div>
+                        </Container>
                     )}
                 </Card>
 
@@ -396,7 +397,7 @@ const CharacterTraits = props => {
                         ></textarea>
                     )}
                 </Card>
-            </div>
+            </Container>
 
         </>
     );
