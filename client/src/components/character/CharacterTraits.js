@@ -133,7 +133,7 @@ const CharacterTraits = props => {
                                 )}
 
                                 <Text className="profile">Race</Text>
-                                <h6 className="profile">{race}</h6>
+                                <Heading as="h6" className="profile">{race}</Heading>
                                 
                                 <Text className="profile">Class</Text>
                                 {class_1 && (
