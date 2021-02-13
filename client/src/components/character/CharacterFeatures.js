@@ -16,7 +16,7 @@ const CharacterFeatures = props => {
         <>
             <Heading>{name}</Heading>
 
-            <div className="character-sheet">
+            <Container className="character-sheet">
                 <FloatingActionButton icon="add" handleAction={handleOpenNew} />
                 
                 {id === 1 && (
@@ -98,7 +98,7 @@ const CharacterFeatures = props => {
                     <Heading as="h5">You have not added any features for this character.</Heading>
                 )}
                 
-            </div>
+            </Container>
 
         </>
     );
