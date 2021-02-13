@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Heading, Text } from '../styles/Typography';
+import Container from '../styles/Container';
 
 export const TooltipRoll = props => {
     const { modifier, ability, name, header } = props;
@@ -10,7 +11,7 @@ export const TooltipRoll = props => {
     };
 
     return(
-        <div className="tooltip-roll">
+        <Container className="tooltip-roll">
             {header && (
                 <Heading as="h6" className="header" onClick={() => handleOpen(modifier, ability)}>
                     {name}
@@ -24,7 +25,7 @@ export const TooltipRoll = props => {
             <span className="tooltiptext">
                 <Text>Click to roll!</Text>
             </span>
-        </div>
+        </Container>
     );
     
 };
