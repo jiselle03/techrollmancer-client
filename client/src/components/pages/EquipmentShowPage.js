@@ -81,36 +81,36 @@ const EquipmentShowPage = props => {
             light
         >
             <Container as="main" page>
-                <div className="equipment-name">
+                <Container className="equipment-name">
                     <Heading>{equipment.name.toUpperCase()}</Heading>
                     <Text className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></Text>
-                </div>
+                </Container>
 
                 {cats.map(category => (
-                    <div 
+                    <Container 
                         key={category.name} 
                         className={equipment.equipment_category === category.name ? null : "hidden"}
                     >
                         {category.content.map(cat => (
                             <Text key={cat.name}><strong>{cat.name}:</strong> {cat.content}</Text>
                         ))}
-                    </div>
+                    </Container>
                 ))}
 
-                <div className={equipment.gear_category === "Equipment Pack" ? null : "hidden"}>
+                <Container className={equipment.gear_category === "Equipment Pack" ? null : "hidden"}>
                     <Heading as="h3">Contents:</Heading>
                     {equipment.contents ? equipment.contents.map(item => (
-                        <div key={item.slug} className="list-item">• <Link to={`/libraries/equipment/${item.slug}`}>{item.name}</Link></div>
+                        <Container key={item.slug} className="list-item">• <Link to={`/libraries/equipment/${item.slug}`}>{item.name}</Link></Container>
                     )) : null}
-                </div>
+                </Container>
 
                     <Text><strong>Weight:</strong> {weight} lb.</Text>
                     <Text><strong>Cost:</strong> {cost.quantity} {cost.unit}</Text>
 
-                <div className={equipment.desc ? null : "hidden"}>
+                <Container className={equipment.desc ? null : "hidden"}>
                     <Heading as="h3">Description</Heading>
                     <Text>{desc}</Text>
-                </div>
+                </Container>
             </Container>
         </BackgroundImage>
     );
