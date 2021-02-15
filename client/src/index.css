@@ -507,7 +507,7 @@ div.race-option {
     margin-bottom: 2em;
   }
 
-  nav.MuiList-root.list > div {
+  nav.MuiList-root.list > a {
     width: 40vw;
   }
 
