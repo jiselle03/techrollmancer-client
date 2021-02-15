@@ -34,13 +34,11 @@ const ArmorIndexPage = () => {
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Light"
                 }).map(armor => (
-                    <div key={armor.slug}>
-                        <Link className="link" to={`/libraries/equipment/${armor.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={armor.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
+                    <Link key={armor.slug} className="link" to={`/libraries/equipment/${armor.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={armor.name} />
+                        </ListItem>
+                    </Link>
                 ))}
                 </List>
 
@@ -49,13 +47,11 @@ const ArmorIndexPage = () => {
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Medium"
                 }).map(armor => (
-                    <div key={armor.slug}>
-                        <Link className="link" to={`/libraries/equipment/${armor.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={armor.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
+                    <Link key={armor.slug} className="link" to={`/libraries/equipment/${armor.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={armor.name} />
+                        </ListItem>
+                    </Link>
                 ))}
                 </List>
 
@@ -64,13 +60,11 @@ const ArmorIndexPage = () => {
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Heavy"
                 }).map(armor => (
-                    <div key={armor.slug}>
-                        <Link className="link" to={`/libraries/equipment/${armor.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={armor.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
+                    <Link key={armor.slug} className="link" to={`/libraries/equipment/${armor.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={armor.name} />
+                        </ListItem>
+                    </Link>
                 ))}
                 </List>
 
@@ -79,13 +73,11 @@ const ArmorIndexPage = () => {
                 {equipments.filter(equipment => {
                     return equipment.equipment_category === "Armor" && equipment.armor_category === "Shield"
                 }).map(armor => (
-                    <div key={armor.slug}>
-                        <Link className="link" to={`/libraries/equipment/${armor.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={armor.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
+                    <Link key={armor.slug} className="link" to={`/libraries/equipment/${armor.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={armor.name} />
+                        </ListItem>
+                    </Link>
                 ))}
                 </List>
             </Container>
