@@ -73,26 +73,25 @@ const SpellIndexPage = () => {
                 <Heading>Spells</Heading>
 
                 {types.map(type => (
-                    <div key={type.name}>
+                    <Container key={type.name}>
                         <Heading as="h2">{type.name}</Heading>
 
                         <List component="nav" className="list"> 
                             {spells.filter(spell => {
                                 return spell.level_int === type.int
                             }).map(spell => (
-                                <div key={spell.slug}>
                                 <Link 
+                                    key={spell.slug}
                                     to={`/libraries/spells/${spell.slug}`} 
                                     className="link"
                                 >
                                     <ListItem button>
-                                            <ListItemText primary={spell.name} />
-                                        </ListItem>
+                                        <ListItemText primary={spell.name} />
+                                    </ListItem>
                                 </Link>
-                                </div>
                             ))}
                         </List>
-                    </div>
+                    </Container>
                 ))}
             </Container>
         </BackgroundImage>
