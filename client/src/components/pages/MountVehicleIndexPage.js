@@ -32,23 +32,21 @@ const MountVehicleIndexPage = () => {
                 <Heading>Mounts and Vehicles</Heading>
 
                 {types.map(type => (
-                    <div key={type}>
+                    <Container key={type}>
                         <Heading as="h2">{type}</Heading>
                 
                         <List component="nav" className="list">
                             {equipments.filter(equipment => {
                                 return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === type
                             }).map(vehicle => (
-                                <div key={vehicle.slug}>
-                                    <Link className="link" to={`/libraries/equipment/${vehicle.slug}`}>
-                                        <ListItem button>
-                                            <ListItemText primary={vehicle.name} />
-                                        </ListItem>
-                                    </Link>
-                                </div>
+                                <Link key={vehicle.slug} className="link" to={`/libraries/equipment/${vehicle.slug}`}>
+                                    <ListItem button>
+                                        <ListItemText primary={vehicle.name} />
+                                    </ListItem>
+                                </Link>
                             ))}
                         </List>
-                    </div>
+                    </Container>
                 ))}
             </Container>
         </BackgroundImage>
