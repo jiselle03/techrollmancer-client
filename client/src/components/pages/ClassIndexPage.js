@@ -50,21 +50,19 @@ const ClassIndexPage = () => {
                 
                 <Grid container>
                 {classes.map(charClass => (
-                    <div key={charClass.slug}>
-                        <Link 
-                            to={`/libraries/classes/${charClass.slug}`} 
-                            href=""
+                    <Link 
+                        key={charClass.slug}
+                        to={`/libraries/classes/${charClass.slug}`} 
+                    >
+                        <Card
+                            image={Utils.getClassImage(charClass.slug)}
+                            imageSize={getImageSize(charClass.slug)}
                         >
-                            <Card
-                                image={Utils.getClassImage(charClass.slug)}
-                                imageSize={getImageSize(charClass.slug)}
-                            >
-                                <CardContent>
-                                    <Heading as="h5" alt>{charClass.name}</Heading>
-                                </CardContent>
-                            </Card>
-                        </Link>
-                    </div>
+                            <CardContent>
+                                <Heading as="h5" alt>{charClass.name}</Heading>
+                            </CardContent>
+                        </Card>
+                    </Link>
                 ))}
                 </Grid>
             </Container>

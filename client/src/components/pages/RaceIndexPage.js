@@ -52,20 +52,19 @@ const RaceIndexPage = () => {
 
                 <Grid container>
                 {races.map(race => (
-                    <div key={race.slug}>
-                        <Link 
-                            to={`/libraries/races/${race.slug}`} 
+                    <Link 
+                        key={race.slug}
+                        to={`/libraries/races/${race.slug}`} 
+                    >
+                        <Card
+                            image={Utils.getRaceImage(race.slug)}
+                            imageSize={getImageSize(race.slug)}
                         >
-                            <Card
-                                image={Utils.getRaceImage(race.slug)}
-                                imageSize={getImageSize(race.slug)}
-                            >
-                                <CardContent>
-                                    <Heading as="h5" alt>{race.name}</Heading>
-                                </CardContent>
-                            </Card>
-                        </Link>
-                    </div>
+                            <CardContent>
+                                <Heading as="h5" alt>{race.name}</Heading>
+                            </CardContent>
+                        </Card>
+                    </Link>
                 ))}
                 </Grid>
             </Container>
