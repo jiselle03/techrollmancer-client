@@ -8,7 +8,7 @@ import CharacterFeatures from '../character/CharacterFeatures';
 import CharacterTraits from '../character/CharacterTraits';
 import CharacterJournal from '../character/CharacterJournal';
 import { BackgroundImage } from '../styles/Image';
-import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Box, CircularProgress, Typography, Tab, Tabs, useMediaQuery } from '@material-ui/core';
 
@@ -72,7 +72,7 @@ const CharacterShowPage = props => {
         image="https://i.ibb.co/cctCwgk/d20.png" 
         light
       >
-        <div
+        <Container
           style={{
             margin: getScreenSize(),
             width: laptop ? "75vw" : "92.5vw",
@@ -90,7 +90,7 @@ const CharacterShowPage = props => {
               {tabs.map((tab, i) => (<Tab key={i} label={tab} value={i} />))}
           </Tabs>
 
-          <div style={{margin: "auto 2em"}}>
+          <Container style={{margin: "auto 2em"}}>
             <TabPanel value={value} index={0}>
                 <CharacterStats character={character} handleRefresh={handleRefresh} {...props} />
             </TabPanel>
@@ -109,8 +109,8 @@ const CharacterShowPage = props => {
             <TabPanel value={value} index={5}>
                 <CharacterJournal character={character} handleRefresh={handleRefresh} />
             </TabPanel>
-          </div>
-        </div>
+          </Container>
+        </Container>
       </BackgroundImage>
     );
 };

@@ -976,10 +976,10 @@ const CharacterStats = props => {
               <Fade in={open}>
                   <FadeContent width="50vw">
                       <Heading as="h2" className="ability">{ability}</Heading>
-                      <div className="dice-roll-container">
+                      <Container className="dice-roll-container">
                         <Heading as="h5" className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</Heading>
                         <i className="fas fa-dice-d20 fa-10x fa-spin-roll"></i>
-                      </div>
+                      </Container>
                       <Heading as="h5">({modifier})</Heading>
 
                       <Button 
