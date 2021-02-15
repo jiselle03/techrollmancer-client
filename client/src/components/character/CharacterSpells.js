@@ -3,6 +3,7 @@ import React from 'react';
 import CharacterSpellsNew from './CharacterSpellsNew';
 import SpellDetails from '../other/SpellDetails';
 import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
@@ -20,9 +21,9 @@ const CharacterSpells = props => {
                     <Heading as="h3">{level}</Heading>
                     {spells && spells.map(spell => (
                         spell.level_int === index && (
-                            <div key={spell.slug}>
+                            <Container key={spell.slug}>
                                 <SpellDetails spell={spell} />
-                            </div>
+                            </Container>
                         )
                     ))}
                 </Card>

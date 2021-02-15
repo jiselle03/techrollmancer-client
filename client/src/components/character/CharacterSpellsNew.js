@@ -7,6 +7,7 @@ import FloatingActionButton from '../other/FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
 import { FormContainer, Form } from '../styles/Form';
+import Container from '../styles/Container';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
 
@@ -71,7 +72,7 @@ const CharacterSpellsNew = props => {
                     <Fade in={open}>
                         <FormContainer padding="0.5em">
                             <Form onSubmit={handleSubmit}>
-                                <div 
+                                <Container 
                                     style={{
                                         position: "sticky", 
                                         top: "0", 
@@ -102,9 +103,9 @@ const CharacterSpellsNew = props => {
                                     >
                                         CANCEL
                                     </Button>
-                                </div>
+                                </Container>
                                 <FadeContent align="left"> 
-                                    <div>
+                                    <Container>
                                         {levels.map((level, index) => (
                                             <>
                                                 <FormControl component="fieldset" key={index}>
@@ -128,7 +129,7 @@ const CharacterSpellsNew = props => {
                                                 <br />
                                             </>
                                         ))}
-                                    </div>      
+                                    </Container>      
                                 </FadeContent>
                             </Form>
                         </FormContainer>
