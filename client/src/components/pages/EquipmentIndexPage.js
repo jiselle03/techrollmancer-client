@@ -27,17 +27,15 @@ const EquipmentIndexPage = () => {
             light
         >
             <Container as="main" page>
-                <Heading>EQUIPMENT</Heading>
+                <Heading>Equipment</Heading>
 
                 <List component="nav" className="list">
                 {equipments.map(equipment => (
-                    <div key={equipment.slug}>
-                        <Link className="link" to={`/libraries/equipment/${equipment.slug}`}>
-                            <ListItem button>
-                                <ListItemText primary={equipment.name} />
-                            </ListItem>
-                        </Link>
-                    </div>
+                    <Link key={equipment.slug} className="link" to={`/libraries/equipment/${equipment.slug}`}>
+                        <ListItem button>
+                            <ListItemText primary={equipment.name} />
+                        </ListItem>
+                    </Link>
                 ))}
                 </List>
             </Container>
