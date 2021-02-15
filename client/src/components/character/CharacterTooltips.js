@@ -34,11 +34,11 @@ export const TooltipEdit = props => {
     const { field } = props;
 
     return(
-        <div className="tooltip-edit">
+        <Container className="tooltip-edit">
             <Heading as="h2" className="main-stats">{field}</Heading>
             <span className="tooltiptext">
                 <Text>Click to edit!</Text>
             </span>
-        </div>
+        </Container>
     );
 };

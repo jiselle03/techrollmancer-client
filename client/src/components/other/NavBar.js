@@ -4,6 +4,7 @@ import { object, func } from 'prop-types';
 
 import NavBarDetails from './NavBarDetails';
 import { NavBarStyle, NavContainer, Sidebar, sidebarText } from '../styles/Navigation';
+import Container from '../styles/Container';
 
 import { Drawer, ListItem, useMediaQuery } from '@material-ui/core';
 
@@ -41,7 +42,7 @@ const NavBar = props => {
                                     marginLeft: "0",
                                 }}
                             >   
-                                <div className="branding">
+                                <Container className="branding">
                                     <span>
                                         TECHR
                                     </span>
@@ -51,7 +52,7 @@ const NavBar = props => {
                                     <span>
                                         LLMANCER
                                     </span>    
-                                </div>
+                                </Container>
                         </ListItemLink>
                         <Link to="#" onClick={toggleDrawer(true)} style={sidebarText}>MENU</Link>
                         {currentUser && (
@@ -59,7 +60,7 @@ const NavBar = props => {
                             )}
                     </Sidebar>
                     <Drawer open={open} onClose={toggleDrawer(false)}>
-                        <div
+                        <Container
                             role="presentation"
                             onClick={toggleDrawer(false)}
                             onKeyDown={toggleDrawer(false)}
@@ -67,7 +68,7 @@ const NavBar = props => {
                             <NavBarStyle>
                                 <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
                             </NavBarStyle>
-                        </div>
+                        </Container>
                     </Drawer>
                 </NavBarStyle>
             )}

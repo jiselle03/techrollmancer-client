@@ -4,6 +4,8 @@ import { Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, useMedia
 import { AccountCircle, Casino, Create, EventAvailable, ExitToApp, ExpandLess, ExpandMore, PersonAdd, Search } from '@material-ui/icons';
 import { func, object } from 'prop-types';
 
+import Container from '../styles/Container';
+
 const ListItemLink = props => {
     return <ListItem button component="a" {...props} />;
 };
@@ -142,7 +144,7 @@ const NavBarDetails = props => {
                             margin: "0.5em",
                         }}
                     >
-                        <div className="branding">
+                        <Container className="branding">
                             <span>
                                 TECHR
                             </span>
@@ -152,7 +154,7 @@ const NavBarDetails = props => {
                             <span>
                                 LLMANCER
                             </span>
-                        </div>
+                        </Container>
                     </div>
                 </ListItemLink>         
             }

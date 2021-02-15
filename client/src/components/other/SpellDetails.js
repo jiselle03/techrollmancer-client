@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Heading, Text } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
@@ -63,10 +64,10 @@ const SpellDetails = props => {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails style={{display: "block"}}>
                 {details.map(category => (
-                    <div key={category.name} className={category.content ? null : "hidden"}>
+                    <Container key={category.name} className={category.content ? null : "hidden"}>
                         <Heading as="h6">{category.name}</Heading>
                         <Text>{category.content}</Text>
-                    </div>
+                    </Container>
                 ))}
             </ExpansionPanelDetails>
         </ExpansionPanel>
