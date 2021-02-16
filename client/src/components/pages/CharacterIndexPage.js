@@ -44,24 +44,23 @@ const CharacterIndexPage = props => {
                     <>
                         <Grid container>
                         {characters.map(character => (
-                            <div key={character.id}>
-                                <Link 
-                                    to={`/characters/${character.id}`} 
-                                    className="link" 
+                            <Link 
+                                key={character.id}
+                                to={`/characters/${character.id}`} 
+                                className="link" 
+                            >
+                                <Card
+                                    image={character.photo_url}
+                                    imageSize="cover"
                                 >
-                                    <Card
-                                        image={character.photo_url}
-                                        imageSize="cover"
-                                    >
-                                        <CardContent>
-                                            <Heading as="h6" alt>{character.name}</Heading>
-                                            <Text alt>
-                                                {character.gender} {character.race}
-                                            </Text>
-                                        </CardContent>
-                                    </Card>
-                                </Link>
-                            </div>
+                                    <CardContent>
+                                        <Heading as="h6" alt>{character.name}</Heading>
+                                        <Text alt>
+                                            {character.gender} {character.race}
+                                        </Text>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         ))}
                         </Grid>
                     </>
