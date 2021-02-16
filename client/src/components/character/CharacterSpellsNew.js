@@ -8,6 +8,7 @@ import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
 import { FormContainer, Form } from '../styles/Form';
 import Container from '../styles/Container';
+import { Heading } from '../styles/Typography';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
 
