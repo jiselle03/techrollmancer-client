@@ -83,9 +83,7 @@ const CharacterSpellsNew = props => {
                                         boxShadow: "0 5px 5px -2px #888",
                                     }}
                                 >
-                                    <h3 className="title">
-                                        Spell List
-                                    </h3>
+                                    <Heading as="h3" className="title">Spell List</Heading>
                                     <Button 
                                         variant="contained" 
                                         color="secondary"
@@ -114,13 +112,13 @@ const CharacterSpellsNew = props => {
                                                     {spells && (
                                                         spells.map(spell => (
                                                             spell.level_int === index && (
-                                                                <div key={spell.id} data-id={spell.id}>
-                                                                    <SpellListItem 
-                                                                        onHandleChange={handleChange} 
-                                                                        characterSpells={newSpells} 
-                                                                        spell={spell} 
-                                                                    />
-                                                                </div>
+                                                                <SpellListItem 
+                                                                    key={spell.id} 
+                                                                    data-id={spell.id}
+                                                                    onHandleChange={handleChange} 
+                                                                    characterSpells={newSpells} 
+                                                                    spell={spell} 
+                                                                />
                                                             )
                                                         ))
                                                     )}
