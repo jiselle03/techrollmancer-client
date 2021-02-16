@@ -121,20 +121,18 @@ const ClassShowPage = props => {
                 </Text>
                 
                 {categories.map(category => (
-                    <div key={category.name}>
+                    <Container key={category.name}>
                         <Heading as="h2">{category.name}</Heading>
 
                         {category.content.map(cat => (
                             <Text key={cat.name}><strong>{cat.name}: </strong>{cat.content}</Text>
                         ))}
-                    </div>
+                    </Container>
                 ))}
 
-                <div className={spellcasting_ability ? null : "hidden"}>
-                    <Text>
-                        <strong>Spellcasting Ability:</strong> {spellcasting_ability}<br />
-                    </Text>
-                </div>
+                <Text className={spellcasting_ability ? null : "hidden"}>
+                    <strong>Spellcasting Ability:</strong> {spellcasting_ability}<br />
+                </Text>
                 
                 <Text dangerouslySetInnerHTML={{
                     __html: getBlurb(desc)
