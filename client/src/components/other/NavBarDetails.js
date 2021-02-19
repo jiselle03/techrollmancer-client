@@ -136,7 +136,7 @@ const NavBarDetails = props => {
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListItemLink button href="/">
-                    <div
+                    <Container
                         style={{
                             fontFamily: "Bungee Inline",
                             fontSize: "1.5em",
@@ -155,7 +155,7 @@ const NavBarDetails = props => {
                                 LLMANCER
                             </span>
                         </Container>
-                    </div>
+                    </Container>
                 </ListItemLink>         
             }
             >
