@@ -54,9 +54,7 @@ const SignInPage = props => {
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
-            <Container
-                style={{overflow: "hidden"}}
-            >
+            <Container overflow="hidden">
                 <FormContainer
                     height="55vh"
                     padding="1em"
