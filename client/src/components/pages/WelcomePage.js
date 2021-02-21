@@ -136,7 +136,6 @@ const WelcomePage = () => {
                         />
                     ))}
                 </FlexBox>
-
                 <Modal
                     open={rollOpen}
                     onClose={handleRollClose}
@@ -146,33 +145,27 @@ const WelcomePage = () => {
                         timeout: 500,
                     }}
                 >
-                    <FlexBox
-                        alignItems="center"
-                        justifyContent="center"
-                        margin="20vh 0"
-                    >
-                        <Fade in={rollOpen}>
-                            <FadeContent>
-                                <Heading as="h3">You rolled:</Heading>
-                                {rolls.length === 1 && (<Heading as="h2">{rolls[0]}</Heading>)}
-                                {rolls.length === 2 && rollState == "regular" && (<Heading as="h2">{rolls[0]}</Heading>)}
-                                {rolls.length === 2 && rollState === "disadvantage" &&(
-                                    <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</Heading>
-                                )}
-                                {rolls.length === 2 && rollState === "advantage" &&(
-                                    <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.min(...rolls)}</span> {Math.max(...rolls)}</Heading>
-                                )}
-                                <Button 
-                                    variant="contained"
-                                    color="secondary"
-                                    onClick={handleRollClose}
-                                    className="button"
-                                >
-                                    EXIT
-                                </Button>
-                            </FadeContent>
-                        </Fade>
-                    </FlexBox>
+                    <Fade in={rollOpen} margin="25vh 0">
+                        <FadeContent>
+                            <Heading as="h3">You rolled:</Heading>
+                            {rolls.length === 1 && (<Heading as="h2">{rolls[0]}</Heading>)}
+                            {rolls.length === 2 && rollState == "regular" && (<Heading as="h2">{rolls[0]}</Heading>)}
+                            {rolls.length === 2 && rollState === "disadvantage" &&(
+                                <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</Heading>
+                            )}
+                            {rolls.length === 2 && rollState === "advantage" &&(
+                                <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.min(...rolls)}</span> {Math.max(...rolls)}</Heading>
+                            )}
+                            <Button 
+                                variant="contained"
+                                color="secondary"
+                                onClick={handleRollClose}
+                                className="button"
+                            >
+                                EXIT
+                            </Button>
+                        </FadeContent>
+                    </Fade>
                 </Modal>
 
                 <Heading as="h2">Get Started</Heading>

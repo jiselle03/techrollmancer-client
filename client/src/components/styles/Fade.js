@@ -16,7 +16,7 @@ FadeContent.propTypes = {
 };
 
 export const Fade = forwardRef(function Fade(props, ref) {
-    const { in: open, children, onEnter, onExited, ...other } = props;
+    const { in: open, children, onEnter, onExited, margin, ...other } = props;
     const style = useSpring({
       from: { opacity: 0 },
       to: { opacity: open ? 1 : 0 },
@@ -30,7 +30,9 @@ export const Fade = forwardRef(function Fade(props, ref) {
   
     return (
       <animated.div ref={ref} style={style} {...other}>
-        {children}
+        <div style={{ margin: margin}}>
+          {children}
+        </div>
       </animated.div>
     );
 });
