@@ -6,14 +6,13 @@ const Container = styled.div`
         width: 70vw;
         min-height: 100vh;
         overflow-x: visible;
-        ${({ overflow }) => overflow && "overflow: hidden"}
 
         @media screen and (min-width: 1280px) {
             margin: 1em 2em 2em 27vw;
         }
         
     ` : `
-        
+        ${({ overflow }) => overflow && "overflow: hidden"}
     `}
 `;
 
