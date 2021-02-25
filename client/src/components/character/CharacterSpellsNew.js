@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import Library from '../../api/library';
 import Spell from '../../api/spell';
@@ -106,7 +106,7 @@ const CharacterSpellsNew = props => {
                                 <FadeContent align="left"> 
                                     <Container>
                                         {levels.map((level, index) => (
-                                            <>
+                                            <Fragment key={index}>
                                                 <FormControl component="fieldset" key={index}>
                                                     <FormLabel component="legend">{level}</FormLabel>
                                                     <FormGroup>
@@ -126,7 +126,7 @@ const CharacterSpellsNew = props => {
                                                     </FormGroup>
                                                 </FormControl>
                                                 <br />
-                                            </>
+                                            </Fragment>
                                         ))}
                                     </Container>      
                                 </FadeContent>
