@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import CharacterSpellsNew from './CharacterSpellsNew';
 import SpellDetails from '../other/SpellDetails';
@@ -17,13 +17,13 @@ const CharacterSpells = props => {
             <Heading>{name}</Heading>
 
             {levels.map((level, index) => (
-                <Card className="spells">
+                <Card className="spells" key={index}>
                     <Heading as="h3">{level}</Heading>
                     {spells && spells.map(spell => (
                         spell.level_int === index && (
-                            <Container key={spell.slug}>
+                            <Fragment key={spell.slug}>
                                 <SpellDetails spell={spell} />
-                            </Container>
+                            </Fragment>
                         )
                     ))}
                 </Card>
