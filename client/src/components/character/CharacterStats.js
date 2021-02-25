@@ -196,7 +196,7 @@ const CharacterStats = props => {
     <>
       <Heading bottom="0.25em">{name}</Heading>
 
-      <Container style={{textAlign: "right", marginRight: "1.5em"}}>
+      <Container textAlign="right" marginRight="1.5em">
         <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
       </Container>
 

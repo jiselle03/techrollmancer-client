@@ -12,7 +12,9 @@ const Container = styled.div`
         }
         
     ` : `
-        ${({ overflow }) => overflow && "overflow: hidden"}
+        ${({ overflow }) => overflow && `overflow: ${overflow};`}
+        ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
+        ${({ marginRight }) => marginRight && `margin-right: ${marginRight};`}
     `}
 `;
 
