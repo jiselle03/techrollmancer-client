@@ -2,7 +2,7 @@ import React from 'react';
 
 import FloatingActionButton from '../other/FloatingActionButton';
 import { Heading, Text } from '../styles/Typography';
-import Container from '../styles/Container';
+import { CharacterSheet } from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
@@ -17,7 +17,7 @@ const CharacterFeatures = props => {
         <>
             <Heading>{name}</Heading>
 
-            <Container className="character-sheet">
+            <CharacterSheet>
                 <FloatingActionButton icon="add" handleAction={handleOpenNew} />
                 
                 {id === 1 && (
@@ -99,7 +99,7 @@ const CharacterFeatures = props => {
                     <Heading as="h5">You have not added any features for this character.</Heading>
                 )}
                 
-            </Container>
+            </CharacterSheet>
 
         </>
     );

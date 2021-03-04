@@ -10,7 +10,7 @@ import { Fade, FadeContent } from '../styles/Fade';
 import { InputEditStats } from './CharacterInputEdit';
 import { TooltipRoll, TooltipEdit } from './CharacterTooltips';
 import { Heading } from '../styles/Typography';
-import Container from '../styles/Container';
+import Container, { CharacterSheet } from '../styles/Container';
 
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 import { Print } from '@material-ui/icons';
@@ -200,12 +200,12 @@ const CharacterStats = props => {
         <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
       </Container>
 
-      <Container className="character-sheet">
+      <CharacterSheet>
 
         <FloatingActionButton icon="delete" character={character} onHandleDelete={handleDelete}/>
 
         <Card className="stats">
-        <Heading as="h6" className="header">Level</Heading>
+          <Heading as="h6" className="header">Level</Heading>
           <Container className="stat-header"> 
             <Heading as="h2" className="main-stats">{level}</Heading>
           </Container>
@@ -995,7 +995,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Modal>
 
-      </Container>
+      </CharacterSheet>
     </>
   );
 };

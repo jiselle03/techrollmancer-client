@@ -12,10 +12,26 @@ const Container = styled.div`
         }
         
     ` : `
+        ${({ marginLeft }) => marginLeft && `margin-left: ${marginLeft};`}
+        ${({ marginRight }) => marginRight && `margin-right: ${marginRight};`}
+        ${({ padding }) => padding && `padding: ${padding};`}
         ${({ overflow }) => overflow && `overflow: ${overflow};`}
         ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
-        ${({ marginRight }) => marginRight && `margin-right: ${marginRight};`}
     `}
 `;
 
 export default Container;
+
+export const CharacterSheet = styled.div`
+    padding: 1em;
+
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media print {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+`;

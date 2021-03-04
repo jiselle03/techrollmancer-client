@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Heading } from '../styles/Typography';
-import Container from '../styles/Container';
+import { CharacterSheet } from '../styles/Container';
 
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
@@ -12,7 +12,7 @@ const CharacterInventory = props => {
         <>
             <Heading>{name}</Heading>
 
-            <Container className="character-sheet">
+            <CharacterSheet>
                 <Card className="inventory">
                     <Heading as="h2">Coin Pouch</Heading>
 
@@ -136,7 +136,7 @@ const CharacterInventory = props => {
                         </Table>
                     </TableContainer>
                 </Card>
-            </Container>
+            </CharacterSheet>
 
         </>
     );
