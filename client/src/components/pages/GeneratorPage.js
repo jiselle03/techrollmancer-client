@@ -227,12 +227,7 @@ const GeneratorPage = () => {
                             }}
                             
                         >
-                            <Fade 
-                                in={openD6} 
-                                margin="8vh 0"
-                                justifyContent="center"
-                                alignItems="center"
-                            >
+                            <Fade  in={openD6} margin="10vh 0">
                                 <FadeContent>
                                     <Heading as="h3">ROLLS</Heading>
                                     

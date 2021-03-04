@@ -20,7 +20,7 @@ const CharacterNew = props => {
 
     useEffect(() => {
         props.open ? setOpen(true) : setOpen(false);
-    }, []);
+    }, [props.open]);
 
     const createCharacter = event => {
         event.preventDefault();

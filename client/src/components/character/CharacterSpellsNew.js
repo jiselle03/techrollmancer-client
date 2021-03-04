@@ -49,10 +49,10 @@ const CharacterSpellsNew = props => {
 
     useEffect(() => { 
         Library.allSpells().then(spells => {
-            setSpells(spells);
             setNewSpells(ids);
+            setSpells(spells);
         });
-    }, [open]);
+    }, []);
 
     return(
         <>

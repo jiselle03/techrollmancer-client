@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import User from '../../api/user';
 import { BackgroundImage } from '../styles/Image';
-import Container, { Layout } from '../styles/Container';
+import { Layout } from '../styles/Container';
 import { Form, FormContainer, FormContent } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
 

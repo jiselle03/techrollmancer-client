@@ -19,6 +19,7 @@ const WelcomePage = () => {
     const [rollOpen, setRollOpen] = useState(false);
     const [rolls, setRolls] = useState([]);
     const [rollState, setRollState] = useState("regular");
+    const [gamesToday, setGamesToday] = useState([]);
     
     const states = ["disadvantage", "regular", "advantage"];
     const dSides = [
@@ -49,7 +50,6 @@ const WelcomePage = () => {
     
     const { formatDate, roll } = Utils;
 
-    let chosenRoll;
     const handleRollOpen = sides => {
         setRollOpen(true);
         
@@ -60,35 +60,30 @@ const WelcomePage = () => {
     const handleRollClose = () => {
         setRolls([]);
         setRollOpen(false);
-        chosenRoll = null;
     };
 
-    const gamesToday = [];
     const currentDate = formatDate(new Date());
-    const checkGames = games => {
-        games.map(game => {
-            if (game.date == currentDate) {
-                gamesToday.push(game);
-            };
-        });
-    };
 
-    const handleNotifications = () => {
-        return gamesToday.map(game => {
-            store.addNotification({
-                title: `You have a session today for ${game.name}`,
-                message: `${game.notes}`,
-                type: "danger",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animated", "fadeIn"],
-                animationOut: ["animated", "fadeOut"],
-                dismiss: {
-                  duration: 5000,
-                  onScreen: true,
-                  pauseOnHover: true
-                },
-            });
+    const checkGames = async games => {
+        await games.map(game => {
+            if (game.date === currentDate) {
+                setGamesToday([...gamesToday, game]);
+                store.addNotification({
+                    title: `You have a session today for ${game.name}`,
+                    message: `${game.notes}`,
+                    type: "danger",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animated", "fadeIn"],
+                    animationOut: ["animated", "fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true,
+                      pauseOnHover: true
+                    },
+                });
+            };
+            return gamesToday;
         });
     };
 
@@ -97,8 +92,6 @@ const WelcomePage = () => {
     useEffect(() => {
         Game.all().then(games => {
             if (Array.isArray(games)) checkGames(games);
-        }).then(() => {
-            handleNotifications();
         });
     }, []);
 
@@ -149,7 +142,7 @@ const WelcomePage = () => {
                         <FadeContent>
                             <Heading as="h3">You rolled:</Heading>
                             {rolls.length === 1 && (<Heading as="h2">{rolls[0]}</Heading>)}
-                            {rolls.length === 2 && rollState == "regular" && (<Heading as="h2">{rolls[0]}</Heading>)}
+                            {rolls.length === 2 && rollState === "regular" && (<Heading as="h2">{rolls[0]}</Heading>)}
                             {rolls.length === 2 && rollState === "disadvantage" &&(
                                 <Heading as="h2"><span style={{color: "lightgrey"}}>{Math.max(...rolls)}</span> {Math.min(...rolls)}</Heading>
                             )}
