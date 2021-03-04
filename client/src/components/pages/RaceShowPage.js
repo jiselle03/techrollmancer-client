@@ -78,21 +78,21 @@ const RaceShowPage = props => {
                 <Heading>{name}</Heading>
 
                 {categories.map(category => (
-                    <div key={category.name} className={category.content ? null : "hidden"}>
+                    <Container key={category.name} className={category.content ? null : "hidden"}>
                         <Heading as="h2">{category.name}</Heading>
                         <Text>{category.content}</Text>
-                    </div>
+                    </Container>
                 ))}
 
                 {categories2.map(category => (
-                    <div key={category.name} className={category.content ? null : "hidden"}>
+                    <Container key={category.name} className={category.content ? null : "hidden"}>
                         <Text dangerouslySetInnerHTML={{
                             __html: getBlurb(category.content)
                         }}></Text>
-                    </div>
+                    </Container>
                 ))}
 
-                <div className={subraces.length > 0 ? null : "hidden"}>
+                <Container className={subraces.length > 0 ? null : "hidden"}>
                     <Heading>Subraces</Heading>
 
                     {subraces.map(subrace => (
@@ -120,7 +120,7 @@ const RaceShowPage = props => {
                             }}></span>
                         </>
                     ))}
-                </div>
+                </Container>
             </Container>
         </BackgroundImage>
     );

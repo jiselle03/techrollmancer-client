@@ -79,7 +79,7 @@ const SchedulerPage = props => {
                     <Heading as="h2">Future Sessions</Heading>
                     {games.map((game, index) => (
                         game.date >= currentDate && (
-                        <div key={index} className="game">
+                        <Container key={index} className="game">
                             <span className="name">
                             <Heading as="h6">{game.name}</Heading>
                             </span>
@@ -90,7 +90,7 @@ const SchedulerPage = props => {
                             <Text className="notes"><strong>Notes:</strong></Text>
                             <Text>{game.notes}</Text>
                             <hr />
-                        </div>
+                        </Container>
                     )))}
                 </Card>
 
@@ -104,7 +104,7 @@ const SchedulerPage = props => {
                 <Heading as="h2">Add Session</Heading>
                 <Form onSubmit={handleSubmit}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <div className="datetime">
+                        <Container className="datetime">
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="date-picker-dialog"
@@ -130,7 +130,7 @@ const SchedulerPage = props => {
                                 }}
                                 style={FormContent.datetime}
                             />
-                        </div>
+                        </Container>
                         <FormControl style={FormContent.scheduler}>
                             <InputLabel htmlFor="name">Name</InputLabel>
                             <Input
@@ -174,17 +174,17 @@ const SchedulerPage = props => {
                     <Heading as="h2">Past Sessions</Heading>
                     {games.map((game, index) => (
                         game.date < currentDate && (
-                        <div key={index}>
-                            <div className="game">
+                        <Container key={index}>
+                            <Container className="game">
                                 <span className="name">
                             <Heading as="h6">{game.name}</Heading> 
                             </span>
                                 <span className="button">
                             <Button onClick={() => handleDelete(game.id)}>Delete</Button>
                             </span>
-                            </div>
+                            </Container>
                             <Text>{game.date} at {game.time}</Text>
-                        </div>
+                        </Container>
                     )))}
                 </Card>
 
