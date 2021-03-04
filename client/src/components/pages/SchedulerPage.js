@@ -1,5 +1,5 @@
 import 'date-fns';
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import Game from '../../api/game';
@@ -79,7 +79,7 @@ const SchedulerPage = props => {
                     <Heading as="h2">Future Sessions</Heading>
                     {games.map((game, index) => (
                         game.date >= currentDate && (
-                        <Container key={index} className="game">
+                        <Fragment key={index} className="game">
                             <span className="name">
                             <Heading as="h6">{game.name}</Heading>
                             </span>
@@ -90,7 +90,7 @@ const SchedulerPage = props => {
                             <Text className="notes"><strong>Notes:</strong></Text>
                             <Text>{game.notes}</Text>
                             <hr />
-                        </Container>
+                        </Fragment>
                     )))}
                 </Card>
 
@@ -174,7 +174,7 @@ const SchedulerPage = props => {
                     <Heading as="h2">Past Sessions</Heading>
                     {games.map((game, index) => (
                         game.date < currentDate && (
-                        <Container key={index}>
+                        <Fragment key={index}>
                             <Container className="game">
                                 <span className="name">
                             <Heading as="h6">{game.name}</Heading> 
@@ -184,7 +184,7 @@ const SchedulerPage = props => {
                             </span>
                             </Container>
                             <Text>{game.date} at {game.time}</Text>
-                        </Container>
+                        </Fragment>
                     )))}
                 </Card>
 

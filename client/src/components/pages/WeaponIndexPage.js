@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
@@ -32,7 +32,7 @@ const WeaponIndexPage = () => {
                 <Heading>Weapons</Heading>
 
                 {types.map(type => (
-                    <Container key={type}>
+                    <Fragment key={type}>
                         <Heading as="h2">{type}</Heading>
 
                         <List component="nav" className="list">
@@ -46,7 +46,7 @@ const WeaponIndexPage = () => {
                                 </Link>
                             ))}
                         </List>
-                    </Container>
+                    </Fragment>
                 ))}
             </Container>
         </BackgroundImage>

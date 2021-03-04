@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import Library from '../../api/library';
@@ -121,13 +121,13 @@ const ClassShowPage = props => {
                 </Text>
                 
                 {categories.map(category => (
-                    <Container key={category.name}>
+                    <Fragment key={category.name}>
                         <Heading as="h2">{category.name}</Heading>
 
                         {category.content.map(cat => (
                             <Text key={cat.name}><strong>{cat.name}: </strong>{cat.content}</Text>
                         ))}
-                    </Container>
+                    </Fragment>
                 ))}
 
                 <Text className={spellcasting_ability ? null : "hidden"}>
