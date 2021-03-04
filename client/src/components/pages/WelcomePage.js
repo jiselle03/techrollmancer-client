@@ -6,7 +6,7 @@ import { store } from 'react-notifications-component';
 import Utils from '../../js/utils';
 import Game from '../../api/game';
 import { BackgroundImage } from '../styles/Image';
-import Container, { Layout } from '../styles/Container';
+import { Layout } from '../styles/Container';
 import { Image } from '../styles/Image';
 import { Fade, FadeContent } from '../styles/Fade';
 import FlexBox from '../styles/FlexBox';

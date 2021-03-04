@@ -12,14 +12,12 @@ import { FadeContent, Fade } from '../styles/Fade';
 import { Center } from '../styles/Center';
 import { Heading, Text } from '../styles/Typography';
 
-import { Backdrop, Button, Divider, Modal, useMediaQuery } from '@material-ui/core';
+import { Backdrop, Button, Divider, Modal } from '@material-ui/core';
 
 const GeneratorPage = () => {
     const [openQR, setOpenQR] = useState(false);
     const [character, setCharacter] = useState({});
     const [save, setSave] = useState(false);
-
-    const laptop = useMediaQuery('(min-width:1280px)');
 
     const quickRoll = () => {
         handleOpenQR();
@@ -166,58 +164,52 @@ const GeneratorPage = () => {
                             timeout: 500,
                         }}
                     >
-                        <FlexBox
-                            alignItems="center"
-                            justifyContent="center"
-                            margin="10vh 0"
-                        >
-                            <Fade in={openQR}>
-                                <FadeContent>
-                                    <Heading as="h3">CHARACTER STATS</Heading>
+                        <Fade in={openQR} margin="10vh 0">
+                            <FadeContent>
+                                <Heading as="h3">CHARACTER STATS</Heading>
 
-                                    <Container>
-                                        <span className="roll">
-                                            <Heading as="h5">Race: </Heading> 
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h4">{character._charRace}</Heading>
-                                        </span>
-                                    </Container>
-                                    <Container>
-                                        <span className="roll">
-                                            <Heading as="h5">Class: </Heading>
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h4">{character._charClass}</Heading>
-                                        </span>
-                                    </Container>
-                                    
-                                    <Heading as="h3">ABILITY SCORES</Heading>
-                                    
-                                        <Heading as="h4">
-                                            {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
-                                        </Heading>
+                                <Container>
+                                    <span className="roll">
+                                        <Heading as="h5">Race: </Heading> 
+                                    </span>
+                                    <span className="roll">
+                                        <Heading as="h4">{character._charRace}</Heading>
+                                    </span>
+                                </Container>
+                                <Container>
+                                    <span className="roll">
+                                        <Heading as="h5">Class: </Heading>
+                                    </span>
+                                    <span className="roll">
+                                        <Heading as="h4">{character._charClass}</Heading>
+                                    </span>
+                                </Container>
+                                
+                                <Heading as="h3">ABILITY SCORES</Heading>
+                                
+                                    <Heading as="h4">
+                                        {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
+                                    </Heading>
 
-                                        <Button 
-                                            variant="contained"
-                                            color="secondary"
-                                            onClick={handleSaveQR}
-                                            className="button"
-                                        >
-                                            SAVE
-                                        </Button>
+                                    <Button 
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={handleSaveQR}
+                                        className="button"
+                                    >
+                                        SAVE
+                                    </Button>
 
-                                        <Button 
-                                            variant="contained"
-                                            color="secondary"
-                                            onClick={handleCloseQR}
-                                            className="button"
-                                        >
-                                            EXIT
-                                        </Button>
-                                    </FadeContent>
-                                </Fade>
-                            </FlexBox>
+                                    <Button 
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={handleCloseQR}
+                                        className="button"
+                                    >
+                                        EXIT
+                                    </Button>
+                                </FadeContent>
+                            </Fade>
                         </Modal>
                     )}
 
@@ -235,103 +227,102 @@ const GeneratorPage = () => {
                             }}
                             
                         >
-                            <FlexBox
+                            <Fade 
+                                in={openD6} 
+                                margin="8vh 0"
                                 justifyContent="center"
                                 alignItems="center"
-                                margin="8vh 0"
                             >
-                                <Fade in={openD6}>
-                                    <FadeContent>
-                                        <Heading as="h3">ROLLS</Heading>
-                                        
-                                        <Container>
-                                            <span className="roll">
-                                                <Heading as="h5" className={checkMin(rolls, 0) ? "min" : null}>1ST: </Heading>
-                                            </span>
-                                            <span className="roll">
-                                                <Heading as="h4" className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</Heading>
-                                            </span>
-                                        </Container>
+                                <FadeContent>
+                                    <Heading as="h3">ROLLS</Heading>
+                                    
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h5" className={checkMin(rolls, 0) ? "min" : null}>1ST: </Heading>
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4" className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</Heading>
+                                        </span>
+                                    </Container>
 
-                                        <Container>
-                                            <span className="roll">
-                                                <Heading as="h5" className={checkMin(rolls, 1) ? "min" : null}>2ND: </Heading>
-                                            </span>
-                                            <span className="roll">
-                                                <Heading as="h4" className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</Heading>
-                                            </span>
-                                        </Container>
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h5" className={checkMin(rolls, 1) ? "min" : null}>2ND: </Heading>
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4" className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</Heading>
+                                        </span>
+                                    </Container>
 
-                                        <Container>
-                                            <span className="roll">
-                                                <Heading as="h5" className={checkMin(rolls, 2) ? "min" : null}>3RD: </Heading>
-                                            </span>
-                                            <span className="roll">
-                                                <Heading as="h4" className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</Heading>
-                                            </span>
-                                        </Container>
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h5" className={checkMin(rolls, 2) ? "min" : null}>3RD: </Heading>
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4" className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</Heading>
+                                        </span>
+                                    </Container>
 
-                                        <Container>
-                                            <span className="roll">
-                                                <Heading as="h5" className={checkMin(rolls, 3) ? "min" : null}>4TH: </Heading>
-                                            </span>
-                                            <span className="roll">
-                                                <Heading as="h4" className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</Heading>
-                                            </span>
-                                        </Container>
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h5" className={checkMin(rolls, 3) ? "min" : null}>4TH: </Heading>
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4" className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</Heading>
+                                        </span>
+                                    </Container>
 
-                                        <Divider />
+                                    <Divider />
 
-                                        <Container>
-                                            <span className="roll">
-                                                <Heading as="h3">STAT: </Heading> 
-                                            </span>
-                                            <span className="roll">
-                                                <Heading as="h3">{rolls[3] ? Utils.rollAbility(rolls) : " "}</Heading>
-                                            </span>
-                                        </Container>
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h3">STAT: </Heading> 
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h3">{rolls[3] ? Utils.rollAbility(rolls) : " "}</Heading>
+                                        </span>
+                                    </Container>
 
-                                        <FlexBox justifyContent="center">
-                                            <Container className={!rolls[3] ? null : "hidden"}>
-                                                    <Button 
-                                                        variant="contained"
-                                                        color="secondary"
-                                                        onClick={rollD6}
-                                                        className="button"
-                                                    >
-                                                        ROLL D6
-                                                    </Button>
-                                                    <Button
-                                                        variant="contained"
-                                                        color="secondary"
-                                                        onClick={handleCloseD6}
-                                                        className="button"
-                                                    >
-                                                        EXIT
-                                                    </Button>
-                                            </Container>
-                                            <Container className={rolls[3] ? null : "hidden"}>
+                                    <FlexBox justifyContent="center">
+                                        <Container className={!rolls[3] ? null : "hidden"}>
                                                 <Button 
                                                     variant="contained"
                                                     color="secondary"
-                                                    onClick={refreshD6}
+                                                    onClick={rollD6}
                                                     className="button"
                                                 >
-                                                    START OVER
+                                                    ROLL D6
                                                 </Button>
-                                                <Button 
+                                                <Button
                                                     variant="contained"
-                                                    color="secondary"                   
+                                                    color="secondary"
                                                     onClick={handleCloseD6}
                                                     className="button"
                                                 >
                                                     EXIT
                                                 </Button>
-                                            </Container>
-                                        </FlexBox>
-                                    </FadeContent>
-                                </Fade>
-                            </FlexBox>    
+                                        </Container>
+                                        <Container className={rolls[3] ? null : "hidden"}>
+                                            <Button 
+                                                variant="contained"
+                                                color="secondary"
+                                                onClick={refreshD6}
+                                                className="button"
+                                            >
+                                                START OVER
+                                            </Button>
+                                            <Button 
+                                                variant="contained"
+                                                color="secondary"                   
+                                                onClick={handleCloseD6}
+                                                className="button"
+                                            >
+                                                EXIT
+                                            </Button>
+                                        </Container>
+                                    </FlexBox>
+                                </FadeContent>
+                            </Fade>  
                         </Modal>
                     </Card>
                 </Center>
