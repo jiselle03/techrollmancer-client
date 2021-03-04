@@ -6,7 +6,7 @@ import SpellListItem from '../other/SpellListItem';
 import FloatingActionButton from '../other/FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
-import { FormContainer, Form } from '../styles/Form';
+import { FormContainer, Form, SpellForm } from '../styles/Form';
 import Container from '../styles/Container';
 import { Heading } from '../styles/Typography';
 
@@ -73,17 +73,7 @@ const CharacterSpellsNew = props => {
                     <Fade in={open}>
                         <FormContainer padding="0.5em">
                             <Form onSubmit={handleSubmit}>
-                                <Container 
-                                    style={{
-                                        position: "sticky", 
-                                        top: "0", 
-                                        zIndex: "1",
-                                        backgroundColor: "rgba(45,99,127,1)",
-                                        padding: "1em",
-                                        textAlign: "center",
-                                        boxShadow: "0 5px 5px -2px #888",
-                                    }}
-                                >
+                                <SpellForm>
                                     <Heading as="h3" className="title">Spell List</Heading>
                                     <Button 
                                         variant="contained" 
@@ -102,7 +92,7 @@ const CharacterSpellsNew = props => {
                                     >
                                         CANCEL
                                     </Button>
-                                </Container>
+                                </SpellForm>
                                 <FadeContent align="left"> 
                                     <Container>
                                         {levels.map((level, index) => (
