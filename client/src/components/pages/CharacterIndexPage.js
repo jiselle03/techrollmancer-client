@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Character from '../../api/character';
 import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
-import Container, { Layout } from '../styles/Container';
+import { Layout } from '../styles/Container';
 import { Card, CardContent } from '../styles/Card';
 import { Heading, Text } from '../styles/Typography';
 

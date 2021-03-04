@@ -17,7 +17,7 @@ const CharacterProficiencies = props => {
         if (proficiencies[field]) {
             setIsChecked(true);
         };
-    }, [proficiencies[field]]);
+    }, [proficiencies, field]);
 
     return(
         <FormControlLabel

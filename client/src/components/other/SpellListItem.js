@@ -10,13 +10,12 @@ const SpellListItem = props => {
         props.onHandleChange(event);
     }
 
+    const { characterSpells, spell } = props;
+
     useEffect(() => {
-        const { characterSpells, spell } = props;
         const isChecked = characterSpells.includes(spell.id);
         setIsChecked(isChecked);
-    }, [isChecked]);
-
-    const { spell } = props;
+    }, [isChecked, characterSpells, spell.id]);
 
     return(
         <FormControlLabel

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { BackgroundImage } from '../styles/Image';
-import Container, { Layout } from '../styles/Container';
+import { Layout } from '../styles/Container';
 import { Heading } from '../styles/Typography';
 
 import { List, ListItem, ListItemText } from '@material-ui/core';

@@ -4,7 +4,6 @@ import Library from '../../api/library';
 import Spell from '../../api/spell';
 import SpellListItem from '../other/SpellListItem';
 import FloatingActionButton from '../other/FloatingActionButton';
-import FlexBox from '../styles/FlexBox';
 import { FadeContent, Fade } from '../styles/Fade';
 import { FormContainer, Form, SpellForm } from '../styles/Form';
 import Container from '../styles/Container';
@@ -50,10 +49,10 @@ const CharacterSpellsNew = props => {
 
     useEffect(() => { 
         Library.allSpells().then(spells => {
-            setSpells(spells);
             setNewSpells(ids);
+            setSpells(spells);
         });
-    }, [open]);
+    }, []);
 
     return(
         <>
@@ -69,61 +68,59 @@ const CharacterSpellsNew = props => {
                 }}
                 style={{overflow:"scroll"}}
             >
-                <FlexBox alignItems="center" justifyContent="center">
-                    <Fade in={open}>
-                        <FormContainer padding="0.5em">
-                            <Form onSubmit={handleSubmit}>
-                                <SpellForm>
-                                    <Heading as="h3" className="title">Spell List</Heading>
-                                    <Button 
-                                        variant="contained" 
-                                        color="secondary"
-                                        type="submit" 
-                                        className="button"
-                                    >
-                                        SAVE
-                                    </Button>
+                <Fade in={open} display= "flex" alignItems="center" justifyContent="center">
+                    <FormContainer padding="0.5em">
+                        <Form onSubmit={handleSubmit}>
+                            <SpellForm>
+                                <Heading as="h3" className="title">Spell List</Heading>
+                                <Button 
+                                    variant="contained" 
+                                    color="secondary"
+                                    type="submit" 
+                                    className="button"
+                                >
+                                    SAVE
+                                </Button>
 
-                                    <Button
-                                        variant="contained" 
-                                        color="secondary"
-                                        onClick={handleClose}
-                                        className="button"
-                                    >
-                                        CANCEL
-                                    </Button>
-                                </SpellForm>
-                                <FadeContent align="left"> 
-                                    <Container>
-                                        {levels.map((level, index) => (
-                                            <Fragment key={index}>
-                                                <FormControl component="fieldset" key={index}>
-                                                    <FormLabel component="legend">{level}</FormLabel>
-                                                    <FormGroup>
-                                                    {spells && (
-                                                        spells.map(spell => (
-                                                            spell.level_int === index && (
-                                                                <SpellListItem 
-                                                                    key={spell.id} 
-                                                                    data-id={spell.id}
-                                                                    onHandleChange={handleChange} 
-                                                                    characterSpells={newSpells} 
-                                                                    spell={spell} 
-                                                                />
-                                                            )
-                                                        ))
-                                                    )}
-                                                    </FormGroup>
-                                                </FormControl>
-                                                <br />
-                                            </Fragment>
-                                        ))}
-                                    </Container>      
-                                </FadeContent>
-                            </Form>
-                        </FormContainer>
-                    </Fade>
-                </FlexBox>
+                                <Button
+                                    variant="contained" 
+                                    color="secondary"
+                                    onClick={handleClose}
+                                    className="button"
+                                >
+                                    CANCEL
+                                </Button>
+                            </SpellForm>
+                            <FadeContent align="left"> 
+                                <Container>
+                                    {levels.map((level, index) => (
+                                        <Fragment key={index}>
+                                            <FormControl component="fieldset" key={index}>
+                                                <FormLabel component="legend">{level}</FormLabel>
+                                                <FormGroup>
+                                                {spells && (
+                                                    spells.map(spell => (
+                                                        spell.level_int === index && (
+                                                            <SpellListItem 
+                                                                key={spell.id} 
+                                                                data-id={spell.id}
+                                                                onHandleChange={handleChange} 
+                                                                characterSpells={newSpells} 
+                                                                spell={spell} 
+                                                            />
+                                                        )
+                                                    ))
+                                                )}
+                                                </FormGroup>
+                                            </FormControl>
+                                            <br />
+                                        </Fragment>
+                                    ))}
+                                </Container>      
+                            </FadeContent>
+                        </Form>
+                    </FormContainer>
+                </Fade>
             </Modal>
         </>
         

@@ -20,7 +20,7 @@ const CharacterNew = props => {
 
     useEffect(() => {
         props.open ? setOpen(true) : setOpen(false);
-    }, []);
+    }, [props.open]);
 
     const createCharacter = event => {
         event.preventDefault();
@@ -80,208 +80,202 @@ const CharacterNew = props => {
                     timeout: 500,
                 }}
             >
-                <FlexBox
-                    alignItems="center"
-                    justifyContent="center"
-                    margin="5vh 0"
-                >
-                    <Fade in={open}>
-                        <FadeContent>
-                            <FormContainer>
-                                <Heading as="h3">New Character</Heading>
+                <Fade in={open} margin="5vh 0">
+                    <FadeContent>
+                        <FormContainer margin="auto">
+                            <Heading as="h3">New Character</Heading>
 
-                                <Form onSubmit={createCharacter}>
-                                { errors.length > 0 ? (
-                                    <Container>
-                                        <Container className="header">
-                                            Creation failed: { errors.map(error => error.message).join(", ") }
-                                        </Container>
+                            <Form onSubmit={createCharacter}>
+                            { errors.length > 0 ? (
+                                <Container>
+                                    <Container className="header">
+                                        Creation failed: { errors.map(error => error.message).join(", ") }
                                     </Container>
-                                ): "" }
-                                    <FormControl style={FormContent.full}>
+                                </Container>
+                            ): "" }
+                                <FormControl style={FormContent.full}>
+                                    <TextField
+                                        id="name"
+                                        type="text"
+                                        name="name"
+                                        label="Name"
+                                        placeholder="Name"
+                                        required
+                                    />
+                                    </FormControl>
+
+                                <Container>
+                                    <FormControl style={FormContent.half}>
                                         <TextField
-                                            id="name"
+                                            id="gender"
                                             type="text"
-                                            name="name"
-                                            label="Name"
-                                            placeholder="Name"
+                                            name="gender"
+                                            label="Gender"
+                                            placeholder="Gender"
                                             required
                                         />
-                                     </FormControl>
+                                    </FormControl>
 
-                                    <Container>
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="gender"
-                                                type="text"
-                                                name="gender"
-                                                label="Gender"
-                                                placeholder="Gender"
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="race"
+                                            type="text"
+                                            name="race"
+                                            label="Race"
+                                            placeholder="Race"
+                                            defaultValue={stats ? stats._charRace : null}
+                                            required
+                                        />
+                                    </FormControl>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="race"
-                                                type="text"
-                                                name="race"
-                                                label="Race"
-                                                placeholder="Race"
-                                                defaultValue={stats ? stats._charRace : null}
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="class_1"
+                                            type="text"
+                                            name="class_1"
+                                            label="Class"
+                                            placeholder="Class"
+                                            defaultValue={stats ? stats._charClass : null}
+                                            required
+                                        />
+                                    </FormControl>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="class_1"
-                                                type="text"
-                                                name="class_1"
-                                                label="Class"
-                                                placeholder="Class"
-                                                defaultValue={stats ? stats._charClass : null}
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="class_1_level"
+                                            type="number"
+                                            name="class_1_level"
+                                            label="Level"
+                                            placeholder="1"
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
+                                </Container>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="class_1_level"
-                                                type="number"
-                                                name="class_1_level"
-                                                label="Level"
-                                                placeholder="1"
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
-                                    </Container>
+                                <Container>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="str"
+                                            type="number"
+                                            name="str"
+                                            label="STR"
+                                            placeholder="8"
+                                            defaultValue={stats ? stats._roll1 : null}
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
 
-                                    <Container>
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="str"
-                                                type="number"
-                                                name="str"
-                                                label="STR"
-                                                placeholder="8"
-                                                defaultValue={stats ? stats._roll1 : null}
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="dex"
+                                            type="number"
+                                            name="dex"
+                                            label="DEX"
+                                            placeholder="8"
+                                            defaultValue={stats ? stats._roll2 : null}
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="dex"
-                                                type="number"
-                                                name="dex"
-                                                label="DEX"
-                                                placeholder="8"
-                                                defaultValue={stats ? stats._roll2 : null}
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="con"
+                                            type="number"
+                                            name="con"
+                                            label="CON"
+                                            placeholder="8"
+                                            defaultValue={stats ? stats._roll3 : null}
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="con"
-                                                type="number"
-                                                name="con"
-                                                label="CON"
-                                                placeholder="8"
-                                                defaultValue={stats ? stats._roll3 : null}
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="int"
+                                            type="number"
+                                            name="int"
+                                            label="INT"
+                                            placeholder="8"
+                                            defaultValue={stats ? stats._roll4 : null}
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="int"
-                                                type="number"
-                                                name="int"
-                                                label="INT"
-                                                placeholder="8"
-                                                defaultValue={stats ? stats._roll4 : null}
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="wis"
+                                            type="number"
+                                            name="wis"
+                                            label="WIS"
+                                            placeholder="8"
+                                            defaultValue={stats ? stats._roll5 : null}
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="wis"
-                                                type="number"
-                                                name="wis"
-                                                label="WIS"
-                                                placeholder="8"
-                                                defaultValue={stats ? stats._roll5 : null}
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
+                                    <FormControl style={FormContent.half}>
+                                        <TextField
+                                            id="cha"
+                                            type="number"
+                                            name="cha"
+                                            label="CHA"
+                                            placeholder="8"
+                                            defaultValue={stats ? stats._roll6 : null}
+                                            step="1"
+                                            min="1"
+                                            max="20"
+                                            required
+                                        />
+                                    </FormControl>
+                                </Container>
 
-                                        <FormControl style={FormContent.half}>
-                                            <TextField
-                                                id="cha"
-                                                type="number"
-                                                name="cha"
-                                                label="CHA"
-                                                placeholder="8"
-                                                defaultValue={stats ? stats._roll6 : null}
-                                                step="1"
-                                                min="1"
-                                                max="20"
-                                                required
-                                            />
-                                        </FormControl>
-                                    </Container>
+                                <br />
 
-                                    <br />
-
-                                    <FlexBox
-                                        justifyContent="center"
+                                <FlexBox
+                                    justifyContent="center"
+                                >
+                                    <Button 
+                                        variant="contained" 
+                                        color="secondary"
+                                        type="submit" 
+                                        className="button"
                                     >
-                                        <Button 
-                                            variant="contained" 
-                                            color="secondary"
-                                            type="submit" 
-                                            className="button"
-                                        >
-                                            Add
-                                        </Button>
+                                        Add
+                                    </Button>
 
-                                        <Button
-                                            variant="contained"
-                                            color="secondary"
-                                            onClick={handleClose}
-                                            className="button"
-                                        >
-                                            CANCEL
-                                        </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="secondary"
+                                        onClick={handleClose}
+                                        className="button"
+                                    >
+                                        CANCEL
+                                    </Button>
 
-                                    </FlexBox>
-                                </Form>
-                                    
-                            </FormContainer>
-                        </FadeContent>
-                    </Fade>
-                </FlexBox>
+                                </FlexBox>
+                            </Form>
+                                
+                        </FormContainer>
+                    </FadeContent>
+                </Fade>
             </Modal>
         </>
         

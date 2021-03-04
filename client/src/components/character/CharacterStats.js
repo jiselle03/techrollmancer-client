@@ -968,31 +968,25 @@ const CharacterStats = props => {
               timeout: 500,
           }}
         >
-          <FlexBox
-              alignItems="center"
-              justifyContent="center"
-              margin="25vh 0"
-          >
-              <Fade in={open}>
-                  <FadeContent width="50vw">
-                      <Heading as="h2" className="ability">{ability}</Heading>
-                      <Container className="dice-roll-container">
-                        <Heading as="h5" className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</Heading>
-                        <i className="fas fa-dice-d20 fa-10x fa-spin-roll"></i>
-                      </Container>
-                      <Heading as="h5">({modifier})</Heading>
+          <Fade in={open} margin="25vh 0">
+            <FadeContent>
+              <Heading as="h2" className="ability">{ability}</Heading>
+              <Container className="dice-roll-container">
+                <Heading as="h5" className={checkRoll(roll, modifier)}>{roll > 10 ? roll : `\u00A0${roll}`}</Heading>
+                <i className="fas fa-dice-d20 fa-10x fa-spin-roll"></i>
+              </Container>
+              <Heading as="h5">({modifier})</Heading>
 
-                      <Button 
-                          variant="contained"
-                          color="secondary"
-                          onClick={handleClose}
-                          className="button"
-                      >
-                          EXIT
-                      </Button>
-                  </FadeContent>
-              </Fade>
-          </FlexBox>
+              <Button 
+                  variant="contained"
+                  color="secondary"
+                  onClick={handleClose}
+                  className="button"
+              >
+                  EXIT
+              </Button>
+            </FadeContent>
+          </Fade>
         </Modal>
 
       </CharacterSheet>

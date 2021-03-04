@@ -79,7 +79,7 @@ const SchedulerPage = props => {
                     <Heading as="h2">Future Sessions</Heading>
                     {games.map((game, index) => (
                         game.date >= currentDate && (
-                        <Fragment key={index} className="game">
+                        <Container key={index} className="game">
                             <span className="name">
                             <Heading as="h6">{game.name}</Heading>
                             </span>
@@ -90,7 +90,7 @@ const SchedulerPage = props => {
                             <Text className="notes"><strong>Notes:</strong></Text>
                             <Text>{game.notes}</Text>
                             <hr />
-                        </Fragment>
+                        </Container>
                     )))}
                 </Card>
 
