@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import baseUrl from '../../config';
 import Character from '../../api/character';
 import FlexBox from '../styles/FlexBox';
+import { Form } from '../styles/Form';
+import { Heading, Text } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
@@ -81,15 +84,13 @@ const CharacterTraits = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name}</Heading>
 
-            <div className="character-sheet">
+            <Container className="character-sheet">
                 <Card className="traits-container">
-                    <h6 className="header">Photo</h6>
+                    <Heading as="h6" className="header">Photo</Heading>
                     {!edit.photo && (
-                        <div
+                        <Container
                             style={{
                             backgroundImage: `url(${photo_url})`,
                             backgroundRepeat: "no-repeat",
@@ -99,10 +100,10 @@ const CharacterTraits = props => {
                             onClick={() => handleClick("photo")}
                             className="trait large"
                         >
-                        </div>
+                        </Container>
                     )}
                     {edit.photo && (
-                        <div className="photo-edit">
+                        <Container className="photo-edit">
                             <label htmlFor="photo_url" className="photo">Photo URL</label>
                             <input 
                                 type="text"
@@ -112,49 +113,49 @@ const CharacterTraits = props => {
                                 className="photo"
                                 onBlur={event => handleBlurPhoto(event)}
                             />
-                        </div>
+                        </Container>
                     )}
                 </Card>
 
                 <Card className="traits-container">
-                    <h6 className="header">Profile</h6>
-                    <div className="trait large" onClick={() => handleClick("profile")}>
+                    <Heading as="h6" className="header">Profile</Heading>
+                    <Container className="trait large" onClick={() => handleClick("profile")}>
                         {!edit.profile && (
                             <>
-                                <p className="profile">Name</p>
-                                <h6 className="profile">{name}</h6>
+                                <Text className="profile">Name</Text>
+                                <Heading as="h6" className="profile">{name}</Heading>
 
                                 {gender && (
                                     <>
-                                        <p className="profile">Gender</p>
-                                        <h6 className="profile">{gender}</h6>
+                                        <Text className="profile">Gender</Text>
+                                        <Heading as="h6" className="profile">{gender}</Heading>
                                     </>
                                 )}
 
-                                <p className="profile">Race</p>
-                                <h6 className="profile">{race}</h6>
+                                <Text className="profile">Race</Text>
+                                <Heading as="h6" className="profile">{race}</Heading>
                                 
-                                <p className="profile">Class</p>
+                                <Text className="profile">Class</Text>
                                 {class_1 && (
                                     <>
-                                        <h6 className="profile">{class_1} {class_1_level}</h6>
+                                        <Heading as="h6" className="profile">{class_1} {class_1_level}</Heading>
                                     </>
                                 )}
                                 {class_2 && (
                                     <>
-                                        <h6 className="profile">{class_2} {class_2_level}</h6>
+                                        <Heading as="h6" className="profile">{class_2} {class_2_level}</Heading>
                                     </>
                                 )}
                                 {class_3 && (
                                     <>
-                                        <h6 className="profile">{class_3} {class_3_level}</h6>
+                                        <Heading as="h6" className="profile">{class_3} {class_3_level}</Heading>
                                     </>
                                 )}
                             </>
                         )}
 
                         {edit.profile && (
-                            <form onBlur={event => handleBlurProfile(event)}>
+                            <Form onBlur={event => handleBlurProfile(event)}>
                                 <label htmlFor="name" className="traits">Name</label>
                                 <input 
                                     type="text"
@@ -237,20 +238,20 @@ const CharacterTraits = props => {
                                     className="profile flex"
                                 />
                                 </FlexBox>
-                            </form>
+                            </Form>
                         )}
-                    </div>
+                    </Container>
                 </Card>
 
                 <Card className="traits">
-                    <h6 className="header">Personality Traits</h6>
+                    <Heading as="h6" className="header">Personality Traits</Heading>
                     {!edit.personality_traits && (
-                        <p 
+                        <Text 
                             className="trait"
                             onClick={() => handleClick("personality_traits")}
                         >
                             {personality_traits}
-                        </p>
+                        </Text>
                     )}
                     {edit.personality_traits && (
                         <textarea 
@@ -262,14 +263,14 @@ const CharacterTraits = props => {
                         ></textarea>
                     )}
 
-                    <h6 className="header">Ideals</h6>
+                    <Heading as="h6" className="header">Ideals</Heading>
                     {!edit.ideals && (
-                        <p 
+                        <Text 
                             onClick={() => handleClick("ideals")}
                             className="trait"
                         >
                             {ideals}
-                        </p>
+                        </Text>
                     )}
                     {edit.ideals && (
                         <textarea 
@@ -281,14 +282,14 @@ const CharacterTraits = props => {
                         ></textarea>
                     )}
 
-                    <h6 className="header">Bonds</h6>
+                    <Heading as="h6" className="header">Bonds</Heading>
                     {!edit.bonds && (
-                        <p 
+                        <Text 
                             onClick={() => handleClick("bonds")}
                             className="trait"
                         >
                            {bonds}
-                        </p>
+                        </Text>
                     )}
                     {edit.bonds && (
                         <textarea 
@@ -300,14 +301,14 @@ const CharacterTraits = props => {
                         ></textarea>
                     )}
 
-                    <h6 className="header">Flaws</h6>
+                    <Heading as="h6" className="header">Flaws</Heading>
                     {!edit.flaws && (
-                        <p 
+                        <Text 
                             onClick={() => handleClick("flaws")}
                             className="trait"
                         >
                                 {flaws}
-                        </p>
+                        </Text>
                     )}
                     {edit.flaws && (
                         <textarea 
@@ -321,22 +322,22 @@ const CharacterTraits = props => {
                 </Card>
 
                 <Card className="traits">
-                    <h6 className="header">Background</h6>
+                    <Heading as="h6" className="header">Background</Heading>
                     {!edit.background && (
-                        <div 
+                        <Container 
                             onClick={() => handleClick("background")}
                             className="trait"
                         >
-                            <p>
+                            <Text>
                                 <strong>{background_type}</strong>
-                            </p>
-                            <p>
+                            </Text>
+                            <Text>
                                 {background_desc}
-                            </p>
-                        </div>
+                            </Text>
+                        </Container>
                     )}
                     {edit.background && (
-                        <div>
+                        <Container>
                             <input
                                 type="text"
                                 placeholder="Type"
@@ -351,19 +352,19 @@ const CharacterTraits = props => {
                                 onBlur={(event => handleBlur(event, "background_desc"))}
                                 className="traits"
                             ></textarea>
-                        </div>
+                        </Container>
                     )}
                 </Card>
 
                 <Card className="traits">
-                    <h6 className="header">Description</h6>
+                    <Heading as="h6" className="header">Description</Heading>
                     {!edit.description && (
-                        <p 
+                        <Text 
                             onClick={() => handleClick("description")}
                             className="trait"
                         >
                             {description}
-                        </p>
+                        </Text>
                     )}
                     {edit.description && (
                         <textarea 
@@ -377,14 +378,14 @@ const CharacterTraits = props => {
                 </Card>
 
                 <Card className="traits">
-                    <h6 className="header">Backstory</h6>
+                    <Heading as="h6" className="header">Backstory</Heading>
                     {!edit.backstory && (
-                        <p 
+                        <Text 
                             onClick={() => handleClick("backstory")}
                             className="trait"
                         >
                             {backstory}
-                        </p>
+                        </Text>
                     )}
                     {edit.backstory && (
                         <textarea 
@@ -396,7 +397,7 @@ const CharacterTraits = props => {
                         ></textarea>
                     )}
                 </Card>
-            </div>
+            </Container>
 
         </>
     );

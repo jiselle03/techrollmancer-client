@@ -3,7 +3,7 @@
 @import url('reset.css');
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 :root {
   --accent-color: rgba(45,99,127,1);
@@ -14,83 +14,10 @@ code {
     monospace;
 }
 
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 /* Text */
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bungee';
-}
-
-h1 {
-  font-size: 3.5rem;
-  color: #000;
-  margin-bottom: 1em;
-}
 
 h1.roll {
   margin-bottom: 0.5em;
-}
-
-h2 {
-  font-size: 2.5rem;
-  color: var(--accent-color);
-  line-height: 1em;
-  margin-bottom: 0.2em;
-}
-
-h3 {
-  font-size: 2.5rem;
-  color: #000;
-  margin-bottom: 1em;
-}
-
-h4 {
-  font-size: 2rem;
-  color: var(--accent-color);
-  margin-bottom: 1em;
-}
-
-h5 {
-  font-size: 1.5rem;
-  color: var(--accent-color);
-  margin-bottom: 0.2em;
-}
-
-h6, p {
-  font-size: 1.3rem;
-}
-
-h6,
-p.card-text {
-  margin-bottom: 0.2em;
-}
-
-p {
-  line-height: 1.3em;
-  margin-bottom: 1em;
-}
-
-strong {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-em {
-  font-style: italic;
 }
 
 h3.title {
@@ -221,7 +148,6 @@ span.header {
   color: #f50057;
 }
 
-.card-text,
 label.photo {
   color: #fff;
   text-shadow: -1px -1px 0px #000,
@@ -425,7 +351,6 @@ div.MuiTabs-root.tabs {
 }
 
 .spells {
-  width: 80vw;
   margin: 1em auto;
 }
 
@@ -581,7 +506,7 @@ div.race-option {
     margin-bottom: 2em;
   }
 
-  nav.MuiList-root.list > div {
+  nav.MuiList-root.list > .link {
     width: 40vw;
   }
 

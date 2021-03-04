@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import Library from '../../api/library';
 import Spell from '../../api/spell';
-import SpellListItem from './SpellListItem';
-import FloatingActionButton from './FloatingActionButton';
+import SpellListItem from '../other/SpellListItem';
+import FloatingActionButton from '../other/FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
-import { FadeStyle, Fade } from '../styles/FadeStyle';
-import { FormStyle } from '../styles/FormStyle';
+import { FadeContent, Fade } from '../styles/Fade';
+import { FormContainer, Form } from '../styles/Form';
+import Container from '../styles/Container';
+import { Heading } from '../styles/Typography';
 
 import { Backdrop, Button, FormControl, FormGroup, FormLabel, Modal } from '@material-ui/core';
-import PropTypes from 'prop-types';
 
 const CharacterSpellsNew = props => {
     const [spells, setSpells] = useState([]);
@@ -70,9 +71,9 @@ const CharacterSpellsNew = props => {
             >
                 <FlexBox alignItems="center" justifyContent="center">
                     <Fade in={open}>
-                        <FormStyle padding="0.5em">
-                            <form onSubmit={handleSubmit}>
-                                <div 
+                        <FormContainer padding="0.5em">
+                            <Form onSubmit={handleSubmit}>
+                                <Container 
                                     style={{
                                         position: "sticky", 
                                         top: "0", 
@@ -83,9 +84,7 @@ const CharacterSpellsNew = props => {
                                         boxShadow: "0 5px 5px -2px #888",
                                     }}
                                 >
-                                    <h3 className="title">
-                                        Spell List
-                                    </h3>
+                                    <Heading as="h3" className="title">Spell List</Heading>
                                     <Button 
                                         variant="contained" 
                                         color="secondary"
@@ -103,36 +102,36 @@ const CharacterSpellsNew = props => {
                                     >
                                         CANCEL
                                     </Button>
-                                </div>
-                                <FadeStyle align="left"> 
-                                    <div>
+                                </Container>
+                                <FadeContent align="left"> 
+                                    <Container>
                                         {levels.map((level, index) => (
-                                            <>
+                                            <Fragment key={index}>
                                                 <FormControl component="fieldset" key={index}>
                                                     <FormLabel component="legend">{level}</FormLabel>
                                                     <FormGroup>
                                                     {spells && (
                                                         spells.map(spell => (
                                                             spell.level_int === index && (
-                                                                <div key={spell.id} data-id={spell.id}>
-                                                                    <SpellListItem 
-                                                                        onHandleChange={handleChange} 
-                                                                        characterSpells={newSpells} 
-                                                                        spell={spell} 
-                                                                    />
-                                                                </div>
+                                                                <SpellListItem 
+                                                                    key={spell.id} 
+                                                                    data-id={spell.id}
+                                                                    onHandleChange={handleChange} 
+                                                                    characterSpells={newSpells} 
+                                                                    spell={spell} 
+                                                                />
                                                             )
                                                         ))
                                                     )}
                                                     </FormGroup>
                                                 </FormControl>
                                                 <br />
-                                            </>
+                                            </Fragment>
                                         ))}
-                                    </div>      
-                                </FadeStyle>
-                            </form>
-                        </FormStyle>
+                                    </Container>      
+                                </FadeContent>
+                            </Form>
+                        </FormContainer>
                     </Fade>
                 </FlexBox>
             </Modal>
@@ -142,10 +141,3 @@ const CharacterSpellsNew = props => {
 };
 
 export default CharacterSpellsNew;
-
-Fade.propTypes = {
-    children: PropTypes.element,
-    in: PropTypes.bool.isRequired,
-    onEnter: PropTypes.func,
-    onExited: PropTypes.func,
-};

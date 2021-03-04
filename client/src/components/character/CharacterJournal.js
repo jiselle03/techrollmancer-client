@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
+
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const CharacterJournal = props => {
@@ -7,21 +10,15 @@ const CharacterJournal = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name}</Heading>
 
-            <div className="character-sheet">
+            <Container className="character-sheet">
                 <Card className="journal">
-                    <h2>
-                        Notes
-                    </h2>
+                    <Heading as="h2">Notes</Heading>
                 </Card>
 
                 <Card className="journal">
-                    <h2>
-                        Experience
-                    </h2>
+                    <Heading as="h2">Experience</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
@@ -212,7 +209,7 @@ const CharacterJournal = props => {
                         </Table>
                     </TableContainer>
                 </Card>
-            </div>
+            </Container>
 
         </>
     );

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Heading } from '../styles/Typography';
+
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 const CharacterProficiencies = props => {
@@ -23,7 +25,7 @@ const CharacterProficiencies = props => {
             label={
                 <>
                     <span className="stat">
-                        <h6 className="ability">{modifier}</h6>
+                        <Heading as="h6" className="ability">{modifier}</Heading>
                     </span>
                 </>
             }

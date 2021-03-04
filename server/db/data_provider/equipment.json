@@ -1347,7 +1347,7 @@
         "slug": "drum",
         "name": "Drum",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 6,
             "unit": "gp"
@@ -1361,7 +1361,7 @@
         "slug": "dulcimer",
         "name": "Dulcimer",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 25,
             "unit": "gp"
@@ -1607,7 +1607,7 @@
         "slug": "flute",
         "name": "Flute",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 2,
             "unit": "gp"
@@ -2009,7 +2009,7 @@
         "slug": "horn",
         "name": "Horn",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 3,
             "unit": "gp"
@@ -2481,7 +2481,7 @@
         "slug": "lute",
         "name": "Lute",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 35,
             "unit": "gp"
@@ -2495,7 +2495,7 @@
         "slug": "lyre",
         "name": "Lyre",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 30,
             "unit": "gp"
@@ -2828,7 +2828,7 @@
         "slug": "pan-flute",
         "name": "Pan flute",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 12,
             "unit": "gp"
@@ -3558,7 +3558,7 @@
         "slug": "shawm",
         "name": "Shawm",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 2,
             "unit": "gp"
@@ -4150,7 +4150,7 @@
         "slug": "viol",
         "name": "Viol",
         "equipment_category": "Tools",
-        "tool_category": "Musical Instrument",
+        "tool_category": "Musical Instruments",
         "cost": {
             "quantity": 30,
             "unit": "gp"

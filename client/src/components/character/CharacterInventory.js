@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
+
 import { Card, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const CharacterInventory = props => {
@@ -7,15 +10,11 @@ const CharacterInventory = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name}</Heading>
 
-            <div className="character-sheet">
+            <Container className="character-sheet">
                 <Card className="inventory">
-                    <h2>
-                        Coin Pouch
-                    </h2>
+                    <Heading as="h2">Coin Pouch</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
@@ -52,9 +51,7 @@ const CharacterInventory = props => {
                 </Card>
 
                 <Card className="inventory">
-                    <h2>
-                        Equipment
-                    </h2>
+                    <Heading as="h2">Equipment</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
@@ -95,9 +92,7 @@ const CharacterInventory = props => {
                 </Card>
 
                 <Card className="inventory">
-                    <h2>
-                        Carried
-                    </h2>
+                    <Heading as="h2">Carried</Heading>
 
                     <TableContainer component={Paper}>
                         <Table>
@@ -141,7 +136,7 @@ const CharacterInventory = props => {
                         </Table>
                     </TableContainer>
                 </Card>
-            </div>
+            </Container>
 
         </>
     );

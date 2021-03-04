@@ -11,6 +11,7 @@ const FlexBox = props => {
                 justifyContent: justifyContent,
                 alignItems: alignItems,
                 margin: margin,
+                flexWrap: "wrap",
             }}
         >
             {children}

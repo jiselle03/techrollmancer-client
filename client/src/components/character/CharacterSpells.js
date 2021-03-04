@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import CharacterSpellsNew from './CharacterSpellsNew';
-import SpellDetails from './SpellDetails';
+import SpellDetails from '../other/SpellDetails';
+import { Heading } from '../styles/Typography';
+import Container from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
@@ -12,18 +14,16 @@ const CharacterSpells = props => {
 
     return (
         <>
-            <h1>
-                {name.toUpperCase()}
-            </h1>
+            <Heading>{name}</Heading>
 
             {levels.map((level, index) => (
-                <Card className="spells">
-                    <h3>{level}</h3>
-                    {spells && spells.map((spell, i) => (
+                <Card className="spells" key={index}>
+                    <Heading as="h3">{level}</Heading>
+                    {spells && spells.map(spell => (
                         spell.level_int === index && (
-                            <div key={i}>
+                            <Fragment key={spell.slug}>
                                 <SpellDetails spell={spell} />
-                            </div>
+                            </Fragment>
                         )
                     ))}
                 </Card>
