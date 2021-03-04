@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Character from '../../api/character';
 import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Card, CardContent } from '../styles/Card';
 import { Heading, Text } from '../styles/Typography';
 
@@ -31,7 +31,7 @@ const CharacterIndexPage = props => {
         <BackgroundImage 
             image="https://i.ibb.co/cctCwgk/d20.png" 
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>Characters</Heading>
 
                 {characters.length === 0 && (
@@ -68,7 +68,7 @@ const CharacterIndexPage = props => {
 
                 <CharacterNew currentUser={props.currentUser} type="character" {...props} />
 
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

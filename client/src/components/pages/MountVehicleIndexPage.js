@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
@@ -28,7 +28,7 @@ const MountVehicleIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>Mounts and Vehicles</Heading>
 
                 {types.map(type => (
@@ -48,7 +48,7 @@ const MountVehicleIndexPage = () => {
                         </List>
                     </Fragment>
                 ))}
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

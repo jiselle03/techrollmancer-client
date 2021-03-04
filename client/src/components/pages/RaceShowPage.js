@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
@@ -74,7 +74,7 @@ const RaceShowPage = props => {
             image={getRaceImage(slug)}
             size={getRaceSize(slug)}
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>{name}</Heading>
 
                 {categories.map(category => (
@@ -121,7 +121,7 @@ const RaceShowPage = props => {
                         </>
                     ))}
                 </Container>
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

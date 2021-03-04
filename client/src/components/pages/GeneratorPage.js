@@ -5,7 +5,7 @@ import { RandomCharacter } from '../../js/generator.js';
 import PointBuyCalculator from '../other/PointBuyCalculator';
 import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { Card } from '../styles/Card';
 import { FadeContent, Fade } from '../styles/Fade';
@@ -73,7 +73,7 @@ const GeneratorPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>CHARACTER GENERATOR</Heading>
 
                 <Text>
@@ -340,7 +340,7 @@ const GeneratorPage = () => {
                     After assigning your ability scores, you can determine your ability modifiers by  
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
                 </Text>
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

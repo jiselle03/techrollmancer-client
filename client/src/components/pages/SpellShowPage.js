@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import { Layout } from '../styles/Container';
 import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
@@ -70,7 +70,7 @@ const SpellShowPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>{spell.name}</Heading>
 
                 <Heading as="h5">Description</Heading>
@@ -80,7 +80,7 @@ const SpellShowPage = props => {
                 {info.map(line => (
                     <Text key={line.name}><strong>{line.name}:</strong> {line.content}{console.log(line.content)}</Text>
                 ))}
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

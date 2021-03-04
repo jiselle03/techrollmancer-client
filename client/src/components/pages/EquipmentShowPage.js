@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Utils from '../../js/utils';
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Heading, Text } from '../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
@@ -80,7 +80,7 @@ const EquipmentShowPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Container className="equipment-name">
                     <Heading>{equipment.name.toUpperCase()}</Heading>
                     <Text className="category"><em>{equipment.equipment_category}, {Utils.getCategory(equipment)}</em></Text>
@@ -111,7 +111,7 @@ const EquipmentShowPage = props => {
                     <Heading as="h3">Description</Heading>
                     <Text>{desc}</Text>
                 </Container>
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };
