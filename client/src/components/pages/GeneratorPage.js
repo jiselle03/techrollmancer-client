@@ -5,7 +5,7 @@ import { RandomCharacter } from '../../js/generator.js';
 import PointBuyCalculator from '../other/PointBuyCalculator';
 import CharacterNew from '../character/CharacterNew';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { Card } from '../styles/Card';
 import { FadeContent, Fade } from '../styles/Fade';
@@ -73,7 +73,7 @@ const GeneratorPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>CHARACTER GENERATOR</Heading>
 
                 <Text>
@@ -175,22 +175,22 @@ const GeneratorPage = () => {
                                 <FadeContent>
                                     <Heading as="h3">CHARACTER STATS</Heading>
 
-                                    <div>
-                                    <span className="roll">
-                                        <Heading as="h5">Race: </Heading> 
-                                    </span>
-                                    <span className="roll">
-                                        <Heading as="h4">{character._charRace}</Heading>
-                                    </span>
-                                    </div>
-                                    <div>
-                                    <span className="roll">
-                                        <Heading as="h5">Class: </Heading>
-                                    </span>
-                                    <span className="roll">
-                                        <Heading as="h4">{character._charClass}</Heading>
-                                    </span>
-                                    </div>
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h5">Race: </Heading> 
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4">{character._charRace}</Heading>
+                                        </span>
+                                    </Container>
+                                    <Container>
+                                        <span className="roll">
+                                            <Heading as="h5">Class: </Heading>
+                                        </span>
+                                        <span className="roll">
+                                            <Heading as="h4">{character._charClass}</Heading>
+                                        </span>
+                                    </Container>
                                     
                                     <Heading as="h3">ABILITY SCORES</Heading>
                                     
@@ -244,55 +244,55 @@ const GeneratorPage = () => {
                                     <FadeContent>
                                         <Heading as="h3">ROLLS</Heading>
                                         
-                                        <div>
-                                        <span className="roll">
-                                            <Heading as="h5" className={checkMin(rolls, 0) ? "min" : null}>1ST: </Heading>
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h4" className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</Heading>
-                                        </span>
-                                        </div>
+                                        <Container>
+                                            <span className="roll">
+                                                <Heading as="h5" className={checkMin(rolls, 0) ? "min" : null}>1ST: </Heading>
+                                            </span>
+                                            <span className="roll">
+                                                <Heading as="h4" className={checkMin(rolls, 0) ? "min" : null}>{rolls[0] ? rolls[0] : " "}</Heading>
+                                            </span>
+                                        </Container>
 
-                                        <div>
-                                        <span className="roll">
-                                            <Heading as="h5" className={checkMin(rolls, 1) ? "min" : null}>2ND: </Heading>
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h4" className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</Heading>
-                                        </span>
-                                        </div>
+                                        <Container>
+                                            <span className="roll">
+                                                <Heading as="h5" className={checkMin(rolls, 1) ? "min" : null}>2ND: </Heading>
+                                            </span>
+                                            <span className="roll">
+                                                <Heading as="h4" className={checkMin(rolls, 1) ? "min" : null}>{rolls[1] ? rolls[1] : " "}</Heading>
+                                            </span>
+                                        </Container>
 
-                                        <div>
-                                        <span className="roll">
-                                            <Heading as="h5" className={checkMin(rolls, 2) ? "min" : null}>3RD: </Heading>
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h4" className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</Heading>
-                                        </span>
-                                        </div>
+                                        <Container>
+                                            <span className="roll">
+                                                <Heading as="h5" className={checkMin(rolls, 2) ? "min" : null}>3RD: </Heading>
+                                            </span>
+                                            <span className="roll">
+                                                <Heading as="h4" className={checkMin(rolls, 2) ? "min" : null}>{rolls[2] ? rolls[2] : " "}</Heading>
+                                            </span>
+                                        </Container>
 
-                                        <div>
-                                        <span className="roll">
-                                            <Heading as="h5" className={checkMin(rolls, 3) ? "min" : null}>4TH: </Heading>
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h4" className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</Heading>
-                                        </span>
-                                        </div>
+                                        <Container>
+                                            <span className="roll">
+                                                <Heading as="h5" className={checkMin(rolls, 3) ? "min" : null}>4TH: </Heading>
+                                            </span>
+                                            <span className="roll">
+                                                <Heading as="h4" className={checkMin(rolls, 3) ? "min" : null}>{rolls[3]}</Heading>
+                                            </span>
+                                        </Container>
 
                                         <Divider />
 
-                                        <div>
-                                        <span className="roll">
-                                            <Heading as="h3">STAT: </Heading> 
-                                        </span>
-                                        <span className="roll">
-                                            <Heading as="h3">{rolls[3] ? Utils.rollAbility(rolls) : " "}</Heading>
-                                        </span>
-                                        </div>
+                                        <Container>
+                                            <span className="roll">
+                                                <Heading as="h3">STAT: </Heading> 
+                                            </span>
+                                            <span className="roll">
+                                                <Heading as="h3">{rolls[3] ? Utils.rollAbility(rolls) : " "}</Heading>
+                                            </span>
+                                        </Container>
 
                                         <FlexBox justifyContent="center">
-                                            <div className={!rolls[3] ? null : "hidden"}>
+                                            <Container className={!rolls[3] ? null : "hidden"}>
                                                     <Button 
                                                         variant="contained"
                                                         color="secondary"
@@ -309,8 +309,8 @@ const GeneratorPage = () => {
                                                     >
                                                         EXIT
                                                     </Button>
-                                            </div>
-                                            <div className={rolls[3] ? null : "hidden"}>
+                                            </Container>
+                                            <Container className={rolls[3] ? null : "hidden"}>
                                                 <Button 
                                                     variant="contained"
                                                     color="secondary"
@@ -327,7 +327,7 @@ const GeneratorPage = () => {
                                                 >
                                                     EXIT
                                                 </Button>
-                                            </div>
+                                            </Container>
                                         </FlexBox>
                                     </FadeContent>
                                 </Fade>
@@ -340,7 +340,7 @@ const GeneratorPage = () => {
                     After assigning your ability scores, you can determine your ability modifiers by  
                     subtracting 10 from the ability score and then dividing the result by 2 (rounded down).
                 </Text>
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

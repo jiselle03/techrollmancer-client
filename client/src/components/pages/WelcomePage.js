@@ -6,7 +6,7 @@ import { store } from 'react-notifications-component';
 import Utils from '../../js/utils';
 import Game from '../../api/game';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Image } from '../styles/Image';
 import { Fade, FadeContent } from '../styles/Fade';
 import FlexBox from '../styles/FlexBox';
@@ -107,7 +107,7 @@ const WelcomePage = () => {
             image={require('../../assets/d20.png')}
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading> Welcome to Techrollmancer</Heading>
 
                 <FlexBox justifyContent="space-between">
@@ -179,7 +179,7 @@ const WelcomePage = () => {
                         Guide Me
                     </Button>
                 </Link>
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

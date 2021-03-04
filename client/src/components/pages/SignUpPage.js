@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import User from '../../api/user';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Form, FormContainer, FormContent } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
 
@@ -66,7 +66,7 @@ const SignUpPage = props => {
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
-            <Container as="main" page>
+            <Layout>
                 <FormContainer
                     height="85vh"
                     padding="1em"
@@ -132,7 +132,7 @@ const SignUpPage = props => {
                         </FlexBox>
                     </Card>
                 </FormContainer>
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

@@ -53,3 +53,13 @@ export const FormContent = {
         width: "95%"
     }
 };
+
+export const SpellForm = styled.div`
+    padding: 1em;
+    text-align: center;
+    background-color: rgba(45,99,127,1);
+    box-shadow: 0 5px 5px -2px #888;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+`;

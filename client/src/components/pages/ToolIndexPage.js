@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
@@ -28,11 +28,11 @@ const ToolIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>Tools</Heading>
                 
                 {types.map(type => (
-                    <Container key={type}>
+                    <Fragment key={type}>
                         <Heading as="h2">{type}</Heading>
 
                         <List component="nav" className="list">
@@ -46,9 +46,9 @@ const ToolIndexPage = () => {
                                 </Link>
                             ))}
                         </List>
-                    </Container>
+                    </Fragment>
                 ))}
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

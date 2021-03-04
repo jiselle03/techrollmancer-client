@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Library from '../../api/library';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import { Heading } from '../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
@@ -69,11 +69,11 @@ const SpellIndexPage = () => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>Spells</Heading>
 
                 {types.map(type => (
-                    <Container key={type.name}>
+                    <Fragment key={type.name}>
                         <Heading as="h2">{type.name}</Heading>
 
                         <List component="nav" className="list"> 
@@ -91,9 +91,9 @@ const SpellIndexPage = () => {
                                 </Link>
                             ))}
                         </List>
-                    </Container>
+                    </Fragment>
                 ))}
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

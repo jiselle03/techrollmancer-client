@@ -5,7 +5,7 @@ import Character from '../../api/character';
 import FlexBox from '../styles/FlexBox';
 import { Form } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
-import Container from '../styles/Container';
+import Container, { CharacterSheet } from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
@@ -86,7 +86,7 @@ const CharacterTraits = props => {
         <>
             <Heading>{name}</Heading>
 
-            <Container className="character-sheet">
+            <CharacterSheet>
                 <Card className="traits-container">
                     <Heading as="h6" className="header">Photo</Heading>
                     {!edit.photo && (
@@ -397,7 +397,7 @@ const CharacterTraits = props => {
                         ></textarea>
                     )}
                 </Card>
-            </Container>
+            </CharacterSheet>
 
         </>
     );

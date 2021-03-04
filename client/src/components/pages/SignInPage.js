@@ -71,11 +71,9 @@ const SignInPage = props => {
 
                         <Form onSubmit={createSession}>
                             { errors.length > 0 ? (
-                                <div>
-                                    <div className="header">
-                                        Failed to sign in: { errors.map(error => error.message).join(", ") }
-                                    </div>
-                                </div>
+                                <Container className="header">
+                                    Failed to sign in: { errors.map(error => error.message).join(", ") }
+                                </Container>
                             ): "" }
 
                             {fields.map(field => (

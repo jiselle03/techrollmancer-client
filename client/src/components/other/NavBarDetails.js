@@ -137,14 +137,14 @@ const NavBarDetails = props => {
             subheader={
                 <ListItemLink button href="/">
                     <Container
+                        font="Bungee Inline"
                         style={{
-                            fontFamily: "Bungee Inline",
                             fontSize: "1.5em",
                             color: "#fff",
                             margin: "0.5em",
                         }}
                     >
-                        <Container className="branding">
+                        <Container>
                             <span>
                                 TECHR
                             </span>

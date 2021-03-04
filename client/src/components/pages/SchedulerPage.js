@@ -1,10 +1,10 @@
 import 'date-fns';
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import Game from '../../api/game';
 import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
+import Container, { Layout } from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { Form, FormContent } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
@@ -66,7 +66,7 @@ const SchedulerPage = props => {
             image="https://i.ibb.co/cctCwgk/d20.png"
             light
         >
-            <Container as="main" page>
+            <Layout>
                 <Heading>Scheduler</Heading>
 
                 <Card
@@ -79,7 +79,7 @@ const SchedulerPage = props => {
                     <Heading as="h2">Future Sessions</Heading>
                     {games.map((game, index) => (
                         game.date >= currentDate && (
-                        <div key={index} className="game">
+                        <Fragment key={index} className="game">
                             <span className="name">
                             <Heading as="h6">{game.name}</Heading>
                             </span>
@@ -90,7 +90,7 @@ const SchedulerPage = props => {
                             <Text className="notes"><strong>Notes:</strong></Text>
                             <Text>{game.notes}</Text>
                             <hr />
-                        </div>
+                        </Fragment>
                     )))}
                 </Card>
 
@@ -104,7 +104,7 @@ const SchedulerPage = props => {
                 <Heading as="h2">Add Session</Heading>
                 <Form onSubmit={handleSubmit}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <div className="datetime">
+                        <Container className="datetime">
                             <KeyboardDatePicker
                                 margin="normal"
                                 id="date-picker-dialog"
@@ -130,7 +130,7 @@ const SchedulerPage = props => {
                                 }}
                                 style={FormContent.datetime}
                             />
-                        </div>
+                        </Container>
                         <FormControl style={FormContent.scheduler}>
                             <InputLabel htmlFor="name">Name</InputLabel>
                             <Input
@@ -174,21 +174,21 @@ const SchedulerPage = props => {
                     <Heading as="h2">Past Sessions</Heading>
                     {games.map((game, index) => (
                         game.date < currentDate && (
-                        <div key={index}>
-                            <div className="game">
+                        <Fragment key={index}>
+                            <Container className="game">
                                 <span className="name">
                             <Heading as="h6">{game.name}</Heading> 
                             </span>
                                 <span className="button">
                             <Button onClick={() => handleDelete(game.id)}>Delete</Button>
                             </span>
-                            </div>
+                            </Container>
                             <Text>{game.date} at {game.time}</Text>
-                        </div>
+                        </Fragment>
                     )))}
                 </Card>
 
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };

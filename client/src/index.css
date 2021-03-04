@@ -326,11 +326,6 @@ div.MuiTabs-root.tabs {
   max-width: 100vw;
 }
 
-.character-sheet {
-  border-radius: 5px;
-  padding: 1em;
-}
-
 .stats,
 .spells,
 .traits,
@@ -430,11 +425,6 @@ div.race-option {
     margin: -0.3cm 0.25cm 0 -2.25cm;
   }
 
-  .character-sheet {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
   header, 
   .MuiTabs-root.tabs,
   button {
@@ -495,11 +485,6 @@ div.race-option {
 }
 
 @media (min-width: 768px) {
-  .character-sheet {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
   nav.MuiList-root.list {
     display: grid;
     grid-template-columns: 1fr 1fr;
