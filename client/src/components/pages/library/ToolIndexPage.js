@@ -1,18 +1,18 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Library from '../../api/library';
-import { BackgroundImage } from '../styles/Image';
-import { Layout } from '../styles/Container';
-import { Heading } from '../styles/Typography';
+import Library from '../../../api/library';
+import { BackgroundImage } from '../../styles/Image';
+import { Layout } from '../../styles/Container';
+import { Heading } from '../../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
-const MountVehicleIndexPage = () => {
+const ToolIndexPage = () => {
     const [equipments, setEquipments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const types = ["Mounts and Other Animals", "Tack, Harness, and Drawn Vehicles", "Waterborne Vehicles"];
+    const types = ["Artisan's Tools", "Gaming Sets", "Musical Instruments", "Other Tools"];
 
     useEffect(() => {
         Library.allEquipments().then(equipments => { 
@@ -29,19 +29,19 @@ const MountVehicleIndexPage = () => {
             light
         >
             <Layout>
-                <Heading>Mounts and Vehicles</Heading>
-
+                <Heading>Tools</Heading>
+                
                 {types.map(type => (
                     <Fragment key={type}>
                         <Heading as="h2">{type}</Heading>
-                
+
                         <List component="nav" className="list">
                             {equipments.filter(equipment => {
-                                return equipment.equipment_category === "Mounts and Vehicles" && equipment.vehicle_category === type
-                            }).map(vehicle => (
-                                <Link key={vehicle.slug} className="link" to={`/libraries/equipment/${vehicle.slug}`}>
+                                return equipment.equipment_category === "Tools" && equipment.tool_category === type
+                            }).map(tool => (
+                                <Link key={tool.slug} className="link" to={`/libraries/equipment/${tool.slug}`}>
                                     <ListItem button>
-                                        <ListItemText primary={vehicle.name} />
+                                        <ListItemText primary={tool.name} />
                                     </ListItem>
                                 </Link>
                             ))}
@@ -53,4 +53,4 @@ const MountVehicleIndexPage = () => {
     );
 };
 
-export default MountVehicleIndexPage;
+export default ToolIndexPage;

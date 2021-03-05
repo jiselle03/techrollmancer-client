@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import Utils from '../../js/utils';
-import Library from '../../api/library';
-import { BackgroundImage } from '../styles/Image';
-import Container, { Layout } from '../styles/Container';
-import { Heading, Text } from '../styles/Typography';
+import Utils from '../../../js/utils';
+import Library from '../../../api/library';
+import { BackgroundImage } from '../../styles/Image';
+import Container, { Layout } from '../../styles/Container';
+import { Heading, Text } from '../../styles/Typography';
 
 import { CircularProgress } from '@material-ui/core';
 

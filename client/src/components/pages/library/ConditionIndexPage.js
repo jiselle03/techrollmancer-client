@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { Layout } from '../styles/Container';
-import { BackgroundImage } from '../styles/Image';
-import { Heading, Text } from '../styles/Typography';
+import { Layout } from '../../styles/Container';
+import { BackgroundImage } from '../../styles/Image';
+import { Heading, Text } from '../../styles/Typography';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 

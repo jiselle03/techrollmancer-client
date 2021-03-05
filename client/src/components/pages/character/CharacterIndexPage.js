@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Character from '../../api/character';
-import CharacterNew from '../character/CharacterNew';
-import { BackgroundImage } from '../styles/Image';
-import { Layout } from '../styles/Container';
-import { Card, CardContent } from '../styles/Card';
-import { Heading, Text } from '../styles/Typography';
+import Character from '../../../api/character';
+import CharacterNew from '../../character/CharacterNew';
+import { BackgroundImage } from '../../styles/Image';
+import { Layout } from '../../styles/Container';
+import { Card, CardContent } from '../../styles/Card';
+import { Heading, Text } from '../../styles/Typography';
 
 import { CircularProgress, Grid } from '@material-ui/core';
 

@@ -9,32 +9,32 @@ import User from '../api/user';
 import Session from '../api/session';
 import NavBar from './other/NavBar';
 import AuthRoute from './other/AuthRoute';
-import SignUpPage from './pages/SignUpPage';
-import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/auth/SignUpPage';
+import SignInPage from './pages/auth/SignInPage';
 
 import WelcomePage from './pages/WelcomePage';
 import GeneratorPage from './pages/GeneratorPage';
 import SchedulerPage from './pages/SchedulerPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-import LibrariesIndexPage from './pages/LibrariesIndexPage';
-import RaceIndexPage from './pages/RaceIndexPage';
-import RaceShowPage from './pages/RaceShowPage';
-import ClassIndexPage from './pages/ClassIndexPage';
-import ClassShowPage from './pages/ClassShowPage';
-import SpellIndexPage from './pages/SpellIndexPage';
-import SpellShowPage from './pages/SpellShowPage';
-import EquipmentShowPage from './pages/EquipmentShowPage';
-import EquipmentIndexPage from './pages/EquipmentIndexPage';
-import AdventuringGearIndexPage from './pages/AdventuringGearIndexPage';
-import MountVehicleIndexPage from './pages/MountVehicleIndexPage';
-import ToolIndexPage from './pages/ToolIndexPage';
-import WeaponIndexPage from './pages/WeaponIndexPage';
-import ArmorIndexPage from './pages/ArmorIndexPage';
-import ConditionIndexPage from './pages/ConditionIndexPage';
+import LibrariesIndexPage from './pages/library/LibrariesIndexPage';
+import RaceIndexPage from './pages/library/RaceIndexPage';
+import RaceShowPage from './pages/library/RaceShowPage';
+import ClassIndexPage from './pages/library/ClassIndexPage';
+import ClassShowPage from './pages/library/ClassShowPage';
+import SpellIndexPage from './pages/library/SpellIndexPage';
+import SpellShowPage from './pages/library/SpellShowPage';
+import EquipmentShowPage from './pages/library/EquipmentShowPage';
+import EquipmentIndexPage from './pages/library/EquipmentIndexPage';
+import AdventuringGearIndexPage from './pages/library/AdventuringGearIndexPage';
+import MountVehicleIndexPage from './pages/library/MountVehicleIndexPage';
+import ToolIndexPage from './pages/library/ToolIndexPage';
+import WeaponIndexPage from './pages/library/WeaponIndexPage';
+import ArmorIndexPage from './pages/library/ArmorIndexPage';
+import ConditionIndexPage from './pages/library/ConditionIndexPage';
 
-import CharacterIndexPage from './pages/CharacterIndexPage';
-import CharacterShowPage from './pages/CharacterShowPage';
+import CharacterIndexPage from './pages/character/CharacterIndexPage';
+import CharacterShowPage from './pages/character/CharacterShowPage';
 
 import { CircularProgress } from '@material-ui/core';
 

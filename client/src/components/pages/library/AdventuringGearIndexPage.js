@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Library from '../../api/library';
-import { Layout } from '../styles/Container';
-import { BackgroundImage } from '../styles/Image';
-import { Heading } from '../styles/Typography';
+import Library from '../../../api/library';
+import { Layout } from '../../styles/Container';
+import { BackgroundImage } from '../../styles/Image';
+import { Heading } from '../../styles/Typography';
 
 import { CircularProgress, List, ListItem, ListItemText } from '@material-ui/core';
 
