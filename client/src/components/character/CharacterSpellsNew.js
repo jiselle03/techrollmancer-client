@@ -98,8 +98,7 @@ const CharacterSpellsNew = props => {
                                             <FormControl component="fieldset" key={index}>
                                                 <FormLabel component="legend">{level}</FormLabel>
                                                 <FormGroup>
-                                                {spells && (
-                                                    spells.map(spell => (
+                                                {spells && spells.map(spell => (
                                                         spell.level_int === index && (
                                                             <SpellListItem 
                                                                 key={spell.id} 
@@ -109,8 +108,7 @@ const CharacterSpellsNew = props => {
                                                                 spell={spell} 
                                                             />
                                                         )
-                                                    ))
-                                                )}
+                                                    ))}
                                                 </FormGroup>
                                             </FormControl>
                                             <br />
