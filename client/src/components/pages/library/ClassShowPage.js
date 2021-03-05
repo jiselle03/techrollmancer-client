@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
-import Utils from '../../js/utils';
-import Library from '../../api/library';
-import { BackgroundImage } from '../styles/Image';
-import { Layout } from '../styles/Container';
-import { Heading, Text } from '../styles/Typography';
+import Utils from '../../../js/utils';
+import Library from '../../../api/library';
+import { BackgroundImage } from '../../styles/Image';
+import { Layout } from '../../styles/Container';
+import { Heading, Text } from '../../styles/Typography';
 
 import { CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 

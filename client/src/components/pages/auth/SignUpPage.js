@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Session from '../../api/session';
-import { BackgroundImage } from '../styles/Image';
-import Container from '../styles/Container';
-import { Form, FormContainer, FormContent } from '../styles/Form';
-import FlexBox from '../styles/FlexBox';
-import { Heading, Text } from '../styles/Typography';
+import User from '../../../api/user';
+import { BackgroundImage } from '../../styles/Image';
+import { Layout } from '../../styles/Container';
+import { Form, FormContainer, FormContent } from '../../styles/Form';
+import { Heading, Text } from '../../styles/Typography';
 
-import { Card, Button, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
-import { AccountCircle, Lock } from '@material-ui/icons';
+import { Button, Card, Divider, FormControl, Input, InputAdornment, InputLabel } from '@material-ui/core';
+import { AccountCircle, Email, Lock } from '@material-ui/icons';
+import FlexBox from '../../styles/FlexBox';
 
-const SignInPage = props => {
-    const [errors, setErrors] = useState([]);
-
+const SignUpPage = props => {
     const fields = [
         {
             label: "Username",
@@ -22,28 +20,42 @@ const SignInPage = props => {
             icon: "account"
         },
         {
+            label: "Email",
+            name: "email",
+            type: "email",
+            icon: "email"
+        },
+        {
             label: "Password",
             name: "password",
+            type: "password",
+            icon: "lock"
+        },
+        {
+            label: "Password Confirmation",
+            name: "password_confirmation",
             type: "password",
             icon: "lock"
         }
     ];
 
-    const createSession = event => {
+    const handleSubmit = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
         const fd = new FormData(form);
-        setErrors([]);
+        const newUser = {
+            user:{
+                username: fd.get("username"),
+                email: fd.get("email"),
+                password: fd.get("password"),
+                password_confirmation: fd.get("password_confirmation")
+            }
+        };
         
-        Session.create({
-            username: fd.get("username"),
-            password: fd.get("password")
-        }).then(data => {
-            if (data.status === 404) {
-                setErrors([...errors, { message: "Wrong username or password"}]);
-            } else {
-                if (typeof props.onSignIn === "function") {
-                    props.onSignIn();
+        User.create(newUser).then(res => {
+            if (res.id) {
+                if (typeof props.onSignUp === "function") {
+                    props.onSignUp();
                 };
                 props.history.push("/");
             };
@@ -54,38 +66,35 @@ const SignInPage = props => {
         <BackgroundImage
             image="https://i.ibb.co/cctCwgk/d20.png"
         >
-            <Container overflow="hidden">
+            <Layout>
                 <FormContainer
-                    height="55vh"
+                    height="85vh"
                     padding="1em"
-                    margin="10vh auto"
+                    margin="auto"
                 >
                     <Card style={{
-                        boxShadow: "5px 0 5px -2px #888", 
-                        padding: "1em 0",
+                            boxShadow: "5px 0 5px -2px #888", 
+                            padding: "1em 0"
                         }}
                     >
                         <Heading as="h3" style={{paddingLeft: "0.75em"}}>
-                            Sign In
+                            Create an Account
                         </Heading>
 
-                        <Form onSubmit={createSession}>
-                            { errors.length > 0 ? (
-                                <Container className="header">
-                                    Failed to sign in: { errors.map(error => error.message).join(", ") }
-                                </Container>
-                            ): "" }
-
+                        <Form onSubmit={handleSubmit}>
                             {fields.map(field => (
                                 <FormControl key={field.name} style={FormContent.field}>
                                     <InputLabel htmlFor={field.name}>{field.label}*</InputLabel>
                                     <Input
-                                        type={field.type}
                                         name={field.name}
+                                        type="text"
                                         startAdornment={
                                             <InputAdornment position="start">
                                                 {field.icon === "account" && (
                                                     <AccountCircle style={FormContent.icon} />
+                                                )}
+                                                {field.icon === "email" && (
+                                                    <Email style={FormContent.icon} />
                                                 )}
                                                 {field.icon === "lock" && (
                                                     <Lock style={FormContent.icon} />
@@ -107,27 +116,25 @@ const SignInPage = props => {
                                     type="submit" 
                                     className="button"
                                 >
-                                    Sign In
+                                    SIGN UP
                                 </Button>
-
                             </FlexBox>
                         </Form>
 
                         <Divider variant="middle" />
-                        
+
                         <FlexBox
                             justifyContent="center"
                         >
                             <Text>
-                                Don't have an account? <Link to="/sign_up" style={FormContent.link}>SIGN UP</Link>
+                                Already have an account? <Link to="/sign_in" style={FormContent.link}>SIGN IN</Link>
                             </Text>
                         </FlexBox>
                     </Card>
                 </FormContainer>
-
-            </Container>
+            </Layout>
         </BackgroundImage>
     );
 };
 
-export default SignInPage;
+export default SignUpPage;
