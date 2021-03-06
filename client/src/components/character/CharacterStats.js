@@ -284,7 +284,7 @@ const CharacterStats = props => {
             </Container>
         </Card>
 
-        <Card className="str stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(str)} 
@@ -297,7 +297,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="str"
               >
                 {edit.str && (
                   <InputEditStats 
@@ -360,7 +359,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="dex stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(dex)}
@@ -373,7 +372,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="dex"
               >
               {edit.dex && (
                 <InputEditStats 
@@ -472,7 +470,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
         
-        <Card className="con stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(con)}
@@ -485,7 +483,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="con"
               >
               {edit.con && (
                 <InputEditStats 
@@ -530,7 +527,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="int stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(int)}
@@ -543,7 +540,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="int"
               >
               {edit.int && (
                 <InputEditStats 
@@ -679,7 +675,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="wis stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(wis)}
@@ -692,7 +688,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="wis"
               >
               {edit.wis && (
                 <InputEditStats 
@@ -828,7 +823,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
           
-          <Card className="cha stats">
+          <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(cha)}
@@ -841,7 +836,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="cha"
               >
               {edit.cha && (
                 <InputEditStats 

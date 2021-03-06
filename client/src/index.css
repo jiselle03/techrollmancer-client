@@ -422,7 +422,9 @@ div.race-option {
 
 @media print {
   @page {
-    margin: -0.3cm 0.25cm 0 -2.25cm;
+    size: 5.5in 8.5in;
+    margin: 0cm 1cm 0.25cm -2cm;
+    color: #000;
   }
 
   header, 
@@ -432,24 +434,26 @@ div.race-option {
   }
 
   h1 {
-    font-size: 32pt;
-    margin-bottom: 0.3em;
-    margin-left: 0.5em;
+    font-size: 28pt !important;
+    text-align: center !important;
   }
 
   h2.main-stats {
-    font-size: 16pt;
-    color: #000;
+    font-size: 9pt;
+    
   }
 
-  h6, p {
-    font-size: 9pt !important;
-    color: #000 !important;
+  h6 {
+    font-size: 6px !important;
+  }
+
+  p {
+    font-size: 5pt !important;
   }
 
   div.stat-header {
-    height: 1.25em;
-    padding: 0.3em;
+    height: 2.3rem !important;
+    padding: 0.3rem;
     margin: 0;
     background-color: #fff !important;
     box-shadow: none !important;
@@ -457,30 +461,51 @@ div.race-option {
   }
 
   h6.header {
-    margin: 0.25em;
+    margin: 0.25rem;
   }
 
   h6.stat-mod {
     margin: 0;
   }
 
+  .stat.border.ability,
   .stat-container {
-    height: 1.5em;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  label,
+  .stat-container label .stat {
+    width: 40% !important;
+    height: 6px !important;
+  }
+
+  .stat-container > .stat {
+    width: 50% !important;
   }
 
   div.stats {
-    width: 15em;
-    height: 18em;
+    width: 8.5rem;
+    height: 12.5rem;
+  }
+
+  div.stats > * {
+    width: 100%;
   }
 
   span.stat {
     margin: auto 0;
+    padding: auto 0;
   }
 
   .stat.border.ability {
-    padding: 0 auto !important;
-    margin: 0.25em !important;
+    margin-top: 1rem !important;
     border: none;
+  }
+
+  .stat.border.ability * {
+    font-size: 6pt;
+    width: 100%;
   }
 }
 
