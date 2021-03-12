@@ -39,90 +39,9 @@ const CharacterStats = props => {
   const handleBlur = (event, field) => {
     const { value } = event.currentTarget;
 
-    switch(field) {
-      case "hp":
-        Character.update(id, {hp: value})
-          .then(() => {
-              setEdit({...edit, hp: false});
-            }).then(() => {
-              handleRefresh();
-            });
-        break;
-      case "armor_class":
-        Character.update(id, {armor_class: value})
-          .then(() => {
-              setEdit({...edit, armor_class: false});
-            }).then(() => {
-              handleRefresh()
-            });
-        break;
-      case "initiative":
-        Character.update(id, {initiative: value})
-          .then(() => {
-            setEdit({...edit, initiative: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "speed":
-        Character.update(id, {speed: value})
-          .then(() => {
-            setEdit({...edit, speed: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "str":
-        Character.update(id, {str: value})
-          .then(() => {
-            setEdit({...edit, str: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "dex":
-        Character.update(id, {dex: value})
-          .then(() => {
-            setEdit({...edit, dex: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "con":
-        Character.update(id, {con: value})
-          .then(() => {
-            setEdit({...edit, con: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "int":
-        Character.update(id, {int: value})
-          .then(() => {
-            setEdit({...edit, int: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "wis":
-        Character.update(id, {wis: value})
-          .then(() => {
-            setEdit({...edit, wis: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "cha":
-        Character.update(id, {cha: value})
-          .then(() => {
-            setEdit({...edit, cha: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      default:
-        return;
-    };
+    Character.update(id, {[field]: value})
+      .then(() => setEdit({ ...edit, [field]: false}))
+      .then(() => handleRefresh());
   };
 
   const handleChange = async event => {
