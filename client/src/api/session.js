@@ -2,7 +2,7 @@ import baseUrl from "../config";
 
 const Session = {
     // Create session
-    create(params) {
+    create: async params => {
       return fetch(`${baseUrl}/session`, {
         credentials: "include",
         method: "POST",
@@ -13,7 +13,7 @@ const Session = {
       }).then(res => res.json());
     },
     // Destroy session
-    destroy() {
+    destroy: async () => {
       return fetch(`${baseUrl}/session`, {
         credentials: "include",
         method: "DELETE"

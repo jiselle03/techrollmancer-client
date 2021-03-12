@@ -1,13 +1,13 @@
 import baseUrl from "../config";
 
 const User = {
-    current() {
+    current: async () => {
         return fetch(`${baseUrl}/users/current`, {
             method: "GET",
             credentials: "include"
         }).then(res => res.json());
     },
-    create(params) {
+    create: async params => {
         return fetch (`${baseUrl}/users`, {
             method: "POST",
             credentials: "include",
@@ -16,7 +16,7 @@ const User = {
             },
             body: JSON.stringify(params)
         }).then(res => res.json());
-    }
+    },
 };
 
 export default User;

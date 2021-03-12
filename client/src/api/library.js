@@ -2,49 +2,49 @@ import baseUrl from "../config";
 
 const Library = {
     // Fetch all race
-    allRaces() {
+    allRaces: async () => {
       return fetch(`${baseUrl}/libraries/races`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one race
-    oneRace(slug) {
+    oneRace: async slug => {
       return fetch(`${baseUrl}/libraries/races/${slug}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch all classes
-    allClasses() {
+    allClasses: async () => {
       return fetch(`${baseUrl}/libraries/classes`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one class
-    oneClass(slug) {
+    oneClass: async slug => {
       return fetch(`${baseUrl}/libraries/classes/${slug}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch all spells
-    allSpells() {
+    allSpells: async () => {
       return fetch(`${baseUrl}/libraries/spells`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one spell
-    oneSpell(slug) {
+    oneSpell: async slug => {
       return fetch(`${baseUrl}/libraries/spells/${slug}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch all equipment
-    allEquipments() {
+    allEquipments: async () => {
       return fetch(`${baseUrl}/libraries/equipment`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one equipment
-    oneEquipment(slug) {
+    oneEquipment: async slug => {
       return fetch(`${baseUrl}/libraries/equipment/${slug}`, {
         credentials: "include"
       }).then(res => res.json());

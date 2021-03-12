@@ -8,19 +8,19 @@ User.current().then(user => {
 
 const Game = {
     // Fetch all games
-    all() {
+    all: async () => {
       return fetch(`${baseUrl}/users/${currentUser.id}/games`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one game
-    one(id) {
+    one: async id => {
       return fetch(`${baseUrl}/users/${currentUser.id}/games/${id}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Create one game
-    create(params) {
+    create: async params => {
       return fetch(`${baseUrl}/users/${currentUser.id}/games`, {
         credentials: "include",
         method: "POST",
@@ -31,7 +31,7 @@ const Game = {
       }).then(res => res.json());
     },
     // Edit one game
-    update(id, params) {
+    update: async (id, params) => {
       return fetch(`${baseUrl}/users/${currentUser.id}/games/${id}`, {
         method: "PATCH",
         credentials: "include",
@@ -42,7 +42,7 @@ const Game = {
       }).then(res => res.json());
     },
     // Delete one game
-    destroy(id) {
+    destroy: async id => {
       return fetch(`${baseUrl}/users/${currentUser.id}/games/${id}`, {
         credentials: "include",
         method: "DELETE"
