@@ -2,19 +2,19 @@ import baseUrl from "../config";
 
 const Character = {
     // Fetch all characters
-    all() {
+    all: async () => {
       return fetch(`${baseUrl}/characters`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one character
-    one(id) {
+    one: async id => {
       return fetch(`${baseUrl}/characters/${id}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Create one character
-    create(params) {
+    create: async params => {
       return fetch(`${baseUrl}/characters`, {
         credentials: "include",
         method: "POST",
@@ -25,7 +25,7 @@ const Character = {
       }).then(res => res.json());
     },
     // Edit one character
-    update(id, params) {
+    update: async (id, params) => {
       return fetch(`${baseUrl}/characters/${id}`, {
         method: "PATCH",
         credentials: "include",
@@ -35,13 +35,24 @@ const Character = {
         body: JSON.stringify(params)
       }).then(res => res.json());
     },
+    // Edit proficiencies
+    updateProf: async (charId, profId, proficiency, checked) => {
+      return fetch(`${baseUrl}/characters/${charId}/proficiencies/${profId}`, {
+        credentials: "include",
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+          body: JSON.stringify({[proficiency]: checked})
+        }).then(res => res.json());
+    },
     // Delete one character
-    destroy(id) {
+    destroy: async id => {
       return fetch(`${baseUrl}/characters/${id}`, {
         credentials: "include",
         method: "DELETE"
       }).then(res => res.json());
-    }
+    },
   };
   
   export default Character;
