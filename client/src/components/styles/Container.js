@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
+    ${({ width }) => width && `width: ${width};`}
+    ${({ height }) => height && `height: ${height};`}
     ${({ marginLeft }) => marginLeft && `margin-left: ${marginLeft};`}
     ${({ marginRight }) => marginRight && `margin-right: ${marginRight};`}
     ${({ padding }) => padding && `padding: ${padding};`}
     ${({ overflow }) => overflow && `overflow: ${overflow};`}
     ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
     ${({ font }) => font && `font-family: ${font};`}
+    ${({ hidden }) => hidden && `display: none;`}
 `;
 
 export default Container;
