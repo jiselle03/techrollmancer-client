@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import ReactToPrint from 'react-to-print';
+import CharacterStatsPrint from './CharacterStatsPrint';
 
 import baseUrl from '../../config';
 import Character from '../../api/character';
@@ -36,97 +39,16 @@ const CharacterStats = props => {
   const handleBlur = (event, field) => {
     const { value } = event.currentTarget;
 
-    switch(field) {
-      case "hp":
-        Character.update(id, {hp: value})
-          .then(() => {
-              setEdit({...edit, hp: false});
-            }).then(() => {
-              handleRefresh();
-            });
-        break;
-      case "armor_class":
-        Character.update(id, {armor_class: value})
-          .then(() => {
-              setEdit({...edit, armor_class: false});
-            }).then(() => {
-              handleRefresh()
-            });
-        break;
-      case "initiative":
-        Character.update(id, {initiative: value})
-          .then(() => {
-            setEdit({...edit, initiative: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "speed":
-        Character.update(id, {speed: value})
-          .then(() => {
-            setEdit({...edit, speed: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "str":
-        Character.update(id, {str: value})
-          .then(() => {
-            setEdit({...edit, str: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "dex":
-        Character.update(id, {dex: value})
-          .then(() => {
-            setEdit({...edit, dex: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "con":
-        Character.update(id, {con: value})
-          .then(() => {
-            setEdit({...edit, con: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "int":
-        Character.update(id, {int: value})
-          .then(() => {
-            setEdit({...edit, int: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "wis":
-        Character.update(id, {wis: value})
-          .then(() => {
-            setEdit({...edit, wis: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      case "cha":
-        Character.update(id, {cha: value})
-          .then(() => {
-            setEdit({...edit, cha: false});
-          }).then(() => {
-            handleRefresh();
-          });
-        break;
-      default:
-        return;
-    };
+    Character.update(id, {[field]: value})
+      .then(() => setEdit({ ...edit, [field]: false}))
+      .then(() => handleRefresh());
   };
 
-  const handleChange = event => {
+  const handleChange = async event => {
     const { field } = event.target.parentNode.parentNode.dataset;
     const { checked } = event.target;
 
-    return fetch(`${baseUrl}/characters/${id}/proficiencies/${proficiency.id}`, {
+    await fetch(`${baseUrl}/characters/${id}/proficiencies/${proficiency.id}`, {
       credentials: "include",
       method: "PATCH",
       headers: {
@@ -188,16 +110,22 @@ const CharacterStats = props => {
     setOpen(false);
   };
 
-  const toPrint = () => {
-    window.print();
-  }; 
+  const componentRef = useRef();
+  const reactToPrintContent = React.useCallback(() => {
+    return componentRef.current;
+  }, []);
 
   return (
     <>
       <Heading bottom="0.25em">{name}</Heading>
 
       <Container textAlign="right" marginRight="1.5em">
-        <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
+        <ReactToPrint
+          trigger={() => <Button variant="contained"><Print /></Button>}
+          documentTitle={character.name}
+          content={reactToPrintContent}
+        />
+        <Container hidden><CharacterStatsPrint character={character} ref={componentRef} /></Container>
       </Container>
 
       <CharacterSheet>
@@ -284,7 +212,7 @@ const CharacterStats = props => {
             </Container>
         </Card>
 
-        <Card className="str stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(str)} 
@@ -297,7 +225,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="str"
               >
                 {edit.str && (
                   <InputEditStats 
@@ -360,7 +287,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="dex stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(dex)}
@@ -373,7 +300,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="dex"
               >
               {edit.dex && (
                 <InputEditStats 
@@ -472,7 +398,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
         
-        <Card className="con stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(con)}
@@ -485,7 +411,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="con"
               >
               {edit.con && (
                 <InputEditStats 
@@ -530,7 +455,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="int stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(int)}
@@ -543,7 +468,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="int"
               >
               {edit.int && (
                 <InputEditStats 
@@ -679,7 +603,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
 
-        <Card className="wis stats">
+        <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(wis)}
@@ -692,7 +616,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="wis"
               >
               {edit.wis && (
                 <InputEditStats 
@@ -828,7 +751,7 @@ const CharacterStats = props => {
           </FlexBox>
         </Card>
           
-          <Card className="cha stats">
+          <Card className="stats">
           <FlexBox direction="column" justifyContent="space-between">
             <TooltipRoll 
               modifier={Utils.getBaseMod(cha)}
@@ -841,7 +764,6 @@ const CharacterStats = props => {
               <FlexBox 
                 direction="column" 
                 alignItems="center"
-                className="cha"
               >
               {edit.cha && (
                 <InputEditStats 
