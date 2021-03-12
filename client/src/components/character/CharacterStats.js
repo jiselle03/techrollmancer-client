@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import ReactToPrint from 'react-to-print';
+import CharacterStatsPrint from './CharacterStatsPrint';
 
 import baseUrl from '../../config';
 import Character from '../../api/character';
@@ -122,11 +125,11 @@ const CharacterStats = props => {
     };
   };
 
-  const handleChange = event => {
+  const handleChange = async event => {
     const { field } = event.target.parentNode.parentNode.dataset;
     const { checked } = event.target;
 
-    return fetch(`${baseUrl}/characters/${id}/proficiencies/${proficiency.id}`, {
+    await fetch(`${baseUrl}/characters/${id}/proficiencies/${proficiency.id}`, {
       credentials: "include",
       method: "PATCH",
       headers: {
@@ -188,16 +191,22 @@ const CharacterStats = props => {
     setOpen(false);
   };
 
-  const toPrint = () => {
-    window.print();
-  }; 
+  const componentRef = useRef();
+  const reactToPrintContent = React.useCallback(() => {
+    return componentRef.current;
+  }, []);
 
   return (
     <>
       <Heading bottom="0.25em">{name}</Heading>
 
       <Container textAlign="right" marginRight="1.5em">
-        <Button variant="contained" onClick={() => toPrint()}><Print /></Button>
+        <ReactToPrint
+          trigger={() => <Button variant="contained"><Print /></Button>}
+          documentTitle={character.name}
+          content={reactToPrintContent}
+        />
+        <Container hidden><CharacterStatsPrint character={character} ref={componentRef} /></Container>
       </Container>
 
       <CharacterSheet>
