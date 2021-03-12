@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
 import Library from '../../api/library';
-import Spell from '../../api/spell';
+import Character from '../../api/character';
 import SpellListItem from '../other/SpellListItem';
 import FloatingActionButton from '../other/FloatingActionButton';
 import { FadeContent, Fade } from '../styles/Fade';
@@ -40,7 +40,7 @@ const CharacterSpellsNew = props => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        Spell.update(character.id, newSpells)
+        Character.updateSpells(character.id, newSpells)
         .then(() => {
             props.handleRefresh();
             setOpen(false);

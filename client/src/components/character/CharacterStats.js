@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import ReactToPrint from 'react-to-print';
 import CharacterStatsPrint from './CharacterStatsPrint';
 
-import baseUrl from '../../config';
 import Character from '../../api/character';
 import Utils from '../../js/utils';
 import CharacterProficiencies from './CharacterProficiencies';
@@ -48,23 +47,13 @@ const CharacterStats = props => {
     const { field } = event.target.parentNode.parentNode.dataset;
     const { checked } = event.target;
 
-    await fetch(`${baseUrl}/characters/${id}/proficiencies/${proficiency.id}`, {
-      credentials: "include",
-      method: "PATCH",
-      headers: {
-          "Content-Type": "application/json"
-      },
-        body: JSON.stringify({[field]: checked})
-      }).then(res => res.json())
-      .then(() => {
-        props.handleRefresh();
-    });
+    await Character.updateProf(id, proficiency.id, field, checked)
+      .then(() => props.handleRefresh());
   };
 
-  const handleDelete = id => {
-    Character.destroy(id).then(() => {
-      props.history.push("/characters");
-    });
+  const handleDelete = async id => {
+    await Character.destroy(id)
+      .then(() => props.history.push("/characters"));
   };
 
   const checkBaseMod = stat => {

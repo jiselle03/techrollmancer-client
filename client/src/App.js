@@ -5,42 +5,42 @@ import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 
-import User from '../api/user';
-import Session from '../api/session';
-import NavBar from './other/NavBar';
-import AuthRoute from './other/AuthRoute';
-import SignUpPage from './pages/auth/SignUpPage';
-import SignInPage from './pages/auth/SignInPage';
+import User from './api/user';
+import Session from './api/session';
+import NavBar from './components/other/NavBar';
+import AuthRoute from './components/other/AuthRoute';
+import SignUpPage from './components/pages/auth/SignUpPage';
+import SignInPage from './components/pages/auth/SignInPage';
 
-import WelcomePage from './pages/WelcomePage';
-import GeneratorPage from './pages/GeneratorPage';
-import SchedulerPage from './pages/SchedulerPage';
-import NotFoundPage from './pages/NotFoundPage';
+import WelcomePage from './components/pages/WelcomePage';
+import GeneratorPage from './components/pages/GeneratorPage';
+import SchedulerPage from './components/pages/SchedulerPage';
+import NotFoundPage from './components/pages/NotFoundPage';
 
-import LibrariesIndexPage from './pages/library/LibrariesIndexPage';
-import RaceIndexPage from './pages/library/RaceIndexPage';
-import RaceShowPage from './pages/library/RaceShowPage';
-import ClassIndexPage from './pages/library/ClassIndexPage';
-import ClassShowPage from './pages/library/ClassShowPage';
-import SpellIndexPage from './pages/library/SpellIndexPage';
-import SpellShowPage from './pages/library/SpellShowPage';
-import EquipmentShowPage from './pages/library/EquipmentShowPage';
-import EquipmentIndexPage from './pages/library/EquipmentIndexPage';
-import AdventuringGearIndexPage from './pages/library/AdventuringGearIndexPage';
-import MountVehicleIndexPage from './pages/library/MountVehicleIndexPage';
-import ToolIndexPage from './pages/library/ToolIndexPage';
-import WeaponIndexPage from './pages/library/WeaponIndexPage';
-import ArmorIndexPage from './pages/library/ArmorIndexPage';
-import ConditionIndexPage from './pages/library/ConditionIndexPage';
+import LibrariesIndexPage from './components/pages/library/LibrariesIndexPage';
+import RaceIndexPage from './components/pages/library/RaceIndexPage';
+import RaceShowPage from './components/pages/library/RaceShowPage';
+import ClassIndexPage from './components/pages/library/ClassIndexPage';
+import ClassShowPage from './components/pages/library/ClassShowPage';
+import SpellIndexPage from './components/pages/library/SpellIndexPage';
+import SpellShowPage from './components/pages/library/SpellShowPage';
+import EquipmentShowPage from './components/pages/library/EquipmentShowPage';
+import EquipmentIndexPage from './components/pages/library/EquipmentIndexPage';
+import AdventuringGearIndexPage from './components/pages/library/AdventuringGearIndexPage';
+import MountVehicleIndexPage from './components/pages/library/MountVehicleIndexPage';
+import ToolIndexPage from './components/pages/library/ToolIndexPage';
+import WeaponIndexPage from './components/pages/library/WeaponIndexPage';
+import ArmorIndexPage from './components/pages/library/ArmorIndexPage';
+import ConditionIndexPage from './components/pages/library/ConditionIndexPage';
 
-import CharacterIndexPage from './pages/character/CharacterIndexPage';
-import CharacterShowPage from './pages/character/CharacterShowPage';
+import CharacterIndexPage from './components/pages/character/CharacterIndexPage';
+import CharacterShowPage from './components/pages/character/CharacterShowPage';
 
 import { CircularProgress } from '@material-ui/core';
 
 import { ThemeProvider } from 'styled-components';
-import theme from './styles/Theme';
-import GlobalStyles from './styles/Global';
+import theme from './components/styles/Theme';
+import GlobalStyles from './components/styles/Global';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
