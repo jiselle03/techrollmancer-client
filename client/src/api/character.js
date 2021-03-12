@@ -46,6 +46,17 @@ const Character = {
           body: JSON.stringify({[proficiency]: checked})
         }).then(res => res.json());
     },
+    // Edit spells
+    updateSpells: async (id, newSpells) => {
+      return fetch(`${baseUrl}/characters/${id}/character_spells`, {
+          credentials: "include",
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({spells: newSpells})
+      }).then(res => res.json())
+    },
     // Delete one character
     destroy: async id => {
       return fetch(`${baseUrl}/characters/${id}`, {
