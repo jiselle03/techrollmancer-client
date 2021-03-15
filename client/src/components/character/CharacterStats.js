@@ -61,11 +61,6 @@ const CharacterStats = props => {
     return mod > 0 ? "+" + mod : mod;
   };
 
-  const checkAbilityMod = (character, level, ability) => {
-    const mod = Utils.getAbilityMod(character, level, ability);
-    return mod > 0 ? "+" + mod : mod;
-  };
-
   const checkInitiative = initiative => {
     return initiative > 0 ? "+" + initiative : initiative;
   };
@@ -86,10 +81,12 @@ const CharacterStats = props => {
   };
 
   const handleOpen = (modifier, ability) => {
+    let mod = 0
+    modifier[0] === "+" ? mod = parseInt(modifier.substring(1)) : mod = parseInt(modifier);
     setOpen(true);
-    setRoll(Utils.roll(20) + modifier);
+    setRoll(Utils.roll(20) + mod);
     setAbility(ability);
-    setModifier(modifier > 0 ? "+" + modifier : modifier);
+    setModifier(modifier);
   };
 
   const handleClose = () => {
@@ -238,14 +235,14 @@ const CharacterStats = props => {
             <Container className="stat border ability">
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "str_save")}
+                  modifier={Utils.getAbilityMod(character, level, "str_save", "str")}
                   field={"str_save"} 
                   proficiencies={character.proficiency} 
                   onHandleChange={handleChange} 
                 />
                 <span className="stat">
                   <TooltipRoll 
-                  modifier={Utils.getAbilityMod(character, level, "str_save")}
+                  modifier={Utils.getAbilityMod(character, level, "str_save", "str")}
                   ability={"Strength Save"}
                   name={"Saving Throw"}
                   header={false}
@@ -255,7 +252,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "athletics")}
+                  modifier={Utils.getAbilityMod(character, level, "athletics", "str")}
                   field={"athletics"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -263,7 +260,7 @@ const CharacterStats = props => {
                 />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "athletics")}
+                    modifier={Utils.getAbilityMod(character, level, "athletics", "str")}
                     ability={"Athletics"}
                     name={"Athletics"}
                     header={false}
@@ -312,7 +309,7 @@ const CharacterStats = props => {
             <Container className="stat border ability">
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "dex_save")}
+                  modifier={Utils.getAbilityMod(character, level, "dex_save", "dex")}
                   field={"dex_save"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -320,7 +317,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "dex_save")}
+                    modifier={Utils.getAbilityMod(character, level, "dex_save", "dex")}
                     ability={"Dexterity Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -330,7 +327,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "acrobatics")}
+                  modifier={Utils.getAbilityMod(character, level, "acrobatics", "dex")}
                   field={"acrobatics"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -338,7 +335,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "acrobatics")}
+                    modifier={Utils.getAbilityMod(character, level, "acrobatics", "dex")}
                     ability={"Acrobatics"}
                     name={"Acrobatics"}
                     header={false}
@@ -348,7 +345,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "sleight of hand")}
+                  modifier={Utils.getAbilityMod(character, level, "sleight_of_hand", "dex")}
                   field={"sleight_of_hand"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -356,7 +353,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "sleight of hand")}
+                    modifier={Utils.getAbilityMod(character, level, "sleight_of_hand", "dex")}
                     ability={"Sleight of Hand"}
                     name={"Sleight of Hand"}
                     header={false}
@@ -366,7 +363,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "stealth")}
+                  modifier={Utils.getAbilityMod(character, level, "stealth", "dex")}
                   field={"stealth"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -374,7 +371,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "stealth")}
+                    modifier={Utils.getAbilityMod(character, level, "stealth", "dex")}
                     ability={"Stealth"}
                     name={"Stealth"}
                     header={false}
@@ -423,7 +420,7 @@ const CharacterStats = props => {
             <Container className="stat border ability">
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "con_save")}
+                  modifier={Utils.getAbilityMod(character, level, "con_save", "con")}
                   field={"con_save"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -431,7 +428,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "con_save")}
+                    modifier={Utils.getAbilityMod(character, level, "con_save", "con")}
                     ability={"Constitution Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -481,7 +478,7 @@ const CharacterStats = props => {
             <Container className="stat border ability">
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "int_save")}
+                  modifier={Utils.getAbilityMod(character, level, "int_save", "int")}
                   field={"int_save"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -489,7 +486,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "int_save")}
+                    modifier={Utils.getAbilityMod(character, level, "int_save", "int")}
                     ability={"Intelligence Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -499,7 +496,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "arcana")}
+                  modifier={Utils.getAbilityMod(character, level, "arcana", "int")}
                   field={"arcana"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -507,7 +504,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "arcana")}
+                    modifier={Utils.getAbilityMod(character, level, "arcana", "int")}
                     ability={"Arcana"}
                     name={"Arcana"}
                     header={false}
@@ -517,7 +514,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "history")}
+                  modifier={Utils.getAbilityMod(character, level, "history", "int")}
                   field={"history"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -525,7 +522,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "history")}
+                    modifier={Utils.getAbilityMod(character, level, "history", "int")}
                     ability={"History"}
                     name={"History"}
                     header={false}
@@ -535,7 +532,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "investigation")}
+                  modifier={Utils.getAbilityMod(character, level, "investigation", "int")}
                   field={"investigation"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -543,7 +540,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "investigation")}
+                    modifier={Utils.getAbilityMod(character, level, "investigation", "int")}
                     ability={"Investigation"}
                     name={"Investigation"}
                     header={false}
@@ -553,7 +550,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "nature")}
+                  modifier={Utils.getAbilityMod(character, level, "nature", "int")}
                   field={"nature"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -561,7 +558,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "nature")}
+                    modifier={Utils.getAbilityMod(character, level, "nature", "int")}
                     ability={"Nature"}
                     name={"Nature"}
                     header={false}
@@ -571,7 +568,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "religion")}
+                  modifier={Utils.getAbilityMod(character, level, "religion", "int")}
                   field={"religion"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -579,7 +576,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "religion")}
+                    modifier={Utils.getAbilityMod(character, level, "religion", "int")}
                     ability={"Religion"}
                     name={"Religion"}
                     header={false}
@@ -629,7 +626,7 @@ const CharacterStats = props => {
             <Container className="stat border ability">
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "wis_save")}
+                  modifier={Utils.getAbilityMod(character, level, "wis_save", "wis")}
                   field={"wis_save"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -637,7 +634,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "wis_save")}
+                    modifier={Utils.getAbilityMod(character, level, "wis_save", "wis")}
                     ability={"Wisdom Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -647,7 +644,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "animal handling")}
+                  modifier={Utils.getAbilityMod(character, level, "animal_handling", "wis")}
                   field={"animal_handling"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -655,7 +652,7 @@ const CharacterStats = props => {
                 />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "animal handling")}
+                    modifier={Utils.getAbilityMod(character, level, "animal_handling", "wis")}
                     ability={"Animal Handling"}
                     name={"Animal Handling"}
                     header={false}
@@ -665,7 +662,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "insight")}
+                  modifier={Utils.getAbilityMod(character, level, "insight", "wis")}
                   field={"insight"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -673,7 +670,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "insight")}
+                    modifier={Utils.getAbilityMod(character, level, "insight", "wis")}
                     ability={"Insight"}
                     name={"Insight"}
                     header={false}
@@ -683,7 +680,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "medicine")}
+                  modifier={Utils.getAbilityMod(character, level, "medicine", "wis")}
                   field={"medicine"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -691,7 +688,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "medicine")}
+                    modifier={Utils.getAbilityMod(character, level, "medicine", "wis")}
                     ability={"Medicine"}
                     name={"Medicine"}
                     header={false}
@@ -701,7 +698,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "perception")}
+                  modifier={Utils.getAbilityMod(character, level, "perception", "wis")}
                   field={"perception"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -709,7 +706,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "perception")}
+                    modifier={Utils.getAbilityMod(character, level, "perception", "wis")}
                     ability={"Perception"}
                     name={"Perception"}
                     header={false}
@@ -719,7 +716,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "survival")}
+                  modifier={Utils.getAbilityMod(character, level, "survival", "wis")}
                   field={"survival"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -727,7 +724,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "survival")}
+                    modifier={Utils.getAbilityMod(character, level, "survival", "wis")}
                     ability={"Survival"}
                     name={"Survival"}
                     header={false}
@@ -777,7 +774,7 @@ const CharacterStats = props => {
             <Container className="stat border ability">
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "cha_save")}
+                  modifier={Utils.getAbilityMod(character, level, "cha_save", "cha")}
                   field={"cha_save"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -785,7 +782,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "cha_save")}
+                    modifier={Utils.getAbilityMod(character, level, "cha_save", "cha")}
                     ability={"Charisma Save"}
                     name={"Saving Throw"}
                     header={false}
@@ -795,7 +792,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "deception")}
+                  modifier={Utils.getAbilityMod(character, level, "deception", "cha")}
                   field={"deception"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -803,7 +800,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "deception")}
+                    modifier={Utils.getAbilityMod(character, level, "deception", "cha")}
                     ability={"Deception"}
                     name={"Deception"}
                     header={false}
@@ -813,7 +810,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "intimidation")}
+                  modifier={Utils.getAbilityMod(character, level, "intimidation", "cha")}
                   field={"intimidation"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -821,7 +818,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "intimidation")}
+                    modifier={Utils.getAbilityMod(character, level, "intimidation", "cha")}
                     ability={"Intimidation"}
                     name={"Intimidation"}
                     header={false}
@@ -831,7 +828,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "performance")}
+                  modifier={Utils.getAbilityMod(character, level, "performance", "cha")}
                   field={"performance"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -839,7 +836,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "performance")}
+                    modifier={Utils.getAbilityMod(character, level, "performance", "cha")}
                     ability={"Performance"}
                     name={"Performance"}
                     header={false}
@@ -849,7 +846,7 @@ const CharacterStats = props => {
               </Container>
               <Container className="stat-container">
                 <CharacterProficiencies 
-                  modifier={checkAbilityMod(character, level, "persuasion")}
+                  modifier={Utils.getAbilityMod(character, level, "persuasion", "cha")}
                   field={"persuasion"} 
                   proficiencies={character.proficiency} 
                   onHandleOpen={handleOpen} 
@@ -857,7 +854,7 @@ const CharacterStats = props => {
                   />
                 <span className="stat">
                   <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "persuasion")}
+                    modifier={Utils.getAbilityMod(character, level, "persuasion", "cha")}
                     ability={"Persuasion"}
                     name={"Persuasion"}
                     header={false}
