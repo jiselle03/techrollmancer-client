@@ -4,6 +4,7 @@ import ReactToPrint from 'react-to-print';
 import CharacterStatsPrint from './CharacterStatsPrint';
 
 import Character from '../../api/character';
+import { statFields } from '../../data/characterFields';
 import Utils from '../../js/utils';
 import CharacterProficiencies from './CharacterProficiencies';
 import FloatingActionButton from '../other/FloatingActionButton';
@@ -31,6 +32,7 @@ const CharacterStats = props => {
   const { id, name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha, proficiency } = props.character;
   const level = Utils.getLevel(character);
 
+  const fields = statFields(str, dex, con, int, wis, cha);
   const handleClick = field => {
     return setEdit({...edit, [field]: true});
   };
@@ -198,675 +200,65 @@ const CharacterStats = props => {
             </Container>
         </Card>
 
-        <Card className="stats">
-          <FlexBox direction="column" justifyContent="space-between">
-            <TooltipRoll 
-              modifier={Utils.getBaseMod(str)} 
-              ability={"str"} 
-              name={"Strength"} 
-              header
-              onHandleOpen={handleOpen} 
-            />
-            <Container onClick={() => handleClick("str")} className="stat-header">
-              <FlexBox 
-                direction="column" 
-                alignItems="center"
-              >
-                {edit.str && (
-                  <InputEditStats 
-                    onHandleBlur={handleBlur} 
-                    field="str"
-                    step="1"
-                    min="0"
-                    max="20"
-                    defaultValue={str} 
-                  />
-                )}
-                {!edit.str && (
-                  <>
-                    <TooltipEdit field={str} />
-                    <Heading as="h6" className="stat-mod">{checkBaseMod(str)}</Heading>
-                  </>
-                )}
-              </FlexBox>
-            </Container>
-              
-            <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <Container className="stat border ability">
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "str_save", "str")}
-                  field={"str_save"} 
-                  proficiencies={character.proficiency} 
-                  onHandleChange={handleChange} 
-                />
-                <span className="stat">
-                  <TooltipRoll 
-                  modifier={Utils.getAbilityMod(character, level, "str_save", "str")}
-                  ability={"Strength Save"}
-                  name={"Saving Throw"}
-                  header={false}
-                  onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "athletics", "str")}
-                  field={"athletics"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "athletics", "str")}
-                    ability={"Athletics"}
-                    name={"Athletics"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              </Container>
-            </FlexBox>
-          </FlexBox>
-        </Card>
-
-        <Card className="stats">
-          <FlexBox direction="column" justifyContent="space-between">
-            <TooltipRoll 
-              modifier={Utils.getBaseMod(dex)}
-              ability={"Dexterity"}
-              name={"Dexterity"}
-              header
-              onHandleOpen={handleOpen} 
-            />
-            <Container onClick={() => handleClick("dex")} className="stat-header">
-              <FlexBox 
-                direction="column" 
-                alignItems="center"
-              >
-              {edit.dex && (
-                <InputEditStats 
-                  onHandleBlur={handleBlur} 
-                  field="dex"
-                  step="1"
-                  min="0"
-                  max="20"
-                  defaultValue={dex} />
-              )}
-              {!edit.dex && (
-                <>
-                  <TooltipEdit field={dex} />
-                  <Heading as="h6" className="stat-mod">{checkBaseMod(dex)}</Heading>
-                </>
-              )}
-              </FlexBox>
-            </Container>
-              
-            <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <Container className="stat border ability">
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "dex_save", "dex")}
-                  field={"dex_save"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "dex_save", "dex")}
-                    ability={"Dexterity Save"}
-                    name={"Saving Throw"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "acrobatics", "dex")}
-                  field={"acrobatics"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "acrobatics", "dex")}
-                    ability={"Acrobatics"}
-                    name={"Acrobatics"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "sleight_of_hand", "dex")}
-                  field={"sleight_of_hand"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "sleight_of_hand", "dex")}
-                    ability={"Sleight of Hand"}
-                    name={"Sleight of Hand"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "stealth", "dex")}
-                  field={"stealth"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "stealth", "dex")}
-                    ability={"Stealth"}
-                    name={"Stealth"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              </Container>
-            </FlexBox>
-          </FlexBox>
-        </Card>
-        
-        <Card className="stats">
-          <FlexBox direction="column" justifyContent="space-between">
-            <TooltipRoll 
-              modifier={Utils.getBaseMod(con)}
-              ability={"Constitution"}
-              name={"Constitution"}
-              header
-              onHandleOpen={handleOpen} 
-            />
-            <Container onClick={() => handleClick("con")} className="stat-header">
-              <FlexBox 
-                direction="column" 
-                alignItems="center"
-              >
-              {edit.con && (
-                <InputEditStats 
-                  onHandleBlur={handleBlur} 
-                  field="con"
-                  step="1"
-                  min="0"
-                  max="20"
-                  defaultValue={con} />
-              )}
-              {!edit.con && (
-                <>
-                  <TooltipEdit field={con} />
-                  <Heading as="h6" className="stat-mod">{checkBaseMod(con)}</Heading>
-                </>
-              )}
-              </FlexBox>
-            </Container>
-              
-            <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <Container className="stat border ability">
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "con_save", "con")}
-                  field={"con_save"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "con_save", "con")}
-                    ability={"Constitution Save"}
-                    name={"Saving Throw"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-            </Container>
-            </FlexBox>
-          </FlexBox>
-        </Card>
-
-        <Card className="stats">
-          <FlexBox direction="column" justifyContent="space-between">
-            <TooltipRoll 
-              modifier={Utils.getBaseMod(int)}
-              ability={"Intelligence"}
-              name={"Intelligence"}
-              header
-              onHandleOpen={handleOpen} 
-            />
-            <Container onClick={() => handleClick("int")} className="stat-header">
-              <FlexBox 
-                direction="column" 
-                alignItems="center"
-              >
-              {edit.int && (
-                <InputEditStats 
-                  onHandleBlur={handleBlur} 
-                  field="int"
-                  step="1"
-                  min="0"
-                  max="20"
-                  defaultValue={int} 
-                />
-              )}
-              {!edit.int && (
-                <>
-                  <TooltipEdit field={int} />
-                  <Heading as="h6" className="stat-mod">{checkBaseMod(int)}</Heading>
-                </>
-              )}
-              </FlexBox>
-            </Container>
-              
-            <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <Container className="stat border ability">
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "int_save", "int")}
-                  field={"int_save"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "int_save", "int")}
-                    ability={"Intelligence Save"}
-                    name={"Saving Throw"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "arcana", "int")}
-                  field={"arcana"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "arcana", "int")}
-                    ability={"Arcana"}
-                    name={"Arcana"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "history", "int")}
-                  field={"history"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "history", "int")}
-                    ability={"History"}
-                    name={"History"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "investigation", "int")}
-                  field={"investigation"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "investigation", "int")}
-                    ability={"Investigation"}
-                    name={"Investigation"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "nature", "int")}
-                  field={"nature"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "nature", "int")}
-                    ability={"Nature"}
-                    name={"Nature"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "religion", "int")}
-                  field={"religion"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "religion", "int")}
-                    ability={"Religion"}
-                    name={"Religion"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-            </Container>
-            </FlexBox>
-          </FlexBox>
-        </Card>
-
-        <Card className="stats">
-          <FlexBox direction="column" justifyContent="space-between">
-            <TooltipRoll 
-              modifier={Utils.getBaseMod(wis)}
-              ability={"Wisdom"}
-              name={"Wisdom"}
-              header
-              onHandleOpen={handleOpen} 
-            />
-            <Container onClick={() => handleClick("wis")} className="stat-header">
-              <FlexBox 
-                direction="column" 
-                alignItems="center"
-              >
-              {edit.wis && (
-                <InputEditStats 
-                  onHandleBlur={handleBlur} 
-                  field="wis"
-                  step="1"
-                  min="0"
-                  max="20"
-                  defaultValue={wis} 
-                />
-              )}
-              {!edit.wis && (
-                <>
-                  <TooltipEdit field={wis} />
-                  <Heading as="h6" className="stat-mod">{checkBaseMod(wis)}</Heading>
-                </>
-              )}
-              </FlexBox>
-            </Container>
-              
-            <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <Container className="stat border ability">
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "wis_save", "wis")}
-                  field={"wis_save"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "wis_save", "wis")}
-                    ability={"Wisdom Save"}
-                    name={"Saving Throw"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "animal_handling", "wis")}
-                  field={"animal_handling"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "animal_handling", "wis")}
-                    ability={"Animal Handling"}
-                    name={"Animal Handling"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "insight", "wis")}
-                  field={"insight"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "insight", "wis")}
-                    ability={"Insight"}
-                    name={"Insight"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "medicine", "wis")}
-                  field={"medicine"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "medicine", "wis")}
-                    ability={"Medicine"}
-                    name={"Medicine"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "perception", "wis")}
-                  field={"perception"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "perception", "wis")}
-                    ability={"Perception"}
-                    name={"Perception"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "survival", "wis")}
-                  field={"survival"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "survival", "wis")}
-                    ability={"Survival"}
-                    name={"Survival"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-            </Container>
-            </FlexBox>
-          </FlexBox>
-        </Card>
-          
+        {fields.map(field => (
           <Card className="stats">
-          <FlexBox direction="column" justifyContent="space-between">
-            <TooltipRoll 
-              modifier={Utils.getBaseMod(cha)}
-              ability={"Charisma"}
-              name={"Charisma"}
-              header
-              onHandleOpen={handleOpen} 
-            />
-            <Container onClick={() => handleClick("cha")} className="stat-header">
-              <FlexBox 
-                direction="column" 
-                alignItems="center"
-              >
-              {edit.cha && (
-                <InputEditStats 
-                  onHandleBlur={handleBlur} 
-                  field="cha"
-                  step="1"
-                  min="0"
-                  max="20"
-                  defaultValue={cha} 
-                />
-              )}
-              {!edit.cha && (
-                <>
-                  <TooltipEdit field={cha} />
-                  <Heading as="h6" className="stat-mod">{checkBaseMod(cha)}</Heading>
-                </>
-              )}
-              </FlexBox>
-            </Container>
-              
-            <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
-            <Container className="stat border ability">
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "cha_save", "cha")}
-                  field={"cha_save"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "cha_save", "cha")}
-                    ability={"Charisma Save"}
-                    name={"Saving Throw"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "deception", "cha")}
-                  field={"deception"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "deception", "cha")}
-                    ability={"Deception"}
-                    name={"Deception"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "intimidation", "cha")}
-                  field={"intimidation"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "intimidation", "cha")}
-                    ability={"Intimidation"}
-                    name={"Intimidation"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "performance", "cha")}
-                  field={"performance"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "performance", "cha")}
-                    ability={"Performance"}
-                    name={"Performance"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-              <Container className="stat-container">
-                <CharacterProficiencies 
-                  modifier={Utils.getAbilityMod(character, level, "persuasion", "cha")}
-                  field={"persuasion"} 
-                  proficiencies={character.proficiency} 
-                  onHandleOpen={handleOpen} 
-                  onHandleChange={handleChange} 
-                  />
-                <span className="stat">
-                  <TooltipRoll 
-                    modifier={Utils.getAbilityMod(character, level, "persuasion", "cha")}
-                    ability={"Persuasion"}
-                    name={"Persuasion"}
-                    header={false}
-                    onHandleOpen={handleOpen} 
-                  />
-                </span>
-              </Container>
-            </Container>
-            </FlexBox>
-          </FlexBox>
-        </Card>
+            <FlexBox direction="column" justifyContent="space-between">
+              <TooltipRoll 
+                modifier={Utils.getBaseMod(field.stat)} 
+                ability={field.stat} 
+                name={field.label} 
+                header
+                onHandleOpen={handleOpen} 
+              />
 
+              <Container onClick={() => handleClick(field.name)} className="stat-header">
+                <FlexBox direction="column" alignItems="center">
+                  {edit[field.name] && (
+                    <InputEditStats 
+                      onHandleBlur={handleBlur} 
+                      field={field.name}
+                      step="1"
+                      min="0"
+                      max="20"
+                      defaultValue={field.stat} 
+                    />
+                  )}
+                  {!edit[field.name] && (
+                    <>
+                      <TooltipEdit field={field.stat} />
+                      <Heading as="h6" className="stat-mod">{checkBaseMod(field.stat)}</Heading>
+                    </>
+                  )}
+                </FlexBox>
+              </Container>
+
+              <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
+                <Container className="stat border ability">
+                  {field && field.abilities && field.abilities.map(ability => (
+                    <Container className="stat-container">
+                      <CharacterProficiencies 
+                        modifier={Utils.getAbilityMod(character, level, ability.stat, field.name)}
+                        field={ability.stat} 
+                        proficiencies={character.proficiency} 
+                        onHandleChange={handleChange} 
+                      />
+                      <span className="stat">
+                        <TooltipRoll 
+                        modifier={Utils.getAbilityMod(character, level, ability.stat, field.name)}
+                        ability={ability.name}
+                        name={ability.label}
+                        header={false}
+                        onHandleOpen={handleOpen} 
+                        />
+                      </span>
+                    </Container>
+                  ))}
+                  </Container>
+                </FlexBox>
+            </FlexBox>
+          </Card>
+        ))}
+    
         <Modal
           open={open}
           onClose={handleClose}
