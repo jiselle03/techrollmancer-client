@@ -30,8 +30,8 @@ const SignUpPage = props => {
         };
         
         User.create(newUser).then(res => {
-            if (res.user.id) {
-                setCurrentUser(res.user);
+            if (res.id) {
+                setCurrentUser();
                 props.history.push("/");
             };
         });

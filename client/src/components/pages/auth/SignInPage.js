@@ -30,7 +30,7 @@ const SignInPage = props => {
             if (res.status === 404) {
                 setErrors([...errors, { message: "Wrong username or password"}]);
             } else {
-                setCurrentUser(res.user);
+                setCurrentUser();
                 props.history.push("/");
             };
         });

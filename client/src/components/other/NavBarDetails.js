@@ -19,7 +19,7 @@ const NavBarDetails = () => {
     const destroySession = () => {
         Session
             .destroy()
-            .then(() => setCurrentUser(null));
+            .then(() => setCurrentUser());
     };
 
     const laptop = useMediaQuery('(min-width:1280px)');
