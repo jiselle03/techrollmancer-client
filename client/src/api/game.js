@@ -1,25 +1,20 @@
-import User from './user';
-
 const API = `${process.env.REACT_APP_API_URL}/v1`;
-
-let currentUser;
-User.current().then(user => currentUser = user);
 
 const Game = {
     // Fetch all games
-    all: async () => {
+    all: async currentUser => {
       return fetch(`${API}/users/${currentUser.id}/games`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one game
-    one: async id => {
+    one: async (currentUser, id) => {
       return fetch(`${API}/users/${currentUser.id}/games/${id}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Create one game
-    create: async params => {
+    create: async (currentUser, params) => {
       return fetch(`${API}/users/${currentUser.id}/games`, {
         credentials: "include",
         method: "POST",
@@ -30,7 +25,7 @@ const Game = {
       }).then(res => res.json());
     },
     // Edit one game
-    update: async (id, params) => {
+    update: async (currentUser, id, params) => {
       return fetch(`${API}/users/${currentUser.id}/games/${id}`, {
         method: "PATCH",
         credentials: "include",
@@ -41,7 +36,7 @@ const Game = {
       }).then(res => res.json());
     },
     // Delete one game
-    destroy: async id => {
+    destroy: async (currentUser, id) => {
       return fetch(`${API}/users/${currentUser.id}/games/${id}`, {
         credentials: "include",
         method: "DELETE"
