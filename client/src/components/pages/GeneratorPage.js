@@ -14,10 +14,12 @@ import { Heading, Text } from '../styles/Typography';
 
 import { Backdrop, Button, Divider, Modal } from '@material-ui/core';
 
-const GeneratorPage = () => {
+const GeneratorPage = props => {
     const [openQR, setOpenQR] = useState(false);
     const [character, setCharacter] = useState({});
     const [save, setSave] = useState(false);
+
+    const { currentUser } = props;
 
     const quickRoll = () => {
         handleOpenQR();
@@ -214,7 +216,7 @@ const GeneratorPage = () => {
                     )}
 
                     {save && (
-                        <CharacterNew open stats={character} />
+                        <CharacterNew open stats={character} currentUser={currentUser} {...props} />
                     )}
 
                         <Modal
