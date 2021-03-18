@@ -14,7 +14,7 @@ import { AccountCircle, Email, Lock } from '@material-ui/icons';
 import FlexBox from '../../styles/FlexBox';
 
 const SignUpPage = props => {
-    const { setCurrentUser } = useContext(UserState);
+    const { setIsSignedIn } = useContext(UserState);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -30,8 +30,8 @@ const SignUpPage = props => {
         };
         
         User.create(newUser).then(res => {
-            if (res.user.id) {
-                setCurrentUser(res.user);
+            if (res.id) {
+                setIsSignedIn(true);
                 props.history.push("/");
             };
         });

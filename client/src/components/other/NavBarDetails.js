@@ -12,15 +12,11 @@ const ListItemLink = props => {
 };
 
 const NavBarDetails = () => {
-    const { currentUser, setCurrentUser } = useContext(UserState);
+    const { currentUser, setIsSignedIn } = useContext(UserState);
     const [librariesOpen, setLibrariesOpen] = useState(false);
     const [equipmentOpen, setEquipmentOpen] = useState(false);
 
-    const destroySession = () => {
-        Session
-            .destroy()
-            .then(() => setCurrentUser(null));
-    };
+    const destroySession = () => Session.destroy().then(() => setIsSignedIn(false));
 
     const laptop = useMediaQuery('(min-width:1280px)');
 
