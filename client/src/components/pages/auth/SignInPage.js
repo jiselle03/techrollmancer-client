@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Session from '../../../api/session';
+import { UserState } from '../../../providers/UserProvider';
+import { signInFields as fields } from '../../../data/userFields';
 import { BackgroundImage } from '../../styles/Image';
 import Container from '../../styles/Container';
 import { Form, FormContainer, FormContent } from '../../styles/Form';
@@ -13,21 +15,7 @@ import { AccountCircle, Lock } from '@material-ui/icons';
 
 const SignInPage = props => {
     const [errors, setErrors] = useState([]);
-
-    const fields = [
-        {
-            label: "Username",
-            name: "username",
-            type: "text",
-            icon: "account"
-        },
-        {
-            label: "Password",
-            name: "password",
-            type: "password",
-            icon: "lock"
-        }
-    ];
+    const { setCurrentUser } = useContext(UserState);
 
     const createSession = event => {
         event.preventDefault();
@@ -38,13 +26,11 @@ const SignInPage = props => {
         Session.create({
             username: fd.get("username"),
             password: fd.get("password")
-        }).then(data => {
-            if (data.status === 404) {
+        }).then(res => {
+            if (res.status === 404) {
                 setErrors([...errors, { message: "Wrong username or password"}]);
             } else {
-                if (typeof props.onSignIn === "function") {
-                    props.onSignIn();
-                };
+                setCurrentUser(res.user);
                 props.history.push("/");
             };
         });

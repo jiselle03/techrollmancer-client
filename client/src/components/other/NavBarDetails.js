@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Collapse, Divider, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from '@material-ui/core';
 import { AccountCircle, Casino, Create, EventAvailable, ExitToApp, ExpandLess, ExpandMore, PersonAdd, Search } from '@material-ui/icons';
-import { func, object } from 'prop-types';
 
+import Session from '../../api/session';
+import { UserState } from '../../providers/UserProvider';
 import Container from '../styles/Container';
 
 const ListItemLink = props => {
     return <ListItem button component="a" {...props} />;
 };
 
-const NavBarDetails = props => {
-    const { currentUser, onSignOut } = props;
-
-    const handleSignOutClick = () => {
-        if (typeof onSignOut === "function") onSignOut();
-    };
-
+const NavBarDetails = () => {
+    const { currentUser, setCurrentUser } = useContext(UserState);
     const [librariesOpen, setLibrariesOpen] = useState(false);
     const [equipmentOpen, setEquipmentOpen] = useState(false);
+
+    const destroySession = () => {
+        Session
+            .destroy()
+            .then(() => setCurrentUser(null));
+    };
 
     const laptop = useMediaQuery('(min-width:1280px)');
 
@@ -183,7 +185,7 @@ const NavBarDetails = props => {
                         </ListItemIcon>
                         <ListItemText primary={currentUser.username.toUpperCase()} />
                     </ListItemLink>
-                    <ListItemLink button href="/" onClick={handleSignOutClick}>
+                    <ListItemLink button href="/" onClick={() => destroySession()}>
                         <ListItemIcon className="menu-icon">
                             <ExitToApp />
                         </ListItemIcon>
@@ -252,8 +254,3 @@ const NavBarDetails = props => {
 };
 
 export default NavBarDetails;
-
-NavBarDetails.propTypes = {
-    currentUser: object,
-    onSignOut: func.isRequired,
-};
