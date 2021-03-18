@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { store } from 'react-notifications-component';
 
 import Utils from '../../js/utils';
 import Game from '../../api/game';
+import { UserState } from '../../providers/UserProvider';
 import { BackgroundImage } from '../styles/Image';
 import { Layout } from '../styles/Container';
 import { Image } from '../styles/Image';
@@ -20,6 +21,7 @@ const WelcomePage = () => {
     const [rolls, setRolls] = useState([]);
     const [rollState, setRollState] = useState("regular");
     const [gamesToday, setGamesToday] = useState([]);
+    const { currentUser } = useContext(UserState)
     
     const states = ["disadvantage", "regular", "advantage"];
     const dSides = [
@@ -90,9 +92,11 @@ const WelcomePage = () => {
     const handleRollState = (event, newState) => setRollState(newState);
 
     useEffect(() => {
-        Game.all().then(games => {
-            if (Array.isArray(games)) checkGames(games);
-        });
+        if (currentUser) {
+            Game.all(currentUser).then(games => {
+                if (Array.isArray(games)) checkGames(games);
+            });
+        };
     }, []);
 
     return(

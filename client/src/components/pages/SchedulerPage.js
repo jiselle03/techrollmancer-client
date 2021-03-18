@@ -14,7 +14,7 @@ import { Button, Card, FormControl, Input, InputLabel, useMediaQuery } from '@ma
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
-const SchedulerPage = props => {
+const SchedulerPage = () => {
     const [games, setGames] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const { currentUser } = useContext(UserState);
@@ -41,25 +41,23 @@ const SchedulerPage = props => {
             user_id: currentUser.id
         };
 
-        Game.create(newGame).then(() => {
-            Game.all().then(games => {
+        Game.create(currentUser, newGame).then(() => {
+            Game.all(currentUser).then(games => {
                 setGames(games);
             });
         });
     };
 
     const handleDelete = id => {
-        Game.destroy(id).then(() => {
-            Game.all().then(games => {
+        Game.destroy(currentUser, id).then(() => {
+            Game.all(currentUser).then(games => {
                 setGames(games);
             });
         });
     };
 
     useEffect(() => {
-        Game.all().then(games => {
-            setGames(games);
-        });
+        Game.all().then(games => setGames(games));
     }, []);
 
     return(
