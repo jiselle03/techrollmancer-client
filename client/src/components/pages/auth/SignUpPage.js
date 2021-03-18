@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import User from '../../../api/user';
+import { signUpFields as fields } from '../../../data/userFields';
 import { BackgroundImage } from '../../styles/Image';
 import { Layout } from '../../styles/Container';
 import { Form, FormContainer, FormContent } from '../../styles/Form';
@@ -12,33 +13,6 @@ import { AccountCircle, Email, Lock } from '@material-ui/icons';
 import FlexBox from '../../styles/FlexBox';
 
 const SignUpPage = props => {
-    const fields = [
-        {
-            label: "Username",
-            name: "username",
-            type: "text",
-            icon: "account"
-        },
-        {
-            label: "Email",
-            name: "email",
-            type: "email",
-            icon: "email"
-        },
-        {
-            label: "Password",
-            name: "password",
-            type: "password",
-            icon: "lock"
-        },
-        {
-            label: "Password Confirmation",
-            name: "password_confirmation",
-            type: "password",
-            icon: "lock"
-        }
-    ];
-
     const handleSubmit = event => {
         event.preventDefault();
         const { currentTarget: form } = event;

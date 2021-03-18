@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Session from '../../../api/session';
+import { signInFields as fields } from '../../../data/userFields';
 import { BackgroundImage } from '../../styles/Image';
 import Container from '../../styles/Container';
 import { Form, FormContainer, FormContent } from '../../styles/Form';
@@ -13,21 +14,6 @@ import { AccountCircle, Lock } from '@material-ui/icons';
 
 const SignInPage = props => {
     const [errors, setErrors] = useState([]);
-
-    const fields = [
-        {
-            label: "Username",
-            name: "username",
-            type: "text",
-            icon: "account"
-        },
-        {
-            label: "Password",
-            name: "password",
-            type: "password",
-            icon: "lock"
-        }
-    ];
 
     const createSession = event => {
         event.preventDefault();
