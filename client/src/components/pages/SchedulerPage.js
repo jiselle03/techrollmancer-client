@@ -1,8 +1,9 @@
 import 'date-fns';
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 
 import Utils from '../../js/utils';
 import Game from '../../api/game';
+import { UserState } from '../../providers/UserProvider';
 import { BackgroundImage } from '../styles/Image';
 import Container, { Layout } from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
@@ -16,8 +17,8 @@ import DateFnsUtils from '@date-io/date-fns';
 const SchedulerPage = props => {
     const [games, setGames] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const { currentUser } = useContext(UserState);
 
-    const { currentUser } = props;
     const { formatDate } = Utils;
     const laptop = useMediaQuery('(min-width:1280px)');
 

@@ -1,0 +1,38 @@
+{
+    "home": "/",
+    "user": {
+        "signIn": "/sign_in",
+        "signUp": "/sign_up"
+    },
+    "libraries": {
+        "index": "/libraries",
+        "races": {
+            "index": "/libraries/races",
+            "show": "/libraries/races/:slug"
+        },
+        "classes": {
+            "index": "/libraries/classes",
+            "show": "libraries/classes/:slug"
+        },
+        "spells": {
+            "index": "/libraries/spells",
+            "show": "/libraries/spells/:slug"
+        },
+        "equipment": {
+            "index": "/libraries/equipment",
+            "show": "/libraries/equipment/:slug",
+            "armor": "/libraries/equipment/armor",
+            "adventuringGear": "/libraries/equipment/adventuring-gear",
+            "mountsAndVehicles": "/libraries/equipment/mounts-and-vehicles",
+            "tools": "/libraries/equipment/tools",
+            "weapons": "/libraries/equipment/weapons"
+        },
+        "conditions": "/libraries/conditions"
+    },
+    "characters": {
+        "index": "/characters",
+        "show": "/characters/:id"
+    },
+    "generator": "/generator",
+    "scheduler": "/scheduler"
+}

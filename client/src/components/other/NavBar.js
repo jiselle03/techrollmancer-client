@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { object, func } from 'prop-types';
 
+import { UserState } from '../../providers/UserProvider';
 import NavBarDetails from './NavBarDetails';
 import { NavBarStyle, NavContainer, Sidebar, sidebarText } from '../styles/Navigation';
 import Container from '../styles/Container';
@@ -10,8 +10,8 @@ import { Drawer, ListItem, useMediaQuery } from '@material-ui/core';
 
 const ListItemLink = props => <ListItem button component="a" {...props} />;
 
-const NavBar = props => {
-    const { currentUser, onSignOut } = props;
+const NavBar = () => {
+    const { currentUser } = useContext(UserState);
     const [open, setOpen] = useState(false);
     const history = useHistory();
 
@@ -28,7 +28,7 @@ const NavBar = props => {
         <NavContainer>
             {!laptop && (
                 <NavBarStyle>
-                    <Sidebar currentUser={currentUser} >
+                    <Sidebar>
                         <ListItemLink button
                                 onClick={handleClick}
                                 style={{
@@ -66,7 +66,7 @@ const NavBar = props => {
                             onKeyDown={toggleDrawer(false)}
                         >
                             <NavBarStyle>
-                                <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
+                                <NavBarDetails />
                             </NavBarStyle>
                         </Container>
                     </Drawer>
@@ -75,7 +75,7 @@ const NavBar = props => {
 
             {laptop && (
                 <NavBarStyle>
-                    <NavBarDetails currentUser={currentUser} onSignOut={onSignOut} />
+                    <NavBarDetails />
                 </NavBarStyle>
             )}
         </NavContainer>
@@ -83,8 +83,3 @@ const NavBar = props => {
 };
 
 export default NavBar;
-
-NavBar.propTypes = {
-    currentUser: object,
-    onSignOut: func.isRequired,
-};

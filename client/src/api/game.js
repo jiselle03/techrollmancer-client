@@ -2,9 +2,7 @@ import baseUrl from '../config';
 import User from './user';
 
 let currentUser;
-User.current().then(user => {
-  currentUser = user;
-});
+User.current().then(user => currentUser = user);
 
 const Game = {
     // Fetch all games

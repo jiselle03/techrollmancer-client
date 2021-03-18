@@ -3,7 +3,7 @@ class Api::V1::SessionsController < Api::ApplicationController
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id 
-            render json: { id: user.id }
+            render json: { user: user }
         else
             render(
                 json: { status: 404 },
