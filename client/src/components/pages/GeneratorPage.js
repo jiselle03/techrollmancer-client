@@ -14,10 +14,12 @@ import { Heading, Text } from '../styles/Typography';
 
 import { Backdrop, Button, Divider, Modal } from '@material-ui/core';
 
-const GeneratorPage = () => {
+const GeneratorPage = props => {
     const [openQR, setOpenQR] = useState(false);
     const [character, setCharacter] = useState({});
     const [save, setSave] = useState(false);
+
+    const { currentUser } = props;
 
     const quickRoll = () => {
         handleOpenQR();
@@ -191,14 +193,16 @@ const GeneratorPage = () => {
                                         {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
                                     </Heading>
 
-                                    <Button 
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleSaveQR}
-                                        className="button"
-                                    >
-                                        SAVE
-                                    </Button>
+                                    {currentUser && (
+                                        <Button 
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleSaveQR}
+                                            className="button"
+                                        >
+                                            SAVE
+                                        </Button>
+                                    )}
 
                                     <Button 
                                         variant="contained"
@@ -214,7 +218,7 @@ const GeneratorPage = () => {
                     )}
 
                     {save && (
-                        <CharacterNew open stats={character} />
+                        <CharacterNew open stats={character} currentUser={currentUser} {...props} />
                     )}
 
                         <Modal

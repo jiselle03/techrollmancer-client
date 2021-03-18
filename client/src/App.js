@@ -122,7 +122,9 @@ const App = () => {
             />
             <Route 
               path="/generator"
-              component={GeneratorPage}  
+              render={routeProps => (
+                <GeneratorPage {...routeProps} currentUser={currentUser} />
+              )} 
             />
             <Route component={NotFoundPage} />
           </Switch>

@@ -1,3 +1,19 @@
+export const newFields = stats => {
+  return [
+    {half: false, type: "text", name: "name", label: "Name"},
+    {half: true, type: "text", name: "gender", label: "Gender"},
+    {half: true, type: "text", name: "race", label: "Race", defaultValue: stats ? stats._charRace : null},
+    {half: true, type: "text", name: "class_1", label: "Class", placeholder: "Class", defaultValue: stats ? stats._charClass : null},
+    {half: true, type: "number", name: "class_1_level", label: "Level"},
+    {half: true, type: "number", name: "str", label: "STR", defaultValue: stats ? stats._roll1 : 8},
+    {half: true, type: "number", name: "dex", label: "DEX", defaultValue: stats ? stats._roll2 : 8},
+    {half: true, type: "number", name: "con", label: "CON", defaultValue: stats ? stats._roll3 : 8},
+    {half: true, type: "number", name: "wis", label: "WIS", defaultValue: stats ? stats._roll5 : 8},
+    {half: true, type: "number", name: "int", label: "INT", defaultValue: stats ? stats._roll4 : 8},
+    {half: true, type: "number", name: "cha", label: "CHA", defaultValue: stats ? stats._roll6 : 8},
+  ];
+};
+
 export const statFields = (str, dex, con, int, wis, cha) => {
     return [
         {
@@ -68,3 +84,4 @@ export const statFields = (str, dex, con, int, wis, cha) => {
         },
     ];
 };
+
