@@ -15,25 +15,27 @@ import { AccountCircle, Lock } from '@material-ui/icons';
 
 const SignInPage = props => {
     const [errors, setErrors] = useState([]);
-    const { setCurrentUser } = useContext(UserState);
+    const { setIsSignedIn } = useContext(UserState);
 
     const createSession = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
         const fd = new FormData(form);
         setErrors([]);
-        
-        Session.create({
-            username: fd.get("username"),
-            password: fd.get("password")
-        }).then(res => {
-            if (res.status === 404) {
-                setErrors([...errors, { message: "Wrong username or password"}]);
-            } else {
-                setCurrentUser();
-                props.history.push("/");
-            };
-        });
+
+        Session
+            .create({
+                username: fd.get("username"),
+                password: fd.get("password"),
+            })
+            .then(res => {
+                if (res.status === 404) {
+                    setErrors([...errors, { message: "Wrong username or password"}]);
+                } else {
+                    setIsSignedIn(true);
+                    props.history.push("/");
+                };
+            });
     };
 
     return (
