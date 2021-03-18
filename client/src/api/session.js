@@ -1,9 +1,9 @@
-import baseUrl from "../config";
+const API = `${process.env.REACT_APP_API_URL}/v1`;
 
 const Session = {
     // Create session
     create: async params => {
-      return fetch(`${baseUrl}/session`, {
+      return fetch(`${API}/session`, {
         credentials: "include",
         method: "POST",
         headers: {
@@ -14,7 +14,7 @@ const Session = {
     },
     // Destroy session
     destroy: async () => {
-      return fetch(`${baseUrl}/session`, {
+      return fetch(`${API}/session`, {
         credentials: "include",
         method: "DELETE"
       }).then(res => res.json());

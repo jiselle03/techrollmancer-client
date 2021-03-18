@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import baseUrl from '../../config';
 import Character from '../../api/character';
 import FlexBox from '../styles/FlexBox';
 import { Form } from '../styles/Form';
@@ -9,19 +8,18 @@ import Container, { CharacterSheet } from '../styles/Container';
 
 import { Card } from '@material-ui/core';
 
-const CharacterTraits = props => {
+const CharacterTraits = ({ handleRefresh, character }) => {
     const [edit, setEdit] = useState({
         profile: false, photo: false, personality_traits: false, 
         ideals: false, bonds: false, flaws: false, 
         background: false, description: false, backstory: false
     });
 
-    const { handleRefresh } = props;
     const { id, name, gender, race, photo_url,
             class_1, class_2, class_3,
-            class_1_level, class_2_level, class_3_level, trait } = props.character;
+            class_1_level, class_2_level, class_3_level, trait } = character;
     const { description, backstory, personality_traits, ideals, bonds, flaws, 
-            background_type, background_desc } = props.character.trait;
+            background_type, background_desc } = character.trait;
 
     const handleClick = field => {
         return setEdit({...edit, [field]: true});
@@ -41,38 +39,25 @@ const CharacterTraits = props => {
             class_2_level: fd.get("class_2_level"),
             class_3: fd.get("class_3"),
             class_3_level: fd.get("class_3_level")
-        }).then(data => {
-            setEdit({...edit, profile: false});
-        }).then(() => {
-            handleRefresh();
-        });
+        })
+        .then(() => setEdit({...edit, profile: false}))
+        .then(() => handleRefresh());
     };
 
-    const handleBlurPhoto = event => {
+    const handleBlurPhoto = async event => {
         const { currentTarget } = event;
 
-        Character.update(id, {photo_url: currentTarget.value})
-            .then(() => {
-                setEdit({...edit, photo: false});
-            }).then(() => {
-                handleRefresh();
-            });
+        await Character
+            .update(id, {photo_url: currentTarget.value})
+            .then(() => setEdit({...edit, photo: false}))
+            .then(() => handleRefresh());
     };
 
-    const handleBlur = (event, field) => {
+    const handleBlur = async (event, field) => {
         const { value } = event.currentTarget;
         
-        fetch(`${baseUrl}/characters/${id}/traits/${trait.id}`, {
-            credentials: "include",
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({[field]: value})
-        }).then(res => res.json())
-        .then(() => {
-            props.handleRefresh();
-        });
+        await Character.getTrait(id, trait.id, field, value)
+            .then(() => handleRefresh());
 
         if (field === "background_desc" || field === "background_type") {
             return setEdit({...edit, background: false});

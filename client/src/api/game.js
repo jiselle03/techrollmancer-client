@@ -1,5 +1,6 @@
-import baseUrl from '../config';
 import User from './user';
+
+const API = `${process.env.REACT_APP_API_URL}/v1`;
 
 let currentUser;
 User.current().then(user => currentUser = user);
@@ -7,19 +8,19 @@ User.current().then(user => currentUser = user);
 const Game = {
     // Fetch all games
     all: async () => {
-      return fetch(`${baseUrl}/users/${currentUser.id}/games`, {
+      return fetch(`${API}/users/${currentUser.id}/games`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Fetch one game
     one: async id => {
-      return fetch(`${baseUrl}/users/${currentUser.id}/games/${id}`, {
+      return fetch(`${API}/users/${currentUser.id}/games/${id}`, {
         credentials: "include"
       }).then(res => res.json());
     },
     // Create one game
     create: async params => {
-      return fetch(`${baseUrl}/users/${currentUser.id}/games`, {
+      return fetch(`${API}/users/${currentUser.id}/games`, {
         credentials: "include",
         method: "POST",
         headers: {
@@ -30,7 +31,7 @@ const Game = {
     },
     // Edit one game
     update: async (id, params) => {
-      return fetch(`${baseUrl}/users/${currentUser.id}/games/${id}`, {
+      return fetch(`${API}/users/${currentUser.id}/games/${id}`, {
         method: "PATCH",
         credentials: "include",
         headers: {
@@ -41,7 +42,7 @@ const Game = {
     },
     // Delete one game
     destroy: async id => {
-      return fetch(`${baseUrl}/users/${currentUser.id}/games/${id}`, {
+      return fetch(`${API}/users/${currentUser.id}/games/${id}`, {
         credentials: "include",
         method: "DELETE"
       }).then(res => res.json());
