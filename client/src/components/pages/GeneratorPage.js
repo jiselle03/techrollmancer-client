@@ -193,14 +193,16 @@ const GeneratorPage = props => {
                                         {character._roll1}, {character._roll2}, {character._roll3}, {character._roll4}, {character._roll5}, {character._roll6}
                                     </Heading>
 
-                                    <Button 
-                                        variant="contained"
-                                        color="secondary"
-                                        onClick={handleSaveQR}
-                                        className="button"
-                                    >
-                                        SAVE
-                                    </Button>
+                                    {currentUser && (
+                                        <Button 
+                                            variant="contained"
+                                            color="secondary"
+                                            onClick={handleSaveQR}
+                                            className="button"
+                                        >
+                                            SAVE
+                                        </Button>
+                                    )}
 
                                     <Button 
                                         variant="contained"
