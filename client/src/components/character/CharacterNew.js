@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Character from '../../api/character';
+import { newFields } from '../../data/characterFields';
 import FloatingActionButton from '../other/FloatingActionButton';
 import { Form, FormContainer, FormContent } from '../styles/Form';
 import FlexBox from '../styles/FlexBox';
@@ -14,6 +15,8 @@ const CharacterNew = props => {
     const [errors, setErrors] = useState([]);
     const [open, setOpen] = useState(false);
     const { currentUser, type, stats } = props;
+
+    const fields = newFields(stats);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -40,7 +43,7 @@ const CharacterNew = props => {
             int: fd.get("int"),
             wis: fd.get("wis"),
             cha: fd.get("cha"),
-            user_id: currentUser.id
+            user_id: currentUser.id,
         };
         Character.create(newCharacter).then(data => {
             if (!data.errors) {
@@ -53,20 +56,6 @@ const CharacterNew = props => {
         
         currentTarget.reset();
     };
-
-    const fields = [
-        {half: false, type: "text", name: "name", label: "Name"},
-        {half: true, type: "text", name: "gender", label: "Gender"},
-        {half: true, type: "text", name: "race", label: "Race", defaultValue: stats ? stats._charRace : null},
-        {half: true, type: "text", name: "class_1", label: "Class", placeholder: "Class", defaultValue: stats ? stats._charClass : null},
-        {half: true, type: "number", name: "class_1_level", label: "Level"},
-        {half: true, type: "number", name: "str", label: "STR", defaultValue: stats ? stats._roll1 : 8},
-        {half: true, type: "number", name: "dex", label: "DEX", defaultValue: stats ? stats._roll2 : 8},
-        {half: true, type: "number", name: "con", label: "CON", defaultValue: stats ? stats._roll3 : 8},
-        {half: true, type: "number", name: "wis", label: "WIS", defaultValue: stats ? stats._roll5 : 8},
-        {half: true, type: "number", name: "int", label: "INT", defaultValue: stats ? stats._roll4 : 8},
-        {half: true, type: "number", name: "cha", label: "CHA", defaultValue: stats ? stats._roll6 : 8},
-    ];
 
     return(
         <>
