@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import urls from '../data/urls.json';
+
 import AuthRoute from './AuthRoute';
 import SignUpPage from '../components/pages/auth/SignUpPage';
 import SignInPage from '../components/pages/auth/SignInPage';
@@ -32,51 +34,47 @@ import CharacterShowPage from '../components/pages/character/CharacterShowPage';
 const AppRoutes = () => {
     return (
         <Switch>
-            <Route exact path="/" component={WelcomePage}/>
-            <Route exact path="/libraries" component={LibrariesIndexPage} />
-            <Route exact path="/libraries/races" component={RaceIndexPage} />
-            <Route path="/libraries/races/:slug" component={RaceShowPage} />
-            <Route exact path="/libraries/classes" component={ClassIndexPage} />
-            <Route path="/libraries/classes/:slug" component={ClassShowPage} />
-            <Route exact path="/libraries/spells" component={SpellIndexPage} />
-            <Route path="/libraries/spells/:slug" component={SpellShowPage} />
-            <Route exact path="/libraries/equipment/adventuring-gear" component={AdventuringGearIndexPage} />
-            <Route exact path="/libraries/equipment/mounts-and-vehicles" component={MountVehicleIndexPage} />
-            <Route exact path="/libraries/equipment/tools" component={ToolIndexPage} />
-            <Route exact path="/libraries/equipment/weapons" component={WeaponIndexPage} />
-            <Route exact path="/libraries/equipment/armor" component={ArmorIndexPage} />
-            <Route exact path="/libraries/equipment" component={EquipmentIndexPage} />
-            <Route path="/libraries/equipment/:slug" component={EquipmentShowPage} />
-            <Route exact path="/libraries/conditions" component={ConditionIndexPage} />
+            <Route exact path={urls.home} component={WelcomePage}/>
+            <Route exact path={urls.libraries.index} component={LibrariesIndexPage} />
+            <Route exact path={urls.libraries.races.index} component={RaceIndexPage} />
+            <Route path={urls.libraries.races.show} component={RaceShowPage} />
+            <Route exact path={urls.libraries.classes.index} component={ClassIndexPage} />
+            <Route path={urls.libraries.classes.show} component={ClassShowPage} />
+            <Route exact path={urls.libraries.spells.index} component={SpellIndexPage} />
+            <Route path={urls.libraries.spells.show} component={SpellShowPage} />
+            <Route exact path={urls.libraries.equipment.index} component={EquipmentIndexPage} />
+            <Route path={urls.libraries.equipment.show} component={EquipmentShowPage} />
+            <Route exact path={urls.libraries.equipment.adventuringGear} component={AdventuringGearIndexPage} />
+            <Route exact path={urls.libraries.equipment.armor} component={ArmorIndexPage} />
+            <Route exact path={urls.libraries.equipment.mountsAndVehicles} component={MountVehicleIndexPage} />
+            <Route exact path={urls.libraries.equipment.tools} component={ToolIndexPage} />
+            <Route exact path={urls.libraries.equipment.weapons} component={WeaponIndexPage} />
+            <Route exact path={urls.libraries.conditions} component={ConditionIndexPage} />
             <AuthRoute 
-              exact path="/characters"
+              exact path={urls.characters.index}
               render={routeProps => (
                 <CharacterIndexPage {...routeProps} />
               )}
             />
             <AuthRoute 
-              exact path="/characters/:id"
+              exact path={urls.characters.show}
               component={CharacterShowPage}
             />
-            <AuthRoute 
-              path="/scheduler"
-              render={routeProps => <SchedulerPage {...routeProps} />}
-          />
             <Route 
-              path="/sign_in"
+              path={urls.user.signIn}
               render={routeProps => <SignInPage {...routeProps} />}  
             />
             <Route 
-              path="/sign_up"
-              render={routeProps => (
-                <SignUpPage {...routeProps} />
-              )}  
+              path={urls.user.signUp}
+              render={routeProps => <SignUpPage {...routeProps} />}  
+            />
+            <AuthRoute 
+              path={urls.scheduler}
+              render={routeProps => <SchedulerPage {...routeProps} />}
             />
             <Route 
-              path="/generator"
-              render={routeProps => (
-                <GeneratorPage {...routeProps} />
-              )} 
+              path={urls.generator}
+              render={routeProps => <GeneratorPage {...routeProps} />} 
             />
             <Route component={NotFoundPage} />
         </Switch>
