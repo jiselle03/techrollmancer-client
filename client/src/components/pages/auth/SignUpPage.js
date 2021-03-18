@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import User from '../../../api/user';
+import { UserState } from '../../../providers/UserProvider';
 import { signUpFields as fields } from '../../../data/userFields';
 import { BackgroundImage } from '../../styles/Image';
 import { Layout } from '../../styles/Container';
@@ -13,6 +14,8 @@ import { AccountCircle, Email, Lock } from '@material-ui/icons';
 import FlexBox from '../../styles/FlexBox';
 
 const SignUpPage = props => {
+    const { setCurrentUser } = useContext(UserState);
+
     const handleSubmit = event => {
         event.preventDefault();
         const { currentTarget: form } = event;
@@ -27,10 +30,8 @@ const SignUpPage = props => {
         };
         
         User.create(newUser).then(res => {
-            if (res.id) {
-                if (typeof props.onSignUp === "function") {
-                    props.onSignUp();
-                };
+            if (res.user.id) {
+                setCurrentUser(res.user);
                 props.history.push("/");
             };
         });
@@ -61,7 +62,7 @@ const SignUpPage = props => {
                                     <InputLabel htmlFor={field.name}>{field.label}*</InputLabel>
                                     <Input
                                         name={field.name}
-                                        type="text"
+                                        type={field.type}
                                         startAdornment={
                                             <InputAdornment position="start">
                                                 {field.icon === "account" && (

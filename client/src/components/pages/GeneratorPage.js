@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Utils from '../../js/utils';
+import { UserState } from '../../providers/UserProvider';
 import { RandomCharacter } from '../../js/generator.js';
 import PointBuyCalculator from '../other/PointBuyCalculator';
 import CharacterNew from '../character/CharacterNew';
@@ -19,7 +20,7 @@ const GeneratorPage = props => {
     const [character, setCharacter] = useState({});
     const [save, setSave] = useState(false);
 
-    const { currentUser } = props;
+    const { currentUser } = useContext(UserState);
 
     const quickRoll = () => {
         handleOpenQR();

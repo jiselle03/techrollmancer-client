@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { bool } from 'prop-types';
+
+import { UserState } from '../providers/UserProvider';
 
 const AuthRoute = props => {
-    const { isAuthenticated, component: Component, ...routeProps } = props;
+    const { currentUser } = useContext(UserState);
 
-    if (!isAuthenticated) {
+    const { component: Component, ...routeProps } = props;
+
+    if (!currentUser) {
         return <Redirect to="/sign_in" />;
     } else {
         return <Route {...routeProps} component={Component} />;
@@ -13,7 +16,3 @@ const AuthRoute = props => {
 };
 
 export default AuthRoute;
-
-AuthRoute.propTypes = {
-    isAuthenticated: bool,
-};

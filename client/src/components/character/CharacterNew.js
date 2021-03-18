@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import Character from '../../api/character';
+import { UserState } from '../../providers/UserProvider';
 import { newFields } from '../../data/characterFields';
 import FloatingActionButton from '../other/FloatingActionButton';
 import { Form, FormContainer, FormContent } from '../styles/Form';
@@ -14,7 +15,8 @@ import { Backdrop, Button, FormControl, Modal, TextField } from '@material-ui/co
 const CharacterNew = props => {
     const [errors, setErrors] = useState([]);
     const [open, setOpen] = useState(false);
-    const { currentUser, type, stats } = props;
+    const { type, stats } = props;
+    const { currentUser } = useContext(UserState);
 
     const fields = newFields(stats);
 
@@ -23,7 +25,6 @@ const CharacterNew = props => {
 
     useEffect(() => {
         props.open ? setOpen(true) : setOpen(false);
-        console.log(stats)
     }, [props.open]);
 
     const createCharacter = event => {
