@@ -7,6 +7,21 @@ import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { Heading, Text } from '../styles/Typography';
 
+const BaseMod = ({ stat }) => {
+    const mod = Utils.getBaseMod(stat);
+
+    return (
+        <Text as="small">({mod > 0 ? `+${mod}` : mod})</Text>
+    );
+};
+
+const AbilityMod = ({ character, level, stat, field}) => {
+    const mod = Utils.getAbilityMod(character, level, stat, field);
+    return (
+        <Text as="small">({mod > 0 ? `+${mod}` : mod})</Text>
+    );
+};
+
 class CharacterStatsPrint extends Component {
     constructor(props) {
         super(props);
@@ -55,11 +70,18 @@ class CharacterStatsPrint extends Component {
                         >
                             <CardContent>
                                 <Heading as="h6" align="center">{field.label}</Heading>
-                                <Heading as="h6" align="center">{field.stat} <Text as="small">({Utils.getBaseMod(field.stat)})</Text></Heading>
+                                <Heading as="h6" align="center">{field.stat} <BaseMod stat={field.stat} /></Heading>
                                 
                                 {field && field.abilities && field.abilities.map(ability => (
-                                    <Text><Text as="small">({Utils.getAbilityMod(this.state.character, level, ability.stat, field.name)})</Text>&nbsp;
-                                    {ability.label}</Text>
+                                    <Text>
+                                        <AbilityMod 
+                                            character={this.state.character} 
+                                            level={level} 
+                                            stat={ability.stat} 
+                                            field={field.name} 
+                                        /> &nbsp;
+                                        {ability.label}
+                                    </Text>
                                 ))}
                             </CardContent>
                         </Card>
@@ -67,7 +89,7 @@ class CharacterStatsPrint extends Component {
                 </FlexBox>
             </Container>
         );
-    }
-  }
+    };
+};
 
 export default CharacterStatsPrint;

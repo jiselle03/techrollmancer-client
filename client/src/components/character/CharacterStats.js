@@ -18,6 +18,14 @@ import Container, { CharacterSheet } from '../styles/Container';
 import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 import { Print } from '@material-ui/icons';
 
+const BaseMod = ({ stat }) => {
+  const mod = Utils.getBaseMod(stat);
+
+  return (
+    <Heading as="h6" className="stat-mod">{mod > 0 ? `+${mod}` : mod}</Heading>
+  );
+};
+
 const CharacterStats = props => {
   const [edit, setEdit] = useState({
     hp: false, armor_class: false, initiative: false, speed: false, 
@@ -58,11 +66,6 @@ const CharacterStats = props => {
       .then(() => props.history.push("/characters"));
   };
 
-  const checkBaseMod = stat => {
-    const mod = Utils.getBaseMod(stat);
-    return mod > 0 ? "+" + mod : mod;
-  };
-
   const checkInitiative = initiative => {
     return initiative > 0 ? "+" + initiative : initiative;
   };
@@ -83,10 +86,8 @@ const CharacterStats = props => {
   };
 
   const handleOpen = (modifier, ability) => {
-    let mod = 0
-    modifier[0] === "+" ? mod = parseInt(modifier.substring(1)) : mod = parseInt(modifier);
     setOpen(true);
-    setRoll(Utils.roll(20) + mod);
+    setRoll(Utils.roll(20) + modifier);
     setAbility(ability);
     setModifier(modifier);
   };
@@ -226,7 +227,7 @@ const CharacterStats = props => {
                   {!edit[field.name] && (
                     <>
                       <TooltipEdit field={field.stat} />
-                      <Heading as="h6" className="stat-mod">{checkBaseMod(field.stat)}</Heading>
+                      <BaseMod stat={field.stat} />
                     </>
                   )}
                 </FlexBox>

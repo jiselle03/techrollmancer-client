@@ -13,12 +13,12 @@ export const TooltipRoll = props => {
     return(
         <Container className="tooltip-roll">
             {header && (
-                <Heading as="h6" className="header" onClick={() => handleOpen(modifier, ability)}>
+                <Heading as="h6" className="header" onClick={() => handleOpen(parseInt(modifier[0] === "+" ? parseInt(modifier.substring(1)) : parseInt(modifier)), ability)}>
                     {name}
                 </Heading>
             )}
             {!header && (
-                <Text className="ability" onClick={() => handleOpen(modifier, ability)}>
+                <Text className="ability" onClick={() => handleOpen(parseInt(modifier[0] === "+" ? parseInt(modifier.substring(1)) : parseInt(modifier)), ability)}>
                     {name}
                 </Text>
             )}
