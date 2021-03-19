@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import Utils from '../../js/utils';
+import { newFields, statFields } from '../../data/characterFields';
 import { Card, CardContent } from '@material-ui/core';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
@@ -11,7 +12,12 @@ class CharacterStatsPrint extends Component {
         super(props);
         this.state = {
             character: props.character,
-            stats: props.stats,
+            str: props.character.str,
+            dex: props.character.dex,
+            con: props.character.con,
+            int: props.character.int,
+            wis: props.character.wis,
+            cha: props.character.cha,
         };
     };
 
@@ -23,70 +29,41 @@ class CharacterStatsPrint extends Component {
             {label: "Initiative", val: this.state.character.initiative},
             {label: "Speed", val: this.state.character.speed},
         ];
-        const stats = [
-            {
-                label: "STR",
-                val: this.state.character.str,
-                mod: Utils.getBaseMod(this.state.character.str),
-                abilities: [],
-            },           
-            {
-                label: "DEX",
-                val: this.state.character.dex,
-                mod: Utils.getBaseMod(this.state.character.dex),
-                abilities: [],
-            },           
-            {
-                label: "CON",
-                val: this.state.character.con,
-                mod: Utils.getBaseMod(this.state.character.con),
-                abilities: [],
-            },            
-            {
-                label: "INT",
-                val: this.state.character.int,
-                mod: Utils.getBaseMod(this.state.character.int),
-                abilities: [],
-            },            
-            {
-                label: "WIS",
-                val: this.state.character.wis,
-                mod: Utils.getBaseMod(this.state.character.wis),
-                abilities: [],
-            },            
-            {
-                label: "CHA",
-                val: this.state.character.cha,
-                mod: Utils.getBaseMod(this.state.character.cha),
-                abilities: [],
-            },            
-        ];
+        const fields = statFields(this.state.str, this.state.dex, this.state.con, this.state.int, this.state.wis, this.state.cha)
         
         return (
             <Container>
                 <Heading>{this.state.character.name}</Heading>
                 <Text>Level {level} {this.state.character.class_1} {this.state.character.race}</Text>
 
+                <Card variant="outlined" style={{height: "10rem", margin: "0.75rem 1rem"}}>
+                    <CardContent>
+                        <Heading as="h6">Profile</Heading>
+                        {basic.map(field => (
+                            <Text key={field.label}>{field.label}: {field.val}</Text> 
+                        ))}
+                    </CardContent>
+                </Card>
                 <FlexBox flexWrap>
-                    <Card variant="outlined" style={{width: "calc(50% - 3rem)", height: "13rem", margin: "1rem"}}>
-                        <CardContent>
-                            <Heading as="h6">Profile</Heading>
-                            {basic.map(field => (
-                                <Text key={field.label}>{field.label}: {field.val}</Text> 
-                            ))}
-                        </CardContent>
-                    </Card>
 
-                    <Card variant="outlined" style={{width: "calc(50% - 3rem)", height: "13rem", margin: "1rem"}}>
-                        <CardContent>
-                            <Heading as="h6">Basic</Heading>
-                            {stats.map(stat => (
-                                <Fragment key={stat.label}>
-                                    <Text>{stat.label}: {stat.val} ({stat.mod > 0? `+${stat.mod}` : stat.mod})</Text>
-                                </Fragment>
-                            ))}
-                        </CardContent>
-                    </Card>
+                    {fields.map(field => (
+                        <Card
+                            key={field.name}
+                            variant="outlined"
+                            style={{width: "calc(50% - 3rem)",
+                            height: "14rem", margin: "0.75rem 1rem"}}
+                        >
+                            <CardContent>
+                                <Heading as="h6" align="center">{field.label}</Heading>
+                                <Heading as="h6" align="center">{field.stat} <Text as="small">({Utils.getBaseMod(field.stat)})</Text></Heading>
+                                
+                                {field && field.abilities && field.abilities.map(ability => (
+                                    <Text><Text as="small">({Utils.getAbilityMod(this.state.character, level, ability.stat, field.name)})</Text>&nbsp;
+                                    {ability.label}</Text>
+                                ))}
+                            </CardContent>
+                        </Card>
+                    ))}
                 </FlexBox>
             </Container>
         );
