@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import Utils from '../../js/utils';
-import { newFields, statFields } from '../../data/characterFields';
+import { statFields } from '../../data/characterFields';
 import { Card, CardContent } from '@material-ui/core';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
