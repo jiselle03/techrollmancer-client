@@ -187,8 +187,7 @@ const Utils = {
     },
 
     getAbilityMod(character, level, ability, stat) {
-        const mod = character.proficiency[ability] ? this.profAdd(character[stat], this.getProfBonus(level)) : Math.floor((character[stat]- 10) / 2);
-        return mod > 0 ? `+${mod}` : mod;
+        return character.proficiency[ability] ? this.profAdd(character[stat], this.getProfBonus(level)) : Math.floor((character[stat]- 10) / 2);
     },
 
     getProfBonus(level) {

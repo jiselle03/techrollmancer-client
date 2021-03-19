@@ -68,6 +68,10 @@ const GlobalStyles = createGlobalStyle`
     line-height: 2em;
   }
 
+  small {
+    font-size: 0.5rem;
+  }
+
   a {
     text-decoration: none;
     color: ${({ theme }) => theme.primary};

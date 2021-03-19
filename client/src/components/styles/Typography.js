@@ -3,10 +3,11 @@ import { bool, object } from 'prop-types';
 
 export const Heading = styled.h1`
     color: ${({ theme, alt }) => alt ? theme.secondary : null};
-    margin-top: ${({ top }) => top};
-    margin-bottom: ${({ bottom }) => bottom};
-    margin-left: ${({ left }) => left};
-    margin-right: ${({ right }) => right};
+    ${({ top }) => top && `margin-top: ${top};`};
+    ${({ bottom }) => bottom && `margin-bottom: ${bottom};`};
+    ${({ left }) => left && `margin-left: ${left}`};
+    ${({ right }) => right && `margin-right: ${right};`}
+    ${({ align }) => align && `text-align: ${align};`}
     text-shadow: ${({ alt }) => alt ? `-1px -1px 0px #000,
                                         0px -1px 0px #000,
                                         1px -1px 0px #000,

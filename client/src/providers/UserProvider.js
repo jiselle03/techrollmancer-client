@@ -20,12 +20,9 @@ export const UserProvider = ({ children }) => {
           .current()
           .then(user => typeof user.id !== "number" ? setCurrentUser(null) : setCurrentUser(user))
           .then(() => setIsLoading(false));
-    }, [isSignedIn]);
+    }, []);
 
-    useEffect(() => {
-        getUser();
-        setIsSignedIn();
-    }, [getUser]);
+    useEffect(() => getUser(), [getUser, isSignedIn]);
 
     return (
         <Provider value={{ currentUser, setIsSignedIn }}>

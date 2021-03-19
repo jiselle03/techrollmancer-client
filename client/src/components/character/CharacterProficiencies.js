@@ -25,7 +25,7 @@ const CharacterProficiencies = props => {
             label={
                 <>
                     <span className="stat">
-                        <Heading as="h6" className="ability">{modifier}</Heading>
+                        <Heading as="h6" className="ability">{modifier > 0 ? `+${modifier}` : modifier}</Heading>
                     </span>
                 </>
             }

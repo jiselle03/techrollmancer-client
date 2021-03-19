@@ -1,17 +1,38 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import Utils from '../../js/utils';
+import { statFields } from '../../data/characterFields';
 import { Card, CardContent } from '@material-ui/core';
 import Container from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { Heading, Text } from '../styles/Typography';
+
+const BaseMod = ({ stat }) => {
+    const mod = Utils.getBaseMod(stat);
+
+    return (
+        <Text as="small">({mod > 0 ? `+${mod}` : mod})</Text>
+    );
+};
+
+const AbilityMod = ({ character, level, stat, field}) => {
+    const mod = Utils.getAbilityMod(character, level, stat, field);
+    return (
+        <Text as="small">({mod > 0 ? `+${mod}` : mod})</Text>
+    );
+};
 
 class CharacterStatsPrint extends Component {
     constructor(props) {
         super(props);
         this.state = {
             character: props.character,
-            stats: props.stats,
+            str: props.character.str,
+            dex: props.character.dex,
+            con: props.character.con,
+            int: props.character.int,
+            wis: props.character.wis,
+            cha: props.character.cha,
         };
     };
 
@@ -23,74 +44,52 @@ class CharacterStatsPrint extends Component {
             {label: "Initiative", val: this.state.character.initiative},
             {label: "Speed", val: this.state.character.speed},
         ];
-        const stats = [
-            {
-                label: "STR",
-                val: this.state.character.str,
-                mod: Utils.getBaseMod(this.state.character.str),
-                abilities: [],
-            },           
-            {
-                label: "DEX",
-                val: this.state.character.dex,
-                mod: Utils.getBaseMod(this.state.character.dex),
-                abilities: [],
-            },           
-            {
-                label: "CON",
-                val: this.state.character.con,
-                mod: Utils.getBaseMod(this.state.character.con),
-                abilities: [],
-            },            
-            {
-                label: "INT",
-                val: this.state.character.int,
-                mod: Utils.getBaseMod(this.state.character.int),
-                abilities: [],
-            },            
-            {
-                label: "WIS",
-                val: this.state.character.wis,
-                mod: Utils.getBaseMod(this.state.character.wis),
-                abilities: [],
-            },            
-            {
-                label: "CHA",
-                val: this.state.character.cha,
-                mod: Utils.getBaseMod(this.state.character.cha),
-                abilities: [],
-            },            
-        ];
+        const fields = statFields(this.state.str, this.state.dex, this.state.con, this.state.int, this.state.wis, this.state.cha)
         
         return (
             <Container>
                 <Heading>{this.state.character.name}</Heading>
                 <Text>Level {level} {this.state.character.class_1} {this.state.character.race}</Text>
 
+                <Card variant="outlined" style={{height: "10rem", margin: "0.75rem 1rem"}}>
+                    <CardContent>
+                        <Heading as="h6">Profile</Heading>
+                        {basic.map(field => (
+                            <Text key={field.label}>{field.label}: {field.val}</Text> 
+                        ))}
+                    </CardContent>
+                </Card>
                 <FlexBox flexWrap>
-                    <Card variant="outlined" style={{width: "calc(50% - 3rem)", height: "13rem", margin: "1rem"}}>
-                        <CardContent>
-                            <Heading as="h6">Profile</Heading>
-                            {basic.map(field => (
-                                <Text key={field.label}>{field.label}: {field.val}</Text> 
-                            ))}
-                        </CardContent>
-                    </Card>
 
-                    <Card variant="outlined" style={{width: "calc(50% - 3rem)", height: "13rem", margin: "1rem"}}>
-                        <CardContent>
-                            <Heading as="h6">Basic</Heading>
-                            {stats.map(stat => (
-                                <Fragment key={stat.label}>
-                                    <Text>{stat.label}: {stat.val} ({stat.mod > 0? `+${stat.mod}` : stat.mod})</Text>
-                                </Fragment>
-                            ))}
-                        </CardContent>
-                    </Card>
+                    {fields.map(field => (
+                        <Card
+                            key={field.name}
+                            variant="outlined"
+                            style={{width: "calc(50% - 3rem)",
+                            height: "14rem", margin: "0.75rem 1rem"}}
+                        >
+                            <CardContent>
+                                <Heading as="h6" align="center">{field.label}</Heading>
+                                <Heading as="h6" align="center">{field.stat} <BaseMod stat={field.stat} /></Heading>
+                                
+                                {field && field.abilities && field.abilities.map(ability => (
+                                    <Text>
+                                        <AbilityMod 
+                                            character={this.state.character} 
+                                            level={level} 
+                                            stat={ability.stat} 
+                                            field={field.name} 
+                                        /> &nbsp;
+                                        {ability.label}
+                                    </Text>
+                                ))}
+                            </CardContent>
+                        </Card>
+                    ))}
                 </FlexBox>
             </Container>
         );
-    }
-  }
+    };
+};
 
 export default CharacterStatsPrint;
