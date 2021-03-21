@@ -6,6 +6,7 @@ import CharacterStatsPrint from './CharacterStatsPrint';
 import Character from '../../api/character';
 import { statFields } from '../../data/characterFields';
 import Utils from '../../js/utils';
+import dice from '../../js/dice';
 import CharacterProficiencies from './CharacterProficiencies';
 import FloatingActionButton from '../other/FloatingActionButton';
 import FlexBox from '../styles/FlexBox';
@@ -87,7 +88,7 @@ const CharacterStats = props => {
 
   const handleOpen = (modifier, ability) => {
     setOpen(true);
-    setRoll(Utils.roll(20) + modifier);
+    setRoll(dice.roll(20) + modifier);
     setAbility(ability);
     setModifier(modifier);
   };

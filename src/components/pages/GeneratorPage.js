@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 
+import dice from '../../js/dice';
 import Utils from '../../js/utils';
 import { UserState } from '../../providers/UserProvider';
 import { RandomCharacter } from '../../js/generator.js';
@@ -45,7 +46,7 @@ const GeneratorPage = props => {
     let currentRoll = 0;
     const rollD6 = () => { 
         if (rolls.length < 4) {
-            currentRoll = Utils.roll(6);
+            currentRoll = dice.roll(6);
             setRolls([...rolls, currentRoll]);
         } else {
             return;
@@ -279,7 +280,7 @@ const GeneratorPage = props => {
                                             <Heading as="h3">STAT: </Heading> 
                                         </span>
                                         <span className="roll">
-                                            <Heading as="h3">{rolls[3] ? Utils.rollAbility(rolls) : " "}</Heading>
+                                            <Heading as="h3">{rolls[3] ? dice.rollAbility(rolls) : " "}</Heading>
                                         </span>
                                     </Container>
 

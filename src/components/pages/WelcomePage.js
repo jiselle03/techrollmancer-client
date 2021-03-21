@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { store } from 'react-notifications-component';
 
 import Utils from '../../js/utils';
+import dice from '../../js/dice';
 import Game from '../../api/game';
 import { UserState } from '../../providers/UserProvider';
 import { BackgroundImage } from '../styles/Image';
@@ -50,7 +51,8 @@ const WelcomePage = () => {
         }
     ];
     
-    const { formatDate, roll } = Utils;
+    const { formatDate } = Utils;
+    const { roll } = dice;
 
     const handleRollOpen = sides => {
         setRollOpen(true);
