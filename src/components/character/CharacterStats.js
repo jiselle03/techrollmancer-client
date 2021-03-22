@@ -5,7 +5,7 @@ import CharacterStatsPrint from './CharacterStatsPrint';
 
 import Character from '../../api/character';
 import { statFields } from '../../data/characterFields';
-import Utils from '../../js/utils';
+import stats from '../../js/stats';
 import dice from '../../js/dice';
 import CharacterProficiencies from './CharacterProficiencies';
 import FloatingActionButton from '../other/FloatingActionButton';
@@ -20,7 +20,7 @@ import { Backdrop, Button, Card, Modal } from '@material-ui/core';
 import { Print } from '@material-ui/icons';
 
 const BaseMod = ({ stat }) => {
-  const mod = Utils.getBaseMod(stat);
+  const mod = stats.getBaseMod(stat);
 
   return (
     <Heading as="h6" className="stat-mod">{mod > 0 ? `+${mod}` : mod}</Heading>
@@ -39,7 +39,7 @@ const CharacterStats = props => {
 
   const { character, handleRefresh } = props;
   const { id, name, hp, armor_class, initiative, speed, str, dex, con, int, wis, cha, proficiency } = props.character;
-  const level = Utils.getLevel(character);
+  const level = stats.getLevel(character);
 
   const fields = statFields(str, dex, con, int, wis, cha);
   const handleClick = field => {
@@ -72,7 +72,7 @@ const CharacterStats = props => {
   };
 
   const checkProfBonus = level => {
-    const bonus = Utils.getProfBonus(level);
+    const bonus = stats.getProfBonus(level);
     return bonus > 0 ? "+" + bonus : bonus;
   };
 
@@ -206,7 +206,7 @@ const CharacterStats = props => {
           <Card className="stats">
             <FlexBox direction="column" justifyContent="space-between">
               <TooltipRoll 
-                modifier={Utils.getBaseMod(field.stat)} 
+                modifier={stats.getBaseMod(field.stat)} 
                 ability={field.stat} 
                 name={field.label} 
                 header
@@ -239,14 +239,14 @@ const CharacterStats = props => {
                   {field && field.abilities && field.abilities.map(ability => (
                     <Container className="stat-container">
                       <CharacterProficiencies 
-                        modifier={Utils.getAbilityMod(character, level, ability.stat, field.name)}
+                        modifier={stats.getAbilityMod(character, level, ability.stat, field.name)}
                         field={ability.stat} 
                         proficiencies={character.proficiency} 
                         onHandleChange={handleChange} 
                       />
                       <span className="stat">
                         <TooltipRoll 
-                        modifier={Utils.getAbilityMod(character, level, ability.stat, field.name)}
+                        modifier={stats.getAbilityMod(character, level, ability.stat, field.name)}
                         ability={ability.name}
                         name={ability.label}
                         header={false}
