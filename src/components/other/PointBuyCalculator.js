@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import Utils from '../../js/utils';
+import utils from '../../js/stats';
 import { raceBonus } from '../../js/generator';
 import { Heading } from '../styles/Typography';
 
 import { FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 
 const PointBuyCalculator = () => {
-    const { getBaseMod } = Utils;
     const [race, setRace] = useState("default");
     const [bonus, setBonus] = useState(raceBonus.default);
     const [stats, setStats] = useState({ str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8 });
@@ -59,7 +58,7 @@ const PointBuyCalculator = () => {
     };
 
     const checkBaseMod = stat => {
-        const mod = getBaseMod(stat);
+        const mod = utils.getBaseMod(stat);
         return mod > 0 ? "+" + mod : mod;
     };
 

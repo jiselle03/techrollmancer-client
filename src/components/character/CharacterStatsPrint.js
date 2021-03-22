@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Utils from '../../js/utils';
+import stats from '../../js/stats';
 import { statFields } from '../../data/characterFields';
 import { Card, CardContent } from '@material-ui/core';
 import Container from '../styles/Container';
@@ -8,7 +8,7 @@ import FlexBox from '../styles/FlexBox';
 import { Heading, Text } from '../styles/Typography';
 
 const BaseMod = ({ stat }) => {
-    const mod = Utils.getBaseMod(stat);
+    const mod = stats.getBaseMod(stat);
 
     return (
         <Text as="small">({mod > 0 ? `+${mod}` : mod})</Text>
@@ -16,7 +16,7 @@ const BaseMod = ({ stat }) => {
 };
 
 const AbilityMod = ({ character, level, stat, field}) => {
-    const mod = Utils.getAbilityMod(character, level, stat, field);
+    const mod = stats.getAbilityMod(character, level, stat, field);
     return (
         <Text as="small">({mod > 0 ? `+${mod}` : mod})</Text>
     );
@@ -37,7 +37,7 @@ class CharacterStatsPrint extends Component {
     };
 
     render() {
-        const level = Utils.getLevel(this.state.character);
+        const level = stats.getLevel(this.state.character);
         const basic = [
             {label: "HP", val: this.state.character.hp},
             {label: "Armor Class", val: this.state.character.armor_class},
