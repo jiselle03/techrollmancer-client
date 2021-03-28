@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { store } from 'react-notifications-component';
 
-import Utils from '../../js/utils';
+import utils from '../../js/utils';
 import dice from '../../js/dice';
 import Game from '../../api/game';
 import { UserState } from '../../providers/UserProvider';
@@ -51,7 +51,7 @@ const WelcomePage = () => {
         }
     ];
     
-    const { formatDate } = Utils;
+    const { formatDate } = utils;
     const { roll } = dice;
 
     const handleRollOpen = sides => {

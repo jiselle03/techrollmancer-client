@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Utils from '../../../js/utils';
+import utils from '../../../js/utils';
 import Library from '../../../api/library';
 import { BackgroundImage } from '../../styles/Image';
 import { Layout } from '../../styles/Container';
@@ -55,7 +55,7 @@ const ClassIndexPage = () => {
                         to={`/libraries/classes/${charClass.slug}`} 
                     >
                         <Card
-                            image={Utils.getClassImage(charClass.slug)}
+                            image={utils.getClassImage(charClass.slug)}
                             imageSize={getImageSize(charClass.slug)}
                         >
                             <CardContent>

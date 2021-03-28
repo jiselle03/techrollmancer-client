@@ -1,4 +1,4 @@
-const Utils = {
+const utils = {
     formatDate(date) {
         let d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -179,4 +179,4 @@ const Utils = {
     },
 };
 
-export default Utils;
+export default utils;

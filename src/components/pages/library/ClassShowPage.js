@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
-import Utils from '../../../js/utils';
+import utils from '../../../js/utils';
 import Library from '../../../api/library';
 import { BackgroundImage } from '../../styles/Image';
 import { Layout } from '../../styles/Container';
@@ -12,7 +12,7 @@ const ClassShowPage = props => {
     const [oneClass, setOneClass] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { getClassImage, getClassSize, getBlurb, getCols } = Utils;
+    const { getClassImage, getClassSize, getBlurb, getCols } = utils;
 
     const getColNames = oneClass => {
         const cols = getCols(oneClass);

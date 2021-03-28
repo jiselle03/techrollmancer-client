@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Utils from '../../../js/utils';
+import utils from '../../../js/utils';
 import Library from '../../../api/library';
 import { BackgroundImage } from '../../styles/Image';
 import Container, { Layout } from '../../styles/Container';
@@ -12,7 +12,7 @@ const RaceShowPage = props => {
     const [race, setRace] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { getRaceSize, getRaceImage, getBlurb } = Utils;
+    const { getRaceSize, getRaceImage, getBlurb } = utils;
 
     useEffect(() => {
         Library.oneRace(props.match.params.slug).then(race => {

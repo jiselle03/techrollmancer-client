@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 
 import dice from '../../js/dice';
-import Utils from '../../js/utils';
 import { UserState } from '../../providers/UserProvider';
 import { RandomCharacter } from '../../js/generator.js';
 import PointBuyCalculator from '../other/PointBuyCalculator';
