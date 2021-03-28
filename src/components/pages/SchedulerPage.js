@@ -1,7 +1,7 @@
 import 'date-fns';
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 
-import Utils from '../../js/utils';
+import utils from '../../js/utils';
 import Game from '../../api/game';
 import { UserState } from '../../providers/UserProvider';
 import { BackgroundImage } from '../styles/Image';
@@ -19,7 +19,7 @@ const SchedulerPage = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const { currentUser } = useContext(UserState);
 
-    const { formatDate } = Utils;
+    const { formatDate } = utils;
     const laptop = useMediaQuery('(min-width:1280px)');
 
     const currentDate = formatDate(new Date());

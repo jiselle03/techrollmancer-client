@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import Utils from '../../../js/utils';
+import utils from '../../../js/utils';
 import Library from '../../../api/library';
 import { BackgroundImage } from '../../styles/Image';
 import { Layout } from '../../styles/Container';
@@ -57,7 +57,7 @@ const RaceIndexPage = () => {
                         to={`/libraries/races/${race.slug}`} 
                     >
                         <Card
-                            image={Utils.getRaceImage(race.slug)}
+                            image={utils.getRaceImage(race.slug)}
                             imageSize={getImageSize(race.slug)}
                         >
                             <CardContent>
