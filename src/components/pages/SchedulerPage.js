@@ -1,6 +1,5 @@
 import 'date-fns';
 import React, { Fragment, useContext, useState, useEffect } from 'react';
-
 import utils from '../../js/utils';
 import Game from '../../api/game';
 import { UserState } from '../../providers/UserProvider';
@@ -9,187 +8,185 @@ import Container, { Layout } from '../styles/Container';
 import FlexBox from '../styles/FlexBox';
 import { Form, FormContent } from '../styles/Form';
 import { Heading, Text } from '../styles/Typography';
-
 import { Button, Card, FormControl, Input, InputLabel, useMediaQuery } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
 const SchedulerPage = () => {
-    const [games, setGames] = useState([]);
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const { currentUser } = useContext(UserState);
+  const [games, setGames] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const { currentUser } = useContext(UserState);  
+  const { formatDate } = utils;
+  const laptop = useMediaQuery('(min-width:1280px)');  
+  const currentDate = formatDate(new Date());  
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
 
-    const { formatDate } = utils;
-    const laptop = useMediaQuery('(min-width:1280px)');
+  const handleSubmit = event => {
+    event.preventDefault();
+    const { currentTarget: form } = event;
+    const fd = new FormData(form);
 
-    const currentDate = formatDate(new Date());
-
-    const handleDateChange = date => {
-        setSelectedDate(date);
+    const newGame = {
+      date: fd.get("date"),
+      time: fd.get("time"),
+      name: fd.get("name"),
+      notes: fd.get("notes"),
+      user_id: currentUser.id
     };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        const { currentTarget: form } = event;
-        const fd = new FormData(form);
+    Game
+      .create(currentUser, newGame)
+      .then(() => {
+      Game
+        .all(currentUser)
+        .then(games => setGames(games));
+      });
+  };
 
-        const newGame = {
-            date: fd.get("date"),
-            time: fd.get("time"),
-            name: fd.get("name"),
-            notes: fd.get("notes"),
-            user_id: currentUser.id
-        };
+  const handleDelete = id => {
+    Game
+      .destroy(currentUser, id)
+      .then(() => {
+        Game
+          .all(currentUser)
+          .then(games => setGames(games));
+      });
+  };
 
-        Game.create(currentUser, newGame).then(() => {
-            Game.all(currentUser).then(games => {
-                setGames(games);
-            });
-        });
-    };
+  useEffect(() => {
+    Game
+      .all(currentUser)
+      .then(games => setGames(games));
+  }, [currentUser]);
 
-    const handleDelete = id => {
-        Game.destroy(currentUser, id).then(() => {
-            Game.all(currentUser).then(games => {
-                setGames(games);
-            });
-        });
-    };
+  return(
+    <BackgroundImage 
+      image="https://i.ibb.co/cctCwgk/d20.png"
+      light
+    >
+      <Layout>
+        <Heading>Scheduler</Heading>
 
-    useEffect(() => {
-        Game.all().then(games => setGames(games));
-    }, []);
-
-    return(
-        <BackgroundImage 
-            image="https://i.ibb.co/cctCwgk/d20.png"
-            light
+        <Card
+          style={{
+            width: laptop ? "60vw" : "70vw",
+            padding: "2em",
+            margin: "1em 0",
+          }}
         >
-            <Layout>
-                <Heading>Scheduler</Heading>
+          <Heading as="h2">Future Sessions</Heading>
+            {games.map((game, index) => (
+              game.date >= currentDate && (
+              <Container key={index} className="game">
+                <span className="name">
+                <Heading as="h6">{game.name}</Heading>
+                </span>
+                <span className="button">
+                <Button onClick={() => handleDelete(game.id)}>Cancel</Button>
+                </span>
+                <Text>{game.date} at {game.time}</Text>
+                <Text className="notes"><strong>Notes:</strong></Text>
+                <Text>{game.notes}</Text>
+                <hr />
+              </Container>
+            )))}
+          </Card>
 
-                <Card
-                    style={{
-                        width: laptop ? "60vw" : "70vw",
-                        padding: "2em",
-                        margin: "1em 0",
-                    }}
+          <Card
+            style={{
+              width: laptop ? "60vw" : "70vw",
+              padding: "2em",
+              margin: "1em 0",
+            }}
+          >
+          <Heading as="h2">Add Session</Heading>
+          <Form onSubmit={handleSubmit}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Container className="datetime">
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="date-picker-dialog"
+                  label="Date picker dialog"
+                  format="MM/dd/yyyy"
+                  name="date"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{ 'aria-label': 'change date' }}
+                  style={FormContent.datetime}
+                />
+                <KeyboardTimePicker
+                  margin="normal"
+                  id="time-picker"
+                  name="time"
+                  label="Time picker"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{ 'aria-label': 'change time' }}
+                  style={FormContent.datetime}
+                />
+              </Container>
+              <FormControl style={FormContent.scheduler}>
+                <InputLabel htmlFor="name">Name</InputLabel>
+                <Input
+                  id="name"
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  required
+                />
+              </FormControl>
+              <FormControl style={FormContent.scheduler}>
+                <InputLabel htmlFor="notes">Notes</InputLabel>
+                <Input
+                  id="notes"
+                  type="text"
+                  name="notes"
+                  placeholder="Notes"
+                />
+              </FormControl>
+              <FlexBox justifyContent="center">
+                <Button 
+                  variant="contained"
+                  color="secondary"
+                  type="submit"
+                  className="button"
                 >
-                    <Heading as="h2">Future Sessions</Heading>
-                    {games.map((game, index) => (
-                        game.date >= currentDate && (
-                        <Container key={index} className="game">
-                            <span className="name">
-                            <Heading as="h6">{game.name}</Heading>
-                            </span>
-                            <span className="button">
-                            <Button onClick={() => handleDelete(game.id)}>Cancel</Button>
-                            </span>
-                            <Text>{game.date} at {game.time}</Text>
-                            <Text className="notes"><strong>Notes:</strong></Text>
-                            <Text>{game.notes}</Text>
-                            <hr />
-                        </Container>
-                    )))}
-                </Card>
+                  Schedule
+                </Button>
+              </FlexBox>
+            </MuiPickersUtilsProvider>
+          </Form>
+        </Card>
 
-                <Card
-                    style={{
-                        width: laptop ? "60vw" : "70vw",
-                        padding: "2em",
-                        margin: "1em 0",
-                    }}
-                >
-                <Heading as="h2">Add Session</Heading>
-                <Form onSubmit={handleSubmit}>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Container className="datetime">
-                            <KeyboardDatePicker
-                                margin="normal"
-                                id="date-picker-dialog"
-                                label="Date picker dialog"
-                                format="MM/dd/yyyy"
-                                name="date"
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change date',
-                                }}
-                                style={FormContent.datetime}
-                            />
-                            <KeyboardTimePicker
-                                margin="normal"
-                                id="time-picker"
-                                name="time"
-                                label="Time picker"
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                KeyboardButtonProps={{
-                                    'aria-label': 'change time',
-                                }}
-                                style={FormContent.datetime}
-                            />
-                        </Container>
-                        <FormControl style={FormContent.scheduler}>
-                            <InputLabel htmlFor="name">Name</InputLabel>
-                            <Input
-                            id="name"
-                            type="text"
-                            name="name"
-                            placeholder="Name"
-                            required
-                            />
-                        </FormControl>
-                        <FormControl style={FormContent.scheduler}>
-                            <InputLabel htmlFor="notes">Notes</InputLabel>
-                            <Input
-                            id="notes"
-                            type="text"
-                            name="notes"
-                            placeholder="Notes"
-                            />
-                        </FormControl>
-                        <FlexBox justifyContent="center">
-                            <Button 
-                                variant="contained"
-                                color="secondary"
-                                type="submit"
-                                className="button"
-                            >
-                                Schedule
-                            </Button>
-                        </FlexBox>
-                    </MuiPickersUtilsProvider>
-                    </Form>
-                </Card>
-
-                <Card
-                    style={{
-                        width: laptop ? "60vw" : "70vw",
-                        padding: "2em",
-                        margin: "1em 0",
-                    }}
-                >
-                    <Heading as="h2">Past Sessions</Heading>
-                    {games.map((game, index) => (
-                        game.date < currentDate && (
-                        <Fragment key={index}>
-                            <Container className="game">
-                                <span className="name">
-                            <Heading as="h6">{game.name}</Heading> 
-                            </span>
-                                <span className="button">
-                            <Button onClick={() => handleDelete(game.id)}>Delete</Button>
-                            </span>
-                            </Container>
-                            <Text>{game.date} at {game.time}</Text>
-                        </Fragment>
-                    )))}
-                </Card>
-
-            </Layout>
-        </BackgroundImage>
-    );
+        <Card
+          style={{
+            width: laptop ? "60vw" : "70vw",
+            padding: "2em",
+            margin: "1em 0",
+          }}
+        >
+        <Heading as="h2">Past Sessions</Heading>
+        {games.map((game, index) => (
+          game.date < currentDate && (
+            <Fragment key={index}>
+              <Container className="game">
+                <span className="name">
+                  <Heading as="h6">{game.name}</Heading> 
+                </span>
+                <span className="button">
+                  <Button onClick={() => handleDelete(game.id)}>Delete</Button>
+                </span>
+              </Container>
+              <Text>{game.date} at {game.time}</Text>
+            </Fragment>
+          )
+        ))}
+       </Card>
+      </Layout>
+    </BackgroundImage>
+  );
 };
 
 export default SchedulerPage;

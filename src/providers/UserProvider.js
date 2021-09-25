@@ -1,34 +1,32 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
-
 import { CircularProgress } from '@material-ui/core';
-
 import User from '../api/user';
 
 export const UserState = createContext({
-    currentUser: null,
-    setIsSignedIn: () => {},
+  currentUser: null,
+  setIsSignedIn: () => {},
 });
 const { Provider } = UserState;
 
 export const UserProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isSignedIn, setIsSignedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-    const getUser = useCallback(() => {
-        User
-          .current()
-          .then(user => typeof user.id !== "number" ? setCurrentUser(null) : setCurrentUser(user))
-          .then(() => setIsLoading(false));
-    }, []);
+  const getUser = useCallback(() => {
+    User
+      .current()
+      .then(user => typeof user.id !== "number" ? setCurrentUser(null) : setCurrentUser(user))
+      .then(() => setIsLoading(false));
+  }, []);
 
-    useEffect(() => getUser(), [getUser, isSignedIn]);
+  useEffect(() => getUser(), [getUser, isSignedIn]);
 
-    return (
-        <Provider value={{ currentUser, setIsSignedIn }}>
-            {isLoading ? <CircularProgress variant="determinate" /> : children}
-        </Provider>
-    );
+  return (
+    <Provider value={{ currentUser, setIsSignedIn }}>
+      {isLoading ? <CircularProgress variant="determinate" /> : children}
+    </Provider>
+  );
 };
 
 export default UserProvider;
