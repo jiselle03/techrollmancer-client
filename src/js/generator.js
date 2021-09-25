@@ -4,47 +4,47 @@ const RACES = ['Dragonborn', 'Dwarf', 'Elf', 'Gnome', 'Half-Elf', 'Halfling', 'H
 const CLASSES = ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'];
 
 export class RandomCharacter {
-    constructor() {
-      this._charRace = RandomCharacter.getRace();
-      this._charClass = RandomCharacter.getClass();
-      this._roll1 = RandomCharacter.rollAbility();
-      this._roll2 = RandomCharacter.rollAbility();
-      this._roll3 = RandomCharacter.rollAbility();
-      this._roll4 = RandomCharacter.rollAbility();
-      this._roll5 = RandomCharacter.rollAbility();
-      this._roll6 = RandomCharacter.rollAbility();
+  constructor() {
+    this._charRace = RandomCharacter.getRace();
+    this._charClass = RandomCharacter.getClass();
+    this._roll1 = RandomCharacter.rollAbility();
+    this._roll2 = RandomCharacter.rollAbility();
+    this._roll3 = RandomCharacter.rollAbility();
+    this._roll4 = RandomCharacter.rollAbility();
+    this._roll5 = RandomCharacter.rollAbility();
+    this._roll6 = RandomCharacter.rollAbility();
+  };
+
+  static rollAbility() {
+    const rolls = [];
+    let abilityScore = 0;
+
+    while (rolls.length < 4) {
+      rolls.push(Math.ceil(Math.random() * 6));
     };
 
-    static rollAbility() {
-      const rolls = [];
-      let abilityScore = 0;
-
-      while (rolls.length < 4) {
-        rolls.push(Math.ceil(Math.random() * 6));
-      };
-
-      for (let i = 0; i < rolls.length; i++) {
-        abilityScore += rolls[i];
-      };
-
-      abilityScore -= Math.min(...rolls);
-      return abilityScore;
+    for (let i = 0; i < rolls.length; i++) {
+      abilityScore += rolls[i];
     };
 
-    static getRace() {
-      return RACES[Math.floor(Math.random() * 9)];
-    };  
+    abilityScore -= Math.min(...rolls);
+    return abilityScore;
+  };
 
-    static getClass() {
-      return CLASSES[Math.floor(Math.random() * 12)];
-    };
+  static getRace() {
+    return RACES[Math.floor(Math.random() * 9)];
+  };  
+
+  static getClass() {
+    return CLASSES[Math.floor(Math.random() * 12)];
+  };
     
-    get charRace(){
-        return this._charRace;
-    };
-    get charClass(){
-      return this._charClass;
-    };
+  get charRace(){
+      return this._charRace;
+  };
+  get charClass(){
+    return this._charClass;
+  };
 };
 
 export const raceBonus = {
