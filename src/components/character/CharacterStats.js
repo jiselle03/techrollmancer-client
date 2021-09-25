@@ -203,7 +203,10 @@ const CharacterStats = props => {
         </Card>
 
         {fields.map(field => (
-          <Card className="stats">
+          <Card
+            key={field.stat}
+            className="stats"
+          >
             <FlexBox direction="column" justifyContent="space-between">
               <TooltipRoll 
                 modifier={stats.getBaseMod(field.stat)} 
@@ -236,8 +239,11 @@ const CharacterStats = props => {
 
               <FlexBox direction="column" style={{width: "60%", height: "5em"}}>
                 <Container className="stat border ability">
-                  {field && field.abilities && field.abilities.map(ability => (
-                    <Container className="stat-container">
+                  {field?.abilities?.map(ability => (
+                    <Container
+                      key={ability.stat}
+                      className="stat-container"
+                    >
                       <CharacterProficiencies 
                         modifier={stats.getAbilityMod(character, level, ability.stat, field.name)}
                         field={ability.stat} 
